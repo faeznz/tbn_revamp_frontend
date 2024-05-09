@@ -1,66 +1,42 @@
 import React from "react";
 import assetsManajement from "../components/assets_manajement";
-import logoTbn from "../assets/LOGO_TBN_ALLIANCE.png";
 import bannerHomepage from "../assets/banner-homepage.png";
 import videoHomepage from "../assets/video_homepage.png";
 import iconWatchVideo from "../assets/icon_watch_video.png";
 import whoWeAreImg from "../assets/who_we_are.png";
-import missionBanner from "../assets/mission.png";
+import missionBanner from "../assets/mission_tbn.png";
 import ourPartner from "../assets/our_partner.png";
 import tbnWorldwide from "../assets/tbn_worldwide.png";
+import NavbarComponent from "../components/navbar";
 
 function home_page() {
   return (
     <div>
-      {/* Navbar */}
-      <div className="flex fixed justify-between items-center bg-[#0350C4] w-full h-16 px-8 z-10">
-        <div>
-          <img src={logoTbn} alt="Logo TBN Alliance" className="h-10" />
-        </div>
-        <div className="flex flex-row gap-4 items-center text-white">
-          <a className="">Home</a>
-          <a>About</a>
-          <a>Blog</a>
-          <a>Media</a>
-          <button className="bg-white text-black px-6 py-2 rounded-2xl">
-            Register
-          </button>
-        </div>
-      </div>
+      <NavbarComponent />
       {/* Section 1 - Main */}
       <section className="w-full h-full">
         {/* Image for main banner */}
+        <div className=" absolute aspect-21/9 w-full bg-[#131313]/40 top-0"></div>
         <img
           src={bannerHomepage}
           alt=""
           className="w-full aspect-21/9 bg-center bg-cover top-0"
         />
-        <div className="w-full h-full top-0 absolute flex justify-center items-center">
-          <div className="w-3/5 bg-slate-300/50 p-8 flex flex-col justify-center items-center rounded-2xl">
-            <h1 className="text-6xl mb-8">Lorem Ipsum</h1>
-            <p className="text-center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-              faucibus nibh sit amet est faucibus consequat non sit amet risus.
-              Maecenas tristique sit amet dui eget euismod. Donec faucibus
-              molestie turpis, eu tempus metus facilisis a. Suspendisse purus
-              mi, rhoncus et dolor nec, tempor sodales ex. Phasellus vitae
-              aliquam magna. Morbi ipsum dui, faucibus sit amet nunc et, rhoncus
-              finibus ipsum. Nulla eget odio vitae ipsum consequat imperdiet.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non
-              ipsum accumsan, fringilla turpis sit amet, vulputate massa.
-              Pellentesque quis ipsum blandit, pellentesque eros quis, euismod
-              libero. Praesent vestibulum augue bibendum, placerat leo et,
-              tincidunt mi. Fusce tristique mattis metus, et gravida lorem
-              condimentum sed. Vestibulum ante ipsum primis in faucibus orci
-              luctus et ultrices posuere cubilia curae; Interdum et malesuada
-              fames ac ante ipsum primis in faucibus.
+        <div className="w-full h-5/6 top-0 absolute flex flex-row justify-start p-24 items-center">
+          <div className="w-1 h-3/5 bg-[#FFB400]"></div>
+          <div className="w-3/5  p-8 flex flex-col justify-center items-start rounded-2xl">
+            <p className="text-white font-bold text-5xl mb-12">
+              Transformational <br /> Business Network (TBN) <br /> Alliance
+            </p>
+            <p className="text-white font-light text-3xl">
+              Fighting Poverty in Frontier Markets <br /> Across the Globe.
             </p>
           </div>
         </div>
       </section>
       {/* Section 2 -  About Us*/}
       <section className="flex flex-col mt-12 justify-center items-center">
-        <p className="text-3xl mb-12">About Us</p>
+        <p className="text-4xl mb-12 font-medium">ABOUT US</p>
         <div className="flex flex-row px-24 pb-32 justify-between items-center">
           <img
             src={videoHomepage}
@@ -88,11 +64,11 @@ function home_page() {
         </div>
       </section>
       {/* Section 3 -  Who We Are*/}
-      <section className="bg-[#0350C4] w-full h-full flex flex-row">
-        <div className="flex items-center justify-center px-24 py-24">
-          <img src={whoWeAreImg} alt="" className="w-2/5" />
-          <div className="bg-[#EDEDED] w-2/5 h-full flex flex-col justify-center items-center px-12">
-            <p className="text-2xl mb-8">WHO WE ARE</p>
+      <section className="bg-[#0350C4] flex flex-row">
+        <div className="flex items-center justify-center px-24 h-screen">
+          <img src={whoWeAreImg} alt="" className="h-3/5" />
+          <div className="bg-[#EDEDED] h-3/5 flex flex-col justify-center items-center px-12">
+            <p className="text-4xl mb-8 font-medium">WHO WE ARE</p>
             <p className="font-light text-justify">
               TBN Alliance is a global network of purpose-driven entrepreneurs,
               impact investors and capacity builders who take an enterprise
@@ -100,11 +76,10 @@ function home_page() {
               communities.
             </p>
             <p className="font-light mt-4 text-justify">
-              Over the next five years,{" "}
+              Over the next five years,
               <span className="font-semibold">
-                {" "}
                 TBN Alliance will launch an estimated 1,800 ventures,
-              </span>{" "}
+              </span>
               providing approximately 11,850 new jobs in frontier and emerging
               markets globally.
             </p>
@@ -113,33 +88,18 @@ function home_page() {
       </section>
       {/* Section 4 - Mission */}
       <section className="flex flex-col mt-12 justify-center items-center">
-        <p className="text-3xl mb-12">Mission</p>
-        <div className="flex flex-col px-24 pb-32 justify-between items-center">
-          <p className="text-justify font-light">
-            The Alliance leverages the particular strengths of our partners,
-            establishing a global platform and resource hub capable of scaling a
-            distinctive model of economic and community development with a
-            proven record of transformational impact
-            <br />
-            <br />
-            Tapping the power of business, our solutions focus on:
+        <p className="text-4xl mb-12 font-medium">MISSION</p>
+        <div className="flex flex-row px-32 pb-32 justify-center items-center">
+          <p className="text-justify font-light w-2/5">
+            The TBN Alliance nurtures purpose-driven businesses to thrive,
+            aiming to reduce poverty and promote environmental sustainability.
+            We foster a global movement for social good, empowering
+            entrepreneurs, and directly benefiting families and communities. Our
+            ambitious aim is to ignite an impact movement, uniting people
+            worldwide to leverage business for social transformation,
+            particularly supporting SMEs in emerging markets.
           </p>
-          <img src={missionBanner} alt="" className="my-8" />
-          <p>
-            The TBN Alliance provides an environment for purpose-driven
-            enterprises to flourish so they may be catalysts for reducing
-            poverty and stewarding environmental sustainability. We do this by
-            fostering a social movement for good that produces tangible results,
-            helping social entrepreneurs thrive, and directly influencing the
-            well-being of families and communities.
-            <br />
-            <br />
-            Our goal is lofty! We seek to catalyze an impact movement - people
-            across the globe who are passionate about leveraging the power of
-            business for the greater good, for true social transformation,
-            geared especially towards support of SMEs in frontier and emerging
-            markets.
-          </p>
+          <img src={missionBanner} alt="" className="w-2/5" />
         </div>
       </section>
       {/* Section 4 - Our Partner */}
@@ -153,7 +113,9 @@ function home_page() {
       {/* Section 3 -  Who We Are*/}
       <section className="bg-[#0350C4] w-full h-full flex flex-col">
         <div className="flex flex-col items-center justify-center px-24 py-24">
-          <p className="text-[#FBFDFF] font-semibold text-4xl mb-12">BE PART OF THE COMMUNITY</p>
+          <p className="text-[#FBFDFF] font-semibold text-4xl mb-12">
+            BE PART OF THE COMMUNITY
+          </p>
           <form className="w-full flex flex-col items-center">
             <div className="w-3/4 flex items-start justify-start">
               <p className="text-[#FBFDFF] font-medium">Your</p>
@@ -165,18 +127,37 @@ function home_page() {
             <input type="text" className="w-3/4 h-10 rounded-md" />
             <div className="w-3/4 flex items-start justify-start mt-8">
               <p className="text-[#FBFDFF] font-medium">Join Us</p>
-              <div>
-                <p>Investasi</p>
+              <div className="flex flex-row justify-center items-center gap-1 ml-12">
+                <input type="checkbox" className="" />
+                <p className="mr-4 text-[#FBFDFF]">Investasi</p>
                 <input type="checkbox" />
-                <p>Capacity Builder</p>
+                <p className="mr-4 text-[#FBFDFF]">Capacity Builder</p>
                 <input type="checkbox" />
-                <p>Investasi</p>
+                <p className="mr-4 text-[#FBFDFF]">
+                  Seasoned Social Entrepreneur
+                </p>
                 <input type="checkbox" />
-                <p>Investasi</p>
-                <input type="checkbox" />
+                <p className="mr-4 text-[#FBFDFF]">Professional</p>
               </div>
             </div>
+            <div className="w-3/4 flex flex-col justify-start items-start mt-8">
+              <button className="bg-[#DC8400] text-[#FBFDFF] px-6 py-2 rounded-xl">
+                Submit
+              </button>
+            </div>
           </form>
+        </div>
+      </section>
+      {/* Section 3 -  Footer*/}
+      <section className="bg-[#DC8400] w-full h-full flex flex-col">
+        <div className="flex flex-col items-center justify-center px-24 py-24">
+          <p className="text-black font-light text-xl mb-4">
+            email: hello@tbnalliance.org
+          </p>
+          <p className="text-black font-light text-xl ">
+            Copyright © 2024 - Transformational Business Network (TBN) Alliance
+            - All rights reserved.{" "}
+          </p>
         </div>
       </section>
     </div>

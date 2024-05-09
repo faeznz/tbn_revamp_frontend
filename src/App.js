@@ -2,16 +2,17 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from './page/home_page';
-import Tes from './page/tes';
+import LoginPage from './page/login_page/login_page';
+import RegisterPage from './page/register_page/register_page';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Homepage />}>
-          <Route index element={<Tes />} />
-          {/* <Route path="blogs" element={<Tes />} /> */}
-        </Route>
+        <Route path="/" element={<Homepage />}/>
+        <Route path="/login" element={<LoginPage />}/>
+        <Route path="/register" element={<RegisterPage />}/>
+      
       </Routes>
     </BrowserRouter>
   );
