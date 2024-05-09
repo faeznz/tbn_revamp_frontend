@@ -1,12 +1,11 @@
 import React from "react";
-import assetsManajement from "../components/assets_manajement";
 import bannerHomepage from "../assets/banner-homepage.png";
 import videoHomepage from "../assets/video_homepage.png";
 import iconWatchVideo from "../assets/icon_watch_video.png";
 import whoWeAreImg from "../assets/who_we_are.png";
 import missionBanner from "../assets/mission_tbn.png";
 import ourPartner from "../assets/our_partner.png";
-import tbnWorldwide from "../assets/tbn_worldwide.png";
+import tbnWorldwide from "../assets/peta_tbn.png";
 import NavbarComponent from "../components/navbar";
 
 function home_page() {
@@ -64,7 +63,7 @@ function home_page() {
         </div>
       </section>
       {/* Section 3 -  Who We Are*/}
-      <section className="bg-[#0350C4] flex flex-row">
+      <section className="bg-[#F6CF55] flex flex-row rounded-t-[100px]">
         <div className="flex items-center justify-center px-24 h-screen">
           <img src={whoWeAreImg} alt="" className="h-3/5" />
           <div className="bg-[#EDEDED] h-3/5 flex flex-col justify-center items-center px-12">
@@ -87,31 +86,34 @@ function home_page() {
         </div>
       </section>
       {/* Section 4 - Mission */}
-      <section className="flex flex-col mt-12 justify-center items-center">
-        <p className="text-4xl mb-12 font-medium">MISSION</p>
-        <div className="flex flex-row px-32 pb-32 justify-center items-center">
-          <p className="text-justify font-light w-2/5">
-            The TBN Alliance nurtures purpose-driven businesses to thrive,
-            aiming to reduce poverty and promote environmental sustainability.
-            We foster a global movement for social good, empowering
-            entrepreneurs, and directly benefiting families and communities. Our
-            ambitious aim is to ignite an impact movement, uniting people
-            worldwide to leverage business for social transformation,
-            particularly supporting SMEs in emerging markets.
-          </p>
-          <img src={missionBanner} alt="" className="w-2/5" />
+      <section className="flex flex-col justify-center items-center bg-[#F6CF55]">
+        <div className="flex flex-col pt-24 justify-center items-center bg-white rounded-t-[100px]">
+          <p className="text-4xl mb-12 font-medium">MISSION</p>
+          <div className="flex flex-row px-32 pb-32 justify-center items-center gap-8">
+            <p className="text-justify font-light w-2/5">
+              The TBN Alliance nurtures purpose-driven businesses to thrive,
+              aiming to reduce poverty and promote environmental sustainability.
+              We foster a global movement for social good, empowering
+              entrepreneurs, and directly benefiting families and communities.
+              Our ambitious aim is to ignite an impact movement, uniting people
+              worldwide to leverage business for social transformation,
+              particularly supporting SMEs in emerging markets.
+            </p>
+            <img src={missionBanner} alt="" className="w-2/5" />
+          </div>
         </div>
       </section>
       {/* Section 4 - Our Partner */}
-      <section className="flex flex-col mt-12 justify-center items-center">
+      <section className="flex flex-col mt-12 justify-center items-center ">
         <p className="text-3xl">Our Partner</p>
         <div className="flex flex-col px-24 pb-32 justify-between items-center">
           <img src={ourPartner} alt="" className="" />
+          <p className="text-3xl py-24">TBN's Global Reach</p>
           <img src={tbnWorldwide} alt="" className="" />
         </div>
       </section>
       {/* Section 3 -  Who We Are*/}
-      <section className="bg-[#0350C4] w-full h-full flex flex-col">
+      {/* <section className="bg-[#0350C4] w-full h-full flex flex-col">
         <div className="flex flex-col items-center justify-center px-24 py-24">
           <p className="text-[#FBFDFF] font-semibold text-4xl mb-12">
             BE PART OF THE COMMUNITY
@@ -147,14 +149,14 @@ function home_page() {
             </div>
           </form>
         </div>
-      </section>
+      </section> */}
       {/* Section 3 -  Footer*/}
-      <section className="bg-[#DC8400] w-full h-full flex flex-col">
+      <section className="bg-[#092040] w-full h-full flex flex-col rounded-t-[100px]">
         <div className="flex flex-col items-center justify-center px-24 py-24">
-          <p className="text-black font-light text-xl mb-4">
+          <p className="text-white font-light text-xl mb-4">
             email: hello@tbnalliance.org
           </p>
-          <p className="text-black font-light text-xl ">
+          <p className="text-white font-light text-xl ">
             Copyright © 2024 - Transformational Business Network (TBN) Alliance
             - All rights reserved.{" "}
           </p>

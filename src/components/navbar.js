@@ -24,7 +24,7 @@ function Navbar() {
   const handleMouseLeave = () => {
     timeoutId = setTimeout(() => {
       setIsAboutHovered(false);
-    }, 100);
+    }, 200);
   };
 
   const handleMouseEnter = () => {
@@ -55,7 +55,7 @@ function Navbar() {
             <p>About</p>
             {isAboutHovered && (
               <div className="flex flex-col gap-2 absolute w-40 bg-white text-black font-medium rounded-md shadow-md py-2 px-4 top-12 left-0 z-10">
-                <NavLink to='/about/visi-dan-misi'>Visi dan Misi</NavLink>
+                <NavLink to='/about/visimisi'>Visi dan Misi</NavLink>
                 <NavLink to='/about/history'>History</NavLink>
                 <NavLink to='/about/partnership'>Partnership</NavLink>
                 <NavLink to='/about/our-approach'>Our Approach</NavLink>
