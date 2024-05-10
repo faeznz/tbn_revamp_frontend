@@ -1,12 +1,12 @@
-import React from "react";
-import bannerHomepage from "../assets/banner-homepage.png";
-import videoHomepage from "../assets/video_homepage.png";
-import iconWatchVideo from "../assets/icon_watch_video.png";
-import whoWeAreImg from "../assets/who_we_are.png";
-import missionBanner from "../assets/mission_tbn.png";
-import ourPartner from "../assets/our_partner.png";
-import tbnWorldwide from "../assets/peta_tbn.png";
-import NavbarComponent from "../components/navbar";
+import React from 'react';
+import bannerHomepage from '../assets/banner-homepage.png';
+import videoHomepage from '../assets/video_homepage.png';
+import iconWatchVideo from '../assets/icon_watch_video.png';
+import whoWeAreImg from '../assets/who_we_are.png';
+import missionBanner from '../assets/mission_tbn.png';
+import ourPartner from '../assets/our_partner.png';
+import tbnWorldwide from '../assets/peta_tbn.png';
+import NavbarComponent from '../components/navbar';
 
 function home_page() {
   return (
@@ -16,11 +16,7 @@ function home_page() {
       <section className="w-full h-full">
         {/* Image for main banner */}
         <div className=" absolute aspect-21/9 w-full bg-[#131313]/40 top-0"></div>
-        <img
-          src={bannerHomepage}
-          alt=""
-          className="w-full aspect-21/9 bg-center bg-cover top-0"
-        />
+        <img src={bannerHomepage} alt="" className="w-full aspect-21/9 bg-center bg-cover top-0" />
         <div className="w-full h-5/6 top-0 absolute flex flex-row justify-start p-24 items-center">
           <div className="w-1 h-3/5 bg-[#FFB400]"></div>
           <div className="w-3/5  p-8 flex flex-col justify-center items-start rounded-2xl">
@@ -37,23 +33,15 @@ function home_page() {
       <section className="flex flex-col mt-12 justify-center items-center">
         <p className="text-4xl mb-12 font-medium">ABOUT US</p>
         <div className="flex flex-row px-24 pb-32 justify-between items-center">
-          <img
-            src={videoHomepage}
-            alt=""
-            className="w-2/5 aspect-16/9 bg-center bg-cover top-14"
-          />
+          <img src={videoHomepage} alt="" className="w-2/5 aspect-16/9 bg-center bg-cover top-14" />
           <div className="mx-24 flex flex-col justify-center items-center">
             <p className="text-5xl mb-12">TBN ALLIANCE</p>
             <p className="text-justify">
-              TBN Alliance is a global network focused on poverty alleviation
-              through enterprise, emphasizing multi-faith, multi-sector
-              partnerships. Over the next five years, they plan to launch 1,800
-              ventures, creating around 11,850 new jobs in emerging markets.
+              TBN Alliance is a global network focused on poverty alleviation through enterprise, emphasizing multi-faith, multi-sector partnerships. Over the next five years, they plan to launch 1,800 ventures, creating around 11,850 new
+              jobs in emerging markets.
             </p>
             <div className="mt-12 flex flex-row">
-              <button className="bg-[#DC8400] px-6 py-1 rounded-full mr-8">
-                Register
-              </button>
+              <button className="bg-[#DC8400] px-6 py-1 rounded-full mr-8">Register</button>
               <div className="flex flex-row gap-2 justify-center items-center">
                 <img src={iconWatchVideo} alt="" className="w-8" />
                 <a href="">Watch Video</a>
@@ -69,18 +57,12 @@ function home_page() {
           <div className="bg-[#EDEDED] h-3/5 flex flex-col justify-center items-center px-12">
             <p className="text-4xl mb-8 font-medium">WHO WE ARE</p>
             <p className="font-light text-justify">
-              TBN Alliance is a global network of purpose-driven entrepreneurs,
-              impact investors and capacity builders who take an enterprise
-              approach to alleviate poverty in low-income and underserved
-              communities.
+              TBN Alliance is a global network of purpose-driven entrepreneurs, impact investors and capacity builders who take an enterprise approach to alleviate poverty in low-income and underserved communities.
             </p>
             <p className="font-light mt-4 text-justify">
               Over the next five years,
-              <span className="font-semibold">
-                TBN Alliance will launch an estimated 1,800 ventures,
-              </span>
-              providing approximately 11,850 new jobs in frontier and emerging
-              markets globally.
+              <span className="font-semibold">TBN Alliance will launch an estimated 1,800 ventures,</span>
+              providing approximately 11,850 new jobs in frontier and emerging markets globally.
             </p>
           </div>
         </div>
@@ -91,13 +73,8 @@ function home_page() {
           <p className="text-4xl mb-12 font-medium">MISSION</p>
           <div className="flex flex-row px-32 pb-32 justify-center items-center gap-8">
             <p className="text-justify font-light w-2/5">
-              The TBN Alliance nurtures purpose-driven businesses to thrive,
-              aiming to reduce poverty and promote environmental sustainability.
-              We foster a global movement for social good, empowering
-              entrepreneurs, and directly benefiting families and communities.
-              Our ambitious aim is to ignite an impact movement, uniting people
-              worldwide to leverage business for social transformation,
-              particularly supporting SMEs in emerging markets.
+              The TBN Alliance nurtures purpose-driven businesses to thrive, aiming to reduce poverty and promote environmental sustainability. We foster a global movement for social good, empowering entrepreneurs, and directly benefiting
+              families and communities. Our ambitious aim is to ignite an impact movement, uniting people worldwide to leverage business for social transformation, particularly supporting SMEs in emerging markets.
             </p>
             <img src={missionBanner} alt="" className="w-2/5" />
           </div>
@@ -152,14 +129,9 @@ function home_page() {
       </section> */}
       {/* Section 3 -  Footer*/}
       <section className="bg-[#092040] w-full h-full flex flex-col rounded-t-[100px]">
-        <div className="flex flex-col items-center justify-center px-24 py-24">
-          <p className="text-white font-light text-xl mb-4">
-            email: hello@tbnalliance.org
-          </p>
-          <p className="text-white font-light text-xl ">
-            Copyright © 2024 - Transformational Business Network (TBN) Alliance
-            - All rights reserved.{" "}
-          </p>
+        <div className="flex flex-col items-center justify-center px-8 py-12">
+          <p className="text-white font-light text-sm mb-4">email: hello@tbnalliance.org</p>
+          <p className="text-white font-light text-sm ">Copyright © 2024 - Transformational Business Network (TBN) Alliance - All rights reserved. </p>
         </div>
       </section>
     </div>
