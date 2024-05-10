@@ -1,12 +1,13 @@
-import React from 'react';
-import bannerHomepage from '../assets/banner-homepage.png';
-import videoHomepage from '../assets/video_homepage.png';
-import iconWatchVideo from '../assets/icon_watch_video.png';
-import whoWeAreImg from '../assets/who_we_are.png';
-import missionBanner from '../assets/mission_tbn.png';
-import ourPartner from '../assets/our_partner.png';
-import tbnWorldwide from '../assets/peta_tbn.png';
-import NavbarComponent from '../components/navbar';
+import React from "react";
+import bannerHomepage from "../assets/banner-homepage.png";
+import videoHomepage from "../assets/video_homepage.png";
+import iconWatchVideo from "../assets/icon_watch_video.png";
+import whoWeAreImg from "../assets/who_we_are.png";
+import missionBanner from "../assets/mission_tbn.png";
+import ourPartner from "../assets/our_partner.png";
+import tbnWorldwide from "../assets/peta_tbn.png";
+import NavbarComponent from "../components/navbar_component";
+import FooterComponent from "../components/footer_component";
 
 function home_page() {
   return (
@@ -128,12 +129,7 @@ function home_page() {
         </div>
       </section> */}
       {/* Section 3 -  Footer*/}
-      <section className="bg-[#092040] w-full h-full flex flex-col rounded-t-[100px]">
-        <div className="flex flex-col items-center justify-center px-8 py-12">
-          <p className="text-white font-light text-sm mb-4">email: hello@tbnalliance.org</p>
-          <p className="text-white font-light text-sm ">Copyright © 2024 - Transformational Business Network (TBN) Alliance - All rights reserved. </p>
-        </div>
-      </section>
+      <FooterComponent/>
     </div>
   );
 }

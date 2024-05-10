@@ -37,8 +37,8 @@ const RegisterPage = () => {
         {/* Section 1 -  Register*/}
         <section className="w-full h-full flex flex-row">
           <div className="flex items-center justify-center px-24 py-24 w-screen">
-            <img src={ImgLogin} alt="" className="h-full" />
-            <div className="bg-white h-full w-2/5 flex flex-col justify-center items-center px-12 rounded-r-xl">
+            <img src={ImgLogin} alt="" className="h-5/6" />
+            <div className="bg-white h-5/6 w-3/5 flex flex-col justify-center items-center px-12">
               <div className="flex flex-col">
                 <div className="flex justify-center">
                   <p className="text-2xl mb-8">Create an Account!</p>
