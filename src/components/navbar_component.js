@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import logoTbn from '../assets/LOGO_TBN_ALLIANCE.png';
+import logoTbn from '../assets/logo_tbn_indonesia.png';
 
 function Navbar() {
   const [isAboutHovered, setIsAboutHovered] = useState(false);

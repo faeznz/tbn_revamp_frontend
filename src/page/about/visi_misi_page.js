@@ -5,7 +5,7 @@ import BannerVisiMisi from "../../assets/banner_visi_misi.png";
 import BannerValueDna from "../../assets/banner_value_dna.png";
 import BannerWeAre from "../../assets/banner_we_are.png";
 
-const visi_misi_page = () => {
+const VisiMisiPage = () => {
   return (
     <div>
       <NavbarComponent />
@@ -41,4 +41,4 @@ const visi_misi_page = () => {
   );
 };
 
-export default visi_misi_page;
+export default VisiMisiPage;

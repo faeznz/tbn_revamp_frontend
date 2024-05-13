@@ -4,7 +4,7 @@ import FooterComponent from "../../components/footer_component";
 import MapsWhereWeAre from '../../assets/maps_where_we_are.png'
 import { NavLink } from "react-router-dom";
 
-const where_page = () => {
+const WherePage = () => {
   return (
     <div>
       <NavbarComponent />
@@ -47,4 +47,4 @@ const where_page = () => {
   );
 };
 
-export default where_page;
+export default WherePage;

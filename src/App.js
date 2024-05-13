@@ -10,6 +10,10 @@ import HowItWorksPage from './page/about/how_it_works_page';
 import OurApproachPage from './page/about/our_approach_page';
 import WherePage from './page/about/where_page';
 import PartnershipPage from './page/about/partnership_page';
+import BlogListPage from './page/blog/blog_list_page';
+import BlogDetailPage from './page/blog/blog_detail_page';
+import ContactUsPage from './page/contact_us_page';
+import PendaftaranEventPage from './page/pendaftaran_event/pendaftaran_event_page';
 
 function App() {
   return (
@@ -17,6 +21,7 @@ function App() {
       <Routes>
         {/* Main Route */}
         <Route path="/" element={<Homepage />}/>
+        <Route path="/contact" element={<ContactUsPage />}/>
         
         {/* Route About */}
         <Route path="/about/visimisi" element={<VisiMisiPage />}/>
@@ -25,6 +30,13 @@ function App() {
         <Route path="/about/our-approach" element={<OurApproachPage />}/>
         <Route path="/about/where" element={<WherePage />}/>
         <Route path="/about/partnership" element={<PartnershipPage />}/>
+
+        {/* Route Blog */}
+        <Route path="/blog" element={<BlogListPage />}/>
+        <Route path="/blog/:id" element={<BlogDetailPage />}/>
+        
+        {/* Route Pendaftaran Event */}
+        <Route path="/register-event" element={<PendaftaranEventPage />}/>
 
         {/* Route Login and Register */}
         <Route path="/login" element={<LoginPage />}/>

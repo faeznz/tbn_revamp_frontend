@@ -4,7 +4,7 @@ import FooterComponent from "../../components/footer_component";
 import BannerHistory from "../../assets/banner_partner.png";
 import BannerEcosystem from "../../assets/tbn_ecosystem_partner.png";
 
-const partnership_page = () => {
+const PartnershipPage = () => {
   return (
     <div>
       <NavbarComponent />
@@ -50,4 +50,4 @@ const partnership_page = () => {
   );
 };
 
-export default partnership_page;
+export default PartnershipPage;

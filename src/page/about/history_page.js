@@ -4,7 +4,7 @@ import FooterComponent from "../../components/footer_component";
 import BannerPioneer from "../../assets/history_image.png";
 import BannerPartner from "../../assets/banner_partnership.png";
 
-const history_page = () => {
+const HistoryPage = () => {
   return (
     <div>
       <NavbarComponent />
@@ -74,4 +74,4 @@ const history_page = () => {
   );
 };
 
-export default history_page;
+export default HistoryPage;

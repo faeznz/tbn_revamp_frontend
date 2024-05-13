@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NavbarComponent from '../../components/navbar';
+import NavbarComponent from '../../components/navbar_component';
 import ImgLogin from '../../assets/img_login.png';
 import { NavLink } from 'react-router-dom';
 

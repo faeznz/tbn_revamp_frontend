@@ -4,7 +4,7 @@ import FooterComponent from "../../components/footer_component";
 import BannerSocialEnterprise from "../../assets/banner_social_enterprise.png";
 import BannerOurUniqueApproach from "../../assets/our_unique_approach.png";
 
-const our_approach_page = () => {
+const OurApproachPage = () => {
   return (
     <div>
       <NavbarComponent />
@@ -68,4 +68,4 @@ const our_approach_page = () => {
   );
 };
 
-export default our_approach_page;
+export default OurApproachPage;

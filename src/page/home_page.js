@@ -9,7 +9,7 @@ import tbnWorldwide from "../assets/peta_tbn.png";
 import NavbarComponent from "../components/navbar_component";
 import FooterComponent from "../components/footer_component";
 
-function home_page() {
+function HomePage() {
   return (
     <div>
       <NavbarComponent />
@@ -134,4 +134,4 @@ function home_page() {
   );
 }
 
-export default home_page;
+export default HomePage;
