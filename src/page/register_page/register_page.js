@@ -1,38 +1,172 @@
-import React, { useState } from 'react';
-import NavbarComponent from '../../components/navbar_component';
-import ImgLogin from '../../assets/img_login.png';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from "react";
+import NavbarComponent from "../../components/navbar_component";
+import ImgLogin from "../../assets/img_login.png";
+import { NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const RegisterPage = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showError, setShowError] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const [nameError, setNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [repeatPasswordError, setRepeatPasswordError] = useState("");
+
+  const navigate = useNavigate();
+
+  const validateName = (name) => {
+    if (name.trim() === "") {
+      setNameError("Name wajib diisi");
+    } else {
+      setNameError("");
+    }
+  };
+
+  const validateLastName = (lastName) => {
+    if (lastName.trim() === "") {
+      setLastNameError("Last Name wajib diisi");
+    } else {
+      setLastNameError("");
+    }
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.trim() === "") {
+      setEmailError("Email wajib diisi");
+    } else if (!emailRegex.test(email)) {
+      setEmailError("Format email salah");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const validatePassword = (password) => {
+    if (password.trim() === "") {
+      setPasswordError("Password wajib diisi");
+    } else if (password.length < 8) {
+      setPasswordError("Password minimal 8 karakter");
+    } else {
+      setPasswordError("");
+    }
+  };
+
+  const validateRepeatPassword = (repeatPassword) => {
+    if (repeatPassword !== password) {
+      setRepeatPasswordError("Passwords tidak sama");
+    } else {
+      setRepeatPasswordError("");
+    }
+  };
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+    validateName(event.target.value);
+  };
+
+  const handleLastNameChange = (event) => {
+    setLastName(event.target.value);
+    validateLastName(event.target.value);
   };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
+    validateEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    validatePassword(event.target.value);
   };
 
   const handleRepeatPasswordChange = (event) => {
     setRepeatPassword(event.target.value);
+    validateRepeatPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Lakukan sesuatu dengan username, email, password, dan repeatPassword
+
+    const dataRegister = {
+      "name": name,
+      "last_name": lastName,
+      "email": email,
+      "password": password,
+      "password_confirmation": repeatPassword
+    };
+
+    try {
+      // Make a POST request to your backend server
+      const response = await axios.post("http://127.0.0.1:8000/api/register", dataRegister);
+
+      setSuccessMessage("Pendaftaran berhasil. Silakan login.");
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+        navigate("/login");
+      }, 3000);
+
+    } catch (error) {
+      // Handle error
+      setErrorMessage("Pendaftaran gagal. Coba ulangi lagi.");
+      setShowError(true);
+
+      setTimeout(() => {
+        setShowError(false);
+      }, 10000);
+
+      console.error("Error registering:", error);
+    }
+    
+  };
+
+  const handleCloseError = () => {
+    setShowError(false);
+  };
+
+  const handleCloseSuccess = () => {
+    setShowSuccess(false);
   };
 
   return (
     <div className="bg-[#D2DCDD] h-screen">
       <NavbarComponent />
+      {showError && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg relative">
+            <button
+              onClick={handleCloseError}
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+            >
+              &times;
+            </button>
+            <p className="text-red-600 font-semibold">{errorMessage}</p>
+          </div>
+        </div>
+      )}
+      {showSuccess && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg relative">
+            <button
+              onClick={handleCloseSuccess}
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+            >
+              &times;
+            </button>
+            <p className="text-green-600 font-semibold">{successMessage}</p>
+          </div>
+        </div>
+      )}
       <div className="h-full w-full flex justify-center items-center pt-12">
         {/* Section 1 -  Register*/}
         <section className="w-full h-full flex flex-row">
@@ -43,38 +177,63 @@ const RegisterPage = () => {
                 <div className="flex justify-center">
                   <p className="text-2xl mb-8">Create an Account!</p>
                 </div>
-                <input
-                  type="text"
-                  className="w-full h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" // Mengubah warna teks menjadi hitam
-                  placeholder="Username"
-                  value={username}
-                  onChange={handleUsernameChange}
-                />
-                <input
-                  type="text"
-                  className="w-full h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" // Mengubah warna teks menjadi hitam
-                  placeholder="Email"
-                  value={email}
-                  onChange={handleEmailChange}
-                />
-                <div className="flex flex-row justify-between gap-2">
+                <div className="w-full">
                   <input
-                    type="password"
-                    className="w-1/2 h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" // Mengubah warna teks menjadi hitam
-                    placeholder="Password"
-                    value={password}
-                    onChange={handlePasswordChange}
+                    type="text"
+                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${nameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                    placeholder="Name"
+                    value={name}
+                    onChange={handleNameChange}
                   />
+                  {nameError && <p className="text-red-500 text-xs ml-4 mb-4 ">{nameError}</p>}
+                </div>
+                <div className="w-full">
                   <input
-                    type="password"
-                    className="w-1/2 h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" // Mengubah warna teks menjadi hitam
-                    placeholder="Repeat Password"
-                    value={repeatPassword}
-                    onChange={handleRepeatPasswordChange}
+                    type="text"
+                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${lastNameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChange={handleLastNameChange}
                   />
+                  {lastNameError && <p className="text-red-500 text-xs ml-4 mb-4">{lastNameError}</p>}
+                </div>
+                <div className="w-full">
+                  <input
+                    type="text"
+                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${emailError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                    placeholder="Email"
+                    value={email}
+                    onChange={handleEmailChange}
+                  />
+                  {emailError && <p className="text-red-500 text-xs ml-4 mb-4">{emailError}</p>}
+                </div>
+                <div className="flex flex-row justify-between gap-2 w-full">
+                  <div className="w-1/2">
+                    <input
+                      type="password"
+                      className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${passwordError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                      placeholder="Password"
+                      value={password}
+                      onChange={handlePasswordChange}
+                    />
+                    {passwordError && <p className="text-red-500 text-xs ml-4 mb-4">{passwordError}</p>}
+                  </div>
+                  <div className="w-1/2">
+                    <input
+                      type="password"
+                      className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${repeatPasswordError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                      placeholder="Repeat Password"
+                      value={repeatPassword}
+                      onChange={handleRepeatPasswordChange}
+                    />
+                    {repeatPasswordError && <p className="text-red-500 text-xs ml-4 mb-4">{repeatPasswordError}</p>}
+                  </div>
                 </div>
 
-                <button className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12" onClick={handleSubmit}>
+                <button
+                  className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12"
+                  onClick={handleSubmit}
+                >
                   Register
                 </button>
                 <div className="flex flex-row justify-center items-center mt-4 gap-2">
