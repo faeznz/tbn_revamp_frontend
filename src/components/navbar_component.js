@@ -1,15 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import logoTbn from "../assets/logo_tbn_indonesia.png";
-import { AuthProvider, useAuth } from "../context/auth_context";
+import { useAuth } from "../context/auth_context";
 
 function Navbar({ data }) {
   const [isAboutHovered, setIsAboutHovered] = useState(false);
   const [isAccountHovered, setIsAccountHovered] = useState(false);
+  const [isEventHovered, setIsEventHovered] = useState(false);
   const aboutRef = useRef(null);
   const accountRef = useRef(null);
-  const { dataLogin } = useAuth();
-  const { logout } = useAuth();
+  const eventRef = useRef(null);
+  const { dataLogin, logout } = useAuth();
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -19,15 +20,18 @@ function Navbar({ data }) {
       if (accountRef.current && !accountRef.current.contains(event.target)) {
         setIsAccountHovered(false);
       }
+      if (eventRef.current && !eventRef.current.contains(event.target)) {
+        setIsEventHovered(false);
+      }
     }
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [aboutRef, accountRef]);
+  }, [aboutRef, accountRef, eventRef]);
 
-  let timeoutIdAbout, timeoutIdAccount;
+  let timeoutIdAbout, timeoutIdAccount, timeoutIdEvent;
 
   const handleMouseLeaveAbout = () => {
     timeoutIdAbout = setTimeout(() => {
@@ -51,6 +55,17 @@ function Navbar({ data }) {
     setIsAccountHovered(true);
   };
 
+  const handleMouseLeaveEvent = () => {
+    timeoutIdEvent = setTimeout(() => {
+      setIsEventHovered(false);
+    }, 200);
+  };
+
+  const handleMouseEnterEvent = () => {
+    clearTimeout(timeoutIdEvent);
+    setIsEventHovered(true);
+  };
+
   const handleAboutClick = () => {
     setIsAboutHovered(!isAboutHovered);
   };
@@ -59,11 +74,12 @@ function Navbar({ data }) {
     setIsAccountHovered(!isAccountHovered);
   };
 
-  const token = localStorage.getItem("token");
+  const handleEventClick = () => {
+    setIsEventHovered(!isEventHovered);
+  };
 
   return (
     <div>
-      {/* Navbar */}
       <div className="flex fixed justify-between items-center bg-[#092040] w-full h-16 px-16 z-10">
         <div>
           <img src={logoTbn} alt="Logo TBN Alliance" className="h-10" />
@@ -91,7 +107,21 @@ function Navbar({ data }) {
           </div>
           <NavLink to="/blog">Blog</NavLink>
           <NavLink to="/contact">Contact Us</NavLink>
-          <NavLink to="/register-event">Register Event</NavLink>
+          <div
+            onMouseEnter={handleMouseEnterEvent}
+            onMouseLeave={handleMouseLeaveEvent}
+            onClick={handleEventClick}
+            ref={eventRef}
+            className="relative"
+          >
+            <p>Event</p>
+            {isEventHovered && (
+              <div className="flex flex-col gap-2 absolute w-40 bg-white text-black font-medium rounded-md shadow-md py-2 px-4 top-12 left-0 z-10">
+                <NavLink to="/event/register-event">Register Event</NavLink>
+                <NavLink to="/event/history">History</NavLink>
+              </div>
+            )}
+          </div>
           <p>{data}</p>
           {dataLogin ? (
             <div className="flex flex-row justify-center items-center">

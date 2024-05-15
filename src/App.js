@@ -39,8 +39,8 @@ function App() {
           <Route path="/blog" element={<BlogListPage />} />
           <Route path="/blog/:id" element={<BlogDetailPage />} />
 
-          {/* Route Pendaftaran Event */}
-          <Route path="/register-event" element={<ProtectedRoute element={<PendaftaranEventPage />} />} />
+          {/* Route Event */}
+          <Route path="event/register-event" element={<ProtectedRoute element={<PendaftaranEventPage />} />} />
 
           {/* Route Login and Register */}
           <Route path="/login" element={<LoginPage />} />
