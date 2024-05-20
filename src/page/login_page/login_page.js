@@ -4,10 +4,18 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/auth_context";
 
+import { auth, googleAuthProvider } from "../../firebase/firebase_config";
+import { signInWithPopup } from "firebase/auth";
+
+import { FcGoogle } from "react-icons/fc";
+import { FaApple } from "react-icons/fa";
+
 import ImgLogin from "../../assets/img_login.png";
 
 const LoginPage = () => {
   const { login } = useAuth();
+  const { loginGoogle } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -38,9 +46,11 @@ const LoginPage = () => {
         dataLogin
       );
 
+      console.log(response.data.user)
+
       // Extract token from response
       const token = response.data.token;
-      const nama = response.data.user.name;
+      const nama = response.data.users.name;
 
       // Save token to localStorage
       localStorage.setItem("token", token);
@@ -65,9 +75,26 @@ const LoginPage = () => {
     }
   };
 
+  const handleLogInWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleAuthProvider);
+      console.log(result);
+      localStorage.setItem("token", result.user.accessToken);
+      localStorage.setItem("user", JSON.stringify(result.user));
+
+      var nama = result.user.displayName;
+
+      loginGoogle({ nama });
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleCloseError = () => {
     setShowError(false);
-};
+  };
 
   return (
     <div className="bg-[#D2DCDD] h-screen">
@@ -128,6 +155,31 @@ const LoginPage = () => {
                     Create an Account?
                   </NavLink>
                 </div>
+
+                <div className="w-full flex flex-row justify-center items-center">
+                  <div className="w-2/5 h-[1px] bg-[#B6B6B6] rounded-full my-6"></div>
+                  <p className="text-gray-600 mx-4">or</p>
+                  <div className="w-2/5 h-[1px] bg-[#B6B6B6] rounded-full my-6"></div>
+                </div>
+
+                <button
+                  className="border-[#4E73DF] border-2 text-[#4E73DF] font-medium rounded-full w-full h-12"
+                  onClick={handleLogInWithGoogle}
+                >
+                  <div className="flex flex-row items-center justify-center">
+                    <FcGoogle className="text-2xl mr-2" />
+                    <p>Login with Google</p>
+                  </div>
+                </button>
+                <button
+                  className="border-[#4E73DF] border-2 text-[#4E73DF] font-medium rounded-full w-full h-12 mt-2"
+                  onClick={handleLogInWithGoogle}
+                >
+                  <div className="flex flex-row items-center justify-center">
+                    <FaApple className="text-2xl mr-2 text-black" />
+                    <p>Login with Apple</p>
+                  </div>
+                </button>
               </div>
             </div>
           </div>

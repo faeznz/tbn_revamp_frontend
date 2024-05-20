@@ -11,27 +11,27 @@ const VisiMisiPage = () => {
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>
-        <div className="flex flex-col justify-center items-center w-screen h-64 bg-[#C3D21F] rounded-b-[100px]">
-          <p className="text-black text-4xl font-semibold pt-16">
+        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[50px]">
+          <p className="text-black lg:text-4xl text2xl font-semibold pt-16">
             Our Vision, Mission, and Values
           </p>
         </div>
-        <div className="flex flex-col justify-center items-center w-screen py-24">
+        <div className="flex flex-col justify-center items-center w-screen lg:py-24 py-12 lg:px-0 px-8">
           <img src={BannerVisiMisi} alt="" />
         </div>
       </section>
       {/* Section 2 - Values and DNA */}
-      <section className="flex flex-col items-center justify-center bg-[#F2EEEA] rounded-t-[100px]">
-        <p className="text-4xl mb-8 font-medium pt-24">VALUES AND DNA</p>
-        <div className="flex flex-col justify-center items-center w-screen py-24">
+      <section className="flex flex-col items-center justify-center bg-[#F2EEEA] lg:rounded-t-[100px] rounded-t-[50px]">
+        <p className="lg:text-4xl text-2xl mb-8 font-medium lg:pt-24 pt-12">VALUES AND DNA</p>
+        <div className="flex flex-col justify-center items-center w-screen lg:py-24 py-8 lg:px-0 px-8">
           <img src={BannerValueDna} alt="" />
         </div>
       </section>
       {/* Section 3 - We Are */}
       <section className="flex flex-col items-center justify-center bg-[#F2EEEA]">
-        <div className="flex flex-col items-center justify-center bg-white rounded-t-[100px]">
-          <div className="flex flex-col justify-center items-center w-screen py-24">
-            <img src={BannerWeAre} alt="" className="w-3/5"/>
+        <div className="flex flex-col items-center justify-center bg-white lg:rounded-t-[100px] rounded-t-[50px]">
+          <div className="flex flex-col justify-center items-center w-screen lg:py-24 py-8">
+            <img src={BannerWeAre} alt="" className="lg:w-3/5 w-full"/>
           </div>
         </div>
       </section>

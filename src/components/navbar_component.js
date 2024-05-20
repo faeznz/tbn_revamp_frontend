@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logoTbn from "../assets/logo_tbn_indonesia.png";
 import { useAuth } from "../context/auth_context";
+
+import { RiAccountCircleLine } from "react-icons/ri";
 
 function Navbar({ data }) {
   const [isAboutHovered, setIsAboutHovered] = useState(false);
@@ -11,6 +13,8 @@ function Navbar({ data }) {
   const accountRef = useRef(null);
   const eventRef = useRef(null);
   const { dataLogin, logout } = useAuth();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -77,6 +81,11 @@ function Navbar({ data }) {
   const handleEventClick = () => {
     setIsEventHovered(!isEventHovered);
   };
+  
+  const handleLogout = async () => {
+    await logout();
+    navigate('/');
+  };
 
   return (
     <div>
@@ -102,6 +111,7 @@ function Navbar({ data }) {
                 <NavLink to="/about/our-approach">Our Approach</NavLink>
                 <NavLink to="/about/how-it-works">How It Works</NavLink>
                 <NavLink to="/about/where">Where</NavLink>
+                <NavLink to="/about/who-we-are">Who We Are</NavLink>
               </div>
             )}
           </div>
@@ -118,6 +128,8 @@ function Navbar({ data }) {
             {isEventHovered && (
               <div className="flex flex-col gap-2 absolute w-40 bg-white text-black font-medium rounded-md shadow-md py-2 px-4 top-12 left-0 z-10">
                 <NavLink to="/event/register-event">Register Event</NavLink>
+                <NavLink to="/event/upcoming" className="leading-4">Upcoming Event</NavLink>
+                <NavLink to="/event/pengalaman-peserta" className="leading-4">Pengalaman Peserta</NavLink>
                 <NavLink to="/event/history">History</NavLink>
               </div>
             )}
@@ -133,10 +145,13 @@ function Navbar({ data }) {
                 ref={accountRef}
                 className="relative"
               >
-                <p>{dataLogin.nama}</p>
+                <div className="flex flex-row items-center">
+                  <RiAccountCircleLine className="text-2xl mr-1"/>
+                  <p>{dataLogin.nama}</p>
+                </div>
                 {isAccountHovered && (
                   <div className="flex flex-col gap-2 absolute w-40 bg-white text-black font-medium rounded-md shadow-md py-2 px-4 top-12 right-0 z-10">
-                    <button onClick={logout}>Logout</button>
+                    <button onClick={handleLogout}>Logout</button>
                   </div>
                 )}
               </div>

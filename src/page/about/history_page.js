@@ -10,23 +10,23 @@ const HistoryPage = () => {
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>
-        <div className="flex flex-col justify-center items-center w-screen h-64 bg-[#C3D21F] rounded-b-[100px]">
-          <p className="text-black text-4xl font-semibold pt-16">Our History</p>
+        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[50px]">
+          <p className="text-black lg:text-4xl text-2xl font-semibold pt-16">Our History</p>
         </div>
       </section>
       {/* Section 2 - Pioneer */}
       <section>
-        <div className="flex flex-row justify-between w-screen items-center py-24">
+        <div className="flex lg:flex-row flex-col justify-between w-screen items-center lg:py-24 py-8">
           <div className="flex flex-col justify-center items-center">
             <img src={BannerPioneer} alt="" className="w-4/5" />
-            <p className="text-3xl px-24 pt-12 text-center font-semibold">
+            <p className="lg:text-3xl text-xl lg:px-24 px-8 lg:pt-12 lg:mb-0 mb-12 text-center font-semibold">
               Building on decades of work spearheaded by one of the pioneers of
               impact investing, Dr. Kim Tam
             </p>
           </div>
           <div className="flex flex-col justify-center items-center">
             <img src={BannerPartner} alt="" className="w-4/5" />
-            <p className="text-3xl px-24 pt-12 text-center font-semibold">
+            <p className="lg:text-3xl text-xl lg:px-24 px-8 lg:pt-12 lg:mb-0 mb-12 text-center font-semibold">
               In partnership with TRT and Belmont University we are moving into
               the era of etablishing TBN Alliance
             </p>
@@ -35,8 +35,8 @@ const HistoryPage = () => {
       </section>
       {/* Section 3 -  Description*/}
       <section>
-        <div className="bg-[#F2EEEA] px-24 py-32 rounded-t-[100px]">
-          <p className="text-2xl text-center">
+        <div className="bg-[#F2EEEA] lg:px-24 px-12 lg:py-32 py-12 lg:rounded-t-[100px] rounded-t-[50px]">
+          <p className="lg:text-2xl text-md text-justify">
             While founded in 2003, TBN began to accelerate its impact with the
             formalization of social entrepreneur training programs in Africa and
             Asia in 2017 and 2019 respectively.  TBN has supported more than 800

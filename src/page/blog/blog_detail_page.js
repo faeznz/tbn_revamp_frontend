@@ -77,7 +77,7 @@ const BlogDetailPage = () => {
             </div>
             <p className="text-xl mt-4">
               Mantappppp, menyala abangkuhhh. Ceritanya bagus sekali, jadi
-              tertarik ingin bergabung dengan TBN Alliance.{" "}
+              tertarik ingin bergabung dengan TBN Alliance.
             </p>
           </div>
           <p className="text-4xl font-bold mt-24">Tinggalkan Komentar</p>

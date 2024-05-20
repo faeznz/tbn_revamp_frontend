@@ -3,8 +3,17 @@ import NavbarComponent from "../../components/navbar_component";
 import ImgLogin from "../../assets/img_login.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../../context/auth_context";
+
+import { auth, googleAuthProvider } from "../../firebase/firebase_config";
+import { signInWithPopup } from "firebase/auth";
+
+import { FcGoogle } from "react-icons/fc";
+import { FaApple } from "react-icons/fa";
 
 const RegisterPage = () => {
+  const { loginGoogle } = useAuth();
+
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -98,16 +107,19 @@ const RegisterPage = () => {
     event.preventDefault();
 
     const dataRegister = {
-      "name": name,
-      "last_name": lastName,
-      "email": email,
-      "password": password,
-      "password_confirmation": repeatPassword
+      name: name,
+      last_name: lastName,
+      email: email,
+      password: password,
+      password_confirmation: repeatPassword,
     };
 
     try {
       // Make a POST request to your backend server
-      const response = await axios.post("http://127.0.0.1:8000/api/register", dataRegister);
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/register",
+        dataRegister
+      );
 
       setSuccessMessage("Pendaftaran berhasil. Silakan login.");
       setShowSuccess(true);
@@ -115,7 +127,6 @@ const RegisterPage = () => {
         setShowSuccess(false);
         navigate("/login");
       }, 3000);
-
     } catch (error) {
       // Handle error
       setErrorMessage("Pendaftaran gagal. Coba ulangi lagi.");
@@ -127,7 +138,23 @@ const RegisterPage = () => {
 
       console.error("Error registering:", error);
     }
-    
+  };
+
+  const handleSignInWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleAuthProvider);
+      console.log(result);
+      localStorage.setItem("token", result.user.accessToken);
+      localStorage.setItem("user", JSON.stringify(result.user));
+
+      var nama = result.user.displayName;
+
+      loginGoogle({ nama });
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleCloseError = () => {
@@ -171,8 +198,8 @@ const RegisterPage = () => {
         {/* Section 1 -  Register*/}
         <section className="w-full h-full flex flex-row">
           <div className="flex items-center justify-center px-24 py-24 w-screen">
-            <img src={ImgLogin} alt="" className="h-5/6" />
-            <div className="bg-white h-5/6 w-3/5 flex flex-col justify-center items-center px-12">
+            <img src={ImgLogin} alt="" className="h-[95%]" />
+            <div className="bg-white h-[95%] w-3/5 flex flex-col justify-center items-center px-12">
               <div className="flex flex-col">
                 <div className="flex justify-center">
                   <p className="text-2xl mb-8">Create an Account!</p>
@@ -180,53 +207,85 @@ const RegisterPage = () => {
                 <div className="w-full">
                   <input
                     type="text"
-                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${nameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${
+                      nameError ? "border-red-500" : "border-[#B6B6B6]"
+                    } text-black px-4`}
                     placeholder="Name"
                     value={name}
                     onChange={handleNameChange}
                   />
-                  {nameError && <p className="text-red-500 text-xs ml-4 mb-4 ">{nameError}</p>}
+                  {nameError && (
+                    <p className="text-red-500 text-xs ml-4 mb-4 ">
+                      {nameError}
+                    </p>
+                  )}
                 </div>
                 <div className="w-full">
                   <input
                     type="text"
-                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${lastNameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${
+                      lastNameError ? "border-red-500" : "border-[#B6B6B6]"
+                    } text-black px-4`}
                     placeholder="Last Name"
                     value={lastName}
                     onChange={handleLastNameChange}
                   />
-                  {lastNameError && <p className="text-red-500 text-xs ml-4 mb-4">{lastNameError}</p>}
+                  {lastNameError && (
+                    <p className="text-red-500 text-xs ml-4 mb-4">
+                      {lastNameError}
+                    </p>
+                  )}
                 </div>
                 <div className="w-full">
                   <input
                     type="text"
-                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${emailError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${
+                      emailError ? "border-red-500" : "border-[#B6B6B6]"
+                    } text-black px-4`}
                     placeholder="Email"
                     value={email}
                     onChange={handleEmailChange}
                   />
-                  {emailError && <p className="text-red-500 text-xs ml-4 mb-4">{emailError}</p>}
+                  {emailError && (
+                    <p className="text-red-500 text-xs ml-4 mb-4">
+                      {emailError}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-row justify-between gap-2 w-full">
                   <div className="w-1/2">
                     <input
                       type="password"
-                      className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${passwordError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                      className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${
+                        passwordError ? "border-red-500" : "border-[#B6B6B6]"
+                      } text-black px-4`}
                       placeholder="Password"
                       value={password}
                       onChange={handlePasswordChange}
                     />
-                    {passwordError && <p className="text-red-500 text-xs ml-4 mb-4">{passwordError}</p>}
+                    {passwordError && (
+                      <p className="text-red-500 text-xs ml-4 mb-4">
+                        {passwordError}
+                      </p>
+                    )}
                   </div>
                   <div className="w-1/2">
                     <input
                       type="password"
-                      className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${repeatPasswordError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                      className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${
+                        repeatPasswordError
+                          ? "border-red-500"
+                          : "border-[#B6B6B6]"
+                      } text-black px-4`}
                       placeholder="Repeat Password"
                       value={repeatPassword}
                       onChange={handleRepeatPasswordChange}
                     />
-                    {repeatPasswordError && <p className="text-red-500 text-xs ml-4 mb-4">{repeatPasswordError}</p>}
+                    {repeatPasswordError && (
+                      <p className="text-red-500 text-xs ml-4 mb-4">
+                        {repeatPasswordError}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -242,6 +301,29 @@ const RegisterPage = () => {
                     Login
                   </NavLink>
                 </div>
+                <div className="w-full flex flex-row justify-center items-center">
+                  <div className="w-2/5 h-[1px] bg-[#B6B6B6] rounded-full my-6"></div>
+                  <p className="text-gray-600 mx-4">or</p>
+                  <div className="w-2/5 h-[1px] bg-[#B6B6B6] rounded-full my-6"></div>
+                </div>
+                <button
+                  className="border-[#4E73DF] border-2 text-[#4E73DF] font-medium rounded-full w-full h-12"
+                  onClick={handleSignInWithGoogle}
+                >
+                  <div className="flex flex-row items-center justify-center">
+                    <FcGoogle className="text-2xl mr-2" />
+                    <p>Sign in with Google</p>
+                  </div>
+                </button>
+                <button
+                  className="border-[#4E73DF] border-2 text-[#4E73DF] font-medium rounded-full w-full h-12 mt-2"
+                  onClick={handleSignInWithGoogle}
+                >
+                  <div className="flex flex-row items-center justify-center">
+                    <FaApple className="text-2xl mr-2 text-black"/>
+                    <p>Sign in with Apple</p>
+                  </div>
+                </button>
               </div>
             </div>
           </div>

@@ -9,6 +9,9 @@ import tbnWorldwide from "../assets/peta_tbn.png";
 import NavbarComponent from "../components/navbar_component";
 import FooterComponent from "../components/footer_component";
 
+var token = localStorage.getItem('token');
+console.log(token);
+
 function HomePage() {
   return (
     <div>
@@ -16,15 +19,15 @@ function HomePage() {
       {/* Section 1 - Main */}
       <section className="w-full h-full">
         {/* Image for main banner */}
-        <div className=" absolute aspect-21/9 w-full bg-[#131313]/40 top-0"></div>
-        <img src={bannerHomepage} alt="" className="w-full aspect-21/9 bg-center bg-cover top-0" />
-        <div className="w-full h-5/6 top-0 absolute flex flex-row justify-start p-24 items-center">
-          <div className="w-1 h-3/5 bg-[#FFB400]"></div>
-          <div className="w-3/5  p-8 flex flex-col justify-center items-start rounded-2xl">
-            <p className="text-white font-bold text-5xl mb-12">
-              Transformational <br /> Business Network (TBN) <br /> Alliance
+        <div className="absolute aspect-video lg:aspect-21/9 w-full lg:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12"></div>
+        <img src={bannerHomepage} alt="" className="w-full aspect-video lg:aspect-21/9 bg-center bg-cover top-0 pt-12" />
+        <div className="w-full lg:h-5/6 sm:h-1/5 top-0 absolute flex flex-row lg:justify-start justify-center lg:p-24 pt-12 items-center">
+          <div className="w-1 h-3/5 lg:bg-[#FFB400] sm:bg-transparent"></div>
+          <div className="lg:w-3/5 sm:w-full p-8 flex flex-col justify-center lg:items-start items-center rounded-2xl">
+            <p className="text-white font-bold lg:text-5xl text-md lg:mb-12 sm:mb-4 lg:text-left text-center">
+              Transformational <br /> Business Network (TBN) Alliance
             </p>
-            <p className="text-white font-light text-3xl">
+            <p className="text-white font-light lg:text-3xl text-sm lg:text-left text-center">
               Fighting Poverty in Frontier Markets <br /> Across the Globe.
             </p>
           </div>
@@ -32,11 +35,11 @@ function HomePage() {
       </section>
       {/* Section 2 -  About Us*/}
       <section className="flex flex-col mt-12 justify-center items-center">
-        <p className="text-4xl mb-12 font-medium">ABOUT US</p>
-        <div className="flex flex-row px-24 pb-32 justify-between items-center">
-          <img src={videoHomepage} alt="" className="w-2/5 aspect-16/9 bg-center bg-cover top-14" />
-          <div className="mx-24 flex flex-col justify-center items-center">
-            <p className="text-5xl mb-12">TBN ALLIANCE</p>
+        <p className="lg:text-4xl text-2xl mb-12 font-medium">ABOUT US</p>
+        <div className="flex lg:flex-row flex-col lg:px-24 px-8 lg:pb-32 pb-12 justify-between items-center">
+          <img src={videoHomepage} alt="" className="lg:w-2/5 w-full aspect-16/9 bg-center bg-cover top-14" />
+          <div className="lg:mx-24 mx-8 flex flex-col justify-center items-center">
+            <p className="lg:text-5xl text-2xl mb-12 lg:mt-0 mt-8">TBN ALLIANCE</p>
             <p className="text-justify">
               TBN Alliance is a global network focused on poverty alleviation through enterprise, emphasizing multi-faith, multi-sector partnerships. Over the next five years, they plan to launch 1,800 ventures, creating around 11,850 new
               jobs in emerging markets.
@@ -52,11 +55,11 @@ function HomePage() {
         </div>
       </section>
       {/* Section 3 -  Who We Are*/}
-      <section className="bg-[#F6CF55] flex flex-row rounded-t-[100px]">
-        <div className="flex items-center justify-center px-24 h-screen">
+      <section className="bg-[#F6CF55] flex flex-row lg:rounded-t-[100px] rounded-t-[50px]">
+        <div className="flex lg:flex-row flex-col items-center justify-center lg:px-24 px-8 lg:py-0 py-12 lg:h-screen">
           <img src={whoWeAreImg} alt="" className="h-3/5" />
-          <div className="bg-[#EDEDED] h-3/5 flex flex-col justify-center items-center px-12">
-            <p className="text-4xl mb-8 font-medium">WHO WE ARE</p>
+          <div className="bg-[#EDEDED] lg:h-3/5 flex flex-col justify-center items-center px-12 lg:py-0 py-8">
+            <p className="lg:text-4xl text-2xl mb-8 font-medium">WHO WE ARE</p>
             <p className="font-light text-justify">
               TBN Alliance is a global network of purpose-driven entrepreneurs, impact investors and capacity builders who take an enterprise approach to alleviate poverty in low-income and underserved communities.
             </p>
@@ -70,23 +73,23 @@ function HomePage() {
       </section>
       {/* Section 4 - Mission */}
       <section className="flex flex-col justify-center items-center bg-[#F6CF55]">
-        <div className="flex flex-col pt-24 justify-center items-center bg-white rounded-t-[100px]">
-          <p className="text-4xl mb-12 font-medium">MISSION</p>
-          <div className="flex flex-row px-32 pb-32 justify-center items-center gap-8">
-            <p className="text-justify font-light w-2/5">
+        <div className="flex flex-col lg:pt-24 pt-12 justify-center items-center bg-white lg:rounded-t-[100px] rounded-t-[50px]">
+          <p className="lg:text-4xl text-2xl lg:mb-12 font-medium">MISSION</p>
+          <div className="flex lg:flex-row flex-col lg:px-32 px-8 lg:pb-32 justify-center items-center gap-8">
+            <p className="text-justify font-light lg:w-2/5 w-full lg:leading-loose">
               The TBN Alliance nurtures purpose-driven businesses to thrive, aiming to reduce poverty and promote environmental sustainability. We foster a global movement for social good, empowering entrepreneurs, and directly benefiting
               families and communities. Our ambitious aim is to ignite an impact movement, uniting people worldwide to leverage business for social transformation, particularly supporting SMEs in emerging markets.
             </p>
-            <img src={missionBanner} alt="" className="w-2/5" />
+            <img src={missionBanner} alt="" className="lg:w-2/5 w-4/5" />
           </div>
         </div>
       </section>
       {/* Section 4 - Our Partner */}
       <section className="flex flex-col mt-12 justify-center items-center ">
-        <p className="text-3xl">Our Partner</p>
-        <div className="flex flex-col px-24 pb-32 justify-between items-center">
+        <p className="lg:text-3xl text-2xl">Our Partner</p>
+        <div className="flex flex-col lg:px-24 px-8 pb-32 justify-between items-center">
           <img src={ourPartner} alt="" className="" />
-          <p className="text-3xl py-24">TBN's Global Reach</p>
+          <p className="lg:text-3xl text-2xl lg:py-24 py-8">TBN's Global Reach</p>
           <img src={tbnWorldwide} alt="" className="" />
         </div>
       </section>

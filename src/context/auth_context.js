@@ -12,6 +12,11 @@ export const AuthProvider = ({ children }) => {
     setDataLogin(userData);
     setIsAuthenticated(true);
   };
+  
+  const loginGoogle = (userData) => {
+    setDataLogin(userData);
+    setIsAuthenticated(true);
+  };
 
   const logout = () => {
     setDataLogin(null);
@@ -20,7 +25,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ dataLogin, isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ dataLogin, isAuthenticated, login, loginGoogle, logout }}>
       {children}
     </AuthContext.Provider>
   );

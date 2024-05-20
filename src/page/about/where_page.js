@@ -1,7 +1,7 @@
 import React from "react";
 import NavbarComponent from "../../components/navbar_component";
 import FooterComponent from "../../components/footer_component";
-import MapsWhereWeAre from '../../assets/maps_where_we_are.png'
+import MapsWhereWeAre from '../../assets/maps_where_we_are.png';
 import { NavLink } from "react-router-dom";
 
 const WherePage = () => {
