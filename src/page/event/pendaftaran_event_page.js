@@ -132,8 +132,10 @@ const PendaftaranEventPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const id = localStorage.getItem('id');
+
     const formData = {
-      user_id: 1, // Sesuaikan dengan user ID yang benar
+      user_id: id,
       event_id: selectedEventId, // Menggunakan event_id yang dipilih dari dropdown
       name: name,
       email: email,
@@ -144,7 +146,7 @@ const PendaftaranEventPage = () => {
     };
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/registrations', formData);
+      await axios.post('http://127.0.0.1:8000/api/registrations', formData);
 
       setSuccessMessage('Pendaftaran berhasil.');
       setShowSuccess(true);
@@ -178,7 +180,7 @@ const PendaftaranEventPage = () => {
   };
 
   const handleCloseSuccess = () => {
-    navigate('/');
+    navigate('/event/history');
   };
 
   return (
@@ -274,9 +276,8 @@ const PendaftaranEventPage = () => {
               required
             >
               <option value="">Pilih Jenis Tiket</option>
-              <option value="tiket1">Tiket 1</option>
-              <option value="tiket2">Tiket 2</option>
-              <option value="tiket3">Tiket 3</option>
+              <option value="tiket1">Berbayar</option>
+              <option value="tiket2">Free</option>
             </select>
             {ticketTypeError && <p className="text-red-500 text-xs mb-4">{ticketTypeError}</p>}
             <p>Catatan</p>

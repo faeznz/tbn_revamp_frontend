@@ -48,9 +48,11 @@ const LoginPage = () => {
       // Extract token from response
       const token = response.data.token;
       const nama = response.data.users.name;
+      const id = response.data.users.id;
 
       // Save token to localStorage
       localStorage.setItem('token', token);
+      localStorage.setItem('id', id);
 
       login({ nama });
 
@@ -114,7 +116,7 @@ const LoginPage = () => {
             <div className="bg-white h-full w-2/5  flex flex-col justify-center items-center px-12 rounded-r-xl">
               <div className="flex flex-col">
                 <div className="flex justify-center">
-                  <p className="text-xl mb-8">Welcome Back!</p>
+                  <p className="text-2xl mb-8">Welcome Back!</p>
                 </div>
                 <input type="text" className="w-96 h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" placeholder="Enter Email Address.." value={email} onChange={handleEmailChange} />
                 <input type="password" className="w-96 h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" placeholder="Password" value={password} onChange={handlePasswordChange} />

@@ -1,29 +1,29 @@
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./context/auth_context";
-import ProtectedRoute from "./components/protected_route";
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/auth_context';
+import ProtectedRoute from './components/protected_route';
 
-import LoginPage from "./page/login_page/login_page";
-import RegisterPage from "./page/register_page/register_page";
+import LoginPage from './page/login_page/login_page';
+import RegisterPage from './page/register_page/register_page';
 
-import Homepage from "./page/home_page";
-import BlogListPage from "./page/blog/blog_list_page";
-import BlogDetailPage from "./page/blog/blog_detail_page";
-import ContactUsPage from "./page/contact/contact_us_page";
+import Homepage from './page/home_page';
+import BlogListPage from './page/blog/blog_list_page';
+import BlogDetailPage from './page/blog/blog_detail_page';
+import ContactUsPage from './page/contact/contact_us_page';
 
-import VisiMisiPage from "./page/about/visi_misi_page";
-import HistoryPage from "./page/about/history_page";
-import HowItWorksPage from "./page/about/how_it_works_page";
-import OurApproachPage from "./page/about/our_approach_page";
-import WherePage from "./page/about/where_page";
-import PartnershipPage from "./page/about/partnership_page";
-import WhoWeArePage from "./page/about/who_we_are_page";
+import VisiMisiPage from './page/about/visi_misi_page';
+import HistoryPage from './page/about/history_page';
+import HowItWorksPage from './page/about/how_it_works_page';
+import OurApproachPage from './page/about/our_approach_page';
+import WherePage from './page/about/where_page';
+import PartnershipPage from './page/about/partnership_page';
+import WhoWeArePage from './page/about/who_we_are_page';
 
-import PendaftaranEventPage from "./page/event/pendaftaran_event_page";
-import UpcomingEventPage from "./page/event/upcoming_event_page";
-import PengalamanPesertaPage from "./page/event/pengalaman_peserta_page";
-import HistoryEventPage from "./page/event/history_event_page";
-import HistoryEventDetailPage from "./page/event/history_event_detail_page";
+import PendaftaranEventPage from './page/event/pendaftaran_event_page';
+import UpcomingEventPage from './page/event/upcoming_event_page';
+import PengalamanPesertaPage from './page/event/pengalaman_peserta_page';
+import HistoryEventPage from './page/event/history_event_page';
+import HistoryEventDetailPage from './page/event/history_event_detail_page';
 
 function App() {
   return (
