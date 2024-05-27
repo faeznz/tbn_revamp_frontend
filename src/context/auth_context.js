@@ -24,7 +24,6 @@ export const AuthProvider = ({ children }) => {
   const login = (userData) => {
     // Save user data and authentication status to local storage
     localStorage.setItem('userData', JSON.stringify(userData));
-
     setDataLogin(userData);
     setIsAuthenticated(true);
   };
@@ -32,7 +31,6 @@ export const AuthProvider = ({ children }) => {
   const loginGoogle = (userData) => {
     // Save user data and authentication status to local storage
     localStorage.setItem('userData', JSON.stringify(userData));
-
     setDataLogin(userData);
     setIsAuthenticated(true);
   };
@@ -42,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('userData');
     localStorage.removeItem('id');
-
+    localStorage.removeItem('user');
     setDataLogin(null);
     setIsAuthenticated(false);
   };

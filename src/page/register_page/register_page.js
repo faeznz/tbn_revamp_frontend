@@ -116,7 +116,7 @@ const RegisterPage = () => {
 
     try {
       // Make a POST request to your backend server
-      const response = await axios.post('http://127.0.0.1:8000/api/register', dataRegister);
+      await axios.post('http://127.0.0.1:8000/api/register', dataRegister);
 
       setSuccessMessage('Pendaftaran berhasil. Silakan login.');
       setShowSuccess(true);

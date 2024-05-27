@@ -7,6 +7,7 @@ import axios from 'axios';
 const PendaftaranEventPage = () => {
   const [events, setEvents] = useState([]); // Inisialisasi sebagai array kosong
   const [selectedEventId, setSelectedEventId] = useState('');
+  const [ticketOptions, setTicketOptions] = useState([]); // State baru untuk pilihan tiket
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -101,7 +102,25 @@ const PendaftaranEventPage = () => {
   };
 
   const handleEventChange = (event) => {
-    setSelectedEventId(event.target.value);
+    const selectedId = event.target.value;
+    setSelectedEventId(selectedId);
+
+    // Cari event yang dipilih berdasarkan ID
+    const selectedEvent = events.find((e) => e.id === parseInt(selectedId));
+
+    if (selectedEvent) {
+      // Periksa harga tiket dan sesuaikan opsi tiket
+      if (selectedEvent.harga === '0') {
+        setTicketOptions(['Tiket Gratis']);
+        setTicketType('Tiket Gratis');
+      } else {
+        setTicketOptions(['Tiket Berbayar']);
+        setTicketType('Tiket Berbayar');
+      }
+    } else {
+      setTicketOptions([]);
+      setTicketType('');
+    }
   };
 
   const handleNameChange = (event) => {
@@ -146,14 +165,20 @@ const PendaftaranEventPage = () => {
     };
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/registrations', formData);
+      const response = await axios.post('http://127.0.0.1:8000/api/registrations', formData);
 
       setSuccessMessage('Pendaftaran berhasil.');
       setShowSuccess(true);
       const redirectUrl =
-        'https://wa.me/6285156254824?text=Halo%2C%0ASaya%20telah%20mendaftar%20sebagai%20peserta%20Transformational%20Sales%20Conference(125524)%0A%0ARegistration%20Id:%2012552401%0A%0A' +
+        'https://wa.me/6285156254824?text=Halo%2C%0ASaya%20telah%20mendaftar%20sebagai%20peserta%20Transformational%20Sales%20Conference(%20' +
+        encodeURIComponent(selectedEventId) +
+        '%20)%20' +
+        '%20%0ARegistration%20Id:(%20' +
+        encodeURIComponent(response.data.data.id) +
+        '%20)%20' +
+        '%20%0AName:%20' +
         encodeURIComponent(name) +
-        '%0A%0AE-Mail:%20' +
+        '%20%0AE-Mail:%20' +
         encodeURIComponent(email) +
         '%20%0APhone%20Number:%20' +
         encodeURIComponent(phone) +
@@ -276,8 +301,11 @@ const PendaftaranEventPage = () => {
               required
             >
               <option value="">Pilih Jenis Tiket</option>
-              <option value="tiket1">Berbayar</option>
-              <option value="tiket2">Free</option>
+              {ticketOptions.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
             </select>
             {ticketTypeError && <p className="text-red-500 text-xs mb-4">{ticketTypeError}</p>}
             <p>Catatan</p>

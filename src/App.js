@@ -52,7 +52,7 @@ function App() {
           <Route path="/event/upcoming" element={<ProtectedRoute element={<UpcomingEventPage />} />} />
           <Route path="event/pengalaman-peserta" element={<ProtectedRoute element={<PengalamanPesertaPage />} />} />
           <Route path="event/history" element={<ProtectedRoute element={<HistoryEventPage />} />} />
-          <Route path="event/history/detail" element={<ProtectedRoute element={<HistoryEventDetailPage />} />} />
+          <Route path="event/history/detail/:registrationId" element={<ProtectedRoute element={<HistoryEventDetailPage />} />} />
 
           {/* Route Login and Register */}
           <Route path="/login" element={<LoginPage />} />
