@@ -14,7 +14,6 @@ import ImgLogin from '../../assets/img_login.png';
 
 const LoginPage = () => {
   const { login } = useAuth();
-  const { loginGoogle } = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -78,7 +77,7 @@ const LoginPage = () => {
     try {
       const result = await signInWithPopup(auth, googleAuthProvider);
       console.log(result);
-  
+
       const dataRegister = {
         name: result.user.displayName,
         last_name: result.user.displayName,
@@ -86,23 +85,23 @@ const LoginPage = () => {
         password: result.user.uid,
         password_confirmation: result.user.uid,
       };
-  
+
       try {
         // Make a POST request to your backend server
         const response = await axios.post('http://127.0.0.1:8000/api/google-auth', dataRegister);
-  
+
         if (response.data && response.data.user) {
           const token = response.data.token;
           const nama = response.data.user.name;
           const id = response.data.user.id;
-  
+
           localStorage.setItem('token', token);
           localStorage.setItem('id', id);
-  
+
           login({ nama });
-  
+
           navigate('/');
-  
+
           console.log('Login successful:', response.data);
         } else {
           // Handle case where response data is not as expected
@@ -111,14 +110,13 @@ const LoginPage = () => {
       } catch (error) {
         setErrorMessage('Pendaftaran gagal. Coba ulangi lagi.');
         setShowError(true);
-  
+
         setTimeout(() => {
           setShowError(false);
         }, 10000);
-  
+
         console.error('Error registering:', error);
       }
-  
     } catch (error) {
       console.log(error);
     }

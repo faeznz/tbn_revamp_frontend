@@ -39,10 +39,10 @@ const EventsPage = () => {
       <NavbarComponent />
       <div className="flex-grow">
         {/* Section 1 - Blog List */}
-        <section className="bg-white py-24 sm:py-32">
+        <section className="bg-white py-24">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 ">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">EVENT LIST</h2>
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Event Upcoming</h2>
+            <div className="mx-auto mt-5 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
               {events && events.length === 0 ? (
                 <article className="bg-gray-100 rounded-lg overflow-hidden shadow-md p-6 text-center col-span-full">
                   <div className="font-bold text-xl mb-2 text-gray-800">Belum ada event tersedia</div>

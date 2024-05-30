@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
-import BannerContactUs from '../../assets/banner_contact_us.png';
 import ContentContactUs from '../../assets/konten_contact_us.png';
 
 const ContactUsPage = () => {
@@ -115,11 +114,11 @@ const ContactUsPage = () => {
   return (
     <div>
       <NavbarComponent />
-      <section>
+      {/* <section>
         <div>
           <img src={BannerContactUs} alt="Banner Contact Us" />
         </div>
-      </section>
+      </section> */}
       <section>
         <div className="flex flex-row w-full h-screen justify-between items-center">
           <div className="bg-[#005F94] w-2/5 h-full flex justify-center items-center">
@@ -128,7 +127,7 @@ const ContactUsPage = () => {
           <div className="w-full">
             <div className="flex items-center justify-center px-24 py-24">
               <div className="flex flex-col w-full">
-                <div className="flex flex-col justify-center mb-8 ml-2">
+                <div className="flex flex-col justify-center mb-8 ml-2 mt-10">
                   <p className="text-2xl font-semibold">Contact Us</p>
                   <p className="text-xl text-[#666666]">Any question? We would be happy to help you!</p>
                 </div>
