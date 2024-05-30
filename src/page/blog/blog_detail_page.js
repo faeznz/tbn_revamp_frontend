@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
@@ -10,6 +10,7 @@ const BlogDetailPage = () => {
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [newComment, setNewComment] = useState('');
@@ -42,7 +43,8 @@ const BlogDetailPage = () => {
   const handleCommentSubmit = async () => {
     const userId = localStorage.getItem('id');
     if (!userId) {
-      setError('User not logged in.');
+      // Jika user belum login, arahkan ke halaman login
+      navigate('/login');
       return;
     }
 
@@ -76,7 +78,7 @@ const BlogDetailPage = () => {
     <div>
       <NavbarComponent />
       <section>
-        <div className="flex flex-col w-screen py-24 items-center">
+        <div className="flex flex-col w-full py-24 items-center">
           <div className="flex w-4/5 mb-8">
             <div className="flex items-center gap-x-4">
               <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" className="h-10 w-10 rounded-full bg-gray-50" />
@@ -84,12 +86,12 @@ const BlogDetailPage = () => {
               <p className="font-normal text-gray-900">{new Date(post.created_at).toLocaleDateString()}</p>
             </div>
           </div>
-          <div className="flex w-screen items-center justify-center">
+          <div className="flex w-full items-center justify-center">
             <img src={`http://127.0.0.1:8000/storage/${post.image_path}`} alt="" className="w-4/5" />
           </div>
           <div className="w-4/5">
             <p className="font-semibold text-gray-900 text-3xl mt-8">{post.title}</p>
-            <p className="font-light text-gray-900 text-xl mt-4">{post.desc}</p>
+            <div className="font-light text-gray-900 text-xl mt-4" dangerouslySetInnerHTML={{ __html: post.desc }}></div>
           </div>
         </div>
       </section>

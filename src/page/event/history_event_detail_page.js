@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
@@ -9,6 +9,7 @@ import CircleReject from '../../assets/images/event/history/circle_progress_reje
 
 const HistoryEventDetailPage = () => {
   const { registrationId } = useParams(); // Mendapatkan registrationId dari URL
+  const navigate = useNavigate();
   const [registration, setRegistration] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -36,15 +37,21 @@ const HistoryEventDetailPage = () => {
     return <div>No registration found for the given ID.</div>;
   }
 
+  const isPending = registration.data.status === 'Pending';
   const isRejected = registration.data.status === 'Rejected';
   const isAccepted = registration.data.status === 'Accepted';
   const isPresence = registration.data.attendance === 1;
+
+  const handleExperienceClick = () => {
+    // Navigasi ke halaman pengalaman
+    navigate(`/event/pengalaman-peserta/create/${registrationId}`); // Ganti dengan route yang sesuai
+  };
 
   return (
     <div>
       <NavbarComponent />
       <section>
-        <div className="flex flex-col items-center w-screen min-h-screen pt-16 bg-[#F2EEEA] pb-24">
+        <div className="flex flex-col items-center w-full min-h-screen pt-16 bg-[#F2EEEA] pb-24">
           <div className="bg-white p-12 rounded-xl w-4/5 my-24">
             <p className="my-12 text-xl font-semibold text-center">Latest Activity</p>
             <div className="flex flex-row items-center justify-center mx-32">
@@ -94,13 +101,22 @@ const HistoryEventDetailPage = () => {
                 </tbody>
               </table>
               <div className="bg-[#092040] h-16 w-full rounded-xl flex justify-center items-center">
-                <p className="text-white text-2xl font-bold">Your registration is being processed</p>
+                {isRejected && <p className="text-white text-2xl font-bold">Your registration has been rejected</p>}
+                {isAccepted && !isPresence && <p className="text-white text-2xl font-bold">Your registration is accepted</p>}
+                {isPresence && (
+                  <button onClick={handleExperienceClick} className="bg-[#092040] text-white text-2xl font-bold py-2 px-4 rounded-lg">
+                    Share your experience here!
+                  </button>
+                )}
+                {isPending && <p className="text-white text-2xl font-bold">Your registration is being processed</p>}
               </div>
             </div>
           </div>
         </div>
       </section>
-      <FooterComponent />
+      <div className="bg-[#F2EEEA]">
+        <FooterComponent />
+      </div>
     </div>
   );
 };

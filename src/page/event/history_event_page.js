@@ -37,8 +37,8 @@ const HistoryEventPage = () => {
   };
 
   const formatDateTime = (dateString) => {
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
-    return new Date(dateString).toLocaleDateString('en-GB', options);
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    return new Date(dateString).toLocaleDateString('id-ID', options);
   };
 
   if (loading) {
@@ -64,7 +64,7 @@ const HistoryEventPage = () => {
     <div>
       <NavbarComponent />
       {/* Section 1 - Main */}
-      <section className="flex flex-col items-center w-screen min-h-screen pt-16 bg-[#F2EEEA] pb-24">
+      <section className="flex flex-col items-center w-full min-h-screen pt-16 bg-[#F2EEEA] pb-24">
         <p className="my-12 text-2xl font-semibold">Riwayat Pendaftaran</p>
         <div className="bg-white p-12 rounded-xl">
           <table>
@@ -101,7 +101,9 @@ const HistoryEventPage = () => {
           </table>
         </div>
       </section>
-      <FooterComponent />
+      <div className="bg-[#F2EEEA]">
+        <FooterComponent />
+      </div>
     </div>
   );
 };

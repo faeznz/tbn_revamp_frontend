@@ -232,7 +232,7 @@ const PendaftaranEventPage = () => {
         </div>
       )}
       <section>
-        <div className="flex flex-col justify-center items-center w-screen">
+        <div className="flex flex-col justify-center items-center w-full">
           <form className="w-3/5 mt-32" onSubmit={handleSubmit}>
             <p className="text-3xl font-bold mb-12">Pendaftaran</p>
             <p className="">Event</p>

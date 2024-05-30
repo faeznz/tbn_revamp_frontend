@@ -3,8 +3,6 @@ import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 import BannerContactUs from '../../assets/banner_contact_us.png';
 import ContentContactUs from '../../assets/konten_contact_us.png';
-import { NavLink, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const ContactUsPage = () => {
   const [name, setName] = useState('');
@@ -13,51 +11,62 @@ const ContactUsPage = () => {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
 
-  const [errorMessage, setErrorMessage] = useState('');
-  const [showError, setShowError] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
-  const [showSuccess, setShowSuccess] = useState(false);
-
   const [nameError, setNameError] = useState('');
   const [lastNameError, setLastNameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [phoneError, setPhoneError] = useState('');
-
-  const navigate = useNavigate();
+  const [messageError, setMessageError] = useState('');
 
   const validateName = (name) => {
     if (name.trim() === '') {
-      setNameError('Name wajib diisi');
+      setNameError('Name is required');
+      return false;
     } else {
       setNameError('');
+      return true;
     }
   };
 
   const validateLastName = (lastName) => {
     if (lastName.trim() === '') {
-      setLastNameError('Last Name wajib diisi');
+      setLastNameError('Last Name is required');
+      return false;
     } else {
       setLastNameError('');
+      return true;
     }
   };
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (email.trim() === '') {
-      setEmailError('Email wajib diisi');
+      setEmailError('Email is required');
+      return false;
     } else if (!emailRegex.test(email)) {
-      setEmailError('Format email salah');
+      setEmailError('Invalid email format');
+      return false;
     } else {
       setEmailError('');
+      return true;
     }
   };
 
   const validatePhone = (phone) => {
     if (phone.trim() === '') {
-      setPhoneError('Nomor Handphone wajib diisi');
+      setPhoneError('Phone Number is required');
       return false;
     } else {
       setPhoneError('');
+      return true;
+    }
+  };
+
+  const validateMessage = (message) => {
+    if (message.trim() === '') {
+      setMessageError('Message is required');
+      return false;
+    } else {
+      setMessageError('');
       return true;
     }
   };
@@ -84,117 +93,105 @@ const ContactUsPage = () => {
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
+    validateMessage(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const dataRegister = {
-      name: name,
-      last_name: lastName,
-      email: email,
-      phone: phone,
-      message: message,
-    };
+    const isValidName = validateName(name);
+    const isValidLastName = validateLastName(lastName);
+    const isValidEmail = validateEmail(email);
+    const isValidPhone = validatePhone(phone);
+    const isValidMessage = validateMessage(message);
 
-    try {
-      // Make a POST request to your backend server
-      const response = await axios.post('http://127.0.0.1:8000/api/', dataRegister);
+    if (isValidName && isValidLastName && isValidEmail && isValidPhone && isValidMessage) {
+      const mailtoLink = `mailto:info@tbnindonesia.org?subject=Contact Us&body=Name: ${name} ${lastName}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0AMessage: ${message}`;
 
-      setSuccessMessage('Pendaftaran berhasil. Silakan login.');
-      setShowSuccess(true);
-      setTimeout(() => {
-        setShowSuccess(false);
-        navigate('/login');
-      }, 3000);
-    } catch (error) {
-      // Handle error
-      setErrorMessage('Pendaftaran gagal. Coba ulangi lagi.');
-      setShowError(true);
-
-      setTimeout(() => {
-        setShowError(false);
-      }, 10000);
-
-      console.error('Error registering:', error);
+      window.location.href = mailtoLink;
     }
-  };
-
-  const handleCloseError = () => {
-    setShowError(false);
-  };
-
-  const handleCloseSuccess = () => {
-    setShowSuccess(false);
   };
 
   return (
     <div>
       <NavbarComponent />
-      {/* Section 1 - Banner */}
       <section>
         <div>
-          <img src={BannerContactUs} alt="" />
+          <img src={BannerContactUs} alt="Banner Contact Us" />
         </div>
       </section>
-      {/* Section 2 - Main */}
       <section>
-        <div className="flex flex-row w-screen h-screen justify-between items-center">
+        <div className="flex flex-row w-full h-screen justify-between items-center">
           <div className="bg-[#005F94] w-2/5 h-full flex justify-center items-center">
-            <img src={ContentContactUs} alt="" className="w-4/5" />
+            <img src={ContentContactUs} alt="Content Contact Us" className="w-4/5" />
           </div>
-          <div className="bg-white w-full">
+          <div className="w-full">
             <div className="flex items-center justify-center px-24 py-24">
               <div className="flex flex-col w-full">
                 <div className="flex flex-col justify-center mb-8 ml-2">
                   <p className="text-2xl font-semibold">Contact Us</p>
-                  <p className="text-xl text-[#666666]">Any question ? we would be happy to help you!</p>
+                  <p className="text-xl text-[#666666]">Any question? We would be happy to help you!</p>
                 </div>
-                <div className="flex flex-row gap-4">
+                <form onSubmit={handleSubmit}>
+                  <div className="flex flex-row gap-4">
+                    <div className="w-full">
+                      <input
+                        type="text"
+                        className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${nameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                        placeholder="First Name"
+                        value={name}
+                        onChange={handleNameChange}
+                      />
+                      {nameError && <p className="text-red-500 text-xs ml-4 mb-4">{nameError}</p>}
+                    </div>
+                    <div className="w-full">
+                      <input
+                        type="text"
+                        className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${lastNameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                        placeholder="Last Name"
+                        value={lastName}
+                        onChange={handleLastNameChange}
+                      />
+                      {lastNameError && <p className="text-red-500 text-xs ml-4 mb-4">{lastNameError}</p>}
+                    </div>
+                  </div>
                   <div className="w-full">
-                    <input type="text" className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${nameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`} placeholder="First Name" value={name} onChange={handleNameChange} />
-                    {nameError && <p className="text-red-500 text-xs ml-4 mb-4 ">{nameError}</p>}
+                    <input type="text" className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${emailError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`} placeholder="Email" value={email} onChange={handleEmailChange} />
+                    {emailError && <p className="text-red-500 text-xs ml-4 mb-4">{emailError}</p>}
                   </div>
                   <div className="w-full">
                     <input
                       type="text"
-                      className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${lastNameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
-                      placeholder="Last Name"
-                      value={lastName}
-                      onChange={handleLastNameChange}
+                      className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${phoneError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black
+                      px-4`}
+                      placeholder="Phone Number"
+                      value={phone}
+                      onChange={handlePhoneChange}
                     />
-                    {lastNameError && <p className="text-red-500 text-xs ml-4 mb-4">{lastNameError}</p>}
+                    {phoneError && <p className="text-red-500 text-xs ml-4 mb-4">{phoneError}</p>}
                   </div>
-                </div>
-                <div className="w-full">
-                  <input type="text" className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${emailError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`} placeholder="Email" value={email} onChange={handleEmailChange} />
-                  {emailError && <p className="text-red-500 text-xs ml-4 mb-4">{emailError}</p>}
-                </div>
-                <div className="w-full">
-                  <input
-                    type="text"
-                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${nameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
-                    placeholder="Phone Number"
-                    value={name}
-                    onChange={handlePhoneChange}
-                  />
-
-                  {nameError && <p className="text-red-500 text-xs ml-4 mb-4 ">{nameError}</p>}
-                </div>
-                <div className="w-full">
-                  <textarea type="text" className="w-full h-48 rounded-3xl bg-[#FBFBFB] border border-[#B6B6B6] text-black p-4 " placeholder="Message" value={message} onChange={handleMessageChange} />
-
-                  {nameError && <p className="text-red-500 text-xs ml-4 mb-4 ">{nameError}</p>}
-                </div>
-
-                <button className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12" onClick={handleSubmit}>
-                  Send Message
-                </button>
+                  <div className="w-full">
+                    <textarea
+                      type="text"
+                      className={`w-full h-48 rounded-3xl bg-[#FBFBFB] border border-[#B6B6B6] text-black p-4 ${messageError ? 'border-red-500' : ''}`}
+                      placeholder="Message"
+                      value={message}
+                      onChange={handleMessageChange}
+                    />
+                    {messageError && <p className="text-red-500 text-xs ml-4 mb-4">{messageError}</p>}
+                  </div>
+                  <button type="submit" className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12 mt-4">
+                    Send Email
+                  </button>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <div style={{ background: 'linear-gradient(to right, #005F94 50%, #FFFFFF 50%)' }}>
+        <FooterComponent />
+      </div>
     </div>
   );
 };

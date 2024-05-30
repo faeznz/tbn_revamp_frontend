@@ -1,179 +1,90 @@
-import React from "react";
-import NavbarComponent from "../../components/navbar_component";
-import FooterComponent from "../../components/footer_component";
-import { useAuth } from "../../context/auth_context";
-
-import BannerKomentar1 from "../../assets/banner-seminar.png";
-
-import { MdStar } from "react-icons/md";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import NavbarComponent from '../../components/navbar_component';
+import FooterComponent from '../../components/footer_component';
 
 const PengalamanPesertaPage = () => {
-  const { dataLogin } = useAuth();
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  return (
-    <div>
-      <NavbarComponent />
-      {/* Section 1 - Header */}
-      <section>
-        <div className="flex flex-col justify-center items-center w-screen h-64 bg-[#C3D21F] rounded-b-[100px]">
-          <p className="text-black text-4xl font-semibold pt-16">
-            Transformational Sales Conference 2023
-          </p>
-          <p className="text-black font-light text-xl pt-4 text-center">
-            Jl. Medan Merdeka Selatan, No.14, Gambir, Kecamatan Gambir, Kota
-            Jakarta Pusat, <br /> Daerah Ibukota Jakarta 10110
-          </p>
-        </div>
-      </section>
-      {/* Section 2 - List Komentar */}
-      <section>
-        <div className="px-24 w-screen">
-          <p className="text-black text-2xl font-semibold pt-16">
-            Transformational Sales Conference 2023
-          </p>
-          <div className="flex flex-row items-center w-full">
-            <div className="flex flex-row mr-4 gap-1">
-              <MdStar className="text-xl text-yellow-400" />
-              <MdStar className="text-xl text-yellow-400" />
-              <MdStar className="text-xl text-yellow-400" />
-              <MdStar className="text-xl text-yellow-400" />
-              <MdStar className="text-xl text-yellow-400" />
-            </div>
-            <p className="mr-1">5/5</p>
-            <p>(3 Ulasan)</p>
-          </div>
-          {/* Komentar */}
-          <div className="flex flex-row items-center mt-12 w-full">
-            <img
-              src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png"
-              alt=""
-              className="h-12 w-12 rounded-full"
-            />
-            <div className="ml-4 w-full">
-              <div className="flex flex-row justify-between w-full">
-                <div>
-                  <p className="font-bold">Dita</p>
-                  <p className="font-light">8 Mei 2024</p>
-                </div>
-                <div className="flex flex-row mr-4 gap-1">
-                  <MdStar className="text-2xl text-yellow-400" />
-                  <MdStar className="text-2xl text-yellow-400" />
-                  <MdStar className="text-2xl text-yellow-400" />
-                  <MdStar className="text-2xl text-yellow-400" />
-                  <MdStar className="text-2xl text-yellow-400" />
-                </div>
-              </div>
-              <p className=" ">
-                Mantappppp, menyala abangkuhhh. Ceritanya bagus sekali, jadi
-                tertarik ingin bergabung dengan TBN Alliance.
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-row items-center mt-12 w-full">
-            <img
-              src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png"
-              alt=""
-              className="h-12 w-12 rounded-full"
-            />
-            <div className="ml-4 w-full">
-              <div className="flex flex-row justify-between w-full">
-                <div>
-                  <p className="font-bold">Ebi</p>
-                  <p className="font-light">8 Mei 2024</p>
-                </div>
-                <div className="flex flex-row mr-4 gap-1">
-                  <MdStar className="text-2xl text-yellow-400" />
-                  <MdStar className="text-2xl text-yellow-400" />
-                  <MdStar className="text-2xl text-yellow-400" />
-                  <MdStar className="text-2xl text-yellow-400" />
-                  <MdStar className="text-2xl text-yellow-400" />
-                </div>
-              </div>
-              <p className=" ">
-                Mantappppp, menyala abangkuhhh. Ceritanya bagus sekali, jadi
-                tertarik ingin bergabung dengan TBN Alliance.
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="flex flex-row items-center mt-12 w-full">
-              <img
-                src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png"
-                alt=""
-                className="h-12 w-12 rounded-full"
-              />
-              <div className="ml-4 w-full">
-                <div className="flex flex-row justify-between w-full">
-                  <div>
-                    <p className="font-bold">Arsy</p>
-                    <p className="font-light">8 Mei 2024</p>
-                  </div>
-                  <div className="flex flex-row mr-4 gap-1">
-                    <MdStar className="text-2xl text-yellow-400" />
-                    <MdStar className="text-2xl text-yellow-400" />
-                    <MdStar className="text-2xl text-yellow-400" />
-                    <MdStar className="text-2xl text-yellow-400" />
-                    <MdStar className="text-2xl text-yellow-400" />
-                  </div>
-                </div>
-                <p className="">
-                  Mantappppp, menyala abangkuhhh. Ceritanya bagus sekali, jadi
-                  tertarik ingin bergabung dengan TBN Alliance.
-                </p>
-              </div>
-            </div>
-            <img src={BannerKomentar1} alt="" className="w-2/5 ml-16" />
-          </div>
-        </div>
-      </section>
-      {/* Section 3 -  Description*/}
-      <section>
-        <div className="bg-[#F2EEEA] w-screen px-24 py-32 mt-24 rounded-t-[100px] flex flex-col items-center justify-center">
-          <div className="flex flex-row items-center mt-12 w-3/5">
-            <img
-              src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png"
-              alt=""
-              className="h-12 w-12 rounded-full"
-            />
-            <div className="ml-4 w-full">
-              <div className="flex flex-row justify-between w-full">
-                <div>
-                  <p className="font-bold">{dataLogin.nama}</p>
-                  <p className="font-light">Memposting ulasan untuk artikel</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <div className="flex flex-row mr-4 gap-1">
-              <MdStar className="text-5xl text-gray-300" />
-              <MdStar className="text-5xl text-gray-300" />
-              <MdStar className="text-5xl text-gray-300" />
-              <MdStar className="text-5xl text-gray-300" />
-              <MdStar className="text-5xl text-gray-300" />
-            </div>
-          </div>
-          <div className="flex flex-col w-3/5">
-            <textarea
-              type="text"
-              className="w-full h-48 my-12 rounded-xl bg-[#FBFBFB] border border-[#B6B6B6] text-black p-4 "
-            />
-            <input
-              type="file"
-              accept=".jpg, .jpeg, .png"
-              id="image_uploads"
-              name="image_uploads"
-            />
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/events');
+        if (response.data && response.data.events && response.data.events.length > 0) {
+          const pastEvents = response.data.events.filter((event) => new Date(event.tanggal) < new Date());
+          setEvents(pastEvents);
+        } else {
+          setEvents([]);
+        }
+      } catch (error) {
+        setError(error.response ? error.response.data.message : error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-            <button className="bg-[#092040] text-white px-8 py-4 mt-4 rounded-2xl mb-24">
-              Posting
-            </button>
-          </div>
+    fetchEvents();
+  }, []);
+
+  const handleImageLoad = () => {
+    setLoading(false);
+  };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
+  if (events.length === 0) {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <NavbarComponent />
+        <div className="flex-grow">
+          <section className="bg-white py-24 sm:py-32">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Pengalaman Peserta</h2>
+              <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
+              <article className="bg-gray-100 rounded-lg overflow-hidden shadow-md p-6 text-center col-span-full">
+                <div className="font-bold text-xl mb-2 text-gray-800">Belum ada event tersedia</div>
+              </article>
+            </div>
+          </section>
         </div>
-      </section>
-      <div className="bg-[#F2EEEA]">
         <FooterComponent />
       </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      <NavbarComponent />
+      <div className="flex-grow">
+        <section className="bg-white py-24 sm:py-32">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Pengalaman Peserta</h2>
+            <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center">
+              {events.map((event) => (
+                <article key={event.id} className="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                  <img src={`http://127.0.0.1:8000/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full object-cover" style={{ height: 'auto', aspectRatio: `${event.aspect_ratio}` }} />
+                  <div className="px-6 py-4">
+                    <div className="font-bold text-xl mb-2 text-gray-800">{event.judul}</div>
+                    <p className="text-gray-800 font-medium mb-2">Pembicara: {event.pembicara}</p>
+                    <p className="text-gray-800 font-medium mb-2">Registration: Rp {parseInt(event.harga).toLocaleString('id-ID')}</p>
+                    <p className="text-gray-800 font-medium">Tanggal: {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                  </div>
+                  <div className="px-6 py-4">
+                    <a href={`/event/pengalaman-peserta/detail/${event.id}`} className="bg-[#195A94] text-white px-8 py-2 rounded-xl">
+                      Look Review
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+      <FooterComponent />
     </div>
   );
 };

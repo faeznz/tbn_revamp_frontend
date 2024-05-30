@@ -77,7 +77,7 @@ const LoginPage = () => {
   const handleLogInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleAuthProvider);
-      console.log(result);
+      console.log(result.user);
       localStorage.setItem('token', result.user.accessToken);
       localStorage.setItem('user', JSON.stringify(result.user));
 
