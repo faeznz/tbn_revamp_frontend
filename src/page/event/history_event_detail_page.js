@@ -1,63 +1,114 @@
-import React from "react";
-import NavbarComponent from "../../components/navbar_component";
-import FooterComponent from "../../components/footer_component";
-
-import CircleBefore from "../../assets/images/event/history/circle_progress_before.png";
-import CircleDone from "../../assets/images/event/history/circle_progres_done.png";
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import NavbarComponent from '../../components/navbar_component';
+import FooterComponent from '../../components/footer_component';
+import CircleBefore from '../../assets/images/event/history/circle_progress_before.png';
+import CircleDone from '../../assets/images/event/history/circle_progres_done.png';
+import CircleReject from '../../assets/images/event/history/circle_progress_reject.png';
 
 const HistoryEventDetailPage = () => {
+  const { registrationId } = useParams(); // Mendapatkan registrationId dari URL
+  const navigate = useNavigate();
+  const [registration, setRegistration] = useState();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (registrationId) {
+      axios
+        .get(`http://127.0.0.1:8000/api/registrations/${registrationId}`)
+        .then((response) => {
+          console.log('API Response:', response.data); // Log response dari API
+          setRegistration(response.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error('Error fetching registration data:', error);
+          setLoading(false);
+        });
+    }
+  }, [registrationId]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!registration) {
+    return <div>No registration found for the given ID.</div>;
+  }
+
+  const isPending = registration.data.status === 'Pending';
+  const isRejected = registration.data.status === 'Rejected';
+  const isAccepted = registration.data.status === 'Accepted';
+  const isPresence = registration.data.attendance === 1;
+
+  const handleExperienceClick = () => {
+    // Navigasi ke halaman pengalaman
+    navigate(`/event/pengalaman-peserta/create/${registrationId}`); // Ganti dengan route yang sesuai
+  };
+
   return (
     <div>
       <NavbarComponent />
-      {/* Section 1 - Main */}
       <section>
-        <div className="flex flex-col items-center w-screen min-h-screen pt-16 bg-[#F2EEEA] pb-24">
+        <div className="flex flex-col items-center w-full min-h-screen pt-16 bg-[#F2EEEA] pb-24">
           <div className="bg-white p-12 rounded-xl w-4/5 my-24">
             <p className="my-12 text-xl font-semibold text-center">Latest Activity</p>
             <div className="flex flex-row items-center justify-center mx-32">
+              {/* Rendering status */}
               <div className="flex flex-col justify-center items-center">
-                <img src={CircleDone} alt="" className="w-12 h-12" />
+                <img src={CircleDone} alt="Done" className="w-12 h-12" />
                 <p>Registration</p>
               </div>
               <div className="h-1 w-full bg-[#3167D2] mb-6"></div>
               <div className="flex flex-col justify-center items-center">
-                <img src={CircleDone} alt="" className="w-12 h-12" />
+                <img src={isRejected ? CircleReject : CircleDone} alt={isRejected ? 'Reject' : 'Done'} className="w-12 h-12" />
                 <p>Review</p>
               </div>
-              <div className="h-1 w-full bg-[#999999] mb-6"></div>
+              <div className={`h-1 w-full ${isAccepted ? 'bg-[#3167D2]' : 'bg-[#999999]'} mb-6`}></div>
               <div className="flex flex-col justify-center items-center">
-                <img src={CircleBefore} alt="" className="w-12 h-12" />
+                <img src={isAccepted ? CircleDone : CircleBefore} alt={isAccepted ? 'Done' : 'Before'} className="w-12 h-12" />
                 <p>Accepted</p>
               </div>
-              <div className="h-1 w-full bg-[#999999] mb-6"></div>
+              <div className={`h-1 w-full ${isPresence ? 'bg-[#3167D2]' : 'bg-[#999999]'} mb-6`}></div>
               <div className="flex flex-col justify-center items-center">
-                <img src={CircleBefore} alt="" className="w-12 h-12" />
+                <img src={isPresence ? CircleDone : CircleBefore} alt={isPresence ? 'Done' : 'Before'} className="w-12 h-12" />
                 <p>Presence</p>
               </div>
             </div>
             <div className="flex flex-col justify-center px-24 mt-12">
+              {/* Rendering data pendaftaran */}
               <table className="my-12">
-                <tr key="">
-                  <td className="pr-16 pb-4">Registration ID</td>
-                  <td className="pr-12 pb-4">: </td>
-                  <td className="pr-16 pb-4">Email</td>
-                  <td className="pr-12 pb-4">: </td>
-                </tr>
-                <tr key="">
-                  <td className="pb-4">Participant Name</td>
-                  <td className="pb-4">: </td>
-                  <td className="pb-4">Afiliation</td>
-                  <td className="pb-4">: </td>
-                </tr>
-                <tr key="">
-                  <td>Phone Number</td>
-                  <td>: </td>
-                  <td>Ticket Type</td>
-                  <td>: </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td className="pr-16 pb-4">Registration ID</td>
+                    <td className="pr-12 pb-4">: {registration.data.id}</td>
+                    <td className="pr-16 pb-4">Email</td>
+                    <td className="pr-12 pb-4">: {registration.data.email}</td>
+                  </tr>
+                  <tr>
+                    <td className="pb-4">Participant Name</td>
+                    <td className="pb-4">: {registration.data.name}</td>
+                    <td className="pb-4">Affiliation</td>
+                    <td className="pb-4">: {registration.data.affiliation}</td>
+                  </tr>
+                  <tr>
+                    <td>Phone Number</td>
+                    <td>: {registration.data.phone}</td>
+                    <td>Ticket Type</td>
+                    <td>: {registration.data.ticket_type}</td>
+                  </tr>
+                </tbody>
               </table>
               <div className="bg-[#092040] h-16 w-full rounded-xl flex justify-center items-center">
-                <p className="text-white text-2xl font-bold">Your registration is being processed</p>
+                {isRejected && <p className="text-white text-2xl font-bold">Your registration has been rejected</p>}
+                {isAccepted && !isPresence && <p className="text-white text-2xl font-bold">Your registration is accepted</p>}
+                {isPresence && (
+                  <button onClick={handleExperienceClick} className="bg-[#092040] text-white text-2xl font-bold py-2 px-4 rounded-lg">
+                    Share your experience here!
+                  </button>
+                )}
+                {isPending && <p className="text-white text-2xl font-bold">Your registration is being processed</p>}
               </div>
             </div>
           </div>
