@@ -59,7 +59,7 @@ const PengalamanPesertaPage = () => {
     <div className="flex flex-col min-h-screen">
       <NavbarComponent />
       <div className="flex-grow">
-        <section className="bg-white py-24 sm:py-32">
+        <section className="bg-white py-24">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Pengalaman Peserta</h2>
             <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
