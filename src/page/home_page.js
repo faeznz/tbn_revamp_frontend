@@ -1,18 +1,51 @@
-import React from "react";
-import bannerHomepage from "../assets/banner-homepage.png";
-import videoHomepage from "../assets/video_homepage.png";
-import iconWatchVideo from "../assets/icon_watch_video.png";
-import whoWeAreImg from "../assets/who_we_are.png";
-import missionBanner from "../assets/mission_tbn.png";
-import ourPartner from "../assets/our_partner.png";
-import tbnWorldwide from "../assets/peta_tbn.png";
-import NavbarComponent from "../components/navbar_component";
-import FooterComponent from "../components/footer_component";
+import React, { useEffect, useState } from 'react';
+import bannerHomepage from '../assets/banner-homepage.png';
+import missionBanner from '../assets/mission_tbn.png';
+import ourPartner from '../assets/our_partner.png';
+import tbnWorldwide from '../assets/peta_tbn.png';
+import NavbarComponent from '../components/navbar_component';
+import FooterComponent from '../components/footer_component';
+import axios from 'axios';
 
 var token = localStorage.getItem('token');
 console.log(token);
 
 function HomePage() {
+  const [homeContents, setHomeContents] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://127.0.0.1:8000/api/posts')
+      .then((response) => {
+        setHomeContents(response.data);
+      })
+      .catch((error) => {
+        console.error('There was an error fetching the data!', error);
+      });
+  }, []);
+
+  const renderSectionContent = (section) => {
+    const content = homeContents.find((item) => item.section === section);
+    if (content) {
+      const postData = content.post_data; // Update: directly use post_data without parsing
+      return postData;
+    }
+    return null;
+  };
+
+  const getYoutubeEmbedUrl = (url) => {
+    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = url.match(regex);
+    return match ? `https://www.youtube.com/embed/${match[1]}` : null;
+  };
+
+  const cleanDescription = (description) => {
+    return description.replace(/rnrn/g, '<br />');
+  };
+
+  const aboutUsContent = renderSectionContent('About us');
+  const whoWeAreContent = renderSectionContent('WHO WE ARE');
+
   return (
     <div>
       <NavbarComponent />
@@ -33,44 +66,50 @@ function HomePage() {
           </div>
         </div>
       </section>
-      {/* Section 2 -  About Us*/}
+
+      {/* Section 2 - About Us */}
       <section className="flex flex-col mt-12 justify-center items-center">
         <p className="lg:text-4xl text-2xl mb-12 font-medium">ABOUT US</p>
         <div className="flex lg:flex-row flex-col lg:px-24 px-8 lg:pb-32 pb-12 justify-between items-center">
-          <img src={videoHomepage} alt="" className="lg:w-2/5 w-full aspect-16/9 bg-center bg-cover top-14" />
-          <div className="lg:mx-24 mx-8 flex flex-col justify-center items-center">
-            <p className="lg:text-5xl text-2xl mb-12 lg:mt-0 mt-8">TBN ALLIANCE</p>
-            <p className="text-justify">
-              TBN Alliance is a global network focused on poverty alleviation through enterprise, emphasizing multi-faith, multi-sector partnerships. Over the next five years, they plan to launch 1,800 ventures, creating around 11,850 new
-              jobs in emerging markets.
-            </p>
-            <div className="mt-12 flex flex-row">
-              <button className="bg-[#DC8400] px-6 py-1 rounded-full mr-8">Register</button>
-              <div className="flex flex-row gap-2 justify-center items-center">
-                <img src={iconWatchVideo} alt="" className="w-8" />
-                <a href="">Watch Video</a>
+          {aboutUsContent && (
+            <>
+              {aboutUsContent.content_type === 'video' && (
+                <div className="w-full lg:w-1/2 h-64 lg:h-auto">
+                  <iframe
+                    width="100%"
+                    height="320"
+                    src={getYoutubeEmbedUrl(aboutUsContent.content)}
+                    title={aboutUsContent.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              )}
+              <div className="lg:w-1/2 lg:mx-24 mx-8 flex flex-col justify-center items-center lg:mt-0 mt-8">
+                <p className="lg:text-5xl text-2xl mb-12">{aboutUsContent.title}</p>
+                <div className="text-justify" dangerouslySetInnerHTML={{ __html: cleanDescription(aboutUsContent.description) }}></div>
               </div>
-            </div>
-          </div>
+            </>
+          )}
         </div>
       </section>
-      {/* Section 3 -  Who We Are*/}
+
+      {/* Section 3 - WHO WE ARE */}
       <section className="bg-[#F6CF55] flex flex-row lg:rounded-t-[100px] rounded-t-[50px]">
         <div className="flex lg:flex-row flex-col items-center justify-center lg:px-24 px-8 lg:py-0 py-12 lg:h-screen">
-          <img src={whoWeAreImg} alt="" className="lg:h-3/5 aspect-square" />
-          <div className="bg-[#EDEDED] lg:h-3/5 flex flex-col justify-center items-center px-12 lg:py-0 py-8">
-            <p className="lg:text-4xl text-2xl mb-8 font-medium">WHO WE ARE</p>
-            <p className="font-light text-justify">
-              TBN Alliance is a global network of purpose-driven entrepreneurs, impact investors and capacity builders who take an enterprise approach to alleviate poverty in low-income and underserved communities.
-            </p>
-            <p className="font-light mt-4 text-justify">
-              Over the next five years,
-              <span className="font-semibold">TBN Alliance will launch an estimated 1,800 ventures,</span>
-              providing approximately 11,850 new jobs in frontier and emerging markets globally.
-            </p>
-          </div>
+          {whoWeAreContent && (
+            <>
+              {whoWeAreContent.content_type === 'image' && <img src={`http://127.0.0.1:8000/storage/${whoWeAreContent.content}`} alt={whoWeAreContent.title} className="lg:h-3/5 aspect-square" />}
+              <div className="bg-[#EDEDED] lg:h-3/5 flex flex-col justify-center items-center px-12 lg:py-0 py-8">
+                <p className="lg:text-4xl text-2xl mb-8 font-medium">{whoWeAreContent.title}</p>
+                <div className="font-light text-justify" dangerouslySetInnerHTML={{ __html: cleanDescription(whoWeAreContent.description) }}></div>
+              </div>
+            </>
+          )}
         </div>
       </section>
+
       {/* Section 4 - Mission */}
       <section className="flex flex-col justify-center items-center bg-[#F6CF55]">
         <div className="flex flex-col lg:pt-24 pt-12 justify-center items-center bg-white lg:rounded-t-[100px] rounded-t-[50px]">
@@ -84,7 +123,8 @@ function HomePage() {
           </div>
         </div>
       </section>
-      {/* Section 4 - Our Partner */}
+
+      {/* Section 5 - Our Partner */}
       <section className="flex flex-col mt-12 justify-center items-center ">
         <p className="lg:text-3xl text-2xl">Our Partner</p>
         <div className="flex flex-col lg:px-24 px-8 pb-32 justify-between items-center">
@@ -93,6 +133,7 @@ function HomePage() {
           <img src={tbnWorldwide} alt="" className="" />
         </div>
       </section>
+      
       {/* Section 3 -  Footer*/}
       <FooterComponent />
     </div>

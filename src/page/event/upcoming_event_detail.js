@@ -84,7 +84,7 @@ const UpcomingEventDetail = () => {
         <img src={`http://127.0.0.1:8000/storage/${event.poster_path}`} alt="" className="w-1/3 max-w-md aspect-w-16 aspect-h-9 bg-center bg-cover top-14" /> {/* Menampilkan poster event dengan proporsi aspek 16:9 */}
         <div className="mx-24 flex flex-col justify-center items-center my-24">
           <p className="text-4xl mb-12">About the Conference</p>
-          <div className="flex flex-row mx-12" dangerouslySetInnerHTML={{ __html: event.deskripsi }}></div>
+          <div className="flex flex-col mx-12" dangerouslySetInnerHTML={{ __html: event.deskripsi }}></div>
         </div>
       </section>
 
@@ -103,8 +103,8 @@ const UpcomingEventDetail = () => {
                     <img src={`http://127.0.0.1:8000/storage/${event.poster_path}`} alt={event.judul} className="rounded-xl mb-4" />
                   </div>
                   <div className="flex items-center gap-x-4 text-xs">
-                    <time dateTime={new Date(event.created_at).toISOString()} className="text-gray-500">
-                      {new Date(event.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    <time dateTime={new Date(event.tanggal).toISOString()} className="text-gray-500">
+                      {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
                     </time>
                   </div>
                   <div className="group relative">

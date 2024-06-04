@@ -33,8 +33,9 @@ const PendaftaranEventPage = () => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/events');
-        if (response.data && Array.isArray(response.data.events)) {
-          setEvents(response.data.events);
+        if (response.data && response.data.events && response.data.events.length > 0) {
+          const pastEvents = response.data.events.filter((event) => new Date(event.tanggal) > new Date());
+          setEvents(pastEvents);
         } else {
           console.error('Expected array but got:', typeof response.data.events);
           setEvents([]);
