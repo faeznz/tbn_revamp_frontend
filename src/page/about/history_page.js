@@ -10,7 +10,7 @@ const HistoryPage = () => {
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>
-        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[50px]">
+        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
           <p className="text-black lg:text-4xl text-2xl font-semibold pt-16">Our History</p>
         </div>
       </section>
@@ -19,14 +19,14 @@ const HistoryPage = () => {
         <div className="flex lg:flex-row flex-col justify-between w-screen items-center lg:py-24 py-8">
           <div className="flex flex-col justify-center items-center">
             <img src={BannerPioneer} alt="" className="w-4/5" />
-            <p className="lg:text-3xl text-xl lg:px-24 px-8 lg:pt-12 lg:mb-0 mb-12 text-center font-semibold">
+            <p className="lg:text-3xl text-lg lg:px-24 px-8 lg:pt-12 pt-4 lg:mb-0 mb-12 text-center font-semibold">
               Building on decades of work spearheaded by one of the pioneers of
               impact investing, Dr. Kim Tam
             </p>
           </div>
           <div className="flex flex-col justify-center items-center">
             <img src={BannerPartner} alt="" className="w-4/5" />
-            <p className="lg:text-3xl text-xl lg:px-24 px-8 lg:pt-12 lg:mb-0 mb-12 text-center font-semibold">
+            <p className="lg:text-3xl text-lg lg:px-24 px-8 lg:pt-12 pt-4 lg:mb-0 mb-12 text-center font-semibold">
               In partnership with TRT and Belmont University we are moving into
               the era of etablishing TBN Alliance
             </p>

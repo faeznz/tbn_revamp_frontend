@@ -10,8 +10,8 @@ const WherePage = () => {
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>
-        <div className="flex flex-col justify-center items-center w-screen h-64 bg-[#C3D21F] rounded-b-[100px]">
-          <p className="text-black text-4xl font-semibold pt-16">
+        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
+          <p className="text-black lg:text-4xl text-2xl font-semibold pt-16">
             Where We Are
           </p>
         </div>
@@ -19,23 +19,23 @@ const WherePage = () => {
       {/* Section 2 - Maps */}
       <section>
         <div className="flex flex-col justify-center items-center">
-          <img src={MapsWhereWeAre} alt="" className="w-4/5 py-24"/>
+          <img src={MapsWhereWeAre} alt="" className="w-4/5 lg:py-24 py-12"/>
         </div>
       </section>
       {/* Section 3 - Description */}
-      <section className="bg-[#F2EEEA] rounded-t-[100px]">
-        <div className=" flex flex-col justify-center items-start px-24 pt-24">
-          <p className="text-2xl">
+      <section className="bg-[#F2EEEA] lg:rounded-t-[100px] rounded-t-[30px]">
+        <div className=" flex flex-col justify-center items-start lg:px-24 px-12 lg:pt-24 pt-12">
+          <p className="lg:text-2xl text-lg">
           Click on the links below to learn more about the ecosystems  and impact in our founding chapter locations.
           </p>
-          <ul className="text-2xl list-disc pl-24 pb-24 pt-8">
+          <ul className="lg:text-2xl text-lg list-disc lg:pl-24 lg:pb-24 pb-12 pt-8">
             <li>Africa tbnetworkafrica.org</li>
             <li>Americas tbn-americas.org</li>
             <li>Asia tbn.asia</li>
             <li>Indonesia tbnindonesia.org</li>
           </ul>
         </div>
-        <div className="flex flex-row justify-center items-center pb-24">
+        <div className="flex flex-row justify-center items-center lg:pb-24 pb-12">
           <NavLink to='' className='bg-[#092040] text-white px-8 py-4 rounded-2xl'>Join Us</NavLink>
         </div>
       </section>

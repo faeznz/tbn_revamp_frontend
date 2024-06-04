@@ -142,7 +142,7 @@ const RegisterPage = () => {
     try {
       const result = await signInWithPopup(auth, googleAuthProvider);
       console.log(result);
-  
+
       const dataRegister = {
         name: result.user.displayName,
         last_name: result.user.displayName,
@@ -150,23 +150,23 @@ const RegisterPage = () => {
         password: result.user.uid,
         password_confirmation: result.user.uid,
       };
-  
+
       try {
         // Make a POST request to your backend server
         const response = await axios.post('http://127.0.0.1:8000/api/google-auth', dataRegister);
-  
+
         if (response.data && response.data.user) {
           const token = response.data.token;
           const nama = response.data.user.name;
           const id = response.data.user.id;
-  
+
           localStorage.setItem('token', token);
           localStorage.setItem('id', id);
-  
+
           login({ nama });
-  
+
           navigate('/');
-  
+
           console.log('Login successful:', response.data);
         } else {
           // Handle case where response data is not as expected
@@ -175,19 +175,19 @@ const RegisterPage = () => {
       } catch (error) {
         setErrorMessage('Pendaftaran gagal. Coba ulangi lagi.');
         setShowError(true);
-  
+
         setTimeout(() => {
           setShowError(false);
         }, 10000);
-  
+
         console.error('Error registering:', error);
       }
-  
+
     } catch (error) {
       console.log(error);
     }
   };
-  
+
 
   const handleCloseError = () => {
     setShowError(false);
@@ -223,15 +223,15 @@ const RegisterPage = () => {
       <div className="h-full w-full flex justify-center items-center pt-12">
         {/* Section 1 -  Register*/}
         <section className="w-full h-full flex flex-row">
-          <div className="flex items-center justify-center mx-10 my-7 px-24 py-25 w-screen">
-            <img src={ImgLogin} alt="" className="h-full" />
-            <div className="bg-white h-full w-2/5  flex flex-col justify-center items-center px-12 rounded-r-xl">
-              <div className="flex flex-col">
+          <div className="flex lg:flex-row flex-col items-center justify-center lg:mx-10 lg:my-7 lg:px-24 lg:py-25 w-screen">
+            <img src={ImgLogin} alt="" className="h-full lg:block hidden" />
+            <div className="bg-white h-full lg:w-2/5 w-full flex flex-col justify-start items-center lg:px-12 lg:rounded-r-xl">
+              <div className="flex flex-col items-center">
                 <div className="flex justify-center">
-                  <p className="text-2xl mb-8">Create an Account!</p>
+                  <p className="text-2xl mb-8 lg:mt-0 mt-12">Create an Account!</p>
                 </div>
                 <div className="w-full">
-                  <input type="text" className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${nameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`} placeholder="Name" value={name} onChange={handleNameChange} />
+                  <input type="text" className={`lg:w-96 w-80 h-14 mb-2 rounded-full bg-[#FBFBFB] border ${nameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`} placeholder="Name" value={name} onChange={handleNameChange} />
                   {nameError && <p className="text-red-500 text-xs ml-4 mb-4 ">{nameError}</p>}
                 </div>
                 <div className="w-full">
@@ -248,8 +248,8 @@ const RegisterPage = () => {
                   <input type="text" className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${emailError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`} placeholder="Email" value={email} onChange={handleEmailChange} />
                   {emailError && <p className="text-red-500 text-xs ml-4 mb-4">{emailError}</p>}
                 </div>
-                <div className="flex flex-row justify-between gap-2 w-full">
-                  <div className="w-1/2">
+                <div className="flex lg:flex-row flex-col justify-between lg:gap-2 w-full">
+                  <div className="lg:w-1/2 w-full">
                     <input
                       type="password"
                       className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${passwordError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
@@ -259,7 +259,7 @@ const RegisterPage = () => {
                     />
                     {passwordError && <p className="text-red-500 text-xs ml-4 mb-4">{passwordError}</p>}
                   </div>
-                  <div className="w-1/2">
+                  <div className="lg:w-1/2 w-full">
                     <input
                       type="password"
                       className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${repeatPasswordError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
@@ -271,7 +271,7 @@ const RegisterPage = () => {
                   </div>
                 </div>
 
-                <button className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12" onClick={handleSubmit}>
+                <button className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12 mt-4" onClick={handleSubmit}>
                   Register
                 </button>
                 <div className="flex flex-row justify-center items-center mt-4 gap-2">
@@ -291,7 +291,7 @@ const RegisterPage = () => {
                     <p>Sign in with Google</p>
                   </div>
                 </button>
-                <button className="border-[#4E73DF] border-2 text-[#4E73DF] font-medium rounded-full w-full h-12 mt-2" onClick={handleSignInWithGoogle}>
+                <button className="border-[#4E73DF] border-2 text-[#4E73DF] font-medium rounded-full w-full h-12 mt-2 lg:mb-0 mb-12" onClick={handleSignInWithGoogle}>
                   <div className="flex flex-row items-center justify-center">
                     <FaApple className="text-2xl mr-2 text-black" />
                     <p>Sign in with Apple</p>

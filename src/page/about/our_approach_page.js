@@ -10,7 +10,7 @@ const OurApproachPage = () => {
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>
-        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[50px]">
+        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
           <p className="text-black lg:text-4xl text-2xl font-semibold pt-16">
             Our Approach
           </p>
@@ -19,7 +19,7 @@ const OurApproachPage = () => {
       {/* Section 2 - Description */}
       <section>
         <div className="flex flex-col justify-center items-center lg:px-24 px-8">
-          <p className="lg:text-2xl text-xl lg:pt-24 pt-12 text-justify">
+          <p className="lg:text-2xl text-lg lg:pt-24 pt-12 text-justify">
             TBN’s interventions focus on capacity building, capital raising and
             the development of a values-based community. This is akin to the
             support offered by other business development providers in the
@@ -28,7 +28,7 @@ const OurApproachPage = () => {
             challenges facing an individual enterprise.  We are unapologetically
             relational in approach.
           </p>
-          <p className="lg:text-2xl text-xl font-semibold pt-24">
+          <p className="lg:text-2xl text-lg font-semibold lg:pt-24 pt-12">
             Our range of key services includes :
           </p>
           <div className="flex lg:flex-row flex-col justify-around lg:items-center items-start w-screen lg:px-24 px-12 lg:pt-12 lg:pb-24 pb-12">

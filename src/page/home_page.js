@@ -51,11 +51,12 @@ function HomePage() {
       <NavbarComponent />
       {/* Section 1 - Main */}
       <section className="w-full h-full">
-        <div className="absolute aspect-video lg:aspect-21/9 w-full lg:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12"></div>
-        <img src={bannerHomepage} alt="" className="w-full aspect-video lg:aspect-21/9 bg-center bg-cover top-0 pt-12" />
+        {/* Image for main banner */}
+        <div className="absolute aspect-4/3 lg:aspect-21/9 w-full lg:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12"></div>
+        <img src={bannerHomepage} alt="" className="w-full aspect-4/3 lg:aspect-21/9 bg-center bg-cover top-0 pt-12" />
         <div className="w-full lg:h-5/6 sm:h-1/5 top-0 absolute flex flex-row lg:justify-start justify-center lg:p-24 pt-12 items-center">
           <div className="w-1 h-3/5 lg:bg-[#FFB400] sm:bg-transparent"></div>
-          <div className="lg:w-3/5 sm:w-full p-8 flex flex-col justify-center lg:items-start items-center rounded-2xl">
+          <div className="lg:w-3/5 sm:w-full lg:p-8 pt-20 flex flex-col justify-center lg:items-start items-center rounded-2xl">
             <p className="text-white font-bold lg:text-5xl text-md lg:mb-12 sm:mb-4 lg:text-left text-center">
               Transformational <br /> Business Network (TBN) Indonesia
             </p>
@@ -99,7 +100,7 @@ function HomePage() {
         <div className="flex lg:flex-row flex-col items-center justify-center lg:px-24 px-8 lg:py-0 py-12 lg:h-screen">
           {whoWeAreContent && (
             <>
-              {whoWeAreContent.content_type === 'image' && <img src={`http://127.0.0.1:8000/storage/${whoWeAreContent.content}`} alt={whoWeAreContent.title} className="h-3/5" />}
+              {whoWeAreContent.content_type === 'image' && <img src={`http://127.0.0.1:8000/storage/${whoWeAreContent.content}`} alt={whoWeAreContent.title} className="lg:h-3/5 aspect-square" />}
               <div className="bg-[#EDEDED] lg:h-3/5 flex flex-col justify-center items-center px-12 lg:py-0 py-8">
                 <p className="lg:text-4xl text-2xl mb-8 font-medium">{whoWeAreContent.title}</p>
                 <div className="font-light text-justify" dangerouslySetInnerHTML={{ __html: cleanDescription(whoWeAreContent.description) }}></div>
@@ -118,7 +119,7 @@ function HomePage() {
               The TBN Alliance nurtures purpose-driven businesses to thrive, aiming to reduce poverty and promote environmental sustainability. We foster a global movement for social good, empowering entrepreneurs, and directly benefiting
               families and communities. Our ambitious aim is to ignite an impact movement, uniting people worldwide to leverage business for social transformation, particularly supporting SMEs in emerging markets.
             </p>
-            <img src={missionBanner} alt="" className="lg:w-2/5 w-4/5" />
+            <img src={missionBanner} alt="" className="lg:w-2/5 w-4/5 " />
           </div>
         </div>
       </section>
@@ -132,7 +133,8 @@ function HomePage() {
           <img src={tbnWorldwide} alt="" className="" />
         </div>
       </section>
-
+      
+      {/* Section 3 -  Footer*/}
       <FooterComponent />
     </div>
   );

@@ -12,8 +12,8 @@ const HowItWorksPage = () => {
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>
-        <div className="flex flex-col justify-center items-center w-screen h-64 bg-[#C3D21F] rounded-b-[100px]">
-          <p className="text-black text-4xl font-semibold pt-16">
+        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
+          <p className="text-black lg:text-4xl text-2xl font-semibold pt-16">
             How It Works
           </p>
         </div>
@@ -21,14 +21,14 @@ const HowItWorksPage = () => {
       {/* Section 2 - Overview */}
       <section>
         <div className="flex flex-col justify-center items-center pb-16">
-          <p className="text-4xl mb-8 font-medium pt-24">OVERVIEW</p>
+          <p className="lg:text-4xl text-xl mb-8 font-medium lg:pt-24 pt-12">OVERVIEW</p>
           <img src={BannerOverview} alt="" className="w-4/5" />
         </div>
       </section>
       {/* Section 3 - Alliance Build-out Priorities */}
       <section>
-        <div className="flex flex-col justify-center items-center bg-[#005F94] rounded-t-[100px]">
-          <p className="text-4xl mb-8 font-medium pt-24 text-white pb-12">
+        <div className="flex flex-col justify-center items-center bg-[#005F94] lg:rounded-t-[100px] rounded-t-[30px]">
+          <p className="lg:text-4xl text-xl mb-8 font-medium lg:pt-24 pt-12 text-white lg:pb-12 text-center">
             Alliance Build-out Priorities
           </p>
           <img src={BannerBuildOutPriorities} alt="" className="w-4/5" />
@@ -36,16 +36,16 @@ const HowItWorksPage = () => {
       </section>
       {/* Section 3 - The Alliance serves its diverse ecosystem in four critical ways */}
       <section className="bg-[#005F94]">
-        <div className="flex flex-col justify-center items-center bg-[#092040] rounded-t-[100px]">
-          <p className="text-4xl mb-8 font-medium pt-24 text-white pb-12">
+        <div className="flex flex-col justify-center items-center bg-[#092040] lg:rounded-t-[100px] rounded-t-[30px]">
+          <p className="lg:text-4xl text-xl mb-8 font-medium lg:pt-24 pt-12 text-white lg:pb-12 text-center">
             The Alliance serves its diverse ecosystem in four critical ways:
           </p>
-          <img src={AllianceServeInFour} alt="" className="w-4/5 pb-24" />
+          <img src={AllianceServeInFour} alt="" className="w-4/5 lg:pb-24 pb-12" />
         </div>
       </section>
       {/* Section 3 - Pre Alliance */}
       <section className="bg-[#092040]">
-        <div className="flex flex-col py-24 justify-center items-center bg-white rounded-t-[100px]">
+        <div className="flex flex-col lg:py-24 py-12 justify-center items-center bg-white lg:rounded-t-[100px] rounded-t-[30px]">
           <img src={PreAlliance} alt="" className="w-4/5" />
         </div>
       </section>
