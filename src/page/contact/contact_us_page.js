@@ -120,19 +120,19 @@ const ContactUsPage = () => {
         </div>
       </section> */}
       <section>
-        <div className="flex flex-row w-full h-screen justify-between items-center">
-          <div className="bg-[#005F94] w-2/5 h-full flex justify-center items-center">
+        <div className="flex lg:flex-row flex-col w-full lg:h-screen lg:justify-between justify-start items-center pt-16">
+          <div className="bg-[#005F94] lg:w-2/5 h-full flex justify-center items-center lg:py-0 py-8">
             <img src={ContentContactUs} alt="Content Contact Us" className="w-4/5" />
           </div>
           <div className="w-full">
-            <div className="flex items-center justify-center px-24 py-24">
+            <div className="flex items-center justify-center lg:px-24 px-12 lg:py-24">
               <div className="flex flex-col w-full">
                 <div className="flex flex-col justify-center mb-8 ml-2 mt-10">
-                  <p className="text-2xl font-semibold">Contact Us</p>
-                  <p className="text-xl text-[#666666]">Any question? We would be happy to help you!</p>
+                  <p className="lg:text-2xl text-xl font-semibold">Contact Us</p>
+                  <p className="lg:text-xl text-sm text-[#666666]">Any question? We would be happy to help you!</p>
                 </div>
                 <form onSubmit={handleSubmit}>
-                  <div className="flex flex-row gap-4">
+                  <div className="flex lg:flex-row flex-col lg:gap-4">
                     <div className="w-full">
                       <input
                         type="text"
@@ -179,7 +179,7 @@ const ContactUsPage = () => {
                     />
                     {messageError && <p className="text-red-500 text-xs ml-4 mb-4">{messageError}</p>}
                   </div>
-                  <button type="submit" className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12 mt-4">
+                  <button type="submit" className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12 mt-4 lg:mb-0 mb-12">
                     Send Email
                   </button>
                 </form>
@@ -188,7 +188,10 @@ const ContactUsPage = () => {
           </div>
         </div>
       </section>
-      <div style={{ background: 'linear-gradient(to right, #005F94 50%, #FFFFFF 50%)' }}>
+      <div className='lg:hidden bg-white'>
+        <FooterComponent />
+      </div>
+      <div style={{ background: 'linear-gradient(to right, #005F94 50%, #FFFFFF 50%)' }} className='lg:block hidden'>
         <FooterComponent />
       </div>
     </div>

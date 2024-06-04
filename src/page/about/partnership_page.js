@@ -11,7 +11,7 @@ const PartnershipPage = () => {
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>
-        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[50px]">
+        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
           <p className="text-black lg:text-4xl text-2xl font-semibold pt-16">
             Our Partnerships
           </p>
@@ -20,10 +20,10 @@ const PartnershipPage = () => {
       {/* Section 2 - Univ Partner */}
       <section>
         <div className="flex flex-col justify-center items-center lg:px-32 px-8">
-          <p className="lg:text-2xl text-xl font-medium pt-16">
+          <p className="lg:text-2xl text-lg font-medium pt-16 text-center">
             Belmont University and the Belmont Innovation Labs
           </p>
-          <p className="lg:text-2xl text-xl text-center pt-16">
+          <p className="lg:text-2xl text-lg text-center pt-16">
             The TBN Alliance is anchored by a strategic partnership between the
             TBN Network and Belmont University, with the Belmont Innovation Labs
             as the organization at Belmont stewarding the Alliance.
@@ -37,7 +37,7 @@ const PartnershipPage = () => {
       {/* Section 3 - TBN Ecosystem Partner*/}
       <section>
         <div className="bg-[#F2EEEA] pt-12 flex flex-col justify-center items-center lg:rounded-t-[100px] rounded-t-[50px]">
-          <p className="lg:text-4xl text-xl mb-8 font-medium lg:pt-24">
+          <p className="lg:text-4xl text-xl lg:mb-8 font-medium lg:pt-24">
             TBN Ecosystem Partners
           </p>
           <img src={BannerEcosystem} alt="" className="" />
