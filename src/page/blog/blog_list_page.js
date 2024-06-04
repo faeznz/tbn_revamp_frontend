@@ -4,19 +4,21 @@ import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 import { NavLink } from 'react-router-dom';
 
+
 const BlogListPage = () => {
+
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => {    
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/blogs');
+        const response = await axios.get(`${window.env.TBN_API_URL}/blogs`);
         const postsData = response.data;
 
         // Fetch comments count for each post
         const postsWithCommentsCount = await Promise.all(
           postsData.map(async (post) => {
-            const commentsResponse = await axios.get(`http://127.0.0.1:8000/api/blogs/${post.id}/comments`);
+            const commentsResponse = await axios.get(`${window.env.TBN_API_URL}/blogs/${post.id}/comments`);
             return { ...post, commentsCount: commentsResponse.data.length };
           })
         );
@@ -41,7 +43,7 @@ const BlogListPage = () => {
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Blog</h2>
               </div>
               {posts.length === 0 ? (
-                <article className="bg-gray-100 rounded-lg overflow-hidden shadow-md p-6 text-center col-span-full">
+                <article className="bg-gray-100 rounded-lg overflow-hidden shadow-md mt-8 p-6 text-center col-span-full">
                   <div className="font-bold text-xl mb-2 text-gray-800">Belum ada blog tersedia</div>
                 </article>
               ) : (

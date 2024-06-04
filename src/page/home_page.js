@@ -15,7 +15,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get('http://127.0.0.1:8000/api/posts')
+      .get(`${window.env.TBN_API_URL}/posts`)
       .then((response) => {
         setHomeContents(response.data);
       })
@@ -32,6 +32,7 @@ function HomePage() {
     }
     return null;
   };
+  
 
   const getYoutubeEmbedUrl = (url) => {
     const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;

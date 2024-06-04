@@ -5,13 +5,14 @@ import { useAuth } from "../context/auth_context";
 
 import { RiAccountCircleLine } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
+import { MdLogout } from "react-icons/md";
 
 function Navbar({ data }) {
   const [isAboutHovered, setIsAboutHovered] = useState(false);
   const [isAccountHovered, setIsAccountHovered] = useState(false);
   const [isEventHovered, setIsEventHovered] = useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-  
+
   const aboutRef = useRef(null);
   const accountRef = useRef(null);
   const eventRef = useRef(null);
@@ -24,14 +25,14 @@ function Navbar({ data }) {
   useEffect(() => {
     function handleClickOutside(event) {
       if (aboutRef.current && !aboutRef.current.contains(event.target) && burgerMenuRef.current &&
-      !burgerMenuRef.current.contains(event.target)) {
+        !burgerMenuRef.current.contains(event.target)) {
         setIsAboutHovered(false);
       }
       if (accountRef.current && !accountRef.current.contains(event.target)) {
         setIsAccountHovered(false);
       }
       if (eventRef.current && !eventRef.current.contains(event.target) && burgerMenuRef.current &&
-      !burgerMenuRef.current.contains(event.target)) {
+        !burgerMenuRef.current.contains(event.target)) {
         setIsEventHovered(false);
       }
       if (
@@ -96,7 +97,7 @@ function Navbar({ data }) {
   const handleEventClick = () => {
     setIsEventHovered(!isEventHovered);
   };
-  
+
   const handleBurgerClick = () => {
     setIsBurgerOpen(!isBurgerOpen);
   };
@@ -165,7 +166,7 @@ function Navbar({ data }) {
                 className="relative"
               >
                 <div className="flex flex-row items-center">
-                  <RiAccountCircleLine className="text-2xl mr-1"/>
+                  <RiAccountCircleLine className="text-2xl mr-1" />
                   <p>{dataLogin.nama}</p>
                 </div>
                 {isAccountHovered && (
@@ -199,6 +200,28 @@ function Navbar({ data }) {
               <IoClose className="w-6 h-6" />
             </button>
           </div>
+          {dataLogin ? (
+            <div className="flex lg:hidden flex-row justify-center items-center w-full py-2 mb-4">
+            <i className="fa-regular fa-user text-white"></i>
+            <div
+              onMouseEnter={handleMouseEnterAccount}
+              onMouseLeave={handleMouseLeaveAccount}
+              onClick={handleAccountClick}
+              className="relative w-full"
+            >
+              <div className="flex flex-row items-center justify-between w-full">
+                <p className="text-xl">Hi, {dataLogin.nama}</p>
+                <MdLogout className="text-xl" onClick={() => { handleLogout(); setIsBurgerOpen(false); }} />
+              </div>
+              <div className="w-full h-0.5 bg-white opacity-50 mt-4"></div>
+            </div>
+          </div>
+          ) : (
+            <button className="hidden">
+              <NavLink to="/login">Login</NavLink>
+            </button>
+          )}
+          
           <NavLink to="/" onClick={() => setIsBurgerOpen(false)}>Home</NavLink>
           <div
             onMouseEnter={handleMouseEnterAbout}
@@ -239,7 +262,7 @@ function Navbar({ data }) {
           </div>
           <p>{data}</p>
           {dataLogin ? (
-            <div className="flex flex-row justify-center items-center w-full">
+            <div className="lg:flex hidden flex-row justify-center items-center w-full">
               <i className="fa-regular fa-user text-white"></i>
               <div
                 onMouseEnter={handleMouseEnterAccount}
@@ -247,8 +270,8 @@ function Navbar({ data }) {
                 onClick={handleAccountClick}
                 className="relative w-full"
               >
-                <div className="flex flex-row items-center w-full">
-                  <RiAccountCircleLine className="text-2xl mr-1"/>
+                <div className="flex flex-row items-center w-full lg:mt-0 mt-12">
+                  <RiAccountCircleLine className="text-2xl mr-1" />
                   <p>{dataLogin.nama}</p>
                 </div>
                 {isAccountHovered && (

@@ -40,7 +40,7 @@ const LoginPage = () => {
     };
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/login', dataLogin);
+      const response = await axios.post(`${window.env.TBN_API_URL}/login`, dataLogin);
 
       const token = response.data.token;
       const nama = response.data.users.name;
@@ -79,7 +79,7 @@ const LoginPage = () => {
 
       try {
         // Make a POST request to your backend server
-        const response = await axios.post('http://127.0.0.1:8000/api/google-auth', dataRegister);
+        const response = await axios.post(`${window.env.TBN_API_URL}/google-auth`, dataRegister);
 
         if (response.data && response.data.user) {
           const token = response.data.token;
