@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
+
 import Review from '../../components/event/status_pendaftaran_review_component';
 import Accepted from '../../components/event/status_pendaftaran_accepted_component';
 import Rejected from '../../components/event/status_pendaftaran_rejected_component';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const HistoryEventPage = () => {
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ const HistoryEventPage = () => {
   useEffect(() => {
     // Fetch registration data from backend when component mounts
     axios
-      .get('http://127.0.0.1:8000/api/registrations')
+      .get(`${process.env.REACT_APP_TBN_API_URL}/registrations`)
       .then((response) => {
         // Filter registrations by user ID
         const userId = localStorage.getItem('id');

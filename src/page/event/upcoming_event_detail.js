@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink, useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
+
 import { FaMicrophone } from 'react-icons/fa';
 import { MdLocalOffer } from 'react-icons/md';
-import { NavLink, useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
 import BannerUpcoming from '../../assets/images/event/upcoming/upcoming_bannner.png';
 
 const UpcomingEventDetail = () => {
@@ -16,7 +18,7 @@ const UpcomingEventDetail = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/events/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/events/${id}`);
         setEvent(response.data.event);
       } catch (error) {
         console.error('Error fetching event data:', error);
@@ -25,7 +27,7 @@ const UpcomingEventDetail = () => {
 
     const fetchAllEvents = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/events`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/events`);
         setEvents(response.data.events);
       } catch (error) {
         console.error('Error fetching all events:', error);

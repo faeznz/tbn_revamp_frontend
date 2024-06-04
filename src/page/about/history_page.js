@@ -1,8 +1,10 @@
 import React from "react";
+
 import NavbarComponent from "../../components/navbar_component";
 import FooterComponent from "../../components/footer_component";
-import BannerPioneer from "../../assets/history_image.png";
-import BannerPartner from "../../assets/banner_partnership.png";
+
+import BannerPioneer from "../../assets/images/about/history/history_image.png";
+import BannerPartner from "../../assets/images/about/history/banner_partnership.png";
 
 const HistoryPage = () => {
   return (
@@ -28,7 +30,7 @@ const HistoryPage = () => {
             <img src={BannerPartner} alt="" className="w-4/5" />
             <p className="lg:text-3xl text-lg lg:px-24 px-8 lg:pt-12 pt-4 lg:mb-0 mb-12 text-center font-semibold">
               In partnership with TRT and Belmont University we are moving into
-              the era of etablishing TBN Alliance
+              the era of etablishing TBN Indonesia
             </p>
           </div>
         </div>
@@ -57,7 +59,7 @@ const HistoryPage = () => {
             poverty alleviation focus that have achieved scale in Africa and
             Asia.
             <br /> <br />
-            The Alliance was launched in September 2023 in a strategic
+            The Indonesia was launched in September 2023 in a strategic
             partnership with Belmont University Innovation Labs with the support
             of the Templeton Religion Trust, a global charitable trust chartered
             by Sir John Templeton. 

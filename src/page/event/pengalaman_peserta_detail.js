@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
+
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
+
 import { FaMicrophone } from 'react-icons/fa';
-import { useParams } from 'react-router-dom';
-import BannerUpcoming from '../../assets/images/event/upcoming/upcoming_bannner.png';
 import { MdStar } from 'react-icons/md';
+
+import BannerUpcoming from '../../assets/images/event/upcoming/upcoming_bannner.png';
 
 const PengalamanPesertaDetail = () => {
   const { id } = useParams();
@@ -15,10 +18,10 @@ const PengalamanPesertaDetail = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/events/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/events/${id}`);
         setEvent(response.data.event);
 
-        const reviewsResponse = await axios.get(`http://127.0.0.1:8000/api/reviews`);
+        const reviewsResponse = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/reviews`);
         const reviewsData = reviewsResponse.data.reviews;
 
         const filteredReviews = reviewsData.filter((review) => review.registration.event_id === parseInt(id));

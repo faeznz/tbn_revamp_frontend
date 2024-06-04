@@ -1,9 +1,11 @@
 import React from "react";
+
 import NavbarComponent from "../../components/navbar_component";
 import FooterComponent from "../../components/footer_component";
-import BannerVisiMisi from "../../assets/banner_visi_misi.png";
-import BannerValueDna from "../../assets/banner_value_dna.png";
-import BannerWeAre from "../../assets/banner_we_are.png";
+
+import BannerVisiMisi from "../../assets/images/about/visi-misi/banner_visi_misi.png";
+import BannerValueDna from "../../assets/images/about/visi-misi/banner_value_dna.png";
+import BannerWeAre from "../../assets/images/about/visi-misi/banner_we_are.png";
 
 const VisiMisiPage = () => {
   return (

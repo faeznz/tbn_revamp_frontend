@@ -1,10 +1,12 @@
 import React from "react";
+
 import NavbarComponent from "../../components/navbar_component";
 import FooterComponent from "../../components/footer_component";
-import BannerOverview from "../../assets/banner_overview.png";
-import BannerBuildOutPriorities from "../../assets/allience_build_out-Priorities.png";
-import AllianceServeInFour from "../../assets/alliance_serves_in_four_critical_ways.png";
-import PreAlliance from "../../assets/pre_alliance.png";
+
+import BannerOverview from "../../assets/images/about/how-it-works/banner_overview.png";
+import BannerBuildOutPriorities from "../../assets/images/about/how-it-works/allience_build_out-Priorities.png";
+import AllianceServeInFour from "../../assets/images/about/how-it-works/alliance_serves_in_four_critical_ways.png";
+import PreAlliance from "../../assets/images/about/how-it-works/pre_alliance.png";
 
 const HowItWorksPage = () => {
   return (
@@ -29,7 +31,7 @@ const HowItWorksPage = () => {
       <section>
         <div className="flex flex-col justify-center items-center bg-[#005F94] lg:rounded-t-[100px] rounded-t-[30px]">
           <p className="lg:text-4xl text-xl mb-8 font-medium lg:pt-24 pt-12 text-white lg:pb-12 text-center">
-            Alliance Build-out Priorities
+            TBN Indonesia Build-out Priorities
           </p>
           <img src={BannerBuildOutPriorities} alt="" className="w-4/5" />
         </div>
@@ -38,7 +40,7 @@ const HowItWorksPage = () => {
       <section className="bg-[#005F94]">
         <div className="flex flex-col justify-center items-center bg-[#092040] lg:rounded-t-[100px] rounded-t-[30px]">
           <p className="lg:text-4xl text-xl mb-8 font-medium lg:pt-24 pt-12 text-white lg:pb-12 text-center">
-            The Alliance serves its diverse ecosystem in four critical ways:
+            TBN Indonesia serves its diverse ecosystem in four critical ways:
           </p>
           <img src={AllianceServeInFour} alt="" className="w-4/5 lg:pb-24 pb-12" />
         </div>
@@ -50,7 +52,7 @@ const HowItWorksPage = () => {
         </div>
       </section>
       {/* Footer */}
-      <FooterComponent/>
+      <FooterComponent />
     </div>
   );
 };

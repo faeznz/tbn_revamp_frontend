@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useAuth } from '../../context/auth_context';
+
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
-import { useAuth } from '../../context/auth_context';
+
 import { MdStar } from 'react-icons/md';
 
 const PengalamanPesertaCreate = () => {
@@ -21,7 +23,7 @@ const PengalamanPesertaCreate = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/registrations/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/registrations/${id}`);
         const eventData = response.data.data.event;
         console.log(response);
         setEventName(eventData.judul);
@@ -52,7 +54,7 @@ const PengalamanPesertaCreate = () => {
     formData.append('image', image);
 
     try {
-      await axios.post(`http://127.0.0.1:8000/api/reviews/${id}`, formData, {
+      await axios.post(`${process.env.REACT_APP_TBN_API_URL}/reviews/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

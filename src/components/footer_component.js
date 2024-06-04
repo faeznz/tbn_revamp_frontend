@@ -7,7 +7,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { FaLinkedin } from 'react-icons/fa';
 
-import logoTbn from '../assets/LOGO_TBN_ALLIANCE.png';
+import logoTbn from '../assets/images/logo/logo_tbn_indonesia.png';
 
 const footer_component = () => {
   return (

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
+
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
-import { NavLink } from 'react-router-dom';
 
 
 const BlogListPage = () => {
@@ -12,13 +13,13 @@ const BlogListPage = () => {
   useEffect(() => {    
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`${window.env.TBN_API_URL}/blogs`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/blogs`);
         const postsData = response.data;
 
         // Fetch comments count for each post
         const postsWithCommentsCount = await Promise.all(
           postsData.map(async (post) => {
-            const commentsResponse = await axios.get(`${window.env.TBN_API_URL}/blogs/${post.id}/comments`);
+            const commentsResponse = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/blogs/${post.id}/comments`);
             return { ...post, commentsCount: commentsResponse.data.length };
           })
         );

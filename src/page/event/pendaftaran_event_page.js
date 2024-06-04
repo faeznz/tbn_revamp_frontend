@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
-import axios from 'axios';
 
 const PendaftaranEventPage = () => {
   const [events, setEvents] = useState([]); // Inisialisasi sebagai array kosong
@@ -32,7 +33,7 @@ const PendaftaranEventPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/events');
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/events`);
         if (response.data && response.data.events && response.data.events.length > 0) {
           const pastEvents = response.data.events.filter((event) => new Date(event.tanggal) > new Date());
           setEvents(pastEvents);
@@ -166,7 +167,7 @@ const PendaftaranEventPage = () => {
     };
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/registrations', formData);
+      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/registrations`, formData);
 
       setSuccessMessage('Pendaftaran berhasil.');
       setShowSuccess(true);
@@ -234,7 +235,7 @@ const PendaftaranEventPage = () => {
       )}
       <section>
         <div className="flex flex-col justify-center items-center w-full">
-          <form className="w-3/5 mt-32" onSubmit={handleSubmit}>
+          <form className="lg:w-3/5 w-4/5 mt-32 " onSubmit={handleSubmit}>
             <p className="text-3xl font-bold mb-12">Pendaftaran</p>
             <p className="">Event</p>
             <select
@@ -311,9 +312,11 @@ const PendaftaranEventPage = () => {
             {ticketTypeError && <p className="text-red-500 text-xs mb-4">{ticketTypeError}</p>}
             <p>Catatan</p>
             <input type="text" className="w-full h-14 mb-4 rounded-xl bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" placeholder="Masukkan Catatan" value={notes} onChange={(e) => setNotes(e.target.value)} />
-            <button type="submit" className="bg-[#092040] text-white px-16 py-3 rounded-2xl mt-8 mb-24">
-              Kirim
-            </button>
+            <div className='flex flex-col w-full items-center'>
+              <button type="submit" className="bg-[#092040] text-white px-16 py-3 rounded-2xl mt-8 mb-24">
+                Kirim
+              </button>
+            </div>
           </form>
         </div>
       </section>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
@@ -11,7 +12,7 @@ const EventsPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/events');
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/events`);
         if (response.data && response.data.events && response.data.events.length > 0) {
           const pastEvents = response.data.events.filter((event) => new Date(event.tanggal) > new Date());
           setEvents(pastEvents);

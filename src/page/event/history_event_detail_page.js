@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
+
 import CircleBefore from '../../assets/images/event/history/circle_progress_before.png';
 import CircleDone from '../../assets/images/event/history/circle_progres_done.png';
 import CircleReject from '../../assets/images/event/history/circle_progress_reject.png';
@@ -16,7 +18,7 @@ const HistoryEventDetailPage = () => {
   useEffect(() => {
     if (registrationId) {
       axios
-        .get(`http://127.0.0.1:8000/api/registrations/${registrationId}`)
+        .get(`${process.env.REACT_APP_TBN_API_URL}/registrations/${registrationId}`)
         .then((response) => {
           console.log('API Response:', response.data); // Log response dari API
           setRegistration(response.data);

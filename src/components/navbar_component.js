@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import logoTbn from "../assets/logo_tbn_indonesia.png";
 import { useAuth } from "../context/auth_context";
 
 import { RiAccountCircleLine } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
+
+import logoTbn from '../assets/images/logo/logo_tbn_indonesia.png';
 
 function Navbar({ data }) {
   const [isAboutHovered, setIsAboutHovered] = useState(false);

@@ -6,7 +6,7 @@ import ProtectedRoute from './components/protected_route';
 import LoginPage from './page/login_page/login_page';
 import RegisterPage from './page/register_page/register_page';
 
-import Homepage from './page/home_page';
+import Homepage from './page/homepage/home_page';
 import BlogListPage from './page/blog/blog_list_page';
 import BlogDetailPage from './page/blog/blog_detail_page';
 import ContactUsPage from './page/contact/contact_us_page';

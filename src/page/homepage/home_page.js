@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import bannerHomepage from '../assets/banner-homepage.png';
-import missionBanner from '../assets/mission_tbn.png';
-import ourPartner from '../assets/our_partner.png';
-import tbnWorldwide from '../assets/peta_tbn.png';
-import NavbarComponent from '../components/navbar_component';
-import FooterComponent from '../components/footer_component';
 import axios from 'axios';
 
-var token = localStorage.getItem('token');
-console.log(token);
+import NavbarComponent from '../../components/navbar_component';
+import FooterComponent from '../../components/footer_component';
+
+import bannerHomepage from '../../assets/images/home/banner-homepage.png';
+import missionBanner from '../../assets/images/home/mission_tbn.png';
+import ourPartner from '../../assets/images/home/our_partner.png';
+import tbnWorldwide from '../../assets/images/home/peta_tbn.png';
 
 function HomePage() {
   const [homeContents, setHomeContents] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${window.env.TBN_API_URL}/posts`)
+      .get(`${process.env.REACT_APP_TBN_API_URL}/posts`)
       .then((response) => {
         setHomeContents(response.data);
       })
@@ -32,7 +31,6 @@ function HomePage() {
     }
     return null;
   };
-  
 
   const getYoutubeEmbedUrl = (url) => {
     const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
@@ -117,7 +115,7 @@ function HomePage() {
           <p className="lg:text-4xl text-2xl lg:mb-12 font-medium">MISSION</p>
           <div className="flex lg:flex-row flex-col lg:px-32 px-8 lg:pb-32 justify-center items-center gap-8">
             <p className="text-justify font-light lg:w-2/5 w-full lg:leading-loose">
-              The TBN Alliance nurtures purpose-driven businesses to thrive, aiming to reduce poverty and promote environmental sustainability. We foster a global movement for social good, empowering entrepreneurs, and directly benefiting
+              The TBN Indonesia nurtures purpose-driven businesses to thrive, aiming to reduce poverty and promote environmental sustainability. We foster a global movement for social good, empowering entrepreneurs, and directly benefiting
               families and communities. Our ambitious aim is to ignite an impact movement, uniting people worldwide to leverage business for social transformation, particularly supporting SMEs in emerging markets.
             </p>
             <img src={missionBanner} alt="" className="lg:w-2/5 w-4/5 " />
@@ -134,7 +132,7 @@ function HomePage() {
           <img src={tbnWorldwide} alt="" className="" />
         </div>
       </section>
-      
+
       {/* Section 3 -  Footer*/}
       <FooterComponent />
     </div>
