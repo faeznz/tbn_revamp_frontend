@@ -117,7 +117,7 @@ const RegisterPage = () => {
 
     try {
       // Make a POST request to your backend server
-      await axios.post('http://127.0.0.1:8000/api/register', dataRegister);
+      await axios.post(`${window.env.TBN_API_URL}/register`, dataRegister);
 
       setSuccessMessage('Pendaftaran berhasil. Silakan login.');
       setShowSuccess(true);
@@ -153,7 +153,7 @@ const RegisterPage = () => {
 
       try {
         // Make a POST request to your backend server
-        const response = await axios.post('http://127.0.0.1:8000/api/google-auth', dataRegister);
+        const response = await axios.post(`${window.env.TBN_API_URL}/google-auth`, dataRegister);
 
         if (response.data && response.data.user) {
           const token = response.data.token;
@@ -225,7 +225,7 @@ const RegisterPage = () => {
         <section className="w-full h-full flex flex-row">
           <div className="flex lg:flex-row flex-col items-center justify-center lg:mx-10 lg:my-7 lg:px-24 lg:py-25 w-screen">
             <img src={ImgLogin} alt="" className="h-full lg:block hidden" />
-            <div className="bg-white h-full lg:w-2/5 w-full flex flex-col justify-start items-center lg:px-12 lg:rounded-r-xl">
+            <div className="bg-white h-full lg:w-2/5 w-full flex flex-col lg:justify-center justify-start items-center lg:px-12 lg:rounded-r-xl">
               <div className="flex flex-col items-center">
                 <div className="flex justify-center">
                   <p className="text-2xl mb-8 lg:mt-0 mt-12">Create an Account!</p>

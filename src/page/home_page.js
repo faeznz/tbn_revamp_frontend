@@ -15,7 +15,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get('http://127.0.0.1:8000/api/posts')
+      .get(`${window.env.TBN_API_URL}/posts`)
       .then((response) => {
         setHomeContents(response.data);
       })
