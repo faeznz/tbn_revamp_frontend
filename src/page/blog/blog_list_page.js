@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
+
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
-import { NavLink } from 'react-router-dom';
 
 
 const BlogListPage = () => {
@@ -12,13 +13,13 @@ const BlogListPage = () => {
   useEffect(() => {    
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`${window.env.TBN_API_URL}/blogs`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/blogs`);
         const postsData = response.data;
 
         // Fetch comments count for each post
         const postsWithCommentsCount = await Promise.all(
           postsData.map(async (post) => {
-            const commentsResponse = await axios.get(`${window.env.TBN_API_URL}/blogs/${post.id}/comments`);
+            const commentsResponse = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/blogs/${post.id}/comments`);
             return { ...post, commentsCount: commentsResponse.data.length };
           })
         );
@@ -38,7 +39,7 @@ const BlogListPage = () => {
       <div className="flex-grow">
         <section>
           <div className="bg-white py-24">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center items-center">
               <div className="mx-auto lg:mx-0">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Blog</h2>
               </div>
@@ -51,7 +52,7 @@ const BlogListPage = () => {
                   {posts.map((post) => (
                     <article key={post.id} className="flex max-w-xl flex-col items-start justify-between">
                       <div>
-                        <img src={`http://127.0.0.1:8000/storage/${post.image_path}`} alt="" className="rounded-xl mb-4" />
+                        <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${post.image_path}`} alt="" className="rounded-xl mb-4" />
                       </div>
                       <div className="flex items-center gap-x-4 text-xs">
                         <time dateTime={new Date(post.created_at).toISOString()} className="text-gray-500">

@@ -1,9 +1,10 @@
 import React from "react";
+
 import NavbarComponent from "../../components/navbar_component";
 import FooterComponent from "../../components/footer_component";
 
-import BannerHistory from "../../assets/banner_partner.png";
-import BannerEcosystem from "../../assets/tbn_ecosystem_partner.png";
+import BannerHistory from "../../assets/images/about/partnership/banner_partner.png";
+import BannerEcosystem from "../../assets/images/about/partnership/tbn_ecosystem_partner.png";
 
 const PartnershipPage = () => {
   return (
@@ -24,12 +25,12 @@ const PartnershipPage = () => {
             Belmont University and the Belmont Innovation Labs
           </p>
           <p className="lg:text-2xl text-lg text-center pt-16">
-            The TBN Alliance is anchored by a strategic partnership between the
+            The TBN Indonesia is anchored by a strategic partnership between the
             TBN Network and Belmont University, with the Belmont Innovation Labs
             as the organization at Belmont stewarding the Alliance.
             <br />
             <br />
-            The Innovation Labs hosts the TBN Alliance Secretariat.
+            The Innovation Labs hosts the TBN Indonesia Secretariat.
           </p>
           <img src={BannerHistory} alt="" className="lg:w-4/5 w-full lg:py-24 py-8" />
         </div>

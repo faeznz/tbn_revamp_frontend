@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import NavbarComponent from '../../components/navbar_component';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/auth_context';
+
+import NavbarComponent from '../../components/navbar_component';
 
 import { auth, googleAuthProvider } from '../../firebase/firebase_config';
 import { signInWithPopup } from 'firebase/auth';
@@ -10,7 +11,7 @@ import { signInWithPopup } from 'firebase/auth';
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from 'react-icons/fa';
 
-import ImgLogin from '../../assets/img_login.png';
+import ImgLogin from '../../assets/images/login-register/img_login.png';
 
 const LoginPage = () => {
   const { login } = useAuth();
@@ -38,9 +39,10 @@ const LoginPage = () => {
       email: email,
       password: password,
     };
-
+    
     try {
-      const response = await axios.post(`${window.env.TBN_API_URL}/login`, dataLogin);
+      console.log(process.env.REACT_APP_TBN_API_URL);
+      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/login`, dataLogin);
 
       const token = response.data.token;
       const nama = response.data.users.name;

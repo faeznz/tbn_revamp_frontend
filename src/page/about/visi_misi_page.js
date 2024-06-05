@@ -1,9 +1,11 @@
 import React from "react";
+
 import NavbarComponent from "../../components/navbar_component";
 import FooterComponent from "../../components/footer_component";
-import BannerVisiMisi from "../../assets/banner_visi_misi.png";
-import BannerValueDna from "../../assets/banner_value_dna.png";
-import BannerWeAre from "../../assets/banner_we_are.png";
+
+import BannerVisiMisi from "../../assets/images/about/visi-misi/banner_visi_misi.png";
+import BannerValueDna from "../../assets/images/about/visi-misi/banner_value_dna.png";
+import BannerWeAre from "../../assets/images/about/visi-misi/banner_we_are.png";
 
 const VisiMisiPage = () => {
   return (
@@ -12,7 +14,7 @@ const VisiMisiPage = () => {
       {/* Section 1 - Header */}
       <section>
         <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-36 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
-          <p className="text-black lg:text-4xl text2xl font-semibold pt-16">
+          <p className="text-black lg:text-4xl text-2xl font-semibold pt-16">
             Our Vision, Mission, and Values
           </p>
         </div>

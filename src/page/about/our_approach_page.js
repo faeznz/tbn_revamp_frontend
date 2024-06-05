@@ -1,8 +1,10 @@
 import React from "react";
+
 import NavbarComponent from "../../components/navbar_component";
 import FooterComponent from "../../components/footer_component";
-import BannerSocialEnterprise from "../../assets/banner_social_enterprise.png";
-import BannerOurUniqueApproach from "../../assets/our_unique_approach.png";
+
+import BannerSocialEnterprise from "../../assets/images/about/our-approach/banner_social_enterprise.png";
+import BannerOurUniqueApproach from "../../assets/images/about/our-approach/our_unique_approach.png";
 
 const OurApproachPage = () => {
   return (

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
+
 import { FaStar } from 'react-icons/fa';
 
 const BlogDetailPage = () => {
@@ -18,7 +20,7 @@ const BlogDetailPage = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`${window.env.TBN_API_URL}/blogs/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/blogs/${id}`);
         setPost(response.data);
       } catch (error) {
         setError('Error fetching the blog post.');
@@ -27,12 +29,12 @@ const BlogDetailPage = () => {
     };
 
     fetchPost();
-    fetchComments(); // Panggil fetchComments di sini untuk mendapatkan komentar saat komponen dimuat
+    fetchComments();
   }, [id]);
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get(`${window.env.TBN_API_URL}/blogs/${id}/comments`);
+      const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/blogs/${id}/comments`);
       setComments(response.data);
     } catch (error) {
       setError('Error fetching comments.');
@@ -49,7 +51,7 @@ const BlogDetailPage = () => {
     }
 
     try {
-      const response = await axios.post(`${window.env.TBN_API_URL}/blogs/${id}/comments`, {
+      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/blogs/${id}/comments`, {
         blog_id: id,
         user_id: userId,
         comment: newComment,

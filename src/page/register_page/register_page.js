@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import NavbarComponent from '../../components/navbar_component';
-import ImgLogin from '../../assets/img_login.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/auth_context';
+
+import NavbarComponent from '../../components/navbar_component';
 
 import { auth, googleAuthProvider } from '../../firebase/firebase_config';
 import { signInWithPopup } from 'firebase/auth';
 
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from 'react-icons/fa';
+
+import ImgLogin from '../../assets/images/login-register/img_login.png';
 
 const RegisterPage = () => {
   const { login } = useAuth();
@@ -117,7 +119,7 @@ const RegisterPage = () => {
 
     try {
       // Make a POST request to your backend server
-      await axios.post(`${window.env.TBN_API_URL}/register`, dataRegister);
+      await axios.post(`${process.env.REACT_APP_TBN_API_URL}/register`, dataRegister);
 
       setSuccessMessage('Pendaftaran berhasil. Silakan login.');
       setShowSuccess(true);
@@ -153,7 +155,7 @@ const RegisterPage = () => {
 
       try {
         // Make a POST request to your backend server
-        const response = await axios.post(`${window.env.TBN_API_URL}/google-auth`, dataRegister);
+        const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/google-auth`, dataRegister);
 
         if (response.data && response.data.user) {
           const token = response.data.token;

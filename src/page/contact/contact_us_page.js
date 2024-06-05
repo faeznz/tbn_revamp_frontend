@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
-import ContentContactUs from '../../assets/konten_contact_us.png';
+
+import ContentContactUs from '../../assets/images/contact-us/konten_contact_us.png';
 
 const ContactUsPage = () => {
   const [name, setName] = useState('');

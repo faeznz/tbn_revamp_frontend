@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import logoTbn from "../assets/logo_tbn_indonesia.png";
 import { useAuth } from "../context/auth_context";
 
 import { RiAccountCircleLine } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
+
+import logoTbn from '../assets/images/logo/logo_tbn_indonesia.png';
 
 function Navbar({ data }) {
   const [isAboutHovered, setIsAboutHovered] = useState(false);
@@ -254,8 +255,8 @@ function Navbar({ data }) {
             {isEventHovered && (
               <div className="flex flex-col gap-2 w-full bg-white text-black font-medium rounded-md shadow-md p-4 my-2">
                 <NavLink to="/event/register-event" onClick={() => setIsBurgerOpen(false)}>Register Event</NavLink>
-                <NavLink to="/event/upcoming" className="leading-4" onClick={() => setIsBurgerOpen(false)}>Upcoming Event</NavLink>
-                <NavLink to="/event/pengalaman-peserta" className="leading-4" onClick={() => setIsBurgerOpen(false)}>Pengalaman Peserta</NavLink>
+                <NavLink to="/event/upcoming" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>Upcoming Event</NavLink>
+                <NavLink to="/event/pengalaman-peserta" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>Pengalaman Peserta</NavLink>
                 <NavLink to="/event/history" onClick={() => setIsBurgerOpen(false)}>History</NavLink>
               </div>
             )}

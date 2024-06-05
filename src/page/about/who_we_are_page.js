@@ -1,11 +1,12 @@
 import React from "react";
+
 import NavbarComponent from "../../components/navbar_component";
 import FooterComponent from "../../components/footer_component";
 
-import BannerWhoWeAre from "../../assets/images/about/who_we_are/who_we_are_banner.png";
-import KontenCapacityBuilders from "../../assets/images/about/who_we_are/whoweare_capacity_builders.png";
-import KontenImpactInvestors from "../../assets/images/about/who_we_are/whoweare_impact_investors.png";
-import KontenSocialEnterprises from "../../assets/images/about/who_we_are/whoweare_social_enterprises.png";
+import BannerWhoWeAre from "../../assets/images/about/who-we-are/who_we_are_banner.png";
+import KontenCapacityBuilders from "../../assets/images/about/who-we-are/whoweare_capacity_builders.png";
+import KontenImpactInvestors from "../../assets/images/about/who-we-are/whoweare_impact_investors.png";
+import KontenSocialEnterprises from "../../assets/images/about/who-we-are/whoweare_social_enterprises.png";
 
 const WhoWeArePage = () => {
   return (
@@ -22,14 +23,14 @@ const WhoWeArePage = () => {
         <div className="w-screen flex flex-col items-center">
           <div className="flex lg:flex-row flex-col justify-between items-start lg:w-3/5 lg:px-0 px-12 my-24 lg:gap-24 gap-8">
             <p className="lg:text-2xl text-lg text-justify leading-relaxed">
-              TBN Alliance is a globalnetwork of purpose-driven entrepreneurs,
+              TBN Indonesia is a globalnetwork of purpose-driven entrepreneurs,
               impact investors and capacitybuilders who take an
               enterpriseapproach to alleviatepoverty in low-income and
               underserved communities.
             </p>
             <p className="lg:text-2xl text-lg text-justify leading-relaxed">
               Founded by one of the pioneers of impact investing, Dr. Dato Kim
-              Tan, TBN Alliance was then launched in 2003 through the creation
+              Tan, TBN Indonesia was then launched in 2003 through the creation
               of a strategic partnership with Belmont University and Templeton
               Religion Trust.
             </p>

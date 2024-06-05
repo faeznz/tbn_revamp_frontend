@@ -1,71 +1,79 @@
-# Getting Started with Create React App
+# TBN REVAMP WEBSITE
+- Add your project logo.
+- Write a short introduction to the project.
+- If you are using badges, add them here.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Index
 
-## Available Scripts
+- [TBN REVAMP WEBSITE](#tbn-revamp-website)
+  - [Index](#index)
+  - [About](#about)
+  - [Usage](#usage)
+    - [Installation](#installation)
+    - [Environment](#environment)
+    - [Branches](#branches)
+  - [Dependencies](#dependencies)
+  - [Credit](#credit)
 
-In the project directory, you can run:
+## About
+This website was created to update the TBN Indonesia website, updates ranging from design, backend, and frontend. We made the design using Figma, MySQL database, backend using Laravel, and this Frontend using React JS.  
 
-### `npm start`
+## Usage
+To run this project, you must have the appropriate system requirements. This website is built using React, so you need Node.js to run it.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Installation
+- Clone this GitHub repository, and open it using a text editor.
+- Run the 'npm install' command.
+```
+$ npm install
+```
+- Run the 'npm start' command.
+```
+$ npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Environment
+- Environment for API global.
+```
+REACT_APP_TBN_API_URL=http://example.com
+```
 
-### `npm test`
+### Branches
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ I use an agile continuous integration methodology, so the version is frequently updated and development is really fast.
 
-### `npm run build`
+1. **`main`** is the production branch.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **`dev`** is the development branch.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **`dev2`** is the draft branch.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##  Dependencies
+- axios
+- dotenv
+- firebase
+- firebaseui
+- react
+- react-dom
+- react-dotenv
+- react-google-button
+- react-icons
+- react-scripts
+- web-vitals
 
-### `npm run eject`
+<!-- ##  Gallery
+Pictures of your project. -->
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Credit
+Capstone Project Team <br/>
+Information System<br/>
+Universitas Ahmad Dahlan
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Krisna Harsya Saputra (2100016032)
+- Aditya Yoga Kurniawan (2100016069)
+- Anisa Nurohmah (2100016021)
+- Gemilang Tirto Ismoyo Santoso (2100016062)
+- Zulfan Faizun Najib (2100016096)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# tbn_revamp_frontend
+<!-- ##  License
+Add a license here, or a link to it. -->
