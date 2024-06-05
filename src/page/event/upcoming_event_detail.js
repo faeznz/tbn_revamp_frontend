@@ -42,6 +42,10 @@ const UpcomingEventDetail = () => {
     return <div>Loading...</div>; // Tampilkan loading saat data masih di-fetch
   }
 
+  const today = new Date();
+  const eventDate = new Date(event.tanggal);
+  const isEventExpired = eventDate < today;
+
   return (
     <div>
       <NavbarComponent />
@@ -52,25 +56,32 @@ const UpcomingEventDetail = () => {
         <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 pt-12 items-center">
           <div className="p-8 mt-4 flex flex-col justify-center items-center rounded-2xl">
             <p className="text-white text-center font-bold xl:text-5xl md:text-3xl text-md xl:mb-6 mb-2">{event.judul}</p>
-            <p className="text-white xl:font-semibold xl:text-2xl md:text-xl text-sm xl:mb-6">{new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            <p className="text-white xl:font-semibold xl:text-2xl md:text-xl text-sm xl:mb-6">{eventDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
             <p className="text-white font-light xl:text-2xl md:text-xl text-xs text-center xl:mb-6 mb-2">{event.lokasi}</p>
             <p className="text-white font-semibold xl:text-xl md:text-xl text-md xl:mb-6">REGISTRATION : Rp {parseInt(event.harga).toLocaleString('id-ID')}</p>
             <div className="w-full max-w-xl">
               <div className="xl:mt-12 mt-6 bg-[#005F94] xl:h-12 md:h-10 h-8 shadow-md rounded-full p-2 flex items-center justify-center w-full gap-2">
                 <div className="text-white rounded-full xl:p-2">
-                  <FaMicrophone className='xl:text-2xl text-xl' />
+                  <FaMicrophone className="xl:text-2xl text-xl" />
                 </div>
                 <div className="text-white rounded-full xl:p-2">
                   <p className="xl:text-2xl text-sm">SPEAKERS : {event.pembicara}</p>
                 </div>
               </div>
               <div className="w-full xl:mt-8 mt-4">
-                <Link to="/event/register-event" className="block w-full">
-                  <button className="bg-[#005F94] xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2">
-                    <MdLocalOffer className='xl:text-2xl text-xl' />
-                    <p className='xl:text-2xl text-sm'>Register Event Here</p>
+                {!isEventExpired ? (
+                  <Link to="/event/register-event" className="block w-full">
+                    <button className="bg-[#005F94] xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2">
+                      <MdLocalOffer className="xl:text-2xl text-xl" />
+                      <p className="xl:text-2xl text-sm">Register Event Here</p>
+                    </button>
+                  </Link>
+                ) : (
+                  <button className="bg-gray-500 xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2" disabled>
+                    <MdLocalOffer className="xl:text-2xl text-xl" />
+                    <p className="xl:text-2xl text-sm">Event Expired</p>
                   </button>
-                </Link>
+                )}
               </div>
             </div>
           </div>
@@ -92,7 +103,7 @@ const UpcomingEventDetail = () => {
       {/* Section 3 - Who We Are */}
       <section>
         <div className="bg-[#F2EEEA] py-24 xl:rounded-t-[100px] rounded-t-[50px]">
-          <div className="mx-auto px-6 xl:px-8">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center items-center">
             <div className="mx-auto xl:mx-0">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">More Event</h2>
             </div>

@@ -28,6 +28,8 @@ const PendaftaranEventPage = () => {
   const [affiliationError, setAffiliationError] = useState('');
   const [ticketTypeError, setTicketTypeError] = useState('');
 
+  const [showConfirmation, setShowConfirmation] = useState(false); // State untuk popup konfirmasi
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -150,9 +152,7 @@ const PendaftaranEventPage = () => {
     validateTicketType(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
+  const handleConfirm = async () => {
     const id = localStorage.getItem('id');
 
     const formData = {
@@ -199,7 +199,22 @@ const PendaftaranEventPage = () => {
       }, 10000);
 
       console.error('Error submitting form:', error);
+    } finally {
+      setShowConfirmation(false);
     }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Validasi sebelum menampilkan konfirmasi
+    if (validateName(name) && validateEmail(email) && validatePhone(phone) && validateAffiliation(affiliation) && validateTicketType(ticketType)) {
+      setShowConfirmation(true);
+    }
+  };
+
+  const handleCancel = () => {
+    setShowConfirmation(false);
   };
 
   const handleCloseError = () => {
@@ -230,6 +245,21 @@ const PendaftaranEventPage = () => {
             <button className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900" onClick={handleCloseSuccess}>
               Close
             </button>
+          </div>
+        </div>
+      )}
+      {showConfirmation && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg relative">
+            <p className="text-black font-semibold mb-4">Apakah Anda yakin ingin mendaftar acara?</p>
+            <div className="flex justify-end">
+              <button className="bg-[#EB5757] text-white px-4 py-2 rounded-xl mr-4" onClick={handleCancel}>
+                Batal
+              </button>
+              <button className="bg-[#34D399] text-white px-4 py-2 rounded-xl" onClick={handleConfirm}>
+                Ya
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -312,7 +342,7 @@ const PendaftaranEventPage = () => {
             {ticketTypeError && <p className="text-red-500 text-xs mb-4">{ticketTypeError}</p>}
             <p>Catatan</p>
             <input type="text" className="w-full h-14 mb-4 rounded-xl bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" placeholder="Masukkan Catatan" value={notes} onChange={(e) => setNotes(e.target.value)} />
-            <div className='flex flex-col w-full items-center'>
+            <div className="flex flex-col w-full items-center">
               <button type="submit" className="bg-[#092040] text-white px-16 py-3 rounded-2xl mt-8 mb-24">
                 Kirim
               </button>

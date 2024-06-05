@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/auth_context';
 import ProtectedRoute from './components/protected_route';
+import ScrollToTop from './components/ScrollToTop';
 
 import LoginPage from './page/login_page/login_page';
 import RegisterPage from './page/register_page/register_page';
@@ -32,6 +33,7 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           {/* Main Route */}
           <Route path="/" element={<Homepage />} />
