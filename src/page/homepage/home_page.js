@@ -6,18 +6,28 @@ import FooterComponent from '../../components/footer_component';
 
 import bannerHomepage from '../../assets/images/home/banner-homepage.png';
 import missionBanner from '../../assets/images/home/mission_tbn.png';
-import ourPartner from '../../assets/images/home/our_partner.png';
 import tbnWorldwide from '../../assets/images/home/peta_tbn.png';
-import logoTbn from '../../assets/images/logo/sample.png'
 
 function HomePage() {
   const [homeContents, setHomeContents] = useState([]);
+  const [partners, setPartners] = useState([]);
 
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_TBN_API_URL}/posts`)
       .then((response) => {
         setHomeContents(response.data);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error('There was an error fetching the data!', error);
+      });
+
+    axios
+      .get(`${process.env.REACT_APP_TBN_API_URL}/partners`)
+      .then((response) => {
+        setPartners(response.data);
+        console.log(response);
       })
       .catch((error) => {
         console.error('There was an error fetching the data!', error);
@@ -27,7 +37,7 @@ function HomePage() {
   const renderSectionContent = (section) => {
     const content = homeContents.find((item) => item.section === section);
     if (content) {
-      const postData = content.post_data; // Update: directly use post_data without parsing
+      const postData = content.post_data;
       return postData;
     }
     return null;
@@ -43,8 +53,8 @@ function HomePage() {
     return description.replace(/rnrn/g, '<br />');
   };
 
-  const aboutUsContent = renderSectionContent('About us');
-  const whoWeAreContent = renderSectionContent('WHO WE ARE');
+  const aboutUsContent = renderSectionContent('About Us');
+  const whoWeAreContent = renderSectionContent('Who We Are');
 
   return (
     <div>
@@ -81,7 +91,7 @@ function HomePage() {
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    className='absolute lg:top-32 top-0 bottom-0 right-0 left-0 w-full lg:h-2/3 h-full'
+                    className="absolute lg:top-32 top-0 bottom-0 right-0 left-0 w-full lg:h-2/3 h-full"
                   ></iframe>
                 </div>
               )}
@@ -125,54 +135,14 @@ function HomePage() {
 
       {/* Section 5 - Our Partner */}
       <section className="flex flex-col mt-12 justify-center items-center ">
-        <div className='bg-[#EEEEEE] w-full flex flex-col justify-center items-center'>
+        <div className="bg-[#EEEEEE] w-full flex flex-col justify-center items-center">
           <p className="lg:text-3xl text-2xl my-24">Our Partner</p>
-          <div className='w-full grid grid-cols-6 items-center gap-4 px-12 pb-24'>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
-            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
-              <img src={logoTbn} alt="" className=''/>
-            </div>
+          <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 items-center gap-4 px-12 pb-24">
+            {partners.map((partner) => (
+              <div key={partner.id} className="h-32 bg-white rounded-xl flex justify-center items-center p-4">
+                <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${partner.image}`} alt={partner.name} className="h-full object-contain" />
+              </div>
+            ))}
           </div>
         </div>
         <div className="flex flex-col lg:px-24 px-8 pb-32 justify-between items-center">

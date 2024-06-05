@@ -60,22 +60,22 @@ const HistoryEventDetailPage = () => {
               {/* Layout For status */}
               <div className="flex flex-col justify-center items-center">
                 <img src={CircleDone} alt="Done" className="xl:w-12 xl:h-12 md:w-10 md:h-10 w-6 h-6" />
-                <p className='xl:text-xl md:text-md text-xs'>Registration</p>
+                <p className="xl:text-xl md:text-md text-xs">Registration</p>
               </div>
               <div className="xl:h-1 h-0.5 rounded-full w-full bg-[#3167D2] xl:mb-6 mb-4"></div>
               <div className="flex flex-col justify-center items-center">
                 <img src={isRejected ? CircleReject : CircleDone} alt={isRejected ? 'Reject' : 'Done'} className="xl:w-12 xl:h-12 md:w-10 md:h-10 w-6 h-6" />
-                <p className='xl:text-xl md:text-md text-xs'>Review</p>
+                <p className="xl:text-xl md:text-md text-xs">Review</p>
               </div>
               <div className={`xl:h-1 h-0.5 w-full ${isAccepted ? 'bg-[#3167D2]' : 'bg-[#999999]'} xl:mb-6 mb-4`}></div>
               <div className="flex flex-col justify-center items-center">
                 <img src={isAccepted ? CircleDone : CircleBefore} alt={isAccepted ? 'Done' : 'Before'} className="xl:w-12 xl:h-12 md:w-10 md:h-10 w-6 h-6" />
-                <p className='xl:text-xl md:text-md text-xs'>Accepted</p>
+                <p className="xl:text-xl md:text-md text-xs">Accepted</p>
               </div>
               <div className={`xl:h-1 h-0.5 w-full ${isPresence ? 'bg-[#3167D2]' : 'bg-[#999999]'} xl:mb-6 mb-4`}></div>
               <div className="flex flex-col justify-center items-center">
                 <img src={isPresence ? CircleDone : CircleBefore} alt={isPresence ? 'Done' : 'Before'} className="xl:w-12 xl:h-12 md:w-10 md:h-10 w-6 h-6" />
-                <p className='xl:text-xl md:text-md text-xs'>Presence</p>
+                <p className="xl:text-xl md:text-md text-xs">Presence</p>
               </div>
             </div>
             <div className="flex flex-col justify-center xl:px-24 xl:mt-12 text-md pb-12">
@@ -104,7 +104,7 @@ const HistoryEventDetailPage = () => {
               </table>
               {/* Layout Data Pendaftar For Mobile */}
               <table className="my-12 xl:hidden">
-                <tbody className='text-xs md:text-xl'>
+                <tbody className="text-xs md:text-xl">
                   <tr>
                     <td className="pr-4 pb-4">Registration ID</td>
                     <td className="pb-4">: {registration.data.id}</td>
@@ -132,7 +132,11 @@ const HistoryEventDetailPage = () => {
                 </tbody>
               </table>
               <div className="bg-[#092040] xl:h-16 md:h-12 h-10 w-full rounded-xl flex justify-center items-center">
-                {isRejected && <p className="text-white xl:text-2xl md:text-lg text-sm font-bold">Your registration has been rejected</p>}
+                {isRejected && (
+                  <div className="bg-[#C0001C] xl:h-16 md:h-12 h-10 w-full rounded-xl flex justify-center items-center">
+                    <p className="text-white xl:text-2xl md:text-lg text-sm font-bold">Your registration has been rejected</p>
+                  </div>
+                )}
                 {isAccepted && !isPresence && <p className="text-white xl:text-2xl md:text-lg text-sm font-bold">Your registration is accepted</p>}
                 {isPresence && (
                   <button onClick={handleExperienceClick} className="bg-[#092040] text-white xl:text-2xl md:text-lg text-sm font-bold py-2 px-4 rounded-xl">
