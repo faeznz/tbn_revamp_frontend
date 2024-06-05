@@ -46,41 +46,41 @@ const HistoryEventDetailPage = () => {
 
   const handleExperienceClick = () => {
     // Navigasi ke halaman pengalaman
-    navigate(`/event/pengalaman-peserta/create/${registrationId}`); // Ganti dengan route yang sesuai
+    navigate(`/event/pengalaman-peserta/create/${registrationId}`);
   };
 
   return (
     <div>
       <NavbarComponent />
       <section>
-        <div className="flex flex-col items-center w-full min-h-screen pt-16 bg-[#F2EEEA] pb-24">
-          <div className="bg-white p-12 rounded-xl w-4/5 my-24">
+        <div className="flex flex-col items-center w-full min-h-screen xl:pt-16 bg-[#F2EEEA] xl:pb-24">
+          <div className="bg-white xl:p-12 px-6 rounded-xl xl:w-4/5 w-5/6 xl:my-24 mt-28">
             <p className="my-12 text-xl font-semibold text-center">Latest Activity</p>
-            <div className="flex flex-row items-center justify-center mx-32">
-              {/* Rendering status */}
+            <div className="flex flex-row items-center justify-center xl:mx-12 md:mx-12">
+              {/* Layout For status */}
               <div className="flex flex-col justify-center items-center">
-                <img src={CircleDone} alt="Done" className="w-12 h-12" />
-                <p>Registration</p>
+                <img src={CircleDone} alt="Done" className="xl:w-12 xl:h-12 md:w-10 md:h-10 w-6 h-6" />
+                <p className='xl:text-xl md:text-md text-xs'>Registration</p>
               </div>
-              <div className="h-1 w-full bg-[#3167D2] mb-6"></div>
+              <div className="xl:h-1 h-0.5 rounded-full w-full bg-[#3167D2] xl:mb-6 mb-4"></div>
               <div className="flex flex-col justify-center items-center">
-                <img src={isRejected ? CircleReject : CircleDone} alt={isRejected ? 'Reject' : 'Done'} className="w-12 h-12" />
-                <p>Review</p>
+                <img src={isRejected ? CircleReject : CircleDone} alt={isRejected ? 'Reject' : 'Done'} className="xl:w-12 xl:h-12 md:w-10 md:h-10 w-6 h-6" />
+                <p className='xl:text-xl md:text-md text-xs'>Review</p>
               </div>
-              <div className={`h-1 w-full ${isAccepted ? 'bg-[#3167D2]' : 'bg-[#999999]'} mb-6`}></div>
+              <div className={`xl:h-1 h-0.5 w-full ${isAccepted ? 'bg-[#3167D2]' : 'bg-[#999999]'} xl:mb-6 mb-4`}></div>
               <div className="flex flex-col justify-center items-center">
-                <img src={isAccepted ? CircleDone : CircleBefore} alt={isAccepted ? 'Done' : 'Before'} className="w-12 h-12" />
-                <p>Accepted</p>
+                <img src={isAccepted ? CircleDone : CircleBefore} alt={isAccepted ? 'Done' : 'Before'} className="xl:w-12 xl:h-12 md:w-10 md:h-10 w-6 h-6" />
+                <p className='xl:text-xl md:text-md text-xs'>Accepted</p>
               </div>
-              <div className={`h-1 w-full ${isPresence ? 'bg-[#3167D2]' : 'bg-[#999999]'} mb-6`}></div>
+              <div className={`xl:h-1 h-0.5 w-full ${isPresence ? 'bg-[#3167D2]' : 'bg-[#999999]'} xl:mb-6 mb-4`}></div>
               <div className="flex flex-col justify-center items-center">
-                <img src={isPresence ? CircleDone : CircleBefore} alt={isPresence ? 'Done' : 'Before'} className="w-12 h-12" />
-                <p>Presence</p>
+                <img src={isPresence ? CircleDone : CircleBefore} alt={isPresence ? 'Done' : 'Before'} className="xl:w-12 xl:h-12 md:w-10 md:h-10 w-6 h-6" />
+                <p className='xl:text-xl md:text-md text-xs'>Presence</p>
               </div>
             </div>
-            <div className="flex flex-col justify-center px-24 mt-12">
-              {/* Rendering data pendaftaran */}
-              <table className="my-12">
+            <div className="flex flex-col justify-center xl:px-24 xl:mt-12 text-md pb-12">
+              {/* Layout Data Pendaftar For Dekstop */}
+              <table className="my-12 xl:table hidden">
                 <tbody>
                   <tr>
                     <td className="pr-16 pb-4">Registration ID</td>
@@ -102,15 +102,44 @@ const HistoryEventDetailPage = () => {
                   </tr>
                 </tbody>
               </table>
-              <div className="bg-[#092040] h-16 w-full rounded-xl flex justify-center items-center">
-                {isRejected && <p className="text-white text-2xl font-bold">Your registration has been rejected</p>}
-                {isAccepted && !isPresence && <p className="text-white text-2xl font-bold">Your registration is accepted</p>}
+              {/* Layout Data Pendaftar For Mobile */}
+              <table className="my-12 xl:hidden">
+                <tbody className='text-xs md:text-xl'>
+                  <tr>
+                    <td className="pr-4 pb-4">Registration ID</td>
+                    <td className="pb-4">: {registration.data.id}</td>
+                  </tr>
+                  <tr>
+                    <td className="pb-4">Participant Name</td>
+                    <td className="pb-4">: {registration.data.name}</td>
+                  </tr>
+                  <tr>
+                    <td className="pb-4">Phone Number</td>
+                    <td className="pb-4">: {registration.data.phone}</td>
+                  </tr>
+                  <tr>
+                    <td className="pr-16 pb-4">Email</td>
+                    <td className="pb-4">: {registration.data.email}</td>
+                  </tr>
+                  <tr>
+                    <td className="pb-4">Affiliation</td>
+                    <td className="pb-4">: {registration.data.affiliation}</td>
+                  </tr>
+                  <tr>
+                    <td>Ticket Type</td>
+                    <td>: {registration.data.ticket_type}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="bg-[#092040] xl:h-16 md:h-12 h-10 w-full rounded-xl flex justify-center items-center">
+                {isRejected && <p className="text-white xl:text-2xl md:text-lg text-sm font-bold">Your registration has been rejected</p>}
+                {isAccepted && !isPresence && <p className="text-white xl:text-2xl md:text-lg text-sm font-bold">Your registration is accepted</p>}
                 {isPresence && (
-                  <button onClick={handleExperienceClick} className="bg-[#092040] text-white text-2xl font-bold py-2 px-4 rounded-lg">
+                  <button onClick={handleExperienceClick} className="bg-[#092040] text-white xl:text-2xl md:text-lg text-sm font-bold py-2 px-4 rounded-xl">
                     Share your experience here!
                   </button>
                 )}
-                {isPending && <p className="text-white text-2xl font-bold">Your registration is being processed</p>}
+                {isPending && <p className="text-white xl:text-2xl md:text-lg px-4 text-xs font-bold">Your registration is being processed</p>}
               </div>
             </div>
           </div>

@@ -52,7 +52,7 @@ const EventsPage = () => {
               ) : (
                 events.map((event) => (
                   <article key={event.id} className="bg-gray-100 rounded-lg overflow-hidden shadow-md">
-                    <img src={`http://127.0.0.1:8000/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full object-cover" style={{ height: 'auto', aspectRatio: `${event.aspect_ratio}` }} />
+                    <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full object-cover" style={{ height: 'auto', aspectRatio: `${event.aspect_ratio}` }} />
                     <div className="px-6 py-4">
                       <div className="font-bold text-xl mb-2 text-gray-800">{event.judul}</div>
                       {/* <p className="text-gray-600 text-sm mb-4">{event.deskripsi}</p> */}

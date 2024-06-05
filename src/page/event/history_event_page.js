@@ -54,7 +54,7 @@ const HistoryEventPage = () => {
         <section className="flex flex-col items-center w-screen min-h-screen pt-16 bg-[#F2EEEA] pb-24">
           <p className="my-12 text-2xl font-semibold">Riwayat Pendaftaran</p>
           <article className="bg-gray-100 rounded-lg overflow-hidden shadow-md p-10 text-center col-span-full">
-            <div className="font-semibold text-xl mb-2 text-gray-800">Anda tidak mendaftar acara apapun</div>
+            <div className="font-semibold lg:text-xl text-gray-800">Anda tidak mendaftar acara apapun</div>
           </article>
         </section>
         <FooterComponent />
@@ -66,10 +66,10 @@ const HistoryEventPage = () => {
     <div>
       <NavbarComponent />
       {/* Section 1 - Main */}
-      <section className="flex flex-col items-center w-full min-h-screen pt-16 bg-[#F2EEEA] pb-24">
+      <section className="flex flex-col items-center justify-center w-full min-h-screen pt-16 bg-[#F2EEEA] pb-24">
         <p className="my-12 text-2xl font-semibold">Riwayat Pendaftaran</p>
-        <div className="bg-white p-12 rounded-xl">
-          <table>
+        <div className="bg-white lg:w-fit w-5/6 lg:p-12 py-8 rounded-xl">
+          <table className='lg:block hidden'>
             <thead>
               <tr>
                 <td className="px-12 text-center font-semibold pb-8">Status</td>
@@ -94,13 +94,42 @@ const HistoryEventPage = () => {
                   <td className="px-12 text-center pb-4">
                     <button className="w-32 h-10 bg-[#092040] text-white rounded-xl" onClick={() => handleView(registration.id)}>
                       View
-                    </button>{' '}
-                    {/* Disini button untuk menampilkan history_event_detail_page. Saya mau yang ditampilkan detailnya sesuai baris riwayat pendaftaran yg dipilih. */}
+                    </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          <div className='lg:hidden'>
+            {userRegistrations.map((registration) => (
+              <div key={registration.id} className='flex flex-col items-center justify-center'>
+                <div className="pb-4 flex flex-col justify-center items-center">
+                  {/* Tampilkan informasi pendaftaran */}
+                  <p className='font-bold'>
+                    {registration.event.judul} <br />
+                  </p>
+                  <p>
+                    {formatDateTime(registration.created_at)}
+                  </p>
+                </div>
+                <div className='flex flex-row w-full justify-around items-end'>
+                  <div className="text-center pb-4">
+                    <p>Status :</p>
+                    {/* Tampilkan status pendaftaran berdasarkan status yang diterima */}
+                    {registration.status === 'Pending' && <Review />}
+                    {registration.status === 'Accepted' && <Accepted />}
+                    {registration.status === 'Rejected' && <Rejected />}
+                  </div>
+                  <div className="text-center pb-4">
+                    <button className="w-32 h-10 bg-[#092040] text-white rounded-xl" onClick={() => handleView(registration.id)}>
+                      View
+                    </button>
+                  </div>
+                </div>
+                <div className='w-5/6 h-0.5 bg-black/40 rounded-full'></div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
       <div className="bg-[#F2EEEA]">

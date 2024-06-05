@@ -64,10 +64,10 @@ const PengalamanPesertaPage = () => {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Pengalaman Peserta</h2>
             <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center">
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
               {events.map((event) => (
                 <article key={event.id} className="bg-gray-100 rounded-lg overflow-hidden shadow-md">
-                  <img src={`http://127.0.0.1:8000/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full object-cover" style={{ height: 'auto', aspectRatio: `${event.aspect_ratio}` }} />
+                  <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full object-cover" style={{ height: 'auto', aspectRatio: `${event.aspect_ratio}` }} />
                   <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2 text-gray-800">{event.judul}</div>
                     <p className="text-gray-800 font-medium mb-2">Pembicara: {event.pembicara}</p>

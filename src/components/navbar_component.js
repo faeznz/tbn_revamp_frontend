@@ -255,8 +255,8 @@ function Navbar({ data }) {
             {isEventHovered && (
               <div className="flex flex-col gap-2 w-full bg-white text-black font-medium rounded-md shadow-md p-4 my-2">
                 <NavLink to="/event/register-event" onClick={() => setIsBurgerOpen(false)}>Register Event</NavLink>
-                <NavLink to="/event/upcoming" className="leading-4" onClick={() => setIsBurgerOpen(false)}>Upcoming Event</NavLink>
-                <NavLink to="/event/pengalaman-peserta" className="leading-4" onClick={() => setIsBurgerOpen(false)}>Pengalaman Peserta</NavLink>
+                <NavLink to="/event/upcoming" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>Upcoming Event</NavLink>
+                <NavLink to="/event/pengalaman-peserta" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>Pengalaman Peserta</NavLink>
                 <NavLink to="/event/history" onClick={() => setIsBurgerOpen(false)}>History</NavLink>
               </div>
             )}

@@ -51,15 +51,15 @@ function HomePage() {
       {/* Section 1 - Main */}
       <section className="w-full h-full">
         {/* Image for main banner */}
-        <div className="absolute aspect-4/3 lg:aspect-21/9 w-full lg:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12"></div>
-        <img src={bannerHomepage} alt="" className="w-full aspect-4/3 lg:aspect-21/9 bg-center bg-cover top-0 pt-12" />
-        <div className="w-full lg:h-5/6 sm:h-1/5 top-0 absolute flex flex-row lg:justify-start justify-center lg:p-24 pt-12 items-center">
+        <div className="absolute aspect-4/3 md:aspect-video lg:aspect-21/9 w-full lg:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12 flex flex-col items-center justify-center"></div>
+        <img src={bannerHomepage} alt="" className="w-full aspect-4/3 md:aspect-video object-cover lg:aspect-21/9 bg-center bg-cover top-0 pt-12" />
+        <div className="absolute aspect-4/3 md:aspect-video lg:aspect-21/9 w-full top-0 flex flex-row justify-center lg:p-24 items-center">
           <div className="w-1 h-3/5 lg:bg-[#FFB400] sm:bg-transparent"></div>
           <div className="lg:w-3/5 sm:w-full lg:p-8 pt-20 flex flex-col justify-center lg:items-start items-center rounded-2xl">
-            <p className="text-white font-bold lg:text-5xl text-md lg:mb-12 sm:mb-4 lg:text-left text-center">
+            <p className="text-white font-bold lg:text-5xl md:text-4xl text-md lg:mb-12 sm:mb-4 lg:text-left text-center">
               Transformational <br /> Business Network (TBN) Indonesia
             </p>
-            <p className="text-white font-light lg:text-3xl text-sm lg:text-left text-center">
+            <p className="text-white font-light lg:text-3xl md:text-xl text-sm lg:text-left text-center">
               Fighting Poverty in Frontier Markets <br /> Across the Globe.
             </p>
           </div>
@@ -67,21 +67,20 @@ function HomePage() {
       </section>
 
       {/* Section 2 - About Us */}
-      <section className="flex flex-col mt-12 justify-center items-center">
+      <section className="flex flex-col lg:mt-12 md:mt-12 justify-center items-center">
         <p className="lg:text-4xl text-2xl mb-12 font-medium">ABOUT US</p>
-        <div className="flex lg:flex-row flex-col lg:px-24 px-8 lg:pb-32 pb-12 justify-between items-center">
+        <div className="flex lg:flex-row flex-col justify-center items-center lg:px-24 px-8 lg:pb-32 pb-12">
           {aboutUsContent && (
             <>
               {aboutUsContent.content_type === 'video' && (
-                <div className="w-full lg:w-1/2 h-64 lg:h-auto">
+                <div className="w-full h-full relative pt-[56.25%] overflow-hidden flex flex-col justify-center items-center">
                   <iframe
-                    width="100%"
-                    height="320"
                     src={getYoutubeEmbedUrl(aboutUsContent.content)}
                     title={aboutUsContent.title}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
+                    className='absolute lg:top-32 top-0 bottom-0 right-0 left-0 w-full lg:h-2/3 h-full'
                   ></iframe>
                 </div>
               )}
@@ -99,7 +98,7 @@ function HomePage() {
         <div className="flex lg:flex-row flex-col items-center justify-center lg:px-24 px-8 lg:py-0 py-12 lg:h-screen">
           {whoWeAreContent && (
             <>
-              {whoWeAreContent.content_type === 'image' && <img src={`http://127.0.0.1:8000/storage/${whoWeAreContent.content}`} alt={whoWeAreContent.title} className="lg:h-3/5 aspect-square" />}
+              {whoWeAreContent.content_type === 'image' && <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${whoWeAreContent.content}`} alt={whoWeAreContent.title} className="lg:h-3/5 aspect-square" />}
               <div className="bg-[#EDEDED] lg:h-3/5 flex flex-col justify-center items-center px-12 lg:py-0 py-8">
                 <p className="lg:text-4xl text-2xl mb-8 font-medium">{whoWeAreContent.title}</p>
                 <div className="font-light text-justify" dangerouslySetInnerHTML={{ __html: cleanDescription(whoWeAreContent.description) }}></div>
@@ -112,7 +111,7 @@ function HomePage() {
       {/* Section 4 - Mission */}
       <section className="flex flex-col justify-center items-center bg-[#F6CF55]">
         <div className="flex flex-col lg:pt-24 pt-12 justify-center items-center bg-white lg:rounded-t-[100px] rounded-t-[50px]">
-          <p className="lg:text-4xl text-2xl lg:mb-12 font-medium">MISSION</p>
+          <p className="lg:text-4xl text-2xl lg:mb-12 md:mb-12 font-medium">MISSION</p>
           <div className="flex lg:flex-row flex-col lg:px-32 px-8 lg:pb-32 justify-center items-center gap-8">
             <p className="text-justify font-light lg:w-2/5 w-full lg:leading-loose">
               The TBN Indonesia nurtures purpose-driven businesses to thrive, aiming to reduce poverty and promote environmental sustainability. We foster a global movement for social good, empowering entrepreneurs, and directly benefiting

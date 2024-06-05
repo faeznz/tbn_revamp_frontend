@@ -39,7 +39,7 @@ const BlogListPage = () => {
       <div className="flex-grow">
         <section>
           <div className="bg-white py-24">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center items-center">
               <div className="mx-auto lg:mx-0">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Blog</h2>
               </div>
@@ -52,7 +52,7 @@ const BlogListPage = () => {
                   {posts.map((post) => (
                     <article key={post.id} className="flex max-w-xl flex-col items-start justify-between">
                       <div>
-                        <img src={`http://127.0.0.1:8000/storage/${post.image_path}`} alt="" className="rounded-xl mb-4" />
+                        <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${post.image_path}`} alt="" className="rounded-xl mb-4" />
                       </div>
                       <div className="flex items-center gap-x-4 text-xs">
                         <time dateTime={new Date(post.created_at).toISOString()} className="text-gray-500">
