@@ -35,7 +35,7 @@ const PendaftaranEventPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/events`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/events`);
         if (response.data && response.data.events && response.data.events.length > 0) {
           const pastEvents = response.data.events.filter((event) => new Date(event.tanggal) > new Date());
           setEvents(pastEvents);
@@ -167,7 +167,7 @@ const PendaftaranEventPage = () => {
     };
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/registrations`, formData);
+      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/registrations`, formData);
 
       setSuccessMessage('Pendaftaran berhasil.');
       setShowSuccess(true);

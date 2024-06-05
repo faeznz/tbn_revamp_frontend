@@ -12,7 +12,7 @@ const PengalamanPesertaPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/events`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/events`);
         if (response.data && response.data.events && response.data.events.length > 0) {
           const pastEvents = response.data.events.filter((event) => new Date(event.tanggal) < new Date());
           setEvents(pastEvents);
@@ -67,7 +67,7 @@ const PengalamanPesertaPage = () => {
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
               {events.map((event) => (
                 <article key={event.id} className="bg-gray-100 rounded-lg overflow-hidden shadow-md">
-                  <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full object-cover" style={{ height: 'auto', aspectRatio: `${event.aspect_ratio}` }} />
+                  <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full object-cover" style={{ height: 'auto', aspectRatio: `${event.aspect_ratio}` }} />
                   <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2 text-gray-800">{event.judul}</div>
                     <p className="text-gray-800 font-medium mb-2">Pembicara: {event.pembicara}</p>

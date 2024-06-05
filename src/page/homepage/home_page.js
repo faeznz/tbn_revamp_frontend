@@ -14,7 +14,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_TBN_API_URL}/posts`)
+      .get(`${process.env.REACT_APP_TBN_API_URL}/api/posts`)
       .then((response) => {
         setHomeContents(response.data);
         console.log(response);
@@ -24,7 +24,7 @@ function HomePage() {
       });
 
     axios
-      .get(`${process.env.REACT_APP_TBN_API_URL}/partners`)
+      .get(`${process.env.REACT_APP_TBN_API_URL}/api/partners`)
       .then((response) => {
         setPartners(response.data);
         console.log(response);
@@ -109,7 +109,7 @@ function HomePage() {
         <div className="flex lg:flex-row flex-col items-center justify-center lg:px-24 px-8 lg:py-0 py-12 lg:h-screen">
           {whoWeAreContent && (
             <>
-              {whoWeAreContent.content_type === 'image' && <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${whoWeAreContent.content}`} alt={whoWeAreContent.title} className="lg:h-3/5 aspect-square" />}
+              {whoWeAreContent.content_type === 'image' && <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${whoWeAreContent.content}`} alt={whoWeAreContent.title} className="lg:h-3/5 aspect-square" />}
               <div className="bg-[#EDEDED] lg:h-3/5 flex flex-col justify-center items-center px-12 lg:py-0 py-8">
                 <p className="lg:text-4xl text-2xl mb-8 font-medium">{whoWeAreContent.title}</p>
                 <div className="font-light text-justify" dangerouslySetInnerHTML={{ __html: cleanDescription(whoWeAreContent.description) }}></div>
@@ -140,7 +140,7 @@ function HomePage() {
           <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 items-center gap-4 px-12 pb-24">
             {partners.map((partner) => (
               <div key={partner.id} className="h-32 bg-white rounded-xl flex justify-center items-center p-4">
-                <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${partner.image}`} alt={partner.name} className="h-full object-contain" />
+                <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${partner.image}`} alt={partner.name} className="h-full object-contain" />
               </div>
             ))}
           </div>

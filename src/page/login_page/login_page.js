@@ -42,7 +42,7 @@ const LoginPage = () => {
 
     try {
       console.log(process.env.REACT_APP_TBN_API_URL);
-      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/login`, dataLogin);
+      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/login`, dataLogin);
 
       const token = response.data.token;
       const nama = response.data.users.name;
@@ -81,7 +81,7 @@ const LoginPage = () => {
 
       try {
         // Make a POST request to your backend server
-        const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/google-auth`, dataRegister);
+        const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/google-auth`, dataRegister);
 
         if (response.data && response.data.user) {
           const token = response.data.token;

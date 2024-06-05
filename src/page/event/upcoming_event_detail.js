@@ -18,7 +18,7 @@ const UpcomingEventDetail = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/events/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/events/${id}`);
         setEvent(response.data.event);
       } catch (error) {
         console.error('Error fetching event data:', error);
@@ -27,7 +27,7 @@ const UpcomingEventDetail = () => {
 
     const fetchAllEvents = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/events`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/events`);
         setEvents(response.data.events);
       } catch (error) {
         console.error('Error fetching all events:', error);
@@ -91,7 +91,7 @@ const UpcomingEventDetail = () => {
       <section className="flex flex-col mt-12 justify-center items-center">
         <p className="text-sm font-medium">- Post Conference Highlights -</p>
         <p className="xl:text-4xl text-2xl mb-12 font-medium text-center">{event.judul}</p>
-        <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${event.poster_path}`} alt="" className="xl:w-1/3 w-4/5 bg-center bg-cover" />
+        <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt="" className="xl:w-1/3 w-4/5 bg-center bg-cover" />
         <div className="xl:mx-24 mx-12 flex flex-col justify-center items-center my-24">
           <p className="text-xl mb-12 font-light underline underline-offset-2">About the Conference</p>
           <div className="flex flex-row xl:mx-12">
@@ -112,7 +112,7 @@ const UpcomingEventDetail = () => {
               {events.map((event) => (
                 <article key={event.id} className="flex max-w-xl flex-col items-start justify-between">
                   <div>
-                    <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${event.poster_path}`} alt={event.judul} className="rounded-xl mb-4" />
+                    <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt={event.judul} className="rounded-xl mb-4" />
                   </div>
                   <div className="flex items-center gap-x-4 text-xs">
                     <time dateTime={new Date(event.tanggal).toISOString()} className="text-gray-500">

@@ -20,7 +20,7 @@ const BlogDetailPage = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/blogs/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/blogs/${id}`);
         setPost(response.data);
       } catch (error) {
         setError('Error fetching the blog post.');
@@ -34,7 +34,7 @@ const BlogDetailPage = () => {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/blogs/${id}/comments`);
+      const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/blogs/${id}/comments`);
       setComments(response.data);
     } catch (error) {
       setError('Error fetching comments.');
@@ -51,7 +51,7 @@ const BlogDetailPage = () => {
     }
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/blogs/${id}/comments`, {
+      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/blogs/${id}/comments`, {
         blog_id: id,
         user_id: userId,
         comment: newComment,

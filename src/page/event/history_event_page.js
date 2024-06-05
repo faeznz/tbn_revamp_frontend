@@ -17,7 +17,7 @@ const HistoryEventPage = () => {
   useEffect(() => {
     // Fetch registration data from backend when component mounts
     axios
-      .get(`${process.env.REACT_APP_TBN_API_URL}/registrations`)
+      .get(`${process.env.REACT_APP_TBN_API_URL}/api/registrations`)
       .then((response) => {
         // Filter registrations by user ID
         const userId = localStorage.getItem('id');

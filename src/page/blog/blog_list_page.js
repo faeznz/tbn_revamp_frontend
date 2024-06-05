@@ -13,13 +13,13 @@ const BlogListPage = () => {
   useEffect(() => {    
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/blogs`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/blogs`);
         const postsData = response.data;
 
         // Fetch comments count for each post
         const postsWithCommentsCount = await Promise.all(
           postsData.map(async (post) => {
-            const commentsResponse = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/blogs/${post.id}/comments`);
+            const commentsResponse = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/blogs/${post.id}/comments`);
             return { ...post, commentsCount: commentsResponse.data.length };
           })
         );
@@ -52,7 +52,7 @@ const BlogListPage = () => {
                   {posts.map((post) => (
                     <article key={post.id} className="flex max-w-xl flex-col items-start justify-between">
                       <div>
-                        <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${post.image_path}`} alt="" className="rounded-xl mb-4" />
+                        <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${post.image_path}`} alt="" className="rounded-xl mb-4" />
                       </div>
                       <div className="flex items-center gap-x-4 text-xs">
                         <time dateTime={new Date(post.created_at).toISOString()} className="text-gray-500">

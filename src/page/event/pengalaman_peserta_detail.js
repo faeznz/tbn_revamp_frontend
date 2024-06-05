@@ -18,10 +18,10 @@ const PengalamanPesertaDetail = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/events/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/events/${id}`);
         setEvent(response.data.event);
 
-        const reviewsResponse = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/reviews`);
+        const reviewsResponse = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/reviews`);
         const reviewsData = reviewsResponse.data.reviews;
 
         const filteredReviews = reviewsData.filter((review) => review.registration.event_id === parseInt(id));
@@ -80,7 +80,7 @@ const PengalamanPesertaDetail = () => {
       <section className="flex flex-col mt-12 justify-center items-center">
         <p className="text-sm font-medium">- Post Conference Highlights -</p>
         <p className="xl:text-4xl text-2xl mb-12 font-medium text-center">{event.judul}</p>
-        <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${event.poster_path}`} alt="" className="xl:w-1/3 w-4/5 bg-center bg-cover" />
+        <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt="" className="xl:w-1/3 w-4/5 bg-center bg-cover" />
         <div className="xl:mx-24 mx-12 flex flex-col justify-center items-center my-24">
           <p className="text-xl mb-12 font-light underline underline-offset-2">About the Conference</p>
           <div className="flex flex-row xl:mx-12">
@@ -119,7 +119,7 @@ const PengalamanPesertaDetail = () => {
                   <p className="mb-2 mr-24">{review.review}</p>
                 </div>
               </div>
-              {review.image_path && <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${review.image_path}`} alt="" className="w-2/5 ml-16" />}
+              {review.image_path && <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${review.image_path}`} alt="" className="w-2/5 ml-16" />}
               <hr className="my-8 border-t-2 border-gray-300" /> {/* Garis pemisah antar ulasan */}
             </div>
           ))}

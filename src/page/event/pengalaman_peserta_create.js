@@ -23,7 +23,7 @@ const PengalamanPesertaCreate = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/registrations/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/registrations/${id}`);
         const eventData = response.data.data.event;
         console.log(response);
         setEventName(eventData.judul);
@@ -54,7 +54,7 @@ const PengalamanPesertaCreate = () => {
     formData.append('image', image);
 
     try {
-      await axios.post(`${process.env.REACT_APP_TBN_API_URL}/reviews/${id}`, formData, {
+      await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/reviews/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
