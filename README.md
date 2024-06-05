@@ -1,71 +1,138 @@
-# Getting Started with Create React App
+# TBN REVAMP WEBSITE
+- Add your project logo.
+- Write a short introduction to the project.
+- If you are using badges, add them here.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Index
 
-## Available Scripts
+- [TBN REVAMP WEBSITE](#tbn-revamp-website)
+  - [Index](#index)
+  - [About](#about)
+  - [Usage](#usage)
+    - [Installation](#installation)
+    - [Commands](#commands)
+  - [Development](#development)
+    - [Pre-Requisites](#pre-requisites)
+    - [Development Environment](#development-environment)
+    - [File Structure](#file-structure)
+    - [Build](#build)
+    - [Deployment](#deployment)
+  - [Community](#community)
+    - [Contribution](#contribution)
+    - [Branches](#branches)
+    - [Guideline](#guideline)
+  - [FAQ](#faq)
+  - [Resources](#resources)
+  - [Gallery](#gallery)
+  - [Credit/Acknowledgment](#creditacknowledgment)
+  - [License](#license)
 
-In the project directory, you can run:
+## About
+This website was created to update the TBN Indonesia website, updates ranging from design, backend, and frontend. We made the design using Figma, MySQL database, backend using Laravel, and this Frontend using React JS.  
 
-### `npm start`
+## Usage
+To run this project, you must have the appropriate system requirements. This website is built using React, so you need Node.js to run it.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Installation
+- Clone this GitHub repository, and open it using a text editor.
+- Run the 'npm install' command.
+```
+$ npm install
+```
+- Run the 'npm start' command.
+```
+$ npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Commands
+- Commands to start the project.
 
-### `npm test`
+## Development
+If you want other people to contribute to this project, this is the section, make sure you always add this.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Pre-Requisites
+List all the pre-requisites the system needs to develop this project.
+- A tool
+- B tool
 
-### `npm run build`
+### Development Environment
+Write about setting up the working environment for your project.
+- How to download the project...
+- How to install dependencies...
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### File Structure
+Add a file structure here with the basic details about files, below is an example.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| No | File Name | Details 
+|----|------------|-------|
+| 1  | index | Entry point
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Build
+Write the build Instruction here.
 
 ### Deployment
+Write the deployment instruction here.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Community
 
-### `npm run build` fails to minify
+If it's open-source, talk about the community here, ask social media links and other links.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# tbn_revamp_frontend
+### Contribution
+
+ Your contributions are always welcome and appreciated. Following are the things you can do to contribute to this project.
+
+ 1. **Report a bug** <br>
+ If you think you have encountered a bug, and I should know about it, feel free to report it [here]() and I will take care of it.
+
+ 2. **Request a feature** <br>
+ You can also request for a feature [here](), and if it will viable, it will be picked for development.  
+
+ 3. **Create a pull request** <br>
+ It can't get better then this, your pull request will be appreciated by the community. You can get started by picking up any open issues from [here]() and make a pull request.
+
+ > If you are new to open-source, make sure to check read more about it [here](https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source) and learn more about creating a pull request [here](https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github).
+
+
+### Branches
+
+ I use an agile continuous integration methodology, so the version is frequently updated and development is really fast.
+
+1. **`stage`** is the development branch.
+
+2. **`master`** is the production branch.
+
+3. No other permanent branches should be created in the main repository, you can create feature branches but they should get merged with the master.
+
+**Steps to work with feature branch**
+
+1. To start working on a new feature, create a new branch prefixed with `feat` and followed by feature name. (ie. `feat-FEATURE-NAME`)
+2. Once you are done with your changes, you can raise PR.
+
+**Steps to create a pull request**
+
+1. Make a PR to `stage` branch.
+2. Comply with the best practices and guidelines e.g. where the PR concerns visual elements it should have an image showing the effect.
+3. It must pass all continuous integration checks and get positive reviews.
+
+After this, changes will be merged.
+
+
+### Guideline
+coding guidelines or other things you want people to follow should follow.
+
+
+## FAQ
+You can optionally add a FAQ section about the project.
+
+##  Resources
+Add important resources here
+
+##  Gallery
+Pictures of your project.
+
+## Credit/Acknowledgment
+Credit the authors here.
+
+##  License
+Add a license here, or a link to it.
