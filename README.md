@@ -1,7 +1,5 @@
 # TBN REVAMP WEBSITE
-- Add your project logo.
-- Write a short introduction to the project.
-- If you are using badges, add them here.
+by Maxy Academy x Information System UAD
 
 ## Index
 
