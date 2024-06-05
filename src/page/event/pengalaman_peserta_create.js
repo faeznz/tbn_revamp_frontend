@@ -77,16 +77,16 @@ const PengalamanPesertaCreate = () => {
     <div>
       <NavbarComponent />
       {/* Section 1 - Header */}
-      <section>
-        <div className="flex flex-col justify-center items-center w-full h-64 bg-[#C3D21F] rounded-b-[100px]">
-          <p className="text-black text-4xl font-semibold pt-16">{eventName}</p>
-          <p className="text-black font-light text-xl pt-4 text-center px-24">{eventLocation}</p>
+      <section className='bg-[#F2EEEA]'>
+        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-48 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
+          <p className="text-black lg:text-4xl text-lg font-semibold pt-16">{eventName}</p>
+          <p className="text-black lg:text-4xl text-sm font-light">{eventLocation}</p>
         </div>
       </section>
       {/* Section 3 - Description */}
       <section>
-        <form onSubmit={handleSubmit} className="bg-[#F2EEEA] w-full px-24 py-32 flex flex-col items-center justify-center">
-          <div className="flex flex-row items-center mt-12 w-3/5">
+        <form onSubmit={handleSubmit} className="bg-[#F2EEEA] w-full xl:px-24 px-12 xl:py-32 flex flex-col items-center justify-center">
+          <div className="flex flex-row items-center mt-12 xl:w-3/5">
             <img src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png" alt="" className="h-12 w-12 rounded-full" />
             <div className="ml-4 w-full">
               <div className="flex flex-row justify-between w-full">
@@ -104,11 +104,11 @@ const PengalamanPesertaCreate = () => {
               ))}
             </div>
           </div>
-          <div className="flex flex-col w-3/5 mt-8">
-            <textarea value={review} onChange={(e) => setReview(e.target.value)} className="w-full h-48 my-12 rounded-xl bg-[#FBFBFB] border border-[#B6B6B6] text-black p-4" placeholder="Tulis ulasan Anda di sini" />
-            <input type="file" accept=".jpg, .jpeg, .png" onChange={handleImageChange} />
+          <div className="flex flex-col xl:w-3/5 xl:mt-8">
+            <textarea value={review} onChange={(e) => setReview(e.target.value)} className="h-48 mx-8 my-12 rounded-xl bg-[#FBFBFB] border border-[#B6B6B6] text-black p-4" placeholder="Tulis ulasan Anda di sini" />
+            <input type="file" accept=".jpg, .jpeg, .png" onChange={handleImageChange}/>
             {error && <p className="text-red-500 mt-2">{error}</p>}
-            <button type="submit" className="bg-[#092040] text-white px-8 py-4 mt-4 rounded-2xl mb-24">
+            <button type="submit" className="bg-[#092040] text-white px-8 xl:py-4 py-3 mt-4 rounded-2xl mb-24 mx-8">
               Posting
             </button>
           </div>
@@ -117,8 +117,8 @@ const PengalamanPesertaCreate = () => {
       {/* Menampilkan pop-up jika showSuccessPopup bernilai true */}
       {showSuccessPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
-          <div className="bg-white p-8 rounded-lg">
-            <p className="text-2xl font-bold text-gray-800">Terimakasih telah membuat ulasan!</p>
+          <div className="bg-white p-8 rounded-lg flex flex-col justify-center items-center">
+            <p className="xl:text-2xl font-bold text-gray-800">Terimakasih telah membuat ulasan!</p>
             <button onClick={handleClosePopup} className="bg-blue-500 text-white px-4 py-2 mt-4 rounded-lg">
               Tutup
             </button>

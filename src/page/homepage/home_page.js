@@ -66,7 +66,7 @@ function HomePage() {
         <img src={bannerHomepage} alt="" className="w-full aspect-4/3 md:aspect-video object-cover lg:aspect-21/9 bg-center bg-cover top-0 pt-12" />
         <div className="absolute aspect-4/3 md:aspect-video lg:aspect-21/9 w-full top-0 flex flex-row justify-center lg:p-24 items-center">
           <div className="w-1 h-3/5 lg:bg-[#FFB400] sm:bg-transparent"></div>
-          <div className="lg:w-3/5 sm:w-full lg:p-8 pt-20 flex flex-col justify-center lg:items-start items-center rounded-2xl">
+          <div className=" sm:w-full lg:p-8 pt-20 flex flex-col justify-center lg:items-start items-center rounded-2xl">
             <p className="text-white font-bold lg:text-5xl md:text-4xl text-md lg:mb-12 sm:mb-4 lg:text-left text-center">
               Transformational <br /> Business Network (TBN) Indonesia
             </p>

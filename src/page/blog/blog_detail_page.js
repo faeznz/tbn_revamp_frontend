@@ -61,7 +61,7 @@ const BlogDetailPage = () => {
       console.log(response);
       setNewComment('');
       setRating(0);
-      fetchComments(); // Panggil kembali fetchComments setelah berhasil mengirim komentar
+      fetchComments(); 
     } catch (error) {
       setError('Error submitting comment.');
       console.error(error);
@@ -93,16 +93,16 @@ const BlogDetailPage = () => {
           </div>
           <div className="w-4/5">
             <p className="font-semibold text-gray-900 text-3xl mt-8">{post.title}</p>
-            <div className="font-light text-gray-900 text-xl mt-4" dangerouslySetInnerHTML={{ __html: post.desc }}></div>
+            <div className="font-light text-gray-900 text-xl mt-4 text-justify" dangerouslySetInnerHTML={{ __html: post.desc }}></div>
           </div>
         </div>
       </section>
       <section className="flex justify-center items-center">
         <div className="w-4/5">
-          <p className="text-4xl font-bold">Komentar</p>
+          <p className="xl:text-4xl text-lg font-bold">Komentar</p>
           {comments.map((comment) => (
             <div key={comment.id} className="flex flex-col items-start justify-start mb-6">
-              <div className="flex flex-row justify-center items-center mt-12">
+              <div className="flex flex-row justify-center items-center xl:mt-12 mt-8">
                 <img src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png" alt="" className="h-12 w-12 rounded-full" />
                 <div className="ml-4">
                   <p className="font-bold">{comment.user ? comment.user.name : 'Unknown'}</p>
@@ -118,15 +118,15 @@ const BlogDetailPage = () => {
               <p className="text-xl mt-4">{comment.comment}</p>
             </div>
           ))}
-          <p className="text-4xl font-bold mt-24">Tinggalkan Komentar</p>
+          <p className="xl:text-4xl text-lg font-bold xl:mt-24 mt-12">Tinggalkan Komentar</p>
           <div className="flex flex-col">
-            <div className="flex mb-6 justify-center">
+            <div className="flex mt-8 mb-6 justify-center">
               {[...Array(5)].map((star, i) => {
                 const ratingValue = i + 1;
                 return (
                   <label key={i} className="cursor-pointer">
                     <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} className="hidden" />
-                    <FaStar className="star" color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'} size={30} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(0)} />
+                    <FaStar className="star text-3xl" color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(0)} />
                   </label>
                 );
               })}

@@ -90,36 +90,59 @@ const PengalamanPesertaDetail = () => {
       </section>
       {/* Ulasan Peserta */}
       <section>
-        <div className="px-24 bg-[#F2EEEA] py-16 xl:rounded-t-[100px] rounded-t-[50px]">
-          <p className="text-black xl:text-2xl text-xl font-semibold text-center mb-6">{event.judul}</p>
+        <div className="xl:px-24 px-12 bg-[#F2EEEA] py-16 xl:rounded-t-[100px] rounded-t-[50px]">
+          <p className="text-black xl:text-2xl text-xl font-semibold text-center justify-center mb-6">{event.judul}</p>
           <div className="flex flex-row items-center mt-5 mb-5 w-full justify-center">
-            <div className="flex flex-row mr-4 gap-1">
+            <div className="flex flex-row xl:mr-4 gap-1">
               {[...Array(5)].map((_, index) => (
-                <MdStar key={index} className={`text-xl ${index < calculateAverageRating(reviews) ? 'text-yellow-400' : 'text-gray-400'}`} />
+                <MdStar key={index} className={`xl:text-xl ${index < calculateAverageRating(reviews) ? 'text-yellow-400' : 'text-gray-400'}`} />
               ))}
             </div>
             <p>({reviews.length} Ulasan)</p>
           </div>
           {reviews.map((review) => (
-            <div key={review.id} className="mx-24">
-              <div className="flex flex-row items-center mt-12 w-full">
-                <img src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png" alt="" className="h-12 w-12 rounded-full" />
+            <div key={review.id} className="xl:mx-24">
+              {/* Layout For Dekstop */}
+              <div className="hidden xl:flex flex-row items-center mt-12 w-full">
+                <img src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png" alt="" className="xl:h-12 xl:w-12 h-8 w-8 rounded-full" />
                 <div className="ml-4 w-full">
                   <div className="flex flex-row justify-between w-full">
                     <div>
-                      <p className="font-bold">{review.registration.name}</p>
-                      <p className="font-light">{new Date(review.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                      <p className="text-xl font-bold">{review.registration.name}</p>
+                      <p className="text-md font-light">{new Date(review.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                     </div>
                     <div className="flex flex-row gap-1">
                       {[...Array(5)].map((_, index) => (
-                        <MdStar key={index} className={`text-xl ${index < review.rating ? 'text-yellow-400' : 'text-gray-400'}`} />
+                        <MdStar key={index} className={`text-3xl ${index < review.rating ? 'text-yellow-400' : 'text-gray-400'}`} />
                       ))}
                     </div>
                   </div>
-                  <p className="mb-2 mr-24">{review.review}</p>
+                  <p className="text-xl mb-2 mr-24 mt-4">{review.review}</p>
                 </div>
               </div>
-              {review.image_path && <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${review.image_path}`} alt="" className="w-2/5 ml-16" />}
+              {/* Layout For Mobile */}
+              <div className="xl:hidden flex flex-row items-center mt-12 w-full">
+                <div className="xl:ml-4 w-full">
+                  <div className="flex flex-row justify-between w-full">
+                    <div className='flex flex-col items-start justify-start'>
+                      <div className='flex flex-row gap-2'>
+                        <img src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png" alt="" className="xl:h-12 xl:w-12 h-8 w-8 rounded-full" />
+                        <div>
+                          <p className="text-xl font-bold">{review.registration.name}</p>
+                          <p className="text-md font-light">{new Date(review.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                        </div>
+                      </div>
+                      <div className="flex flex-row gap-1 mt-2">
+                        {[...Array(5)].map((_, index) => (
+                          <MdStar key={index} className={`text-2xl ${index < review.rating ? 'text-yellow-400' : 'text-gray-400'}`} />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-md mb-4 mt-4">{review.review}</p>
+                </div>
+              </div>
+              {review.image_path && <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${review.image_path}`} alt="" className="w-72" />}
               <hr className="my-8 border-t-2 border-gray-300" /> {/* Garis pemisah antar ulasan */}
             </div>
           ))}
