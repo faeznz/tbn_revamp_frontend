@@ -8,6 +8,7 @@ import bannerHomepage from '../../assets/images/home/banner-homepage.png';
 import missionBanner from '../../assets/images/home/mission_tbn.png';
 import ourPartner from '../../assets/images/home/our_partner.png';
 import tbnWorldwide from '../../assets/images/home/peta_tbn.png';
+import logoTbn from '../../assets/images/logo/sample.png'
 
 function HomePage() {
   const [homeContents, setHomeContents] = useState([]);
@@ -124,9 +125,57 @@ function HomePage() {
 
       {/* Section 5 - Our Partner */}
       <section className="flex flex-col mt-12 justify-center items-center ">
-        <p className="lg:text-3xl text-2xl">Our Partner</p>
+        <div className='bg-[#EEEEEE] w-full flex flex-col justify-center items-center'>
+          <p className="lg:text-3xl text-2xl my-24">Our Partner</p>
+          <div className='w-full grid grid-cols-6 items-center gap-4 px-12 pb-24'>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+            <div className='h-32 bg-white rounded-xl flex justify-center items-center p-4'>
+              <img src={logoTbn} alt="" className=''/>
+            </div>
+          </div>
+        </div>
         <div className="flex flex-col lg:px-24 px-8 pb-32 justify-between items-center">
-          <img src={ourPartner} alt="" className="" />
           <p className="lg:text-3xl text-2xl lg:py-24 py-8">TBN's Global Reach</p>
           <img src={tbnWorldwide} alt="" className="" />
         </div>

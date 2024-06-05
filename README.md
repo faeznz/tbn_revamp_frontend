@@ -9,7 +9,8 @@
   - [Index](#index)
   - [About](#about)
   - [Usage](#usage)
-    - [Installation](#installation)
+    - [Installation Frontend](#installation-frontend)
+    - [Installation with Backend](#installation-with-backend)
     - [Commands](#commands)
   - [Development](#development)
     - [Pre-Requisites](#pre-requisites)
@@ -33,7 +34,7 @@ This website was created to update the TBN Indonesia website, updates ranging fr
 ## Usage
 To run this project, you must have the appropriate system requirements. This website is built using React, so you need Node.js to run it.
 
-### Installation
+### Installation Frontend
 - Clone this GitHub repository, and open it using a text editor.
 - Run the 'npm install' command.
 ```
@@ -43,6 +44,14 @@ $ npm install
 ```
 $ npm start
 ```
+
+### Installation with Backend
+- Clone this GitHub repository, and open it using a text editor.
+- Run the 'npm install' command.
+```
+$ npm install
+```
+
 
 ### Commands
 - Commands to start the project.
