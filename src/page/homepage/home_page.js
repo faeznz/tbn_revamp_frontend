@@ -109,7 +109,7 @@ function HomePage() {
         <div className="flex lg:flex-row flex-col items-center justify-center lg:px-24 px-8 lg:py-0 py-12 lg:h-screen">
           {whoWeAreContent && (
             <>
-              {whoWeAreContent.content_type === 'image' && <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${whoWeAreContent.content}`} alt={whoWeAreContent.title} className="lg:h-3/5 aspect-square" />}
+              {whoWeAreContent.content_type === 'image' && <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${whoWeAreContent.content}`} alt={whoWeAreContent.title} className="lg:h-3/5 aspect-video object-cover" />}
               <div className="bg-[#EDEDED] lg:h-3/5 flex flex-col justify-center items-center px-12 lg:py-0 py-8">
                 <p className="lg:text-4xl text-2xl mb-8 font-medium">{whoWeAreContent.title}</p>
                 <div className="font-light text-justify" dangerouslySetInnerHTML={{ __html: cleanDescription(whoWeAreContent.description) }}></div>
