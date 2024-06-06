@@ -89,7 +89,7 @@ const BlogDetailPage = () => {
             </div>
           </div>
           <div className="flex w-full items-center justify-center">
-            <img src={`http://127.0.0.1:8000/storage/${post.image_path}`} alt="" className="w-4/5" />
+            <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${post.image_path}`} alt="" className="w-4/5" />
           </div>
           <div className="w-4/5">
             <p className="font-semibold text-gray-900 text-3xl mt-8">{post.title}</p>

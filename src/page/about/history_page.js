@@ -59,7 +59,7 @@ const HistoryPage = () => {
             poverty alleviation focus that have achieved scale in Africa and
             Asia.
             <br /> <br />
-            The Indonesia was launched in September 2023 in a strategic
+            TBN Indonesia was launched in September 2023 in a strategic
             partnership with Belmont University Innovation Labs with the support
             of the Templeton Religion Trust, a global charitable trust chartered
             by Sir John Templeton. 

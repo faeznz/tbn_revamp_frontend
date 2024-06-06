@@ -35,7 +35,7 @@ const PartnershipPage = () => {
         <div className="flex flex-col justify-center items-center lg:px-32 px-8">
           <p className="lg:text-2xl text-lg font-medium pt-16 text-center">Belmont University and the Belmont Innovation Labs</p>
           <p className="lg:text-2xl text-lg text-center pt-16">
-            The TBN Indonesia is anchored by a strategic partnership between the TBN Network and Belmont University, with the Belmont Innovation Labs as the organization at Belmont stewarding the Alliance.
+            The TBN is anchored by a strategic partnership between the TBN Network and Belmont University, with the Belmont Innovation Labs as the organization at Belmont stewarding the Alliance.
             <br />
             <br />
             The Innovation Labs hosts the TBN Indonesia Secretariat.
@@ -46,7 +46,7 @@ const PartnershipPage = () => {
       {/* Section 3 - Our Partner */}
       <section className="flex flex-col mt-12 justify-center items-center ">
         <div className="bg-[#EEEEEE] w-full flex flex-col justify-center items-center">
-          <p className="lg:text-3xl text-2xl my-24">TBN Ecosystem Partners</p>
+          <p className="lg:text-3xl text-2xl my-24">TBN Indonesia Partners</p>
           <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 items-center gap-4 px-12 pb-24">
             {partners.map((partner) => (
               <div key={partner.id} className="h-32 bg-white rounded-xl flex justify-center items-center p-4">

@@ -39,7 +39,7 @@ const UpcomingEventDetail = () => {
   }, [id]);
 
   if (!event) {
-    return <div>Loading...</div>; // Tampilkan loading saat data masih di-fetch
+    return <div></div>;
   }
 
   const today = new Date();
@@ -112,7 +112,7 @@ const UpcomingEventDetail = () => {
               {events.map((event) => (
                 <article key={event.id} className="flex max-w-xl flex-col items-start justify-between">
                   <div>
-                    <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt={event.judul} className="rounded-xl mb-4" />
+                    <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt={event.judul} className="rounded-xl mb-4 aspect-3/4 object-cover" />
                   </div>
                   <div className="flex items-center gap-x-4 text-xs">
                     <time dateTime={new Date(event.tanggal).toISOString()} className="text-gray-500">

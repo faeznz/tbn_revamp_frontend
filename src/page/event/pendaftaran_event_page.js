@@ -8,6 +8,7 @@ import FooterComponent from "../../components/footer_component";
 const PendaftaranEventPage = () => {
   const [events, setEvents] = useState([]); // Inisialisasi sebagai array kosong
   const [selectedEventId, setSelectedEventId] = useState("");
+  const [selectedEventTitle, setSelectedEventTitle] = useState("");
   const [ticketOptions, setTicketOptions] = useState([]); // State baru untuk pilihan tiket
 
   const [name, setName] = useState("");
@@ -135,6 +136,11 @@ const PendaftaranEventPage = () => {
     }
   };
 
+  const handleEventTitleChange = (event) => {
+    setSelectedEventTitle(event.target.value);
+    validateName(event.target.value);
+  };
+
   const handleNameChange = (event) => {
     setName(event.target.value);
     validateName(event.target.value);
@@ -184,7 +190,7 @@ const PendaftaranEventPage = () => {
       setShowSuccess(true);
       const redirectUrl =
         "https://wa.me/6285156254824?text=Halo%2C%0ASaya%20telah%20mendaftar%20sebagai%20peserta%20Transformational%20Sales%20Conference(%20" +
-        encodeURIComponent(selectedEventId) +
+        encodeURIComponent(selectedEventTitle) +
         "%20)%20" +
         "%20%0ARegistration%20Id:(%20" +
         encodeURIComponent(response.data.data.id) +
@@ -280,6 +286,7 @@ const PendaftaranEventPage = () => {
               Apakah data yang Anda masukkan sudah benar?
             </p>
             {events.map((event) => (
+              handleEventTitleChange(event.judul),
               <table className="flex flex-col xl:text-lg text-sm table-fixed">
                 <tbody>
                   <tr>
