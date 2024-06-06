@@ -23,6 +23,7 @@ const PendaftaranEventPage = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
 
+  const [eventError, setEventError] = useState("");
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
@@ -59,6 +60,16 @@ const PendaftaranEventPage = () => {
 
     fetchEvents();
   }, []);
+
+  const validateEvent = (eventId) => {
+    if (eventId.trim() === "") {
+      setEventError("Event wajib diisi");
+      return false;
+    } else {
+      setEventError("");
+      return true;
+    }
+  };
 
   const validateName = (name) => {
     if (name.trim() === "") {
@@ -117,12 +128,12 @@ const PendaftaranEventPage = () => {
   const handleEventChange = (event) => {
     const selectedId = event.target.value;
     setSelectedEventId(selectedId);
+    validateEvent(selectedId);
 
     // Cari event yang dipilih berdasarkan ID
     const selectedEvent = events.find((e) => e.id === parseInt(selectedId));
 
     if (selectedEvent) {
-      // Periksa harga tiket dan sesuaikan opsi tiket
       if (selectedEvent.harga === "0") {
         setTicketOptions(["Tiket Gratis"]);
         setTicketType("Tiket Gratis");
@@ -134,11 +145,6 @@ const PendaftaranEventPage = () => {
       setTicketOptions([]);
       setTicketType("");
     }
-  };
-
-  const handleEventTitleChange = (event) => {
-    setSelectedEventTitle(event.target.value);
-    validateName(event.target.value);
   };
 
   const handleNameChange = (event) => {
@@ -166,12 +172,14 @@ const PendaftaranEventPage = () => {
     validateTicketType(event.target.value);
   };
 
-  const handleConfirm = async () => {
+  const handleConfirm = async (event) => {
     const id = localStorage.getItem("id");
+    console.log(event.target.value);
+    const eventTitle = (event.target.value);
 
     const formData = {
       user_id: id,
-      event_id: selectedEventId, // Menggunakan event_id yang dipilih dari dropdown
+      event_id: selectedEventId,
       name: name,
       email: email,
       phone: phone,
@@ -186,15 +194,13 @@ const PendaftaranEventPage = () => {
         formData
       );
 
-      setSuccessMessage("Pendaftaran berhasil.");
+      setSuccessMessage("Terima kasih telah melakukan pendaftaran.");
       setShowSuccess(true);
       const redirectUrl =
-        "https://wa.me/6285156254824?text=Halo%2C%0ASaya%20telah%20mendaftar%20sebagai%20peserta%20Transformational%20Sales%20Conference(%20" +
-        encodeURIComponent(selectedEventTitle) +
-        "%20)%20" +
-        "%20%0ARegistration%20Id:(%20" +
+        "https://wa.me/6285156254824?text=Halo%2C%0ASaya%20telah%20mendaftar%20sebagai%20peserta%20" +
+        encodeURIComponent(eventTitle) +
+        "%20%0ARegistration%20Id:%20" +
         encodeURIComponent(response.data.data.id) +
-        "%20)%20" +
         "%20%0AName:%20" +
         encodeURIComponent(name) +
         "%20%0AE-Mail:%20" +
@@ -286,7 +292,6 @@ const PendaftaranEventPage = () => {
               Apakah data yang Anda masukkan sudah benar?
             </p>
             {events.map((event) => (
-              handleEventTitleChange(event.judul),
               <table className="flex flex-col xl:text-lg text-sm table-fixed">
                 <tbody>
                   <tr>
@@ -334,12 +339,15 @@ const PendaftaranEventPage = () => {
               >
                 Batal
               </button>
-              <button
-                className="bg-[#34D399] text-white px-4 py-2 rounded-xl"
-                onClick={handleConfirm}
-              >
-                Ya
-              </button>
+              {events.map((event) => (
+                <button
+                  value={event.judul}
+                  className="bg-[#34D399] text-white px-4 py-2 rounded-xl"
+                  onClick={handleConfirm}
+                >
+                  Ya
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -347,26 +355,28 @@ const PendaftaranEventPage = () => {
       <section>
         <div className="flex flex-col justify-center items-center w-full">
           <form className="lg:w-3/5 w-4/5 mt-32 " onSubmit={handleSubmit}>
-            <p className="text-3xl font-bold mb-12">Pendaftaran</p>
+            <p className="text-3xl font-bold mb-12">Pendaftaran Event</p>
             <p className="">Event</p>
-            <select
-              id="event_id"
-              name="event_id"
-              className={`w-full h-14 mb-4 rounded-xl bg-[#FBFBFB] border ${selectedEventId ? "border-[#B6B6B6]" : "border-red-500"
-                } text-black px-4`}
-              value={selectedEventId}
-              onChange={handleEventChange}
-              required
-            >
-              <option value="">Pilih Event</option>
-              {events.map((event) => (
-                <option key={event.id} value={event.id}>
-                  {event.judul}
-                </option>
-              ))}
-            </select>
-            {selectedEventId === "" && (
-              <p className="text-red-500 text-xs mb-4">Event wajib dipilih</p>
+            <div>
+              <select
+                id="event_id"
+                name="event_id"
+                className={`w-full h-14 mb-4 rounded-xl bg-[#FBFBFB] border ${eventError ? "border-red-500" : "border-[#B6B6B6]"
+                  } text-black px-4`}
+                value={selectedEventId}
+                onChange={handleEventChange}
+                required
+              >
+                <option value="">Pilih Event</option>
+                {events.map((event) => (
+                  <option key={event.id} value={event.id}>
+                    <p>{event.judul}</p>
+                  </option>
+                ))}
+              </select>
+            </div>
+            {eventError && (
+              <p className="text-red-500 text-xs mb-4">{eventError}</p>
             )}
             <p>Nama</p>
             <input
@@ -419,11 +429,11 @@ const PendaftaranEventPage = () => {
             {affiliationError && (
               <p className="text-red-500 text-xs mb-4">{affiliationError}</p>
             )}
-            <p>Jenis Tiket</p>
+            <p className="hidden">Jenis Tiket</p>
             <select
               id="jenis_tiket"
               name="jenis_tiket"
-              className={`w-full h-14 mb-4 rounded-xl bg-[#FBFBFB] border ${ticketTypeError ? "border-red-500" : "border-[#B6B6B6]"
+              className={`hidden w-full h-14 mb-4 rounded-xl bg-[#FBFBFB] border ${ticketTypeError ? "border-red-500" : "border-[#B6B6B6]"
                 } text-black px-4`}
               value={ticketType}
               onChange={handleTicketTypeChange}
