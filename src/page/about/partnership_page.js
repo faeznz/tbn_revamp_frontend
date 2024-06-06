@@ -11,7 +11,7 @@ const PartnershipPage = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_TBN_API_URL}/partners`)
+      .get(`${process.env.REACT_APP_TBN_API_URL}/api/partners`)
       .then((response) => {
         setPartners(response.data);
         console.log(response);
@@ -50,7 +50,7 @@ const PartnershipPage = () => {
           <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 items-center gap-4 px-12 pb-24">
             {partners.map((partner) => (
               <div key={partner.id} className="h-32 bg-white rounded-xl flex justify-center items-center p-4">
-                <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${partner.image}`} alt={partner.name} className="h-full object-contain" />
+                <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${partner.image}`} alt={partner.name} className="h-full object-contain" />
               </div>
             ))}
           </div>

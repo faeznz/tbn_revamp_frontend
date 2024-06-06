@@ -78,9 +78,9 @@ const PengalamanPesertaCreate = () => {
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section className='bg-[#F2EEEA]'>
-        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-48 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
-          <p className="text-black lg:text-4xl text-lg font-semibold pt-16">{eventName}</p>
-          <p className="text-black lg:text-4xl text-sm font-light">{eventLocation}</p>
+        <div className="flex flex-col justify-center items-center w-screen xl:h-64 h-48 bg-[#C3D21F] xl:rounded-b-[100px] rounded-b-[30px]">
+          <p className="text-black xl:text-4xl text-xl font-semibold pt-16">{eventName}</p>
+          <p className="text-black xl:text-2xl text-sm font-light">{eventLocation}</p>
         </div>
       </section>
       {/* Section 3 - Description */}
@@ -117,9 +117,9 @@ const PengalamanPesertaCreate = () => {
       {/* Menampilkan pop-up jika showSuccessPopup bernilai true */}
       {showSuccessPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
-          <div className="bg-white p-8 rounded-lg flex flex-col justify-center items-center">
+          <div className="bg-white p-8 rounded-xl flex flex-col justify-center items-center">
             <p className="xl:text-2xl font-bold text-gray-800">Terimakasih telah membuat ulasan!</p>
-            <button onClick={handleClosePopup} className="bg-blue-500 text-white px-4 py-2 mt-4 rounded-lg">
+            <button onClick={handleClosePopup} className="bg-blue-500 text-white px-4 py-2 mt-4 rounded-xl">
               Tutup
             </button>
           </div>
