@@ -92,7 +92,6 @@ const LoginPage = () => {
           localStorage.setItem('id', id);
 
           login({ nama });
-
           navigate('/');
 
           console.log('Login successful:', response.data);
