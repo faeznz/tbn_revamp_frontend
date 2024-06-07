@@ -290,47 +290,49 @@ const PendaftaranEventPage = () => {
             <p className="text-black font-semibold mb-4">
               Apakah data yang Anda masukkan sudah benar?
             </p>
-            {events.map((event) => (
-              <table className="flex flex-col xl:text-lg text-sm table-fixed">
-                <tbody>
-                  <tr>
-                    <td>Event</td>
-                    <td>:</td>
-                    <td>{event.judul}</td>
-                  </tr>
-                  <tr>
-                    <td>Nama</td>
-                    <td>:</td>
-                    <td>{name}</td>
-                  </tr>
-                  <tr>
-                    <td>Email</td>
-                    <td>:</td>
-                    <td>{email}</td>
-                  </tr>
-                  <tr>
-                    <td className="xl:pr-12 pr-2">No Handphone</td>
-                    <td className="pr-1">:</td>
-                    <td>{phone}</td>
-                  </tr>
-                  <tr>
-                    <td>Afiliasi</td>
-                    <td>:</td>
-                    <td>{affiliation}</td>
-                  </tr>
-                  <tr>
-                    <td>Jenis Tiket</td>
-                    <td>:</td>
-                    <td>{ticketType}</td>
-                  </tr>
-                  <tr>
-                    <td>Catatan</td>
-                    <td>:</td>
-                    <td>{notes}</td>
-                  </tr>
-                </tbody>
-              </table>
-            ))}
+            {events
+              .filter((event) => event.id === parseInt(selectedEventId))
+              .map((event) => (
+                <table key={event.id} className="flex flex-col xl:text-lg text-sm table-fixed">
+                  <tbody>
+                    <tr>
+                      <td>Event</td>
+                      <td>:</td>
+                      <td>{event.judul}</td>
+                    </tr>
+                    <tr>
+                      <td>Nama</td>
+                      <td>:</td>
+                      <td>{name}</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td>:</td>
+                      <td>{email}</td>
+                    </tr>
+                    <tr>
+                      <td className="xl:pr-12 pr-2">No Handphone</td>
+                      <td className="pr-1">:</td>
+                      <td>{phone}</td>
+                    </tr>
+                    <tr>
+                      <td>Afiliasi</td>
+                      <td>:</td>
+                      <td>{affiliation}</td>
+                    </tr>
+                    <tr>
+                      <td>Jenis Tiket</td>
+                      <td>:</td>
+                      <td>{ticketType}</td>
+                    </tr>
+                    <tr>
+                      <td>Catatan</td>
+                      <td>:</td>
+                      <td>{notes}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              ))}
             <div className="flex justify-end">
               <button
                 className="bg-[#EB5757] text-white px-4 py-2 rounded-xl mr-4"
@@ -338,15 +340,18 @@ const PendaftaranEventPage = () => {
               >
                 Batal
               </button>
-              {events.map((event) => (
-                <button
-                  value={event.judul}
-                  className="bg-[#34D399] text-white px-4 py-2 rounded-xl"
-                  onClick={handleConfirm}
-                >
-                  Ya
-                </button>
-              ))}
+              {events
+                .filter((event) => event.id === parseInt(selectedEventId))
+                .map((event) => (
+                  <button
+                    key={event.id}
+                    value={event.judul}
+                    className="bg-[#34D399] text-white px-4 py-2 rounded-xl"
+                    onClick={handleConfirm}
+                  >
+                    Ya
+                  </button>
+                ))}
             </div>
           </div>
         </div>
