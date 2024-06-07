@@ -102,18 +102,22 @@ const PengalamanPesertaPage = () => {
             <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
               {events.map((event) => (
-                <article key={event.id} className="bg-gray-100 rounded-lg overflow-hidden shadow-md">
-                  <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full aspect-3/4 object-cover" />
-                  <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2 text-gray-800">{event.judul}</div>
-                    <p className="text-gray-800 font-medium mb-2">Pembicara: {event.pembicara}</p>
-                    <p className="text-gray-800 font-medium mb-2">Registration: Rp {parseInt(event.harga).toLocaleString('id-ID')}</p>
-                    <p className="text-gray-800 font-medium">Tanggal: {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                <article key={event.id} className="h-full flex flex-col justify-between bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                  <div>
+                      <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full aspect-3/4 object-cover" />
+                      <p className="font-bold text-xl mb-2 text-gray-800 px-6 pt-4">{event.judul}</p>
                   </div>
-                  <div className="px-6 py-4">
-                    <a href={`/event/pengalaman-peserta/detail/${event.id}`} className="bg-[#195A94] text-white px-8 py-2 rounded-xl">
-                      Look Review
-                    </a>
+                  <div className='w-full justify-center items-center'>
+                    <div className="px-6 pb-4">
+                      <p className="text-gray-800 font-medium mb-2">Pembicara: {event.pembicara}</p>
+                      <p className="text-gray-800 font-medium mb-2">Registration: Rp {parseInt(event.harga).toLocaleString('id-ID')}</p>
+                      <p className="text-gray-800 font-medium">Tanggal: {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                    </div>
+                    <div className="px-6 py-8 text-center justify-center items-center">
+                      <a href={`/event/pengalaman-peserta/detail/${event.id}`} className="bg-[#195A94] text-white px-8 py-2 rounded-xl">
+                        Look Review
+                      </a>
+                    </div>
                   </div>
                 </article>
               ))}
