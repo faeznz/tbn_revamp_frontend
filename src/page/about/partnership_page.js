@@ -42,8 +42,9 @@ const PartnershipPage = () => {
           <img src={BannerHistory} alt="" className="lg:w-4/5 w-full lg:py-24 py-8" />
         </div>
       </section>
+
       {/* Section 3 - Our Partner */}
-      <section className="flex flex-col mt-12 justify-center items-center ">
+      <section className={`flex flex-col mt-12 justify-center items-center ${!partners || partners.length === 0 ? 'hidden' : ''}`}>
         <div className="bg-[#EEEEEE] w-full flex flex-col justify-center items-center">
           <p className="lg:text-3xl text-2xl my-24">TBN Indonesia Partners</p>
           <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 items-center gap-4 px-12 pb-24">

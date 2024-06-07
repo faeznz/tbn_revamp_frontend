@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import Lottie from "lottie-react";
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
+
+import LottieDataNotFound from '../../assets/lottie/data-not-found.json';
 
 const PengalamanPesertaPage = () => {
   const [events, setEvents] = useState([]);
@@ -22,7 +25,6 @@ const PengalamanPesertaPage = () => {
           setEvents([]);
         }
       } catch (error) {
-        setError(error.response ? error.response.data.message : error.message);
       } finally {
         setLoading(false);
       }
@@ -63,7 +65,9 @@ const PengalamanPesertaPage = () => {
             </div>
           </section>
         </div>
-        <FooterComponent />
+        <div>
+          <FooterComponent />
+        </div>
       </div>
     );
   }
@@ -76,13 +80,13 @@ const PengalamanPesertaPage = () => {
     return (
       <div className="flex flex-col min-h-screen">
         <NavbarComponent />
-        <div className="flex-grow">
-          <section className="bg-white py-24 sm:py-32">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex flex-col">
+          <section className="bg-white py-24 sm:py-32 ">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center items-center">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Pengalaman Peserta</h2>
               <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
-              <article className="bg-gray-100 rounded-lg overflow-hidden shadow-md p-6 text-center col-span-full">
-                <div className="font-bold text-xl mb-2 text-gray-800">Belum ada event tersedia</div>
+              <article className="rounded-lg overflow-hidden text-center col-span-full mt-12">
+                <Lottie animationData={LottieDataNotFound} loop={true} />
               </article>
             </div>
           </section>
@@ -104,8 +108,8 @@ const PengalamanPesertaPage = () => {
               {events.map((event) => (
                 <article key={event.id} className="h-full flex flex-col justify-between bg-gray-100 rounded-lg overflow-hidden shadow-md">
                   <div>
-                      <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full aspect-3/4 object-cover" />
-                      <p className="font-bold text-xl mb-2 text-gray-800 px-6 pt-4">{event.judul}</p>
+                    <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full aspect-3/4 object-cover" />
+                    <p className="font-bold text-xl mb-2 text-gray-800 px-6 pt-4">{event.judul}</p>
                   </div>
                   <div className='w-full justify-center items-center'>
                     <div className="px-6 pb-4">

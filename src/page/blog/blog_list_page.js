@@ -3,14 +3,16 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import Lottie from "lottie-react";
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
+import LottieDataNotFound from '../../assets/lottie/data-not-found.json';
+
 const BlogListPage = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [loadingImage, setLoadingImage] = useState(true);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -70,8 +72,8 @@ const BlogListPage = () => {
                 </div>
               ) : (
                 posts.length === 0 ? (
-                  <article className="bg-gray-100 rounded-lg overflow-hidden shadow-md mt-8 p-6 text-center col-span-full">
-                    <div className="font-bold text-xl mb-2 text-gray-800">Belum ada blog tersedia</div>
+                  <article className="text-center">
+                    <Lottie animationData={LottieDataNotFound} loop={true} />
                   </article>
                 ) : (
                   <div className="mx-auto mt-5 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -97,7 +99,7 @@ const BlogListPage = () => {
                         </div>
                         <div className="text-sm leading-6 mt-8 flex flex-row w-full h-full items-end justify-between relative bottom-0">
                           <div className="relative flex items-center gap-x-4">
-                            
+
                             <img
                               src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                               alt=""
@@ -123,7 +125,9 @@ const BlogListPage = () => {
           </div>
         </section>
       </div>
-      <FooterComponent />
+      <div className='min-w-scren'>
+        <FooterComponent />
+      </div>
     </div>
   );
 };
