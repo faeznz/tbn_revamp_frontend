@@ -173,7 +173,6 @@ const PendaftaranEventPage = () => {
 
   const handleConfirm = async (event) => {
     const id = localStorage.getItem("id");
-    console.log(event.target.value);
     const eventTitle = (event.target.value);
 
     const formData = {
@@ -374,7 +373,7 @@ const PendaftaranEventPage = () => {
                 <option value="">Pilih Event</option>
                 {events.map((event) => (
                   <option key={event.id} value={event.id}>
-                    <p>{event.judul}</p>
+                    {event.judul}
                   </option>
                 ))}
               </select>

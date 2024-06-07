@@ -14,7 +14,6 @@ const PartnershipPage = () => {
       .get(`${process.env.REACT_APP_TBN_API_URL}/api/partners`)
       .then((response) => {
         setPartners(response.data);
-        console.log(response);
       })
       .catch((error) => {
         console.error('There was an error fetching the data!', error);

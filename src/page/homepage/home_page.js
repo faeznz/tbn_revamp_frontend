@@ -17,7 +17,6 @@ function HomePage() {
       .get(`${process.env.REACT_APP_TBN_API_URL}/api/posts`)
       .then((response) => {
         setHomeContents(response.data);
-        console.log(response);
       })
       .catch((error) => {
         console.error('There was an error fetching the data!', error);
@@ -27,7 +26,6 @@ function HomePage() {
       .get(`${process.env.REACT_APP_TBN_API_URL}/api/partners`)
       .then((response) => {
         setPartners(response.data);
-        console.log(response);
       })
       .catch((error) => {
         console.error('There was an error fetching the data!', error);

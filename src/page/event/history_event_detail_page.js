@@ -20,7 +20,6 @@ const HistoryEventDetailPage = () => {
       axios
         .get(`${process.env.REACT_APP_TBN_API_URL}/api/registrations/${registrationId}`)
         .then((response) => {
-          console.log('API Response:', response.data); // Log response dari API
           setRegistration(response.data);
           setLoading(false);
         })

@@ -23,14 +23,10 @@ const PengalamanPesertaDetail = () => {
 
         const reviewsResponse = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/reviews`);
         const reviewsData = reviewsResponse.data.reviews;
-
         const filteredReviews = reviewsData.filter((review) => review.registration.event_id === parseInt(id));
 
         setReviews(filteredReviews);
 
-        console.log('Event Data:', response.data.event);
-        console.log('Respon data:', reviewsResponse);
-        console.log('Filtered Reviews Data:', filteredReviews);
       } catch (error) {
         console.error('Error fetching event data:', error);
       }

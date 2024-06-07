@@ -58,7 +58,6 @@ const BlogDetailPage = () => {
         stars: rating,
       });
 
-      console.log(response);
       setNewComment('');
       setRating(0);
       fetchComments(); 
