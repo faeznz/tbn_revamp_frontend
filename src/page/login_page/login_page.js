@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/auth_context';
@@ -21,6 +21,9 @@ const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [showError, setShowError] = useState(false);
 
+  const inputRef = useRef(null);
+  const buttonRef = useRef(null);
+
   const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
@@ -29,6 +32,13 @@ const LoginPage = () => {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      buttonRef.current.click();
+    }
   };
 
   // This function to POST login input to API
@@ -41,7 +51,6 @@ const LoginPage = () => {
     };
 
     try {
-      console.log(process.env.REACT_APP_TBN_API_URL);
       const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/login`, dataLogin);
 
       const token = response.data.token;
@@ -54,7 +63,6 @@ const LoginPage = () => {
       login({ nama });
       navigate('/');
 
-      console.log('Login successful:', response.data);
     } catch (error) {
       setErrorMessage('Invalid email or password. Please try again.');
       setShowError(true);
@@ -69,7 +77,6 @@ const LoginPage = () => {
   const handleLogInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleAuthProvider);
-      console.log(result);
 
       const dataRegister = {
         name: result.user.displayName,
@@ -94,7 +101,7 @@ const LoginPage = () => {
           login({ nama });
           navigate('/');
 
-          console.log('Login successful:', response.data);
+          console.log('Login successful');
         } else {
           // Handle case where response data is not as expected
           console.error('Unexpected response format:', response);
@@ -146,15 +153,15 @@ const LoginPage = () => {
                   <p className="text-2xl mb-8 lg:mt-0 mt-8">Welcome Back!</p>
                 </div>
                 {/* Input Username and Password */}
-                <input type="text" className="lg:w-96 w-80 h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" placeholder="Enter Email Address.." value={email} onChange={handleEmailChange} />
-                <input type="password" className="lg:w-96 w-80 h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" placeholder="Password" value={password} onChange={handlePasswordChange} />
+                <input type="text" className="lg:w-96 w-80 h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" placeholder="Enter Email Address.." value={email} onChange={handleEmailChange} onKeyPress={handleKeyPress} ref={inputRef}/>
+                <input type="password" className="lg:w-96 w-80 h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" placeholder="Password" value={password} onChange={handlePasswordChange} onKeyPress={handleKeyPress} ref={inputRef}/>
                 {/* Remember Me */}
                 <div className="flex flex-row justify-start items-center ml-4 mb-4">
                   <input type="checkbox" className="w-4 h-4 mr-2 rounded-full" />
                   <p className="text-[#9A9CA9]">Remember Me</p>
                 </div>
                 {/* Login Button */}
-                <button className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12" onClick={handleSubmit}>
+                <button id="myBtn" ref={buttonRef} className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12" onClick={handleSubmit}>
                   Login
                 </button>
                 {/* Forgot Password and Register Button */}
