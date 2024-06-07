@@ -8,7 +8,6 @@ import FooterComponent from "../../components/footer_component";
 const PendaftaranEventPage = () => {
   const [events, setEvents] = useState([]); // Inisialisasi sebagai array kosong
   const [selectedEventId, setSelectedEventId] = useState("");
-  const [selectedEventTitle, setSelectedEventTitle] = useState("");
   const [ticketOptions, setTicketOptions] = useState([]); // State baru untuk pilihan tiket
 
   const [name, setName] = useState("");
