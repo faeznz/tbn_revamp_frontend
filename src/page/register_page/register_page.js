@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/auth_context';
@@ -15,7 +15,6 @@ import ImgLogin from '../../assets/images/login-register/img_login.png';
 
 const RegisterPage = () => {
   const { login } = useAuth();
-
 
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -34,7 +33,17 @@ const RegisterPage = () => {
   const [passwordError, setPasswordError] = useState('');
   const [repeatPasswordError, setRepeatPasswordError] = useState('');
 
+  const inputRef = useRef(null);
+  const buttonRef = useRef(null);
+
   const navigate = useNavigate();
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      buttonRef.current.click();
+    }
+  };
 
   const validateName = (name) => {
     if (name.trim() === '') {
@@ -119,14 +128,14 @@ const RegisterPage = () => {
 
     try {
       // Make a POST request to your backend server
-      await axios.post(`${process.env.REACT_APP_TBN_API_URL}/register`, dataRegister);
+      await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/register`, dataRegister);
 
       setSuccessMessage('Pendaftaran berhasil. Silakan login.');
       setShowSuccess(true);
       setTimeout(() => {
         setShowSuccess(false);
         navigate('/login');
-      }, 3000);
+      }, 8000);
     } catch (error) {
       // Handle error
       setErrorMessage('Pendaftaran gagal. Coba ulangi lagi.');
@@ -155,7 +164,7 @@ const RegisterPage = () => {
 
       try {
         // Make a POST request to your backend server
-        const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/google-auth`, dataRegister);
+        const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/google-auth`, dataRegister);
 
         if (response.data && response.data.user) {
           const token = response.data.token;
@@ -197,6 +206,7 @@ const RegisterPage = () => {
 
   const handleCloseSuccess = () => {
     setShowSuccess(false);
+    navigate('/login');
   };
 
   return (
@@ -215,10 +225,13 @@ const RegisterPage = () => {
       {showSuccess && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg relative">
-            <button onClick={handleCloseSuccess} className="absolute top-2 right-2 text-gray-600 hover:text-gray-900">
-              &times;
+            <p className="text-green-600 font-semibold mb-2">{successMessage}</p>
+            <button
+              className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900"
+              onClick={handleCloseSuccess}
+            >
+              Close
             </button>
-            <p className="text-green-600 font-semibold">{successMessage}</p>
           </div>
         </div>
       )}
@@ -233,47 +246,53 @@ const RegisterPage = () => {
                   <p className="text-2xl mb-8 lg:mt-0 mt-12">Create an Account!</p>
                 </div>
                 <div className="w-full">
-                  <input type="text" className={`lg:w-96 w-80 h-14 mb-2 rounded-full bg-[#FBFBFB] border ${nameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`} placeholder="Name" value={name} onChange={handleNameChange} />
+                  <input type="text" className={`lg:w-96 w-80 h-14 mb-2 rounded-full bg-[#FBFBFB] border ${nameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black pl-4`} placeholder="Name" value={name} onChange={handleNameChange} onKeyPress={handleKeyPress} ref={inputRef} />
                   {nameError && <p className="text-red-500 text-xs ml-4 mb-4 ">{nameError}</p>}
                 </div>
                 <div className="w-full">
                   <input
                     type="text"
-                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${lastNameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${lastNameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black pl-4`}
                     placeholder="Last Name"
                     value={lastName}
                     onChange={handleLastNameChange}
+                    onKeyPress={handleKeyPress}
+                    ref={inputRef}
                   />
                   {lastNameError && <p className="text-red-500 text-xs ml-4 mb-4">{lastNameError}</p>}
                 </div>
                 <div className="w-full">
-                  <input type="text" className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${emailError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`} placeholder="Email" value={email} onChange={handleEmailChange} />
+                  <input type="text" className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${emailError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black pl-4`} placeholder="Email" value={email} onChange={handleEmailChange} onKeyPress={handleKeyPress} ref={inputRef} />
                   {emailError && <p className="text-red-500 text-xs ml-4 mb-4">{emailError}</p>}
                 </div>
                 <div className="flex lg:flex-row flex-col justify-between lg:gap-2 w-full">
                   <div className="lg:w-1/2 w-full">
                     <input
                       type="password"
-                      className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${passwordError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                      className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${passwordError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black pl-4`}
                       placeholder="Password"
                       value={password}
                       onChange={handlePasswordChange}
+                      onKeyPress={handleKeyPress}
+                      ref={inputRef}
                     />
                     {passwordError && <p className="text-red-500 text-xs ml-4 mb-4">{passwordError}</p>}
                   </div>
                   <div className="lg:w-1/2 w-full">
                     <input
                       type="password"
-                      className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${repeatPasswordError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black px-4`}
+                      className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${repeatPasswordError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black pl-4`}
                       placeholder="Repeat Password"
                       value={repeatPassword}
                       onChange={handleRepeatPasswordChange}
+                      onKeyPress={handleKeyPress}
+                      ref={inputRef}
                     />
                     {repeatPasswordError && <p className="text-red-500 text-xs ml-4 mb-4">{repeatPasswordError}</p>}
                   </div>
                 </div>
 
-                <button className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12 mt-4" onClick={handleSubmit}>
+                <button id="myBtn" ref={buttonRef} className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12 mt-4" onClick={handleSubmit}>
                   Register
                 </button>
                 <div className="flex flex-row justify-center items-center mt-4 gap-2">
@@ -282,6 +301,7 @@ const RegisterPage = () => {
                     Login
                   </NavLink>
                 </div>
+
                 <div className="w-full flex flex-row justify-center items-center">
                   <div className="w-2/5 h-[1px] bg-[#B6B6B6] rounded-full my-6"></div>
                   <p className="text-gray-600 mx-4">or</p>

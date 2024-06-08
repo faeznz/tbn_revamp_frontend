@@ -5,7 +5,6 @@ import axios from 'axios';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
-import { FaMicrophone } from 'react-icons/fa';
 import { MdLocalOffer } from 'react-icons/md';
 
 import BannerUpcoming from '../../assets/images/event/upcoming/upcoming_bannner.png';
@@ -18,7 +17,7 @@ const UpcomingEventDetail = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/events/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/events/${id}`);
         setEvent(response.data.event);
       } catch (error) {
         console.error('Error fetching event data:', error);
@@ -27,7 +26,7 @@ const UpcomingEventDetail = () => {
 
     const fetchAllEvents = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/events`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/events`);
         setEvents(response.data.events);
       } catch (error) {
         console.error('Error fetching all events:', error);
@@ -39,7 +38,7 @@ const UpcomingEventDetail = () => {
   }, [id]);
 
   if (!event) {
-    return <div>Loading...</div>; // Tampilkan loading saat data masih di-fetch
+    return <div></div>;
   }
 
   const today = new Date();
@@ -58,17 +57,20 @@ const UpcomingEventDetail = () => {
             <p className="text-white text-center font-bold xl:text-5xl md:text-3xl text-md xl:mb-6 mb-2">{event.judul}</p>
             <p className="text-white xl:font-semibold xl:text-2xl md:text-xl text-sm xl:mb-6">{eventDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
             <p className="text-white font-light xl:text-2xl md:text-xl text-xs text-center xl:mb-6 mb-2">{event.lokasi}</p>
-            <p className="text-white font-semibold xl:text-xl md:text-xl text-md xl:mb-6">REGISTRATION : Rp {parseInt(event.harga).toLocaleString('id-ID')}</p>
-            <div className="w-full max-w-xl">
-              <div className="xl:mt-12 mt-6 bg-[#005F94] xl:h-12 md:h-10 h-8 shadow-md rounded-full p-2 flex items-center justify-center w-full gap-2">
-                <div className="text-white rounded-full xl:p-2">
-                  <FaMicrophone className="xl:text-2xl text-xl" />
-                </div>
-                <div className="text-white rounded-full xl:p-2">
-                  <p className="xl:text-2xl text-sm">SPEAKERS : {event.pembicara}</p>
-                </div>
+            <p className="text-white font-semibold xl:text-xl md:text-xl text-md ">REGISTRATION : Rp {parseInt(event.harga).toLocaleString('id-ID')}</p>
+            <div className='flex bg-white/50 h-0.5 w-full mt-8'></div>
+            <div className="text-white xl:h-12 md:h-10 h-8 mt-4 rounded-full p-2 flex items-center justify-center w-full gap-2">
+              <div className="rounded-full xl:p-2">
+                <p className="xl:text-2xl text-sm">SPEAKERS :</p>
               </div>
-              <div className="w-full xl:mt-8 mt-4">
+            </div>
+            <div className=' text-white xl:text-2xl text-sm font-bold xl:h-12 md:h-10 h-8 rounded-full p-2 flex items-center justify-center w-full gap-2'>
+              {event.pembicara}
+            </div>
+            <div className='flex bg-white/50 h-0.5 w-full mt-4 xl:mb-10 mb-6'></div>
+
+            <div className="w-full max-w-xl">
+              <div className="w-full xl:mt-8 md:mt-4">
                 {!isEventExpired ? (
                   <Link to="/event/register-event" className="block w-full">
                     <button className="bg-[#005F94] xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2">
@@ -91,7 +93,7 @@ const UpcomingEventDetail = () => {
       <section className="flex flex-col mt-12 justify-center items-center">
         <p className="text-sm font-medium">- Post Conference Highlights -</p>
         <p className="xl:text-4xl text-2xl mb-12 font-medium text-center">{event.judul}</p>
-        <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${event.poster_path}`} alt="" className="xl:w-1/3 w-4/5 bg-center bg-cover" />
+        <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt="" className="xl:w-1/3 w-4/5 bg-center bg-cover" />
         <div className="xl:mx-24 mx-12 flex flex-col justify-center items-center my-24">
           <p className="text-xl mb-12 font-light underline underline-offset-2">About the Conference</p>
           <div className="flex flex-row xl:mx-12">
@@ -112,7 +114,7 @@ const UpcomingEventDetail = () => {
               {events.map((event) => (
                 <article key={event.id} className="flex max-w-xl flex-col items-start justify-between">
                   <div>
-                    <img src={`${process.env.REACT_APP_TBN_API_STORAGE}/storage/${event.poster_path}`} alt={event.judul} className="rounded-xl mb-4" />
+                    <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt={event.judul} className="rounded-xl mb-4 aspect-3/4 object-cover" />
                   </div>
                   <div className="flex items-center gap-x-4 text-xs">
                     <time dateTime={new Date(event.tanggal).toISOString()} className="text-gray-500">
