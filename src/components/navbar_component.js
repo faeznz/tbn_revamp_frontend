@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/auth_context";
+import React, { useState, useRef, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/auth_context';
 
-import { RiAccountCircleLine } from "react-icons/ri";
-import { IoClose } from "react-icons/io5";
-import { MdLogout } from "react-icons/md";
+import { RiAccountCircleLine } from 'react-icons/ri';
+import { IoClose } from 'react-icons/io5';
+import { MdLogout } from 'react-icons/md';
 
 import logoTbn from '../assets/images/logo/logo_tbn_indonesia.png';
 
@@ -26,30 +26,23 @@ function Navbar({ data }) {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (aboutRef.current && !aboutRef.current.contains(event.target) && burgerMenuRef.current &&
-        !burgerMenuRef.current.contains(event.target)) {
+      if (aboutRef.current && !aboutRef.current.contains(event.target) && burgerMenuRef.current && !burgerMenuRef.current.contains(event.target)) {
         setIsAboutHovered(false);
       }
       if (accountRef.current && !accountRef.current.contains(event.target)) {
         setIsAccountHovered(false);
       }
-      if (eventRef.current && !eventRef.current.contains(event.target) && burgerMenuRef.current &&
-        !burgerMenuRef.current.contains(event.target)) {
+      if (eventRef.current && !eventRef.current.contains(event.target) && burgerMenuRef.current && !burgerMenuRef.current.contains(event.target)) {
         setIsEventHovered(false);
       }
-      if (
-        burgerRef.current &&
-        !burgerRef.current.contains(event.target) &&
-        burgerMenuRef.current &&
-        !burgerMenuRef.current.contains(event.target)
-      ) {
+      if (burgerRef.current && !burgerRef.current.contains(event.target) && burgerMenuRef.current && !burgerMenuRef.current.contains(event.target)) {
         setIsBurgerOpen(false);
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [aboutRef, accountRef, eventRef, burgerRef, burgerMenuRef]);
 
@@ -123,13 +116,7 @@ function Navbar({ data }) {
         </div>
         <div className="hidden md:flex flex-row gap-10 items-center text-white font-medium">
           <NavLink to="/">Home</NavLink>
-          <div
-            onMouseEnter={handleMouseEnterAbout}
-            onMouseLeave={handleMouseLeaveAbout}
-            onClick={handleAboutClick}
-            ref={aboutRef}
-            className="relative"
-          >
+          <div onMouseEnter={handleMouseEnterAbout} onMouseLeave={handleMouseLeaveAbout} onClick={handleAboutClick} ref={aboutRef} className="relative">
             <p>About</p>
             {isAboutHovered && (
               <div className="flex flex-col gap-2 absolute w-40 bg-white text-black font-medium rounded-md shadow-md py-2 px-4 top-12 left-0 z-10">
@@ -145,19 +132,16 @@ function Navbar({ data }) {
           </div>
           <NavLink to="/blog">Blog</NavLink>
           <NavLink to="/contact">Contact Us</NavLink>
-          <div
-            onMouseEnter={handleMouseEnterEvent}
-            onMouseLeave={handleMouseLeaveEvent}
-            onClick={handleEventClick}
-            ref={eventRef}
-            className="relative"
-          >
+          <div onMouseEnter={handleMouseEnterEvent} onMouseLeave={handleMouseLeaveEvent} onClick={handleEventClick} ref={eventRef} className="relative">
             <p>Event</p>
             {isEventHovered && (
               <div className="flex flex-col gap-2 absolute w-40 bg-white text-black font-medium rounded-md shadow-md py-2 px-4 top-12 left-0 z-10">
-                <NavLink to="/event/register-event">Register Event</NavLink>
-                <NavLink to="/event/upcoming" className="leading-4">Upcoming Event</NavLink>
-                <NavLink to="/event/pengalaman-peserta" className="leading-4">Pengalaman Peserta</NavLink>
+                <NavLink to="/event/upcoming" className="leading-4">
+                  Upcoming Event
+                </NavLink>
+                <NavLink to="/event/pengalaman-peserta" className="leading-4">
+                  Pengalaman Peserta
+                </NavLink>
                 <NavLink to="/event/history">History</NavLink>
               </div>
             )}
@@ -166,13 +150,7 @@ function Navbar({ data }) {
           {dataLogin ? (
             <div className="flex flex-row justify-center items-center">
               <i className="fa-regular fa-user text-white"></i>
-              <div
-                onMouseEnter={handleMouseEnterAccount}
-                onMouseLeave={handleMouseLeaveAccount}
-                onClick={handleAccountClick}
-                ref={accountRef}
-                className="relative"
-              >
+              <div onMouseEnter={handleMouseEnterAccount} onMouseLeave={handleMouseLeaveAccount} onClick={handleAccountClick} ref={accountRef} className="relative">
                 <div className="flex flex-row items-center">
                   <RiAccountCircleLine className="text-2xl mr-1" />
                   <p>{dataLogin.nama}</p>
@@ -211,15 +189,16 @@ function Navbar({ data }) {
           {dataLogin ? (
             <div className="flex lg:hidden flex-row justify-center items-center w-full py-2 mb-4">
               <i className="fa-regular fa-user text-white"></i>
-              <div
-                onMouseEnter={handleMouseEnterAccount}
-                onMouseLeave={handleMouseLeaveAccount}
-                onClick={handleAccountClick}
-                className="relative w-full"
-              >
+              <div onMouseEnter={handleMouseEnterAccount} onMouseLeave={handleMouseLeaveAccount} onClick={handleAccountClick} className="relative w-full">
                 <div className="flex flex-row items-center justify-between w-full">
                   <p className="text-xl">Hi, {dataLogin.nama}</p>
-                  <MdLogout className="text-xl" onClick={() => { handleLogout(); setIsBurgerOpen(false); }} />
+                  <MdLogout
+                    className="text-xl"
+                    onClick={() => {
+                      handleLogout();
+                      setIsBurgerOpen(false);
+                    }}
+                  />
                 </div>
                 <div className="w-full h-0.5 bg-white opacity-50 mt-4"></div>
               </div>
@@ -230,41 +209,57 @@ function Navbar({ data }) {
             </button>
           )}
 
-          <NavLink to="/" onClick={() => setIsBurgerOpen(false)}>Home</NavLink>
-          <div
-            onMouseEnter={handleMouseEnterAbout}
-            onMouseLeave={handleMouseLeaveAbout}
-            onClick={handleAboutClick}
-            className="relative w-full"
-          >
+
+          <NavLink to="/" onClick={() => setIsBurgerOpen(false)}>
+            Home
+          </NavLink>
+          <div onMouseEnter={handleMouseEnterAbout} onMouseLeave={handleMouseLeaveAbout} onClick={handleAboutClick} className="relative w-full">
             <p className="mt-3">About</p>
             {isAboutHovered && (
               <div className="flex flex-col gap-2 w-full bg-white text-black font-medium rounded-md shadow-md p-4 my-2">
-                <NavLink to="/about/visimisi" onClick={() => setIsBurgerOpen(false)}>Visi dan Misi</NavLink>
-                <NavLink to="/about/history" onClick={() => setIsBurgerOpen(false)}>History</NavLink>
-                <NavLink to="/about/partnership" onClick={() => setIsBurgerOpen(false)}>Partnership</NavLink>
-                <NavLink to="/about/our-approach" onClick={() => setIsBurgerOpen(false)}>Our Approach</NavLink>
-                <NavLink to="/about/how-it-works" onClick={() => setIsBurgerOpen(false)}>How It Works</NavLink>
-                <NavLink to="/about/where" onClick={() => setIsBurgerOpen(false)}>Where</NavLink>
-                <NavLink to="/about/who-we-are" onClick={() => setIsBurgerOpen(false)}>Who We Are</NavLink>
+                <NavLink to="/about/visimisi" onClick={() => setIsBurgerOpen(false)}>
+                  Visi dan Misi
+                </NavLink>
+                <NavLink to="/about/history" onClick={() => setIsBurgerOpen(false)}>
+                  History
+                </NavLink>
+                <NavLink to="/about/partnership" onClick={() => setIsBurgerOpen(false)}>
+                  Partnership
+                </NavLink>
+                <NavLink to="/about/our-approach" onClick={() => setIsBurgerOpen(false)}>
+                  Our Approach
+                </NavLink>
+                <NavLink to="/about/how-it-works" onClick={() => setIsBurgerOpen(false)}>
+                  How It Works
+                </NavLink>
+                <NavLink to="/about/where" onClick={() => setIsBurgerOpen(false)}>
+                  Where
+                </NavLink>
+                <NavLink to="/about/who-we-are" onClick={() => setIsBurgerOpen(false)}>
+                  Who We Are
+                </NavLink>
               </div>
             )}
           </div>
-          <NavLink to="/blog" className="mt-3" onClick={() => setIsBurgerOpen(false)}>Blog</NavLink>
-          <NavLink to="/contact" className="mt-3" onClick={() => setIsBurgerOpen(false)}>Contact Us</NavLink>
-          <div
-            onMouseEnter={handleMouseEnterEvent}
-            onMouseLeave={handleMouseLeaveEvent}
-            onClick={handleEventClick}
-            className="relative w-full"
-          >
+          <NavLink to="/blog" className="mt-3" onClick={() => setIsBurgerOpen(false)}>
+            Blog
+          </NavLink>
+          <NavLink to="/contact" className="mt-3" onClick={() => setIsBurgerOpen(false)}>
+            Contact Us
+          </NavLink>
+          <div onMouseEnter={handleMouseEnterEvent} onMouseLeave={handleMouseLeaveEvent} onClick={handleEventClick} className="relative w-full">
             <p className="mt-3">Event</p>
             {isEventHovered && (
               <div className="flex flex-col gap-2 w-full bg-white text-black font-medium rounded-md shadow-md p-4 my-2">
-                <NavLink to="/event/register-event" onClick={() => setIsBurgerOpen(false)}>Register Event</NavLink>
-                <NavLink to="/event/upcoming" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>Upcoming Event</NavLink>
-                <NavLink to="/event/pengalaman-peserta" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>Pengalaman Peserta</NavLink>
-                <NavLink to="/event/history" onClick={() => setIsBurgerOpen(false)}>History</NavLink>
+                <NavLink to="/event/upcoming" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>
+                  Upcoming Event
+                </NavLink>
+                <NavLink to="/event/pengalaman-peserta" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>
+                  Pengalaman Peserta
+                </NavLink>
+                <NavLink to="/event/history" onClick={() => setIsBurgerOpen(false)}>
+                  History
+                </NavLink>
               </div>
             )}
           </div>
@@ -272,19 +267,21 @@ function Navbar({ data }) {
           {dataLogin ? (
             <div className="lg:flex hidden flex-row justify-center items-center w-full">
               <i className="fa-regular fa-user text-white"></i>
-              <div
-                onMouseEnter={handleMouseEnterAccount}
-                onMouseLeave={handleMouseLeaveAccount}
-                onClick={handleAccountClick}
-                className="relative w-full"
-              >
+              <div onMouseEnter={handleMouseEnterAccount} onMouseLeave={handleMouseLeaveAccount} onClick={handleAccountClick} className="relative w-full">
                 <div className="flex flex-row items-center w-full lg:mt-0 mt-12">
                   <RiAccountCircleLine className="text-2xl mr-1" />
                   <p>{dataLogin.nama}</p>
                 </div>
                 {isAccountHovered && (
                   <div className="flex flex-col gap-2 w-full bg-white text-black font-medium rounded-md shadow-md py-2 px-4">
-                    <button onClick={() => { handleLogout(); setIsBurgerOpen(false); }}>Logout</button>
+                    <button
+                      onClick={() => {
+                        handleLogout();
+                        setIsBurgerOpen(false);
+                      }}
+                    >
+                      Logout
+                    </button>
                   </div>
                 )}
               </div>

@@ -25,8 +25,6 @@ const PendaftaranEventPage = () => {
   const [emailError, setEmailError] = useState('');
   const [phoneError, setPhoneError] = useState('');
   const [affiliationError, setAffiliationError] = useState('');
-  const [ticketTypeError, setTicketTypeError] = useState('');
-  const [ticketOption, setTicketOptions] = useState('');
 
   const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -40,10 +38,8 @@ const PendaftaranEventPage = () => {
           const event = response.data.event;
           setSelectedEvent(event);
           if (event.harga === '0') {
-            setTicketOptions(['Tiket Gratis']);
             setTicketType('Tiket Gratis');
           } else {
-            setTicketOptions(['Tiket Berbayar']);
             setTicketType('Tiket Berbayar');
           }
         } else {
@@ -102,16 +98,6 @@ const PendaftaranEventPage = () => {
     }
   };
 
-  const validateTicketType = (ticketType) => {
-    if (ticketType === '') {
-      setTicketTypeError('Jenis Tiket wajib dipilih');
-      return false;
-    } else {
-      setTicketTypeError('');
-      return true;
-    }
-  };
-
   const handleNameChange = (event) => {
     setName(event.target.value);
     validateName(event.target.value);
@@ -131,12 +117,7 @@ const PendaftaranEventPage = () => {
     setAffiliation(event.target.value);
     validateAffiliation(event.target.value);
   };
-
-  const handleTicketTypeChange = (event) => {
-    setTicketType(event.target.value);
-    validateTicketType(event.target.value);
-  };
-
+  
   const handleConfirm = async () => {
     const id = localStorage.getItem('id');
 
@@ -174,7 +155,7 @@ const PendaftaranEventPage = () => {
         '%20%0A%0AMohon%20konfirmasikan%20pendaftaran%20saya%20dan%20informasi%20terkait%20pembayaran.%0ATerima%20kasih.';
       window.open(redirectUrl, '_blank');
     } catch (error) {
-      setErrorMessage('Anda telah mendaftar event ini. Silahkan lihat di History!');
+      setErrorMessage('Anda telah mendaftar acara ini. Silahkan lihat di History!');
       setShowError(true);
 
       setTimeout(() => {
@@ -190,7 +171,7 @@ const PendaftaranEventPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (validateName(name) && validateEmail(email) && validatePhone(phone) && validateAffiliation(affiliation) && validateTicketType(ticketType)) {
+    if (validateName(name) && validateEmail(email) && validatePhone(phone) && validateAffiliation(affiliation)) {
       setShowConfirmation(true);
     }
   };
@@ -234,36 +215,30 @@ const PendaftaranEventPage = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg relative mx-8">
             <p className="text-black font-semibold mb-4">Apakah data yang Anda masukkan sudah benar?</p>
-            <table className="flex flex-col xl:text-lg text-sm table-fixed">
+            <table className="w-full mb-4">
               <tbody>
                 <tr>
-                  <td>Nama</td>
-                  <td>:</td>
+                  <td className="pr-4 py-2 font-semibold">Nama:</td>
                   <td>{name}</td>
                 </tr>
                 <tr>
-                  <td>Email</td>
-                  <td>:</td>
+                  <td className="pr-4 py-2 font-semibold">Email:</td>
                   <td>{email}</td>
                 </tr>
                 <tr>
-                  <td className="xl:pr-12 pr-2">No Handphone</td>
-                  <td className="pr-1">:</td>
+                  <td className="pr-4 py-2 font-semibold">No. Handphone:</td>
                   <td>{phone}</td>
                 </tr>
                 <tr>
-                  <td>Afiliasi</td>
-                  <td>:</td>
+                  <td className="pr-4 py-2 font-semibold">Afiliasi:</td>
                   <td>{affiliation}</td>
                 </tr>
                 <tr>
-                  <td>Jenis Tiket</td>
-                  <td>:</td>
+                  <td className="pr-4 py-2 font-semibold">Jenis Tiket:</td>
                   <td>{ticketType}</td>
                 </tr>
                 <tr>
-                  <td>Catatan</td>
-                  <td>:</td>
+                  <td className="pr-4 py-2 font-semibold">Catatan:</td>
                   <td>{notes}</td>
                 </tr>
               </tbody>
@@ -279,57 +254,51 @@ const PendaftaranEventPage = () => {
           </div>
         </div>
       )}
-      <div className="flex flex-col items-center justify-center mt-16 my-8 px-4 flex-grow">
+      <div className="flex flex-col items-center justify-center mt-16 my-8 px-4">
         {selectedEvent ? (
           <div className="max-w-lg w-full bg-white p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-4 text-center">
-              Pendaftaran Event: <br></br> {selectedEvent.judul}
-            </h2>
+            <h2 className="text-2xl font-bold mb-4 text-center">Pendaftaran Event: {selectedEvent.judul}</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label htmlFor="name" className="block mb-1">
+                <label htmlFor="name" className="block font-semibold mb-1">
                   Nama
                 </label>
-                <input type="text" id="name" className={`w-full px-3 py-2 border rounded-lg ${nameError ? 'border-red-500' : 'border-gray-300'}`} placeholder="Masukkan Nama" value={name} onChange={handleNameChange} />
+                <input type="text" id="name" className={`w-full px-3 py-2 border rounded-md ${nameError ? 'border-red-500' : 'border-gray-300'}`} value={name} onChange={handleNameChange} />
                 {nameError && <p className="text-red-500 text-sm">{nameError}</p>}
               </div>
               <div className="mb-4">
-                <label htmlFor="email" className="block mb-1">
+                <label htmlFor="email" className="block font-semibold mb-1">
                   Email
                 </label>
-                <input type="email" id="email" className={`w-full px-3 py-2 border rounded-lg ${emailError ? 'border-red-500' : 'border-gray-300'}`} placeholder="Masukkan Email" value={email} onChange={handleEmailChange} />
+                <input type="email" id="email" className={`w-full px-3 py-2 border rounded-md ${emailError ? 'border-red-500' : 'border-gray-300'}`} value={email} onChange={handleEmailChange} />
                 {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
               </div>
               <div className="mb-4">
-                <label htmlFor="phone" className="block mb-1">
+                <label htmlFor="phone" className="block font-semibold mb-1">
                   No. Handphone
                 </label>
-                <input type="text" id="phone" className={`w-full px-3 py-2 border rounded-lg ${phoneError ? 'border-red-500' : 'border-gray-300'}`} placeholder="Masukkan No Handphone" value={phone} onChange={handlePhoneChange} />
+                <input type="text" id="phone" className={`w-full px-3 py-2 border rounded-md ${phoneError ? 'border-red-500' : 'border-gray-300'}`} value={phone} onChange={handlePhoneChange} />
                 {phoneError && <p className="text-red-500 text-sm">{phoneError}</p>}
               </div>
               <div className="mb-4">
-                <label htmlFor="affiliation" className="block mb-1">
+                <label htmlFor="affiliation" className="block font-semibold mb-1">
                   Afiliasi
                 </label>
-                <input
-                  type="text"
-                  id="affiliation"
-                  className={`w-full px-3 py-2 border rounded-lg ${affiliationError ? 'border-red-500' : 'border-gray-300'}`}
-                  placeholder="Masukkan Afiliasi"
-                  value={affiliation}
-                  onChange={handleAffiliationChange}
-                />
+                <input type="text" id="affiliation" className={`w-full px-3 py-2 border rounded-md ${affiliationError ? 'border-red-500' : 'border-gray-300'}`} value={affiliation} onChange={handleAffiliationChange} />
                 {affiliationError && <p className="text-red-500 text-sm">{affiliationError}</p>}
               </div>
-
               <div className="mb-4">
-                <label htmlFor="notes" className="block mb-1">
+                <label className="block font-semibold mb-1">Jenis Tiket</label>
+                <p className="w-full px-3 py-2 border border-gray-300 rounded-md">{ticketType}</p>
+              </div>
+              <div className="mb-4">
+                <label htmlFor="notes" className="block font-semibold mb-1">
                   Catatan
                 </label>
-                <textarea id="notes" className="w-full px-3 py-2 border border-gray-300 rounded-lg" placeholder="Masukkan Catatan (bila perlu)" value={notes} onChange={(e) => setNotes(e.target.value)} />
+                <textarea id="notes" className="w-full px-3 py-2 border border-gray-300 rounded-md" value={notes} onChange={(e) => setNotes(e.target.value)} />
               </div>
               <div className="flex justify-center">
-                <button type="submit" className="px-10 py-2 bg-[#092040] text-white rounded-lg">
+                <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md">
                   Daftar
                 </button>
               </div>
