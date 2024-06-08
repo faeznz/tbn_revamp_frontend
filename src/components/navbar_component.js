@@ -13,6 +13,7 @@ function Navbar({ data }) {
   const [isAccountHovered, setIsAccountHovered] = useState(false);
   const [isEventHovered, setIsEventHovered] = useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const aboutRef = useRef(null);
   const accountRef = useRef(null);
@@ -98,6 +99,12 @@ function Navbar({ data }) {
 
   const handleLogout = async () => {
     await logout();
+    setShowSuccess(true);
+    setIsBurgerOpen(false);
+  };
+
+  const handleCloseSuccess = () => {
+    setShowSuccess(false);
     navigate('/');
   };
 
@@ -202,6 +209,7 @@ function Navbar({ data }) {
             </button>
           )}
 
+
           <NavLink to="/" onClick={() => setIsBurgerOpen(false)}>
             Home
           </NavLink>
@@ -283,6 +291,22 @@ function Navbar({ data }) {
               <NavLink to="/login">Login</NavLink>
             </button>
           )}
+        </div>
+      )}
+
+      {showSuccess && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg relative">
+            <p className="text-green-600 font-semibold mb-4">
+              Anda berhasil melakukan log out.
+            </p>
+            <button
+              className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900"
+              onClick={handleCloseSuccess}
+            >
+              Close
+            </button>
+          </div>
         </div>
       )}
     </div>
