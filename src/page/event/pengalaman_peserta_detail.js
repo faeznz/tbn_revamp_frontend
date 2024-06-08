@@ -26,7 +26,6 @@ const PengalamanPesertaDetail = () => {
         const filteredReviews = reviewsData.filter((review) => review.registration.event_id === parseInt(id));
 
         setReviews(filteredReviews);
-
       } catch (error) {
         console.error('Error fetching event data:', error);
       }
@@ -58,17 +57,15 @@ const PengalamanPesertaDetail = () => {
             <p className="text-white text-center font-bold xl:text-5xl md:text-3xl text-md xl:mb-6 mb-2">{event.judul}</p>
             <p className="text-white xl:font-semibold xl:text-2xl md:text-xl text-sm xl:mb-6">{new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
             <p className="text-white font-light xl:text-2xl md:text-xl text-xs text-center xl:mb-6 mb-2">{event.lokasi}</p>
-            <p className="text-white font-semibold xl:text-xl md:text-xl text-md xl:mb-6">REGISTRATION : Rp {parseInt(event.harga).toLocaleString('id-ID')}</p>
-            <div className='flex bg-white/50 h-0.5 w-full mt-8'></div>
+            <p className="text-white font-semibold xl:text-xl md:text-xl text-md ">REGISTRATION : {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+            <div className="flex bg-white/50 h-0.5 w-full mt-8"></div>
             <div className="text-white xl:h-12 md:h-10 h-8 mt-4 rounded-full p-2 flex items-center justify-center w-full gap-2">
               <div className="rounded-full xl:p-2">
                 <p className="xl:text-2xl text-sm">SPEAKERS :</p>
               </div>
             </div>
-            <div className=' text-white xl:text-2xl text-sm font-bold xl:h-12 md:h-10 h-8 rounded-full p-2 flex items-center justify-center w-full gap-2'>
-              {event.pembicara}
-            </div>
-            <div className='flex bg-white/50 h-0.5 w-full mt-4'></div>
+            <div className=" text-white xl:text-2xl text-sm font-bold xl:h-12 md:h-10 h-8 rounded-full p-2 flex items-center justify-center w-full gap-2">{event.pembicara}</div>
+            <div className="flex bg-white/50 h-0.5 w-full mt-4"></div>
           </div>
         </div>
       </section>
@@ -120,8 +117,8 @@ const PengalamanPesertaDetail = () => {
               <div className="xl:hidden flex flex-row items-center mt-12 w-full">
                 <div className="xl:ml-4 w-full">
                   <div className="flex flex-row justify-between w-full">
-                    <div className='flex flex-col items-start justify-start'>
-                      <div className='flex flex-row gap-2'>
+                    <div className="flex flex-col items-start justify-start">
+                      <div className="flex flex-row gap-2">
                         <img src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png" alt="" className="xl:h-12 xl:w-12 h-8 w-8 rounded-full" />
                         <div>
                           <p className="text-xl font-bold">{review.registration.name}</p>

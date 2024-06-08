@@ -16,7 +16,6 @@ const PengalamanPesertaCreate = () => {
   const [rating, setRating] = useState(0);
   const [image, setImage] = useState(null);
   const [eventName, setEventName] = useState('');
-  const [eventLocation, setEventLocation] = useState('');
 
   const [error, setError] = useState('');
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -30,7 +29,6 @@ const PengalamanPesertaCreate = () => {
         const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/registrations/${id}`);
         const eventData = response.data.data.event;
         setEventName(eventData.judul);
-        setEventLocation(eventData.lokasi);
       } catch (error) {
         setError(error.message);
       }
@@ -51,7 +49,7 @@ const PengalamanPesertaCreate = () => {
     e.preventDefault();
 
     // Validasi field
-    if (!review || !rating ) {
+    if (!review || !rating) {
       setError('Pastikan Anda mengisi Rating dan Ulasan');
       setShowErrorPopup(true);
       return;
@@ -90,10 +88,9 @@ const PengalamanPesertaCreate = () => {
     <div>
       <NavbarComponent />
       {/* Section 1 - Header */}
-      <section className='bg-[#F2EEEA]'>
+      <section className="bg-[#F2EEEA]">
         <div className="flex flex-col justify-center items-center w-screen xl:h-64 h-48 bg-[#C3D21F] xl:rounded-b-[100px] rounded-b-[30px]">
-          <p className="text-black xl:text-4xl text-xl font-semibold pt-16">{eventName}</p>
-          <p className="text-black xl:text-2xl text-sm font-light">{eventLocation}</p>
+          <p className="text-black text-center xl:text-4xl text-xl font-semibold pt-16">{eventName}</p>
         </div>
       </section>
       {/* Section 3 - Description */}
@@ -113,7 +110,7 @@ const PengalamanPesertaCreate = () => {
           </div>
           <div className="flex flex-col xl:w-3/5 xl:mt-8">
             <textarea value={review} onChange={(e) => setReview(e.target.value)} className="h-48 mx-8 my-12 rounded-xl bg-[#FBFBFB] border border-[#B6B6B6] text-black p-4" placeholder="Tulis ulasan Anda di sini" />
-            <div className='flex w-full justify-center items-center'>
+            <div className="flex w-full justify-center items-center">
               <input type="file" accept=".jpg, .jpeg, .png" onChange={handleImageChange} />
             </div>
             <button type="submit" className="bg-[#092040] text-white px-8 xl:py-4 py-3 mt-4 rounded-2xl mb-24 mx-8">
@@ -140,10 +137,7 @@ const PengalamanPesertaCreate = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg relative">
             <p className="text-red-600 font-semibold mb-4">{error}</p>
-            <button
-              className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900"
-              onClick={handleCloseErrorPopup}
-            >
+            <button className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900" onClick={handleCloseErrorPopup}>
               Close
             </button>
           </div>

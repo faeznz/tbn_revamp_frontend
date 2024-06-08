@@ -57,22 +57,20 @@ const UpcomingEventDetail = () => {
             <p className="text-white text-center font-bold xl:text-5xl md:text-3xl text-md xl:mb-6 mb-2">{event.judul}</p>
             <p className="text-white xl:font-semibold xl:text-2xl md:text-xl text-sm xl:mb-6">{eventDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
             <p className="text-white font-light xl:text-2xl md:text-xl text-xs text-center xl:mb-6 mb-2">{event.lokasi}</p>
-            <p className="text-white font-semibold xl:text-xl md:text-xl text-md ">REGISTRATION : Rp {parseInt(event.harga).toLocaleString('id-ID')}</p>
-            <div className='flex bg-white/50 h-0.5 w-full mt-8'></div>
+            <p className="text-white font-semibold xl:text-xl md:text-xl text-md ">REGISTRATION : {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+            <div className="flex bg-white/50 h-0.5 w-full mt-8"></div>
             <div className="text-white xl:h-12 md:h-10 h-8 mt-4 rounded-full p-2 flex items-center justify-center w-full gap-2">
               <div className="rounded-full xl:p-2">
                 <p className="xl:text-2xl text-sm">SPEAKERS :</p>
               </div>
             </div>
-            <div className=' text-white xl:text-2xl text-sm font-bold xl:h-12 md:h-10 h-8 rounded-full p-2 flex items-center justify-center w-full gap-2'>
-              {event.pembicara}
-            </div>
-            <div className='flex bg-white/50 h-0.5 w-full mt-4 xl:mb-10 mb-6'></div>
+            <div className=" text-white xl:text-2xl text-sm font-bold xl:h-12 md:h-10 h-8 rounded-full p-2 flex items-center justify-center w-full gap-2">{event.pembicara}</div>
+            <div className="flex bg-white/50 h-0.5 w-full mt-4 xl:mb-10 mb-6"></div>
 
             <div className="w-full max-w-xl">
               <div className="w-full xl:mt-8 md:mt-4">
                 {!isEventExpired ? (
-                  <Link to="/event/register-event" className="block w-full">
+                  <Link to={`/event/register-event/${id}`} className="block w-full">
                     <button className="bg-[#005F94] xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2">
                       <MdLocalOffer className="xl:text-2xl text-xl" />
                       <p className="xl:text-2xl text-sm">Register Event Here</p>
