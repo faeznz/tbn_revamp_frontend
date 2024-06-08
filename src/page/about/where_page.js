@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 import NavbarComponent from "../../components/navbar_component";
 import FooterComponent from "../../components/footer_component";
 
-import MapsWhereWeAre from '../../assets/images/about/where-we-are/maps_where_we_are.png';
+import { FaWhatsapp } from "react-icons/fa";
+import { TbWorld } from "react-icons/tb";
 
 const WherePage = () => {
   return (
@@ -18,31 +19,32 @@ const WherePage = () => {
           </p>
         </div>
       </section>
-      {/* Section 2 - Maps */}
-      <section>
-        <div className="flex flex-col justify-center items-center">
-          <img src={MapsWhereWeAre} alt="" className="w-4/5 lg:py-24 py-12" />
-        </div>
-      </section>
-      {/* Section 3 - Description */}
-      <section className="bg-[#F2EEEA] lg:rounded-t-[100px] rounded-t-[30px]">
-        <div className=" flex flex-col justify-center items-start lg:px-24 px-12 lg:pt-24 pt-12">
-          <p className="lg:text-2xl text-lg">
-            Click on the links below to learn more about the ecosystems  and impact in our founding chapter locations.
+      {/* Section 2 - Description */}
+      <section className=" pb-24">
+        <div className=" flex flex-col justify-center items-start lg:px-24 px-12 lg:pt-24 pt-12 text-white">
+          <div className="flex flex-col w-full bg-[#092040] p-12 rounded-2xl">
+            <p className="lg:text-7xl text-lg text-[#C3D21F] font-bold">Reach Us On</p>
+            <p className="lg:text-xl text-lg font-light">Together, we can make a significant impact on the lives of Indonesians and the environment</p>
+          <p className="lg:text-2xl text-lg font-semibold mt-16">Impact Hub</p>
+          <p className="lg:text-2xl text-lg font-light">Lippo Thamrin 5th Floor <br />
+            M.H, Thamrin No. 20 <br />
+            Central Jakarta, 10350, Indonesia
           </p>
-          <ul className="lg:text-2xl text-lg list-disc lg:pl-24 lg:pb-24 pb-12 pt-8">
-            <li>Africa tbnetworkafrica.org</li>
-            <li>Americas tbn-americas.org</li>
-            <li>Asia tbn.asia</li>
-            <li>Indonesia tbnindonesia.org</li>
-          </ul>
-        </div>
-        <div className="flex flex-row justify-center w-full items-center lg:pb-24 pb-12">
-          <NavLink to='' className='bg-[#092040] text-white px-8 py-4 rounded-2xl'>Join Us</NavLink>
+          <div className="flex flex-col mt-12">
+            <div className="flex flex-row items-center gap-2">
+              <FaWhatsapp className="w-8 h-8" />
+              <p className="text-xl">+62 823 1000 1908</p>
+            </div>
+            <div className="flex flex-row items-center gap-2 mt-4">
+              <TbWorld className="w-8 h-8" />
+              <p className="text-xl">info@tbnindonesia.org</p>
+            </div>
+          </div>
+          </div>
         </div>
       </section>
       {/* Footer */}
-      <div className="bg-[#F2EEEA]">
+      <div>
         <FooterComponent />
       </div>
     </div>

@@ -3,8 +3,8 @@ import React from "react";
 import NavbarComponent from "../../components/navbar_component";
 import FooterComponent from "../../components/footer_component";
 
-import BannerOverview from "../../assets/images/about/how-it-works/banner_overview.png";
 import BannerBuildOutPriorities from "../../assets/images/about/how-it-works/allience_build_out-Priorities.png";
+import OurFocusSector from "../../assets/images/about/how-it-works/our-focus-sector.png";
 import AllianceServeInFour from "../../assets/images/about/how-it-works/alliance_serves_in_four_critical_ways.png";
 import PreAlliance from "../../assets/images/about/how-it-works/pre_alliance.png";
 
@@ -22,18 +22,18 @@ const HowItWorksPage = () => {
       </section>
       {/* Section 2 - Overview */}
       <section>
-        <div className="flex flex-col justify-center items-center pb-16">
-          <p className="lg:text-4xl text-xl mb-8 font-medium lg:pt-24 pt-12">OVERVIEW</p>
-          <img src={BannerOverview} alt="" className="w-4/5" />
+        <div className="flex flex-col justify-center items-center pb-12">
+          <p className="lg:text-4xl text-xl mb-8 font-medium lg:pt-24 pt-12">TBN Indonesia Build-out Priorities</p>
+          <img src={BannerBuildOutPriorities} alt="" className="w-4/5" />
         </div>
       </section>
       {/* Section 3 - Alliance Build-out Priorities */}
       <section>
-        <div className="flex flex-col justify-center items-center bg-[#005F94] lg:rounded-t-[100px] rounded-t-[30px]">
+        <div className="flex flex-col justify-center pb-24 items-center bg-[#005F94] lg:rounded-t-[100px] rounded-t-[30px]">
           <p className="lg:text-4xl text-xl mb-8 font-medium lg:pt-24 pt-12 text-white lg:pb-12 text-center">
-            TBN Indonesia Build-out Priorities
+            Our Focus Sectors
           </p>
-          <img src={BannerBuildOutPriorities} alt="" className="w-4/5" />
+          <img src={OurFocusSector} alt="" className="w-4/5" />
         </div>
       </section>
       {/* Section 3 - The Alliance serves its diverse ecosystem in four critical ways */}
