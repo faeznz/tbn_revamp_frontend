@@ -135,7 +135,7 @@ const RegisterPage = () => {
       setTimeout(() => {
         setShowSuccess(false);
         navigate('/login');
-      }, 3000);
+      }, 8000);
     } catch (error) {
       // Handle error
       setErrorMessage('Pendaftaran gagal. Coba ulangi lagi.');
@@ -206,6 +206,7 @@ const RegisterPage = () => {
 
   const handleCloseSuccess = () => {
     setShowSuccess(false);
+    navigate('/login');
   };
 
   return (
@@ -224,10 +225,13 @@ const RegisterPage = () => {
       {showSuccess && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg relative">
-            <button onClick={handleCloseSuccess} className="absolute top-2 right-2 text-gray-600 hover:text-gray-900">
-              &times;
+            <p className="text-green-600 font-semibold mb-2">{successMessage}</p>
+            <button
+              className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900"
+              onClick={handleCloseSuccess}
+            >
+              Close
             </button>
-            <p className="text-green-600 font-semibold">{successMessage}</p>
           </div>
         </div>
       )}

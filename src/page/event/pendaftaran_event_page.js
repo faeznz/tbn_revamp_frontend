@@ -117,7 +117,7 @@ const PendaftaranEventPage = () => {
     setAffiliation(event.target.value);
     validateAffiliation(event.target.value);
   };
-
+  
   const handleConfirm = async () => {
     const id = localStorage.getItem('id');
 
