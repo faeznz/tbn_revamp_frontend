@@ -13,6 +13,7 @@ function Navbar({ data }) {
   const [isAccountHovered, setIsAccountHovered] = useState(false);
   const [isEventHovered, setIsEventHovered] = useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const aboutRef = useRef(null);
   const accountRef = useRef(null);
@@ -105,6 +106,12 @@ function Navbar({ data }) {
 
   const handleLogout = async () => {
     await logout();
+    setShowSuccess(true);
+    setIsBurgerOpen(false);
+  };
+
+  const handleCloseSuccess = () => {
+    setShowSuccess(false);
     navigate('/');
   };
 
@@ -203,26 +210,26 @@ function Navbar({ data }) {
           </div>
           {dataLogin ? (
             <div className="flex lg:hidden flex-row justify-center items-center w-full py-2 mb-4">
-            <i className="fa-regular fa-user text-white"></i>
-            <div
-              onMouseEnter={handleMouseEnterAccount}
-              onMouseLeave={handleMouseLeaveAccount}
-              onClick={handleAccountClick}
-              className="relative w-full"
-            >
-              <div className="flex flex-row items-center justify-between w-full">
-                <p className="text-xl">Hi, {dataLogin.nama}</p>
-                <MdLogout className="text-xl" onClick={() => { handleLogout(); setIsBurgerOpen(false); }} />
+              <i className="fa-regular fa-user text-white"></i>
+              <div
+                onMouseEnter={handleMouseEnterAccount}
+                onMouseLeave={handleMouseLeaveAccount}
+                onClick={handleAccountClick}
+                className="relative w-full"
+              >
+                <div className="flex flex-row items-center justify-between w-full">
+                  <p className="text-xl">Hi, {dataLogin.nama}</p>
+                  <MdLogout className="text-xl" onClick={() => { handleLogout(); setIsBurgerOpen(false); }} />
+                </div>
+                <div className="w-full h-0.5 bg-white opacity-50 mt-4"></div>
               </div>
-              <div className="w-full h-0.5 bg-white opacity-50 mt-4"></div>
             </div>
-          </div>
           ) : (
             <button className="hidden">
               <NavLink to="/login">Login</NavLink>
             </button>
           )}
-          
+
           <NavLink to="/" onClick={() => setIsBurgerOpen(false)}>Home</NavLink>
           <div
             onMouseEnter={handleMouseEnterAbout}
@@ -287,6 +294,22 @@ function Navbar({ data }) {
               <NavLink to="/login">Login</NavLink>
             </button>
           )}
+        </div>
+      )}
+
+      {showSuccess && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg relative">
+            <p className="text-green-600 font-semibold mb-4">
+              Anda berhasil melakukan log out.
+            </p>
+            <button
+              className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900"
+              onClick={handleCloseSuccess}
+            >
+              Close
+            </button>
+          </div>
         </div>
       )}
     </div>
