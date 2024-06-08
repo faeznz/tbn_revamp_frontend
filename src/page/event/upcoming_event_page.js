@@ -12,7 +12,6 @@ import LottieDataNotFound from '../../assets/lottie/data-not-found.json';
 const EventsPage = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -25,6 +24,7 @@ const EventsPage = () => {
           setEvents([]);
         }
       } catch (error) {
+        console.error('Error fetching events:', error);
       } finally {
         setLoading(false);
       }
@@ -67,10 +67,6 @@ const EventsPage = () => {
     );
   }
 
-  if (error) {
-    return <p>{error}</p>;
-  }
-
   if (events.length === 0) {
     return (
       <div className="flex flex-col min-h-screen">
@@ -107,7 +103,7 @@ const EventsPage = () => {
                   <div className="w-full justify-center items-center">
                     <div className="px-6 pb-4">
                       <p className="text-gray-800 font-medium mb-2">Pembicara: {event.pembicara}</p>
-                      <p className="text-gray-800 font-medium mb-2">Registration: {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+                      <p className="text-gray-800 font-medium mb-2">Registration: Rp {parseInt(event.harga).toLocaleString('id-ID')}</p>
                       <p className="text-gray-800 font-medium">Tanggal: {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                     </div>
                     <div className="px-6 py-8 text-center justify-center items-center">

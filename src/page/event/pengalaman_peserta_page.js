@@ -12,7 +12,6 @@ import LottieDataNotFound from '../../assets/lottie/data-not-found.json';
 const PengalamanPesertaPage = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -25,6 +24,7 @@ const PengalamanPesertaPage = () => {
           setEvents([]);
         }
       } catch (error) {
+        console.error('Error fetching events:', error);
       } finally {
         setLoading(false);
       }
@@ -43,7 +43,7 @@ const PengalamanPesertaPage = () => {
         <NavbarComponent />
         <div className="flex-grow">
           <section className="bg-white py-24">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 ">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Pengalaman Peserta</h2>
               <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
               <div className="mx-auto mt-5 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -67,15 +67,9 @@ const PengalamanPesertaPage = () => {
             </div>
           </section>
         </div>
-        <div>
-          <FooterComponent />
-        </div>
+        <FooterComponent />
       </div>
     );
-  }
-
-  if (error) {
-    return <p>{error}</p>;
   }
 
   if (events.length === 0) {
@@ -83,7 +77,7 @@ const PengalamanPesertaPage = () => {
       <div className="flex flex-col min-h-screen">
         <NavbarComponent />
         <div className="flex flex-col">
-          <section className="bg-white py-24 sm:py-32 ">
+          <section className="bg-white py-24 sm:py-32">
             <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center items-center">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Pengalaman Peserta</h2>
               <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
@@ -116,7 +110,7 @@ const PengalamanPesertaPage = () => {
                   <div className="w-full justify-center items-center">
                     <div className="px-6 pb-4">
                       <p className="text-gray-800 font-medium mb-2">Pembicara: {event.pembicara}</p>
-                      <p className="text-gray-800 font-medium mb-2">Registration: {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+                      <p className="text-gray-800 font-medium mb-2">Registration: Rp {parseInt(event.harga).toLocaleString('id-ID')}</p>
                       <p className="text-gray-800 font-medium">Tanggal: {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                     </div>
                     <div className="px-6 py-8 text-center justify-center items-center">

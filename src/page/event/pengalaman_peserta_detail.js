@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
-import { FaMicrophone } from 'react-icons/fa';
 import { MdStar } from 'react-icons/md';
 
 import BannerUpcoming from '../../assets/images/event/upcoming/upcoming_bannner.png';
