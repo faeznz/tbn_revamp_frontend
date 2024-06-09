@@ -12,13 +12,18 @@ import BannerUpcoming from '../../assets/images/event/upcoming/upcoming_bannner.
 const UpcomingEventDetail = () => {
   const { id } = useParams(); // Ambil ID dari parameter URL
   const [event, setEvent] = useState(null); // State untuk menyimpan data event
+  const [eventId, setEventId] = useState(null); // State untuk menyimpan data event
   const [events, setEvents] = useState([]); // State untuk menyimpan data semua event
+  const [userExists, setUserExists] = useState([]); // State untuk menyimpan data semua event
+
+  const idUser = parseInt(localStorage.getItem('id'));
 
   useEffect(() => {
     const fetchEventData = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/events/${id}`);
         setEvent(response.data.event);
+        setEventId(response.data.event.id);
       } catch (error) {
         console.error('Error fetching event data:', error);
       }
@@ -32,9 +37,22 @@ const UpcomingEventDetail = () => {
         console.error('Error fetching all events:', error);
       }
     };
+    
+    const fetchAllRegistration = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/registrations`);
+        const pendaftaran = response.data;
+        const userExists = pendaftaran.some(pendaftaran => pendaftaran.user_id === idUser);
+
+        setUserExists(userExists);
+      } catch (error) {
+        console.error('Error fetching all registrations:', error);
+      }
+    };
 
     fetchEventData();
     fetchAllEvents();
+    fetchAllRegistration();
   }, [id]);
 
   if (!event) {
@@ -68,22 +86,27 @@ const UpcomingEventDetail = () => {
             <div className="flex bg-white/50 h-0.5 w-full mt-4 xl:mb-10 mb-6"></div>
 
             <div className="w-full max-w-xl">
-              <div className="w-full xl:mt-8 md:mt-4">
-                {!isEventExpired ? (
-                  <Link to={`/event/register-event/${id}`} className="block w-full">
-                    <button className="bg-[#005F94] xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2">
-                      <MdLocalOffer className="xl:text-2xl text-xl" />
-                      <p className="xl:text-2xl text-sm">Register Event Here</p>
-                    </button>
-                  </Link>
-                ) : (
-                  <button className="bg-gray-500 xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2" disabled>
-                    <MdLocalOffer className="xl:text-2xl text-xl" />
-                    <p className="xl:text-2xl text-sm">Event Expired</p>
-                  </button>
-                )}
-              </div>
-            </div>
+  <div className="w-full xl:mt-8 md:mt-4">
+    {userExists ? (
+      <button className="bg-gray-500 xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2" disabled>
+        <MdLocalOffer className="xl:text-2xl text-xl" />
+        <p className="xl:text-2xl text-sm">You are already registered</p>
+      </button>
+    ) : !isEventExpired ? (
+      <Link to={`/event/register-event/${id}`} className="block w-full">
+        <button className="bg-[#005F94] xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2">
+          <MdLocalOffer className="xl:text-2xl text-xl" />
+          <p className="xl:text-2xl text-sm">Register Event Here</p>
+        </button>
+      </Link>
+    ) : (
+      <button className="bg-gray-500 xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2" disabled>
+        <MdLocalOffer className="xl:text-2xl text-xl" />
+        <p className="xl:text-2xl text-sm">Event Expired</p>
+      </button>
+    )}
+  </div>
+</div>;
           </div>
         </div>
       </section>

@@ -12,6 +12,7 @@ import LottieDataNotFound from '../../assets/lottie/data-not-found.json';
 const EventsPage = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [fetchStatus, setFetchStatus] = useState(true);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -20,11 +21,13 @@ const EventsPage = () => {
         if (response.data && response.data.events && response.data.events.length > 0) {
           const pastEvents = response.data.events.filter((event) => new Date(event.tanggal) > new Date());
           setEvents(pastEvents);
+          setFetchStatus(true);
         } else {
           setEvents([]);
         }
       } catch (error) {
         console.error('Error fetching events:', error);
+        setFetchStatus(false);
       } finally {
         setLoading(false);
       }
@@ -67,7 +70,7 @@ const EventsPage = () => {
     );
   }
 
-  if (events.length === 0) {
+  if (events.length === 0 && fetchStatus === false) {
     return (
       <div className="flex flex-col min-h-screen">
         <NavbarComponent />
@@ -77,6 +80,25 @@ const EventsPage = () => {
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Event Upcoming</h2>
               <article className="rounded-lg overflow-hidden text-center col-span-full mt-12">
                 <Lottie animationData={LottieDataNotFound} loop={true} />
+              </article>
+            </div>
+          </section>
+        </div>
+        <FooterComponent />
+      </div>
+    );
+  }
+  
+  if (events.length === 0 && fetchStatus === true) {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <NavbarComponent />
+        <div className="flex flex-col">
+          <section className="bg-white py-24 sm:py-32">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center items-center">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Event Upcoming</h2>
+              <article className="rounded-lg overflow-hidden text-center col-span-full mt-12 bg-[#dddddd]">
+                <p>tes</p>
               </article>
             </div>
           </section>
