@@ -6,6 +6,7 @@ import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
 import { MdStar } from 'react-icons/md';
+import { RiAccountCircleLine } from 'react-icons/ri';
 
 import BannerUpcoming from '../../assets/images/event/upcoming/upcoming_bannner.png';
 
@@ -96,7 +97,7 @@ const PengalamanPesertaDetail = () => {
             <div key={review.id} className="xl:mx-24">
               {/* Layout For Dekstop */}
               <div className="hidden xl:flex flex-row items-center mt-12 w-full">
-                <img src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png" alt="" className="xl:h-12 xl:w-12 h-8 w-8 rounded-full" />
+              <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
                 <div className="ml-4 w-full">
                   <div className="flex flex-row justify-between w-full">
                     <div>
@@ -118,7 +119,7 @@ const PengalamanPesertaDetail = () => {
                   <div className="flex flex-row justify-between w-full">
                     <div className="flex flex-col items-start justify-start">
                       <div className="flex flex-row gap-2">
-                        <img src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png" alt="" className="xl:h-12 xl:w-12 h-8 w-8 rounded-full" />
+                      <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
                         <div>
                           <p className="text-xl font-bold">{review.registration.name}</p>
                           <p className="text-md font-light">{new Date(review.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
