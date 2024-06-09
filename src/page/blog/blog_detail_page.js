@@ -61,7 +61,7 @@ const BlogDetailPage = () => {
 
       setNewComment('');
       setRating(0);
-      fetchComments(); 
+      fetchComments();
     } catch (error) {
       setError('Error submitting comment.');
       console.error(error);
@@ -93,7 +93,7 @@ const BlogDetailPage = () => {
           </div>
           <div className="w-4/5">
             <p className="font-semibold text-gray-900 text-3xl mt-8">{post.title}</p>
-            <div className="font-light text-gray-900 text-xl mt-4 text-justify" dangerouslySetInnerHTML={{ __html: post.desc }}></div>
+            <div className="font-light text-gray-900 text-xl mt-4 text-justify description" dangerouslySetInnerHTML={{ __html: post.desc }}></div>
           </div>
         </div>
       </section>

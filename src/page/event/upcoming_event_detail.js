@@ -123,7 +123,7 @@ const UpcomingEventDetail = () => {
         <div className="xl:mx-24 mx-12 flex flex-col justify-center items-center my-24">
           <p className="text-xl mb-12 font-light underline underline-offset-2">About the Conference</p>
           <div className="flex flex-row xl:mx-12">
-            <p className="text-justify font-light" dangerouslySetInnerHTML={{ __html: event.deskripsi }}></p>
+            <p className="text-justify font-light description" dangerouslySetInnerHTML={{ __html: event.deskripsi }}></p>
           </div>
         </div>
       </section>
@@ -147,7 +147,7 @@ const UpcomingEventDetail = () => {
                     <p className="mt-2 text-sm text-gray-600">{new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                     <p className="mt-2 text-sm text-gray-600">{event.lokasi}</p>
                     <p className="mt-2 text-sm text-gray-600">Registration: {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
-                    <Link to={`/event/upcoming/${event.id}`} className="mt-4 block text-blue-600 hover:underline">
+                    <Link to={`/event/upcoming/detail/${event.id}`} className="mt-4 block text-blue-600 hover:underline">
                       See Details
                     </Link>
                   </div>

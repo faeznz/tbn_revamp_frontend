@@ -77,7 +77,7 @@ const PengalamanPesertaDetail = () => {
         <div className="xl:mx-24 mx-12 flex flex-col justify-center items-center my-24">
           <p className="text-xl mb-12 font-light underline underline-offset-2">About the Conference</p>
           <div className="flex flex-row xl:mx-12">
-            <p className="text-justify font-light" dangerouslySetInnerHTML={{ __html: event.deskripsi }}></p>
+            <p className="text-justify font-light description" dangerouslySetInnerHTML={{ __html: event.deskripsi }}></p>
           </div>
         </div>
       </section>
@@ -97,7 +97,7 @@ const PengalamanPesertaDetail = () => {
             <div key={review.id} className="xl:mx-24">
               {/* Layout For Dekstop */}
               <div className="hidden xl:flex flex-row items-center mt-12 w-full">
-              <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
+                <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
                 <div className="ml-4 w-full">
                   <div className="flex flex-row justify-between w-full">
                     <div>
@@ -119,7 +119,7 @@ const PengalamanPesertaDetail = () => {
                   <div className="flex flex-row justify-between w-full">
                     <div className="flex flex-col items-start justify-start">
                       <div className="flex flex-row gap-2">
-                      <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
+                        <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
                         <div>
                           <p className="text-xl font-bold">{review.registration.name}</p>
                           <p className="text-md font-light">{new Date(review.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
