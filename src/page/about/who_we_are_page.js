@@ -3,10 +3,6 @@ import React from "react";
 import NavbarComponent from "../../components/navbar_component";
 import FooterComponent from "../../components/footer_component";
 
-import BannerWhoWeAre from "../../assets/images/about/who-we-are/who_we_are_banner.png";
-import KontenCapacityBuilders from "../../assets/images/about/who-we-are/whoweare_capacity_builders.png";
-import KontenImpactInvestors from "../../assets/images/about/who-we-are/whoweare_impact_investors.png";
-import KontenSocialEnterprises from "../../assets/images/about/who-we-are/whoweare_social_enterprises.png";
 import AboutWhoWeAre from "../../assets/images/about/who-we-are/about-whoweare.png";
 
 const WhoWeArePage = () => {
