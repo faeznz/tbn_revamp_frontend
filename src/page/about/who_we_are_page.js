@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import NavbarComponent from "../../components/navbar_component";
-import FooterComponent from "../../components/footer_component";
+import NavbarComponent from '../../components/navbar_component';
+import FooterComponent from '../../components/footer_component';
 
-import AboutWhoWeAre from "../../assets/images/about/who-we-are/about-whoweare.png";
+import AboutWhoWeAre from '../../assets/images/about/who-we-are/about-whoweare.png';
 
 const WhoWeArePage = () => {
   return (
@@ -18,15 +18,17 @@ const WhoWeArePage = () => {
       {/* Section 2 - Description */}
       <section>
         <div className="w-screen flex flex-col items-center">
-          <div className="flex lg:flex-row w-full flex-col justify-between items-center xl:px-24 px-12 my-24 lg:gap-24 gap-8">
-            <img src={AboutWhoWeAre} alt="" className="w-2/3"/>
-            <div className="w-2/3">
+          <div className="flex lg:flex-row w-full flex-col justify-between items-center xl:px-24 px-12 lg:my-24 my-12 lg:gap-24 gap-8">
+            <img src={AboutWhoWeAre} alt="" className="xl:w-2/3 " />
+            <div className="xl:w-2/3">
               <p className="text-4xl font-medium mb-8">About TBN Indonesia</p>
-              <p className="font-light">
+              <p className="font-light text-justify">
                 TBN Indonesia is a network that connects entrepreneurs and investors, and offers advisory services such as research, capacity building, and educational content creation.
-                <br /><br />
+                <br />
+                <br />
                 We connect businesses with the capital and resources they need to create positive social and environmental impact alongside financial returns.
-                <br /><br />
+                <br />
+                <br />
                 TBN Indonesia, led by Mr. Teddy Hartono, is the local chapter, focusing on driving impact investment in the Indonesian market.
               </p>
             </div>
@@ -34,7 +36,7 @@ const WhoWeArePage = () => {
         </div>
       </section>
       {/* Footer */}
-      <div className="w-screen bg-[#F2EEEA]">
+      <div className="w-screen">
         <FooterComponent />
       </div>
     </div>
