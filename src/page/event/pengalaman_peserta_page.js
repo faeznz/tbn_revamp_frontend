@@ -110,7 +110,7 @@ const PengalamanPesertaPage = () => {
                   <div className="w-full justify-center items-center">
                     <div className="px-6 pb-4">
                       <p className="text-gray-800 font-medium mb-2">Pembicara: {event.pembicara}</p>
-                      <p className="text-gray-800 font-medium mb-2">Registration: Rp {parseInt(event.harga).toLocaleString('id-ID')}</p>
+                      <p className="text-gray-800 font-medium mb-2">Registration: {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
                       <p className="text-gray-800 font-medium">Tanggal: {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                     </div>
                     <div className="px-6 py-8 text-center justify-center items-center">

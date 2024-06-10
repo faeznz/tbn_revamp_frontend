@@ -4,8 +4,6 @@ import axios from 'axios';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
-import BannerHistory from '../../assets/images/about/partnership/banner_partner.png';
-
 const PartnershipPage = () => {
   const [partners, setPartners] = useState([]);
 

@@ -6,6 +6,7 @@ import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
 import { FaStar } from 'react-icons/fa';
+import { RiAccountCircleLine } from 'react-icons/ri';
 
 const BlogDetailPage = () => {
   const { id } = useParams();
@@ -60,7 +61,7 @@ const BlogDetailPage = () => {
 
       setNewComment('');
       setRating(0);
-      fetchComments(); 
+      fetchComments();
     } catch (error) {
       setError('Error submitting comment.');
       console.error(error);
@@ -82,7 +83,7 @@ const BlogDetailPage = () => {
         <div className="flex flex-col w-full py-24 items-center">
           <div className="flex w-4/5 mb-8">
             <div className="flex items-center gap-x-4">
-              <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" className="h-10 w-10 rounded-full bg-gray-50" />
+              <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
               <p className="font-semibold text-gray-900">{post.user.name}</p>
               <p className="font-normal text-gray-900">{new Date(post.created_at).toLocaleDateString()}</p>
             </div>
@@ -92,7 +93,7 @@ const BlogDetailPage = () => {
           </div>
           <div className="w-4/5">
             <p className="font-semibold text-gray-900 text-3xl mt-8">{post.title}</p>
-            <div className="font-light text-gray-900 text-xl mt-4 text-justify" dangerouslySetInnerHTML={{ __html: post.desc }}></div>
+            <div className="font-light text-gray-900 text-xl mt-4 text-justify description" dangerouslySetInnerHTML={{ __html: post.desc }}></div>
           </div>
         </div>
       </section>
@@ -102,7 +103,7 @@ const BlogDetailPage = () => {
           {comments.map((comment) => (
             <div key={comment.id} className="flex flex-col items-start justify-start mb-6">
               <div className="flex flex-row justify-center items-center xl:mt-12 mt-8">
-                <img src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png" alt="" className="h-12 w-12 rounded-full" />
+                <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
                 <div className="ml-4">
                   <p className="font-bold">{comment.user ? comment.user.name : 'Unknown'}</p>
                   <p className="font-light">{new Date(comment.created_at).toLocaleDateString()}</p>

@@ -13,6 +13,8 @@ const UpcomingEventDetail = () => {
   const { id } = useParams(); // Ambil ID dari parameter URL
   const [event, setEvent] = useState(null); // State untuk menyimpan data event
   const [events, setEvents] = useState([]); // State untuk menyimpan data semua event
+  const [isRegistered, setIsRegistered] = useState(false); // State untuk menyimpan status pendaftaran pengguna
+  const [userId, setUserId] = useState(null); // State untuk menyimpan user_id
 
   useEffect(() => {
     const fetchEventData = async () => {
@@ -33,9 +35,28 @@ const UpcomingEventDetail = () => {
       }
     };
 
+    const fetchRegistrations = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/registrations');
+        const registrations = response.data;
+
+        // Ambil user_id dari salah satu pendaftaran
+        if (registrations.length > 0) {
+          setUserId(registrations[0].user_id);
+        }
+
+        // Cek apakah user sudah terdaftar untuk event dengan id saat ini
+        const isUserRegistered = registrations.some((registration) => registration.user_id === userId && registration.event_id === parseInt(id));
+        setIsRegistered(isUserRegistered);
+      } catch (error) {
+        console.error('Error fetching registrations:', error);
+      }
+    };
+
     fetchEventData();
     fetchAllEvents();
-  }, [id]);
+    fetchRegistrations();
+  }, [id, userId]);
 
   if (!event) {
     return <div></div>;
@@ -70,12 +91,19 @@ const UpcomingEventDetail = () => {
             <div className="w-full max-w-xl">
               <div className="w-full xl:mt-8 md:mt-4">
                 {!isEventExpired ? (
-                  <Link to={`/event/register-event/${id}`} className="block w-full">
-                    <button className="bg-[#005F94] xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2">
+                  isRegistered ? (
+                    <button className="bg-gray-500 xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2" disabled>
                       <MdLocalOffer className="xl:text-2xl text-xl" />
-                      <p className="xl:text-2xl text-sm">Register Event Here</p>
+                      <p className="xl:text-2xl text-sm">Already Registered</p>
                     </button>
-                  </Link>
+                  ) : (
+                    <Link to={`/event/register-event/${id}`} className="block w-full">
+                      <button className="bg-[#005F94] xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2">
+                        <MdLocalOffer className="xl:text-2xl text-xl" />
+                        <p className="xl:text-2xl text-sm">Register Event Here</p>
+                      </button>
+                    </Link>
+                  )
                 ) : (
                   <button className="bg-gray-500 xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2" disabled>
                     <MdLocalOffer className="xl:text-2xl text-xl" />
@@ -95,7 +123,7 @@ const UpcomingEventDetail = () => {
         <div className="xl:mx-24 mx-12 flex flex-col justify-center items-center my-24">
           <p className="text-xl mb-12 font-light underline underline-offset-2">About the Conference</p>
           <div className="flex flex-row xl:mx-12">
-            <p className="text-justify font-light" dangerouslySetInnerHTML={{ __html: event.deskripsi }}></p>
+            <p className="text-justify font-light description" dangerouslySetInnerHTML={{ __html: event.deskripsi }}></p>
           </div>
         </div>
       </section>
@@ -111,28 +139,17 @@ const UpcomingEventDetail = () => {
               {/* Map semua event dan tampilkan dalam bentuk card */}
               {events.map((event) => (
                 <article key={event.id} className="flex max-w-xl flex-col items-start justify-between">
-                  <div>
-                    <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt={event.judul} className="rounded-xl mb-4 aspect-3/4 object-cover" />
+                  <div className="relative w-full">
+                    <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt="" className="w-full object-cover rounded-lg" />
                   </div>
-                  <div className="flex items-center gap-x-4 text-xs">
-                    <time dateTime={new Date(event.tanggal).toISOString()} className="text-gray-500">
-                      {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
-                    </time>
-                  </div>
-                  <div className="group relative">
-                    <h3 className="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                      <NavLink to={`/event/${event.id}`}>
-                        <span className="absolute inset-0" />
-                        {event.judul}
-                      </NavLink>
-                    </h3>
-                    <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600" dangerouslySetInnerHTML={{ __html: event.deskripsi }}></p>
-                  </div>
-                  <div className="text-sm leading-6 mt-8 flex flex-row w-full items-center justify-between">
-                    {/* Ganti link "Read More" dengan tautan yang sesuai */}
-                    <NavLink to={`/event/upcoming/detail/${event.id}`} className="bg-[#195A94] text-white px-8 py-2 rounded-xl">
-                      Read More
-                    </NavLink>
+                  <div className="max-w-xl">
+                    <h3 className="mt-4 text-xl font-semibold text-gray-900">{event.judul}</h3>
+                    <p className="mt-2 text-sm text-gray-600">{new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                    <p className="mt-2 text-sm text-gray-600">{event.lokasi}</p>
+                    <p className="mt-2 text-sm text-gray-600">Registration: {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+                    <Link to={`/event/upcoming/detail/${event.id}`} className="mt-4 block text-blue-600 hover:underline">
+                      See Details
+                    </Link>
                   </div>
                 </article>
               ))}
@@ -140,9 +157,8 @@ const UpcomingEventDetail = () => {
           </div>
         </div>
       </section>
-      <div className="bg-[#F2EEEA]">
-        <FooterComponent />
-      </div>
+
+      <FooterComponent />
     </div>
   );
 };

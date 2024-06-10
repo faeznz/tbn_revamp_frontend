@@ -28,6 +28,37 @@
   color: #61dafb;
 }
 
+/* App.css */
+.description p {
+  margin-bottom: 1em;
+}
+
+.description ul,
+.description ol {
+  margin-left: 1.5em;
+  padding-left: 1.5em;
+}
+
+.description ul {
+  list-style-type: disc; /* Tipe daftar bullet */
+}
+
+.description ol {
+  list-style-type: decimal; /* Tipe daftar nomor */
+}
+
+.description li {
+  margin-bottom: 0.5em;
+}
+
+.description strong {
+  font-weight: bold;
+}
+
+.description em {
+  font-style: italic;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

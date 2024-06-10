@@ -49,7 +49,7 @@ function HomePage() {
   };
 
   const cleanDescription = (description) => {
-    return description.replace(/rnrn/g, '<br />');
+    return description.replace(/rnrn/g, '');
   };
 
   const aboutUsContent = renderSectionContent('About Us');
@@ -96,15 +96,15 @@ function HomePage() {
               )}
               <div className="xl:w-1/2 xl:mx-24 mx-8 flex flex-col justify-center items-center xl:mt-0 mt-8">
                 <p className="xl:text-5xl text-2xl mb-12">{aboutUsContent.title}</p>
-                <div className="text-justify" dangerouslySetInnerHTML={{ __html: cleanDescription(aboutUsContent.description) }}></div>
+                <div className="text-justify description" dangerouslySetInnerHTML={{ __html: cleanDescription(aboutUsContent.description) }}></div>
               </div>
             </>
           ) : (
-            <div className='flex xl:flex-row flex-col w-full justify-center items-center xl:px-24 px-8 xl:pb-32 pb-12'>
+            <div className="flex xl:flex-row flex-col w-full justify-center items-center xl:px-24 px-8 xl:pb-32 pb-12">
               <div className="w-full h-full relative pt-[56.25%] overflow-hidden flex flex-col justify-center items-center">
                 <iframe
-                  src='https://www.youtube.com/embed/3kMdhQVjMhU'
-                  title='Mengenal lebih dekat TBN Indonesia'
+                  src="https://www.youtube.com/embed/3kMdhQVjMhU"
+                  title="Mengenal lebih dekat TBN Indonesia"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -113,13 +113,15 @@ function HomePage() {
               </div>
               <div className="xl:w-1/2 xl:mx-24 mx-8 flex flex-col justify-center items-center xl:mt-0 mt-8">
                 <p className="xl:text-5xl text-2xl mb-12">TBN Indonesia</p>
-                <div className="text-justify">TBN Indonesia is a global network focused on poverty alleviation through enterprise, emphasizing multi-faith, multi-sector partnerships. Over the next five years, they plan to launch 1,800 ventures, creating around 11,850 new jobs in emerging markets.</div>
+                <div className="text-justify">
+                  TBN Indonesia is a global network focused on poverty alleviation through enterprise, emphasizing multi-faith, multi-sector partnerships. Over the next five years, they plan to launch 1,800 ventures, creating around 11,850
+                  new jobs in emerging markets.
+                </div>
               </div>
             </div>
           )}
         </div>
       </section>
-
 
       {/* Section 3 - WHO WE ARE */}
       <section className="bg-[#F6CF55] flex flex-row xl:rounded-t-[100px] rounded-t-[50px]">
@@ -129,22 +131,23 @@ function HomePage() {
               {whoWeAreContent.content_type === 'image' && <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${whoWeAreContent.content}`} alt={whoWeAreContent.title} className="xl:h-3/5 aspect-video object-cover" />}
               <div className="bg-[#EDEDED] xl:h-3/5 flex flex-col justify-center items-center px-12 xl:py-0 py-8">
                 <p className="xl:text-4xl text-2xl mb-8 font-medium">{whoWeAreContent.title}</p>
-                <div className="font-light text-justify" dangerouslySetInnerHTML={{ __html: cleanDescription(whoWeAreContent.description) }}></div>
+                <div className="font-light text-justify description" dangerouslySetInnerHTML={{ __html: cleanDescription(whoWeAreContent.description) }}></div>
               </div>
             </>
           ) : (
-            <div className='flex xl:flex-row flex-col items-center justify-center xl:px-24 px-8 xl:py-0 py-12 xl:h-screen'>
-              <img src={nullSafetyImageWhoWeAre} alt='Who We Are' className="xl:h-3/5 aspect-video object-cover" />
+            <div className="flex xl:flex-row flex-col items-center justify-center xl:px-24 px-8 xl:py-0 py-12 xl:h-screen">
+              <img src={nullSafetyImageWhoWeAre} alt="Who We Are" className="xl:h-3/5 aspect-video object-cover" />
               <div className="bg-[#EDEDED] xl:h-3/5 flex flex-col justify-center items-center px-12 xl:py-0 py-8">
                 <p className="xl:text-4xl text-2xl mb-8 font-medium">WHO WE ARE</p>
-                <div className="font-light text-justify">TBN Indonesia is a global network of purpose-driven entrepreneurs, impact investors and capacity builders who take an enterprise approach to alleviate poverty in low-income and underserved communities.
+                <div className="font-light text-justify">
+                  TBN Indonesia is a global network of purpose-driven entrepreneurs, impact investors and capacity builders who take an enterprise approach to alleviate poverty in low-income and underserved communities.
                   <br />
                   <br />
-                  Over the next five years, TBN Indonesia will launch an estimated 1,800 ventures, providing approximately 11,850 new jobs in frontier and emerging markets globally.</div>
+                  Over the next five years, TBN Indonesia will launch an estimated 1,800 ventures, providing approximately 11,850 new jobs in frontier and emerging markets globally.
+                </div>
               </div>
             </div>
-          )
-          }
+          )}
         </div>
       </section>
 
@@ -183,7 +186,6 @@ function HomePage() {
           <img src={tbnWorldwide} alt="" className="" />
         </div>
       </section>
-
 
       {/* Section 3 -  Footer*/}
       <FooterComponent />

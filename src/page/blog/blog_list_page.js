@@ -8,6 +8,8 @@ import Lottie from "lottie-react";
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
+import { RiAccountCircleLine } from 'react-icons/ri';
+
 import LottieDataNotFound from '../../assets/lottie/data-not-found.json';
 
 const BlogListPage = () => {
@@ -99,12 +101,7 @@ const BlogListPage = () => {
                         </div>
                         <div className="text-sm leading-6 mt-8 flex flex-row w-full h-full items-end justify-between relative bottom-0">
                           <div className="relative flex items-center gap-x-4">
-
-                            <img
-                              src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                              alt=""
-                              className="h-10 w-10 rounded-full bg-gray-50"
-                            />
+                            <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
                             <p className="font-semibold text-gray-900">
                               <NavLink to="#">
                                 <span className="absolute inset-0" />
