@@ -54,11 +54,11 @@ function App() {
 
           {/* Route Event */}
           <Route path="event/register-event/:eventId" element={<ProtectedRoute element={<PendaftaranEventPage />} />} />
-          <Route path="/event/upcoming" element={<ProtectedRoute element={<UpcomingEventPage />} />} />
-          <Route path="/event/upcoming/detail/:id" element={<ProtectedRoute element={<UpcomingEventPageDetail />} />} />
-          <Route path="event/pengalaman-peserta" element={<ProtectedRoute element={<PengalamanPesertaPage />} />} />
+          <Route path="/event/upcoming" element={<UpcomingEventPage />} />
+          <Route path="/event/upcoming/detail/:id" element={<UpcomingEventPageDetail />} />
+          <Route path="event/pengalaman-peserta" element={<PengalamanPesertaPage />} />
           <Route path="/event/pengalaman-peserta/create/:id" element={<ProtectedRoute element={<PengalamanPesertaCreate />} />} />
-          <Route path="/event/pengalaman-peserta/detail/:id" element={<ProtectedRoute element={<PengalamanPesertaDetailPage />} />} />
+          <Route path="/event/pengalaman-peserta/detail/:id" element={<PengalamanPesertaDetailPage />} />
           <Route path="event/history" element={<ProtectedRoute element={<HistoryEventPage />} />} />
           <Route path="event/history/detail/:registrationId" element={<ProtectedRoute element={<HistoryEventDetailPage />} />} />
 
