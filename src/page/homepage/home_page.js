@@ -55,6 +55,8 @@ function HomePage() {
 
   const aboutUsContent = renderSectionContent('About Us');
   const whoWeAreContent = renderSectionContent('Who We Are');
+  const landingPageContent = renderSectionContent('Landing Page');
+  const landingPageImage = landingPageContent ? `${process.env.REACT_APP_TBN_API_URL}/storage/${landingPageContent.content}` : bannerHomepage;
 
   return (
     <div>
@@ -63,7 +65,7 @@ function HomePage() {
       <section className="w-full h-full">
         {/* Image for main banner */}
         <div className="absolute aspect-4/3 md:aspect-video xl:aspect-21/9 w-full xl:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12 flex flex-col items-center justify-center"></div>
-        <img src={bannerHomepage} alt="" className="w-full aspect-4/3 md:aspect-video object-cover xl:aspect-21/9 bg-center bg-cover top-0 pt-12" />
+        <img src={landingPageImage} alt="" className="w-full aspect-4/3 md:aspect-video object-cover xl:aspect-21/9 bg-center bg-cover top-0 pt-12" />
         <div className="absolute aspect-4/3 md:aspect-video xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 items-center">
           <div className="w-1 h-3/5 xl:bg-[#FFB400] sm:bg-transparent"></div>
           <div className=" sm:w-full xl:p-8 pt-20 flex flex-col justify-center xl:items-start items-center rounded-2xl">
