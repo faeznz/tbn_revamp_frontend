@@ -146,6 +146,9 @@ function Navbar({ data }) {
               </div>
             )}
           </div>
+          <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+            IMM
+          </a>
           <p>{data}</p>
           {dataLogin ? (
             <div className="flex flex-row justify-center items-center">
@@ -209,7 +212,6 @@ function Navbar({ data }) {
             </button>
           )}
 
-
           <NavLink to="/" onClick={() => setIsBurgerOpen(false)}>
             Home
           </NavLink>
@@ -263,6 +265,9 @@ function Navbar({ data }) {
               </div>
             )}
           </div>
+          <a href="https://example.com" className="mt-3" onClick={() => setIsBurgerOpen(false)} target="_blank" rel="noopener noreferrer">
+            IMM
+          </a>
           <p>{data}</p>
           {dataLogin ? (
             <div className="lg:flex hidden flex-row justify-center items-center w-full">
@@ -297,13 +302,8 @@ function Navbar({ data }) {
       {showSuccess && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg relative">
-            <p className="text-green-600 font-semibold mb-4">
-              Anda berhasil melakukan log out.
-            </p>
-            <button
-              className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900"
-              onClick={handleCloseSuccess}
-            >
+            <p className="text-green-600 font-semibold mb-4">Anda berhasil melakukan log out.</p>
+            <button className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900" onClick={handleCloseSuccess}>
               Close
             </button>
           </div>

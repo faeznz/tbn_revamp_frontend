@@ -117,7 +117,7 @@ const PendaftaranEventPage = () => {
     setAffiliation(event.target.value);
     validateAffiliation(event.target.value);
   };
-  
+
   const handleConfirm = async () => {
     const id = localStorage.getItem('id');
 
@@ -138,7 +138,7 @@ const PendaftaranEventPage = () => {
       setSuccessMessage('Terima kasih telah melakukan pendaftaran.');
       setShowSuccess(true);
       const redirectUrl =
-        'https://wa.me/6285156254824?text=Halo%2C%0ASaya%20telah%20mendaftar%20sebagai%20peserta%20' +
+        'https://wa.me/6282310001908?text=Halo%2C%0ASaya%20telah%20mendaftar%20sebagai%20peserta%20' +
         encodeURIComponent(selectedEvent.judul) +
         '%20%0ARegistration%20Id:%20' +
         encodeURIComponent(response.data.data.id) +

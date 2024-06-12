@@ -14,7 +14,8 @@ const UpcomingEventDetail = () => {
   const [event, setEvent] = useState(null); // State untuk menyimpan data event
   const [events, setEvents] = useState([]); // State untuk menyimpan data semua event
   const [isRegistered, setIsRegistered] = useState(false); // State untuk menyimpan status pendaftaran pengguna
-  const [userId, setUserId] = useState(null); // State untuk menyimpan user_id
+
+  const userId = localStorage.getItem('id'); // Ambil user_id dari penyimpanan lokal
 
   useEffect(() => {
     const fetchEventData = async () => {
@@ -37,16 +38,11 @@ const UpcomingEventDetail = () => {
 
     const fetchRegistrations = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/registrations');
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/registrations`);
         const registrations = response.data;
 
-        // Ambil user_id dari salah satu pendaftaran
-        if (registrations.length > 0) {
-          setUserId(registrations[0].user_id);
-        }
-
         // Cek apakah user sudah terdaftar untuk event dengan id saat ini
-        const isUserRegistered = registrations.some((registration) => registration.user_id === userId && registration.event_id === parseInt(id));
+        const isUserRegistered = registrations.some((registration) => registration.user_id === parseInt(userId) && registration.event_id === parseInt(id));
         setIsRegistered(isUserRegistered);
       } catch (error) {
         console.error('Error fetching registrations:', error);
@@ -55,7 +51,10 @@ const UpcomingEventDetail = () => {
 
     fetchEventData();
     fetchAllEvents();
-    fetchRegistrations();
+
+    if (userId) {
+      fetchRegistrations();
+    }
   }, [id, userId]);
 
   if (!event) {
@@ -85,17 +84,26 @@ const UpcomingEventDetail = () => {
                 <p className="xl:text-2xl text-sm">SPEAKERS :</p>
               </div>
             </div>
-            <div className=" text-white xl:text-2xl text-sm font-bold xl:h-12 md:h-10 h-8 rounded-full p-2 flex items-center justify-center w-full gap-2">{event.pembicara}</div>
+            <div className=" text-white xl:text-2xl text-sm font-bold xl:h-12 md:h-10 h-8 rounded-full p-2 flex items-center text-center justify-center w-full gap-2">{event.pembicara}</div>
             <div className="flex bg-white/50 h-0.5 w-full mt-4 xl:mb-10 mb-6"></div>
 
             <div className="w-full max-w-xl">
               <div className="w-full xl:mt-8 md:mt-4">
                 {!isEventExpired ? (
-                  isRegistered ? (
-                    <button className="bg-gray-500 xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2" disabled>
-                      <MdLocalOffer className="xl:text-2xl text-xl" />
-                      <p className="xl:text-2xl text-sm">Already Registered</p>
-                    </button>
+                  userId ? (
+                    isRegistered ? (
+                      <button className="bg-gray-500 xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2" disabled>
+                        <MdLocalOffer className="xl:text-2xl text-xl" />
+                        <p className="xl:text-2xl text-sm">Already Registered</p>
+                      </button>
+                    ) : (
+                      <Link to={`/event/register-event/${id}`} className="block w-full">
+                        <button className="bg-[#005F94] xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2">
+                          <MdLocalOffer className="xl:text-2xl text-xl" />
+                          <p className="xl:text-2xl text-sm">Register Event Here</p>
+                        </button>
+                      </Link>
+                    )
                   ) : (
                     <Link to={`/event/register-event/${id}`} className="block w-full">
                       <button className="bg-[#005F94] xl:h-12 md:h-10 h-8 w-full text-white font-semibold rounded-full text-xl flex items-center justify-center gap-2">
@@ -157,8 +165,9 @@ const UpcomingEventDetail = () => {
           </div>
         </div>
       </section>
-
-      <FooterComponent />
+      <div className="bg-[#F2EEEA]">
+        <FooterComponent />
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 import { FaInstagram } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
@@ -17,12 +17,10 @@ const footer_component = () => {
         <div className="flex lg:flex-row flex-col lg:items-start items-center justify-around px-8 lg:py-12 py-8 lg:text-lg text-sm">
           <div className="flex flex-col items-center text-white">
             <img src={logoTbn} alt="" className="lg:h-32 h-24 lg:mb-12 mb-4 lg:flex hidden" />
-            <p className="leading-loose text-center lg:flex hidden">
-              Indonesia Team Impact Hub <br />
-              Lippo Thamrin Lt.5 #0503 <br />
-              Jl. M.H.Thamrin No.20, Menteng <br />
-              Jakarta Pusat 10350, Indonesia <br />
-            </p>
+            <p className="leading-loose text-center lg:flex hidden">Indonesia Team Impact Hub</p>
+            <p className="leading-loose text-center lg:flex hidden">Lippo Thamrin Lt.5 #0503</p>
+            <p className="leading-loose text-center lg:flex hidden">Jl. M.H.Thamrin No.20, Menteng</p>
+            <p className="leading-loose text-center lg:flex hidden">Jakarta Pusat 10350, Indonesia</p>
           </div>
           {/* About */}
           <div className="lg:flex hidden flex-col text-white gap-4 ">

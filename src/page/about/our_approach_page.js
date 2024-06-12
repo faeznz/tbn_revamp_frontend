@@ -23,7 +23,7 @@ const OurApproachPage = () => {
         </div>
       </section>
       {/* Footer */}
-      <div className="bg-[#F2EEEA] absolute bottom-0">
+      <div className="bg-[#F2EEEA]">
         <FooterComponent />
       </div>
     </div>

@@ -69,7 +69,7 @@ const HistoryEventPage = () => {
       <section className="flex flex-col items-center justify-center w-full min-h-screen pt-16 bg-[#F2EEEA] pb-24">
         <p className="my-12 text-2xl font-semibold">Riwayat Pendaftaran</p>
         <div className="bg-white lg:w-fit w-5/6 lg:p-12 py-8 rounded-xl">
-          <table className='lg:block hidden'>
+          <table className="lg:block hidden">
             <thead>
               <tr>
                 <td className="px-12 text-center font-semibold pb-8">Status</td>
@@ -100,19 +100,17 @@ const HistoryEventPage = () => {
               ))}
             </tbody>
           </table>
-          <div className='lg:hidden'>
+          <div className="lg:hidden">
             {userRegistrations.map((registration) => (
-              <div key={registration.id} className='flex flex-col items-center justify-center'>
+              <div key={registration.id} className="flex flex-col items-center justify-center">
                 <div className="pb-4 flex flex-col justify-center items-center">
                   {/* Tampilkan informasi pendaftaran */}
-                  <p className='font-bold'>
+                  <p className="text-center px-1 font-bold">
                     {registration.event.judul} <br />
                   </p>
-                  <p>
-                    {formatDateTime(registration.created_at)}
-                  </p>
+                  <p>{formatDateTime(registration.created_at)}</p>
                 </div>
-                <div className='flex flex-row w-full justify-around items-end'>
+                <div className="flex flex-row w-full justify-around items-end">
                   <div className="text-center pb-4">
                     <p>Status :</p>
                     {/* Tampilkan status pendaftaran berdasarkan status yang diterima */}
@@ -126,7 +124,7 @@ const HistoryEventPage = () => {
                     </button>
                   </div>
                 </div>
-                <div className='w-5/6 h-0.5 bg-black/40 rounded-full'></div>
+                <div className="w-5/6 h-0.5 bg-black/40 rounded-full"></div>
               </div>
             ))}
           </div>
