@@ -62,19 +62,17 @@ function HomePage() {
     <div>
       <NavbarComponent />
       {/* Section 1 - Main */}
-      <section className="w-full h-full">
+      <section className="relative w-full h-full">
         {/* Image for main banner */}
-        <div className="absolute aspect-4/3 md:aspect-video xl:aspect-21/9 w-full xl:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12 flex flex-col items-center justify-center"></div>
-        <img src={landingPageImage} alt="" className="w-full aspect-4/3 md:aspect-video object-cover xl:aspect-21/9 bg-center bg-cover top-0 pt-12" />
-        <div className="absolute aspect-4/3 md:aspect-video xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 items-center">
-          <div className="w-1 h-3/5 xl:bg-[#FFB400] sm:bg-transparent"></div>
-          <div className=" sm:w-full xl:p-8 pt-20 flex flex-col justify-center xl:items-start items-center rounded-2xl">
-            <p className="text-white font-bold xl:text-5xl md:text-4xl text-md xl:mb-12 sm:mb-4 xl:text-left text-center">
+        <div className="absolute inset-0 aspect-9/16 md:aspect-16/9 lg:aspect-18/9 xl:aspect-21/9 w-full bg-[#131313]/60 flex flex-col items-center justify-center"></div>
+        <img src={landingPageImage} alt="" className="w-full aspect-9/16 md:aspect-16/9 lg:aspect-18/9 xl:aspect-21/9 object-cover bg-center bg-cover top-0 pt-16" />
+        <div className="absolute aspect-9/16 md:aspect-21/9 xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 xl:pt-0 lg:pt-16 md:pt-24 pt-24 items-center">
+          <div className="w-1 h-2/5 xl:bg-[#FFB400] sm:bg-transparent"></div>
+          <div className=" sm:w-full xl:p-8 flex flex-col justify-center xl:items-start items-center rounded-2xl">
+            <p className="text-white font-bold xl:text-5xl lg:text-4xl md:text-4xl text-lg xl:mb-12 sm:mb-4 xl:text-left text-center">
               Transformational <br /> Business Network (TBN) Indonesia
             </p>
-            <p className="text-white font-light xl:text-3xl md:text-xl text-sm xl:text-left text-center">
-              Fighting Poverty Through Enterprise <br /> Develop the people, transform the business
-            </p>
+            <p className="text-[#C3D21F] font-bold xl:text-4xl lg:text-3xl md:text-2xl text-lg xl:text-left text-center">Fighting Poverty Through Enterprise</p>
           </div>
         </div>
       </section>
@@ -82,7 +80,7 @@ function HomePage() {
       {/* Section 2 - About Us */}
       <section className="flex flex-col justify-center items-center">
         <p className="xl:text-4xl text-2xl xl:mb-0 mb-12 xl:mt-12 md:mt-12 mt-5 font-medium">ABOUT US</p>
-        <div className="flex xl:flex-row flex-col w-full justify-center items-center xl:px-32 md:px-56 px-8 pb-12">
+        <div className="flex xl:flex-row flex-col w-full justify-center items-center xl:px-32 lg:px-56 md:px-32 px-8 pb-12">
           {aboutUsContent ? (
             <>
               {aboutUsContent.content_type === 'video' && (
@@ -133,7 +131,7 @@ function HomePage() {
       {/* Section 3 - WHO WE ARE */}
       <div>
         <section className="bg-[#F6CF55] flex flex-row xl:rounded-t-[100px] rounded-t-[50px]">
-          <div className="flex xl:flex-row flex-col items-center justify-center xl:px-32 md:px-56 px-8 xl:py-0 py-12 xl:h-screen">
+          <div className="flex xl:flex-row flex-col items-center justify-center xl:px-32 lg:px-56 md:px-32 px-8 xl:py-0 py-12 xl:h-screen">
             {whoWeAreContent ? (
               <>
                 {whoWeAreContent.content_type === 'image' && (
@@ -167,14 +165,14 @@ function HomePage() {
 
       {/* Section 4 - Mission */}
       <section className="flex flex-col justify-center items-center bg-[#F6CF55]">
-        <div className="flex flex-col xl:pt-24 md:px-56 pt-12 justify-center items-center bg-[#EEEEEE] xl:rounded-t-[100px] rounded-t-[50px]">
+        <div className="flex flex-col xl:pt-24 lg:px-56 md:px-24 pt-12 justify-center items-center bg-[#EEEEEE] xl:rounded-t-[100px] rounded-t-[50px]">
           <p className="xl:text-4xl text-2xl xl:mb-12 md:mb-12 mb-8 font-medium">MISSION</p>
           <div className="flex xl:flex-row flex-col xl:px-0 px-8 xl:pb-32 justify-center items-center gap-8">
             <p className="text-justify xl:text-lg xl:w-3/5 w-full xl:leading-loose">
               The TBN Indonesia nurtures purpose-driven businesses to thrive, aiming to reduce poverty and promote environmental sustainability. We foster a global movement for social good, empowering entrepreneurs, and directly benefiting
               families and communities. Our ambitious aim is to ignite an impact movement, uniting people worldwide to leverage business for social transformation, particularly supporting SMEs in emerging markets.
             </p>
-            <img src={missionBanner} alt="" className="xl:w-3/5 w-4/5 py-12 " />
+            <img src={missionBanner} alt="" className="xl:w-3/5 lg:w-3/5 py-12 " />
           </div>
         </div>
       </section>

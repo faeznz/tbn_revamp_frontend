@@ -45,7 +45,7 @@ function CarouselComponent() {
   };
 
   return (
-    <div className="flex flex-col w-screen py-8 px-4 sm:px-6 lg:px-24 mb-16">
+    <div className="flex flex-col w-screen py-8 px-4 sm:px-6 lg:px-24 md:px-24 mb-16">
       <div>
         <p className="xl:text-4xl md:text-2xl text-lg mb-10 xl:mt-8 mt-4 font-medium text-center">
           Collaboration for Sustainable Future <br />
