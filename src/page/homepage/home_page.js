@@ -64,7 +64,7 @@ function HomePage() {
       {/* Section 1 - Main */}
       <section className="relative w-full h-full">
         {/* Image for main banner */}
-        <div className="absolute inset-0 aspect-9/16 md:aspect-16/9 lg:aspect-18/9 xl:aspect-21/9 w-full bg-[#131313]/60 flex flex-col items-center justify-center"></div>
+        <div className="absolute inset-0 aspect-9/16 md:aspect-16/9 lg:aspect-18/9 xl:aspect-21/9 w-full xl:bg-[#131313]/45 lg:bg-[#131313]/45 md:bg-[#131313]/45 bg-[#131313]/40 flex flex-col items-center justify-center"></div>
         <img src={landingPageImage} alt="" className="w-full aspect-9/16 md:aspect-16/9 lg:aspect-18/9 xl:aspect-21/9 object-cover bg-center bg-cover top-0 pt-16" />
         <div className="absolute aspect-9/16 md:aspect-21/9 xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 xl:pt-0 lg:pt-16 md:pt-24 pt-24 items-center">
           <div className="w-1 h-2/5 xl:bg-[#FFB400] sm:bg-transparent"></div>
