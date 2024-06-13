@@ -19,11 +19,11 @@ const PartnershipPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <NavbarComponent />
       {/* Section 1 - Header */}
-      <section className='bg-[#EEEEEE]'>
-        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
+      <section className="bg-[#EEEEEE]">
+        <div className="flex flex-col justify-center items-center w-full lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
           <p className="text-black lg:text-4xl text-2xl font-semibold pt-16">Our Partnerships</p>
         </div>
       </section>

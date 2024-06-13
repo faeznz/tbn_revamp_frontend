@@ -10,11 +10,11 @@ import LippoThamrin from '../../assets/images/about/where-we-are/lippo-thamrin.j
 
 const WherePage = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>
-        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
+        <div className="flex flex-col justify-center items-center w-full lg:h-64 h-40 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
           <p className="text-black lg:text-4xl text-2xl font-semibold pt-16">Where We Are</p>
         </div>
       </section>

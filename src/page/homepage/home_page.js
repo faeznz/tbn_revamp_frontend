@@ -59,7 +59,7 @@ function HomePage() {
   const landingPageImage = landingPageContent ? `${process.env.REACT_APP_TBN_API_URL}/storage/${landingPageContent.content}` : bannerHomepage;
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <NavbarComponent />
       {/* Section 1 - Main */}
       <section className="relative w-full h-full">

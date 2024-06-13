@@ -193,12 +193,10 @@ const RegisterPage = () => {
 
         console.error('Error registering:', error);
       }
-
     } catch (error) {
       console.log(error);
     }
   };
-
 
   const handleCloseError = () => {
     setShowError(false);
@@ -226,10 +224,7 @@ const RegisterPage = () => {
         <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg relative">
             <p className="text-green-600 font-semibold mb-2">{successMessage}</p>
-            <button
-              className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900"
-              onClick={handleCloseSuccess}
-            >
+            <button className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900" onClick={handleCloseSuccess}>
               Close
             </button>
           </div>
@@ -246,7 +241,15 @@ const RegisterPage = () => {
                   <p className="text-2xl mb-8 lg:mt-0 mt-12">Create an Account!</p>
                 </div>
                 <div className="w-full">
-                  <input type="text" className={`lg:w-96 w-80 h-14 mb-2 rounded-full bg-[#FBFBFB] border ${nameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black pl-4`} placeholder="Name" value={name} onChange={handleNameChange} onKeyPress={handleKeyPress} ref={inputRef} />
+                  <input
+                    type="text"
+                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${nameError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black pl-4`}
+                    placeholder="Name"
+                    value={name}
+                    onChange={handleNameChange}
+                    onKeyPress={handleKeyPress}
+                    ref={inputRef}
+                  />
                   {nameError && <p className="text-red-500 text-xs ml-4 mb-4 ">{nameError}</p>}
                 </div>
                 <div className="w-full">
@@ -262,7 +265,15 @@ const RegisterPage = () => {
                   {lastNameError && <p className="text-red-500 text-xs ml-4 mb-4">{lastNameError}</p>}
                 </div>
                 <div className="w-full">
-                  <input type="text" className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${emailError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black pl-4`} placeholder="Email" value={email} onChange={handleEmailChange} onKeyPress={handleKeyPress} ref={inputRef} />
+                  <input
+                    type="text"
+                    className={`w-full h-14 mb-2 rounded-full bg-[#FBFBFB] border ${emailError ? 'border-red-500' : 'border-[#B6B6B6]'} text-black pl-4`}
+                    placeholder="Email"
+                    value={email}
+                    onChange={handleEmailChange}
+                    onKeyPress={handleKeyPress}
+                    ref={inputRef}
+                  />
                   {emailError && <p className="text-red-500 text-xs ml-4 mb-4">{emailError}</p>}
                 </div>
                 <div className="flex lg:flex-row flex-col justify-between lg:gap-2 w-full">

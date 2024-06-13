@@ -30,11 +30,11 @@ const VisiMisiPage = () => {
   };
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>
-        <div className="flex flex-col justify-center items-center w-screen lg:h-64 h-36 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
+        <div className="flex flex-col justify-center items-center w-full lg:h-64 h-36 bg-[#C3D21F] lg:rounded-b-[100px] rounded-b-[30px]">
           <p className="text-black lg:text-4xl text-xl font-semibold pt-16">Our Vision, Mission, and Values</p>
         </div>
       </section>
