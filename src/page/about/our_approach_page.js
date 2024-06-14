@@ -20,7 +20,7 @@ const OurApproachPage = () => {
         <section className="flex flex-col items-center flex-grow">
           <div className="flex flex-col justify-center items-center lg:px-24 mb-12 w-4/5">
             <p className="lg:text-2xl text-md font-semibold lg:pt-24 pt-12">We believe that big changes begin with small steps. The Four Pillars:</p>
-            <img src={BannerOurApproach} alt="" className="my-12" />
+            <img src={BannerOurApproach} alt="ourapproach" className="my-12" />
           </div>
         </section>
       </div>

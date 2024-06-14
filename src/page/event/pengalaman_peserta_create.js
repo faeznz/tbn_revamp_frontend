@@ -97,7 +97,7 @@ const PengalamanPesertaCreate = () => {
       <section>
         <form onSubmit={handleSubmit} className="bg-[#F2EEEA] w-full xl:px-24 px-12 xl:py-32 flex flex-col items-center justify-center">
           <div className="flex flex-row items-center mt-12 xl:w-3/5 gap-2">
-            <img src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png" alt="" className="h-12 w-12 rounded-full" />
+            <img src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png" alt="icon" className="h-12 w-12 rounded-full" />
             <p className="font-bold">{dataLogin.nama}</p>
           </div>
           <p className="font-light text-center mt-4">Tuliskan pengalaman anda mengenai event ini.</p>

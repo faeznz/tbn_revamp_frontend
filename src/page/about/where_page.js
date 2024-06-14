@@ -23,7 +23,7 @@ const WherePage = () => {
         <div className=" flex flex-col justify-center items-start lg:px-24 xl:px-12 px-4 lg:pt-24 pt-12 text-white">
           <div className="flex xl:flex-row flex-col justify-between items-center xl:gap-8 w-full bg-[#092040] rounded-2xl">
             <div className="w-full h-full">
-              <img src={LippoThamrin} alt="" className="xl:rounded-l-2xl rounded-t-2xl aspect-4/3 object-cover" />
+              <img src={LippoThamrin} alt="lippothamrin" className="xl:rounded-l-2xl rounded-t-2xl aspect-4/3 object-cover" />
             </div>
             <div className="xl:pr-12 p-8">
               <p className="lg:text-7xl text-2xl text-[#C3D21F] font-bold">Reach Us On</p>

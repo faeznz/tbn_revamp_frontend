@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useParams, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
 import NavbarComponent from '../../components/navbar_component';
@@ -73,7 +73,7 @@ const UpcomingEventDetail = () => {
       {/* Section 1 - Banner */}
       <section className="w-full h-full">
         <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full xl:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12 flex flex-col items-center justify-center"></div>
-        <img src={BannerUpcoming} alt="" className="w-full aspect-square md:aspect-video object-cover xl:aspect-21/9 bg-center bg-cover top-0 pt-12" />
+        <img src={BannerUpcoming} alt="bannerupcoming" className="w-full aspect-square md:aspect-video object-cover xl:aspect-21/9 bg-center bg-cover top-0 pt-12" />
         <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 pt-12 items-center">
           <div className="p-8 mt-4 flex flex-col justify-center items-center rounded-2xl">
             <p className="text-white text-center font-bold xl:text-5xl lg:text-3xl md:text-xl text-lg xl:mb-6 lg:mb-6 mb-2">{event.judul}</p>
@@ -129,7 +129,7 @@ const UpcomingEventDetail = () => {
       <section className="flex flex-col mt-12 justify-center items-center">
         <p className="text-sm font-medium">- Post Conference Highlights -</p>
         <p className="xl:text-4xl lg:text-3xl md:text-xl text-lg mb-12 font-medium text-center xl:mx-0 lg:mx-0 md:mx-0 mx-5">{event.judul}</p>
-        <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt="" className="xl:w-1/3 lg:w-1/3 w-4/5 bg-center bg-cover" />
+        <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt="poster" className="xl:w-1/3 lg:w-1/3 w-4/5 bg-center bg-cover" />
         <div className="xl:mx-24 mx-12 flex flex-col justify-center items-center my-24">
           <p className="text-xl mb-12 font-light underline underline-offset-2">About the Conference</p>
           <div className="flex flex-row xl:mx-12">
@@ -150,7 +150,7 @@ const UpcomingEventDetail = () => {
               {events.map((event) => (
                 <article key={event.id} className="flex max-w-xl flex-col items-start justify-between">
                   <div className="relative w-full">
-                    <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt="" className="w-full object-cover rounded-lg" />
+                    <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt="poster" className="w-full object-cover rounded-lg" />
                   </div>
                   <div className="max-w-xl">
                     <h3 className="mt-4 text-xl font-semibold text-gray-900">{event.judul}</h3>

@@ -190,10 +190,10 @@ const ContactUsPage = () => {
           </div>
         </div>
       </section>
-      <div className='lg:hidden bg-white'>
+      <div className="lg:hidden bg-white">
         <FooterComponent />
       </div>
-      <div style={{ background: 'linear-gradient(to right, #005F94 50%, #FFFFFF 50%)' }} className='lg:block hidden'>
+      <div style={{ background: 'linear-gradient(to right, #005F94 50%, #FFFFFF 50%)' }} className="lg:block hidden">
         <FooterComponent />
       </div>
     </div>

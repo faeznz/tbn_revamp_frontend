@@ -83,7 +83,7 @@ const BlogListPage = () => {
                   {posts.map((post) => (
                     <article key={post.id} className="flex max-w-xl flex-col items-start justify-start">
                       <div>
-                        <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${post.image_path}`} alt="" className="rounded-xl mb-4 aspect-video object-cover" />
+                        <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${post.image_path}`} alt="blogimage" className="rounded-xl mb-4 aspect-video object-cover" />
                       </div>
                       <div className="flex items-center gap-x-4 text-xs">
                         <time dateTime={new Date(post.created_at).toISOString()} className="text-gray-500">

@@ -16,7 +16,7 @@ const footer_component = () => {
         {/* Logo and Address */}
         <div className="flex lg:flex-row flex-col lg:items-start items-center justify-around px-8 lg:py-12 py-8 lg:text-lg text-sm">
           <div className="flex flex-col items-center text-white">
-            <img src={logoTbn} alt="" className="lg:h-32 h-24 lg:mb-12 mb-4 lg:flex hidden" />
+            <img src={logoTbn} alt="logotbn" className="lg:h-32 h-24 lg:mb-12 mb-4 lg:flex hidden" />
             <p className="leading-loose text-center lg:flex hidden">Indonesia Team Impact Hub</p>
             <p className="leading-loose text-center lg:flex hidden">Lippo Thamrin Lt.5 #0503</p>
             <p className="leading-loose text-center lg:flex hidden">Jl. M.H.Thamrin No.20, Menteng</p>
@@ -45,7 +45,7 @@ const footer_component = () => {
             {/* Social Media */}
             <div className="flex flex-col gap-6 lg:mt-8 items-center">
               <div className="flex flex-row gap-6 items-center justify-center">
-                <img src={logoTbn} alt="" className="w-1/3 lg:mb-12 mb-4 lg:hidden" />
+                <img src={logoTbn} alt="logotbn" className="w-1/3 lg:mb-12 mb-4 lg:hidden" />
                 <div className="flex flex-col lg:gap-6 gap-3 items-center">
                   <p className="font-bold tracking-[.25em]">Connect with Us</p>
                   <div className="flex flex-row gap-4 lg:text-3xl text-xl">

@@ -41,7 +41,7 @@ const VisiMisiPage = () => {
       {/*  */}
       <section className="w-screen flex flex-col items-center">
         <div className="relative flex flex-col justify-center items-center xl:w-3/5 md:w-4/5 lg:w-3/4 lg:h-3/4 lg:py-24 py-12 lg:px-0 px-4">
-          <img src={BannerVisiMisi} alt="" className="relative" />
+          <img src={BannerVisiMisi} alt="visimisi" className="relative" />
           <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-between items-center text-center xl:py-48 lg:py-36 md:py-20 py-14 font-semibold">
             <div className="flex flex-row justify-center items-center gap-4">
               <div className="bg-[#092040] text-white font-bold xl:px-6 xl:py-1 xl:text-2xl lg:px-6 md:px-6 lg:py-1 md:py-1 lg:text-2xl px-2 py-0 text-xs ml-16 xl:mt-0 lg:mt-0 md:mt-0 mt-3">Vision</div>
@@ -65,14 +65,14 @@ const VisiMisiPage = () => {
       <section className="flex flex-col items-center justify-center bg-[#F2EEEA] lg:rounded-t-[100px] rounded-t-[50px]">
         <p className="lg:text-4xl text-2xl mb-8 font-medium lg:pt-24 pt-12">VALUES AND DNA</p>
         <div className="flex flex-col justify-center items-center w-screen lg:py-24 py-8 lg:px-0 px-8">
-          <img src={BannerValueDna} alt="" />
+          <img src={BannerValueDna} alt="valueDna" />
         </div>
       </section>
       {/* Section 3 - We Are */}
       <section className="flex flex-col items-center justify-center bg-[#F2EEEA]">
         <div className="flex flex-col items-center justify-center bg-white lg:rounded-t-[100px] rounded-t-[50px]">
           <div className="flex flex-col justify-center items-center w-screen lg:py-24 py-8">
-            <img src={BannerWeAre} alt="" className="lg:w-3/5 w-full" />
+            <img src={BannerWeAre} alt="bannerWeare" className="lg:w-3/5 w-full" />
           </div>
         </div>
       </section>

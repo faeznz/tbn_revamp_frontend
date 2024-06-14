@@ -20,11 +20,11 @@ const HistoryPage = () => {
       <section>
         <div className="flex lg:flex-row flex-col justify-between w-screen items-center lg:py-24 py-8">
           <div className="flex flex-col justify-center items-center">
-            <img src={BannerPioneer} alt="" className="w-4/5" />
+            <img src={BannerPioneer} alt="pioneer" className="w-4/5" />
             <p className="lg:text-3xl text-lg lg:px-24 px-8 lg:pt-12 pt-4 lg:mb-0 mb-12 text-center font-semibold">Building on decades of work spearheaded by one of the pioneers of impact investing, Dr. Kim Tam</p>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <img src={BannerPartner} alt="" className="w-4/5" />
+            <img src={BannerPartner} alt="partner" className="w-4/5" />
             <p className="lg:text-3xl text-lg lg:px-24 px-8 lg:pt-12 pt-4 lg:mb-0 mb-12 text-center font-semibold">In partnership with TRT and Belmont University we are moving into the era of etablishing TBN Indonesia</p>
           </div>
         </div>

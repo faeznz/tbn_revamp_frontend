@@ -65,7 +65,7 @@ function HomePage() {
       <section className="relative w-full h-full">
         {/* Image for main banner */}
         <div className="absolute inset-0 aspect-9/16 md:aspect-16/9 lg:aspect-18/9 xl:aspect-21/9 w-full xl:bg-[#131313]/45 lg:bg-[#131313]/45 md:bg-[#131313]/45 bg-[#131313]/40 flex flex-col items-center justify-center"></div>
-        <img src={landingPageImage} alt="" className="w-full aspect-9/16 md:aspect-16/9 lg:aspect-18/9 xl:aspect-21/9 object-cover bg-center bg-cover top-0 pt-16" />
+        <img src={landingPageImage} alt="Banner homepage" className="w-full aspect-9/16 md:aspect-16/9 lg:aspect-18/9 xl:aspect-21/9 object-cover bg-center bg-cover top-0 pt-16" />
         <div className="absolute aspect-9/16 md:aspect-21/9 xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 xl:pt-0 lg:pt-16 md:pt-24 pt-24 items-center">
           <div className="w-1 h-2/5 xl:bg-[#FFB400] sm:bg-transparent"></div>
           <div className=" sm:w-full xl:p-8 flex flex-col justify-center xl:items-start items-center rounded-2xl">
@@ -172,7 +172,7 @@ function HomePage() {
               The TBN Indonesia nurtures purpose-driven businesses to thrive, aiming to reduce poverty and promote environmental sustainability. We foster a global movement for social good, empowering entrepreneurs, and directly benefiting
               families and communities. Our ambitious aim is to ignite an impact movement, uniting people worldwide to leverage business for social transformation, particularly supporting SMEs in emerging markets.
             </p>
-            <img src={missionBanner} alt="" className="xl:w-3/5 lg:w-3/5 py-12 " />
+            <img src={missionBanner} alt="Mission" className="xl:w-3/5 lg:w-3/5 py-12 " />
           </div>
         </div>
       </section>
@@ -202,7 +202,7 @@ function HomePage() {
         </div>
         <div className="flex flex-col xl:px-24 px-8 xl:pb-32 pb-16 justify-between items-center">
           <p className="xl:text-4xl text-2xl xl:py-24 py-8 font-medium">TBN's Global Reach</p>
-          <img src={tbnWorldwide} alt="" className="" />
+          <img src={tbnWorldwide} alt="TBN Global" className="" />
         </div>
       </section>
 

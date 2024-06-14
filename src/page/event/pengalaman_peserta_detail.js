@@ -52,7 +52,7 @@ const PengalamanPesertaDetail = () => {
       {/* Header */}
       <section className="w-full h-full">
         <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full xl:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12 flex flex-col items-center justify-center"></div>
-        <img src={BannerUpcoming} alt="" className="w-full aspect-square md:aspect-video object-cover xl:aspect-21/9 bg-center bg-cover top-0 pt-12" />
+        <img src={BannerUpcoming} alt="bannerevent" className="w-full aspect-square md:aspect-video object-cover xl:aspect-21/9 bg-center bg-cover top-0 pt-12" />
         <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 pt-12 items-center">
           <div className="p-8 mt-4 flex flex-col justify-center items-center rounded-2xl">
             <p className="text-white text-center font-bold xl:text-5xl md:text-3xl text-md xl:mb-6 mb-2">{event.judul}</p>
@@ -74,7 +74,7 @@ const PengalamanPesertaDetail = () => {
       <section className="flex flex-col mt-12 justify-center items-center">
         <p className="text-sm font-medium">- Post Conference Highlights -</p>
         <p className="xl:text-4xl text-2xl mb-12 font-medium text-center">{event.judul}</p>
-        <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt="" className="xl:w-1/3 w-4/5 bg-center bg-cover" />
+        <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt="poster" className="xl:w-1/3 w-4/5 bg-center bg-cover" />
         <div className="xl:mx-24 mx-12 flex flex-col justify-center items-center my-24">
           <p className="text-xl mb-12 font-light underline underline-offset-2">About the Conference</p>
           <div className="flex flex-row xl:mx-12">
@@ -136,7 +136,7 @@ const PengalamanPesertaDetail = () => {
                   <p className="text-md mb-4 mt-4">{review.review}</p>
                 </div>
               </div>
-              {review.image_path && <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${review.image_path}`} alt="" className="w-72" />}
+              {review.image_path && <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${review.image_path}`} alt="review" className="w-72" />}
               <hr className="my-8 border-t-2 border-gray-300" /> {/* Garis pemisah antar ulasan */}
             </div>
           ))}

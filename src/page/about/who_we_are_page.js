@@ -19,7 +19,7 @@ const WhoWeArePage = () => {
       <section>
         <div className="w-screen flex flex-col items-center">
           <div className="flex lg:flex-row w-full flex-col justify-between items-center xl:px-24 px-12 lg:my-24 my-12 lg:gap-24 gap-8">
-            <img src={AboutWhoWeAre} alt="" className="xl:w-2/3 " />
+            <img src={AboutWhoWeAre} alt="whoweare" className="xl:w-2/3 " />
             <div className="xl:w-2/3">
               <p className="text-4xl font-medium mb-8">About TBN Indonesia</p>
               <p className="font-light text-justify">
