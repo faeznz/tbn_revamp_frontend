@@ -107,7 +107,7 @@ const EventsPage = () => {
                       <p className="text-gray-800 font-medium">Tanggal: {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                     </div>
                     <div className="px-6 py-8 text-center justify-center items-center">
-                      <a href={`/event/upcoming/detail/${event.id}`} className="bg-[#195A94] text-white px-8 py-2 rounded-xl">
+                      <a href={`/event/upcoming/detail/${event.slug}`} className="bg-[#195A94] text-white px-8 py-2 rounded-xl">
                         Read More
                       </a>
                     </div>

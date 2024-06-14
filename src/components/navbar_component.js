@@ -112,7 +112,7 @@ function Navbar({ data }) {
     <div>
       <div className="flex fixed justify-between items-center bg-[#092040] w-full h-16 lg:px-16 px-6 z-10">
         <div>
-          <img src={logoTbn} alt="Logo TBN Alliance" className="lg:h-10 h-6" />
+          <img src="https://fe.tbnindonesia.org/static/media/logo_tbn_indonesia.e484353c4253bb855f64.png" className="lg:h-10 h-6" />
         </div>
         <div className="hidden lg:flex flex-row gap-10 items-center text-white font-medium">
           <NavLink to="/">Home</NavLink>

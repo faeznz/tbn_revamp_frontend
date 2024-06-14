@@ -11,16 +11,17 @@ import { RiAccountCircleLine } from 'react-icons/ri';
 import BannerUpcoming from '../../assets/images/event/upcoming/upcoming_bannner.png';
 
 const PengalamanPesertaDetail = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
+  const [id, setId] = useState('');
   const [event, setEvent] = useState(null);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/events/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/events/details/${slug}`);
         setEvent(response.data.event);
-
+        setId(response.data.event.id);
         const reviewsResponse = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/reviews`);
         const reviewsData = reviewsResponse.data.reviews;
         const filteredReviews = reviewsData.filter((review) => review.registration.event_id === parseInt(id));
@@ -32,7 +33,7 @@ const PengalamanPesertaDetail = () => {
     };
 
     fetchEventData();
-  }, [id]);
+  }, [id, slug]);
 
   if (!event) {
     return <div>Loading...</div>;

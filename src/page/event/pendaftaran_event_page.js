@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
 const PendaftaranEventPage = () => {
-  const { eventId } = useParams(); // Mengambil ID event dari URL
+  const { slug } = useParams(); // Mengambil ID event dari URL
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -33,7 +36,7 @@ const PendaftaranEventPage = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/events/${eventId}`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/events/details/${slug}`);
         if (response.data && response.data.event) {
           const event = response.data.event;
           setSelectedEvent(event);
@@ -43,16 +46,18 @@ const PendaftaranEventPage = () => {
             setTicketType('Tiket Berbayar');
           }
         } else {
-          console.error('Event not found:', eventId);
+          console.error('Event not found:', slug);
           setSelectedEvent(null);
         }
       } catch (error) {
         console.error('Error fetching event:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchEvent();
-  }, [eventId]);
+  }, [slug]);
 
   const validateName = (name) => {
     if (name.trim() === '') {
@@ -123,7 +128,7 @@ const PendaftaranEventPage = () => {
 
     const formData = {
       user_id: id,
-      event_id: eventId,
+      event_id: selectedEvent.id,
       name: name,
       email: email,
       phone: phone,
@@ -255,7 +260,34 @@ const PendaftaranEventPage = () => {
         </div>
       )}
       <div className="flex flex-col items-center justify-center mt-16 my-8 px-4">
-        {selectedEvent ? (
+        {loading ? (
+          <div className="max-w-lg w-full bg-white p-8 rounded-lg shadow-md">
+            <h2 className="text-2xl font-bold mb-4 text-center">
+              <Skeleton width={200} />
+            </h2>
+            <div className="mb-4">
+              <Skeleton height={40} />
+            </div>
+            <div className="mb-4">
+              <Skeleton height={40} />
+            </div>
+            <div className="mb-4">
+              <Skeleton height={40} />
+            </div>
+            <div className="mb-4">
+              <Skeleton height={40} />
+            </div>
+            <div className="mb-4">
+              <Skeleton height={40} />
+            </div>
+            <div className="mb-4">
+              <Skeleton height={40} />
+            </div>
+            <div className="flex justify-center">
+              <Skeleton width={100} height={40} />
+            </div>
+          </div>
+        ) : selectedEvent ? (
           <div className="max-w-lg w-full bg-white p-8 rounded-lg shadow-md">
             <h2 className="text-2xl font-bold mb-4 text-center">Pendaftaran Event: {selectedEvent.judul}</h2>
             <form onSubmit={handleSubmit}>
@@ -305,7 +337,7 @@ const PendaftaranEventPage = () => {
             </form>
           </div>
         ) : (
-          <p>Loading event data...</p>
+          <p>Event tidak ditemukan</p>
         )}
       </div>
       <FooterComponent />

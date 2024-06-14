@@ -9,7 +9,7 @@ import { FaStar } from 'react-icons/fa';
 import { RiAccountCircleLine } from 'react-icons/ri';
 
 const BlogDetailPage = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
@@ -21,8 +21,9 @@ const BlogDetailPage = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/blogs/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/blogs/details/${slug}`);
         setPost(response.data);
+        setComments(response.data.comments); // Mengambil komentar dari respons blog
       } catch (error) {
         setError('Error fetching the blog post.');
         console.error(error);
@@ -30,12 +31,11 @@ const BlogDetailPage = () => {
     };
 
     fetchPost();
-    fetchComments();
-  }, [id]);
+  }, [slug]);
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/blogs/${id}/comments`);
+      const response = await axios.get(`${process.env.REACT_APP_TBN_API_URL}/api/blogs/${post.id}/comments`);
       setComments(response.data);
     } catch (error) {
       setError('Error fetching comments.');
@@ -52,8 +52,8 @@ const BlogDetailPage = () => {
     }
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/blogs/${id}/comments`, {
-        blog_id: id,
+      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/blogs/${post.id}/comments`, {
+        blog_id: post.id,
         user_id: userId,
         comment: newComment,
         stars: rating,
