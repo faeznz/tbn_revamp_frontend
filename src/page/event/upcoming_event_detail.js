@@ -79,8 +79,8 @@ const UpcomingEventDetail = () => {
         <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full xl:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12 flex flex-col items-center justify-center"></div>
         <img src={BannerUpcoming} alt="bannerupcoming" className="w-full aspect-square md:aspect-video object-cover xl:aspect-21/9 bg-center bg-cover top-0 pt-12" />
         <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 pt-12 items-center">
-          <div className="p-8 mt-4 flex flex-col justify-center items-center rounded-2xl">
-            <p className="text-white text-center font-bold xl:text-5xl lg:text-3xl md:text-xl text-lg xl:mb-6 lg:mb-6 mb-2">{event.judul}</p>
+          <div className="p-4 mt-2 flex flex-col justify-center items-center rounded-2xl">
+            <p className="text-white text-center xl:font-bold lg:font-bold md:font-bold font-semibold xl:text-5xl lg:text-3xl md:text-xl text-lg xl:mb-6 lg:mb-6 mb-2">{event.judul}</p>
             <p className="text-white xl:font-semibold xl:text-2xl lg:text-2xl md:text-lg text-sm xl:mb-6 lg:mb-6">{eventDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
             <p className="text-white font-light xl:text-2xl lg:text-2xl md:text-lg text-xs text-center xl:mb-6 lg:mb-6 mb-2">{event.lokasi}</p>
             <p className="text-white font-semibold xl:text-xl lg:text-xl md:text-lg text-sm ">REGISTRATION : {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>

@@ -49,19 +49,19 @@ const footer_component = () => {
                 <div className="flex flex-col lg:gap-6 gap-3 items-center">
                   <p className="font-bold tracking-[.25em]">Connect with Us</p>
                   <div className="flex flex-row gap-4 lg:text-3xl text-xl">
-                    <a href="https://www.instagram.com/tbn.indonesia/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/tbn.indonesia/" target="_blank" rel="noopener noreferrer" title="Instagram">
                       <FaInstagram />
                     </a>
-                    <a href="https://www.youtube.com/channel/UCnal-hHUTJRGKl5N0S79Gbg" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.youtube.com/channel/UCnal-hHUTJRGKl5N0S79Gbg" target="_blank" rel="noopener noreferrer" title="YouTube">
                       <FaYoutube />
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=+6282310001908&text=Hi,%20Saya%20ingin%20bertanya%20tentang%20informasi%20TBN%20Indonesia" target="_blank" rel="noopener noreferrer">
+                    <a href="https://api.whatsapp.com/send?phone=+6282310001908&text=Hi,%20Saya%20ingin%20bertanya%20tentang%20informasi%20TBN%20Indonesia" target="_blank" rel="noopener noreferrer" title="WhatsApp">
                       <FaWhatsapp />
                     </a>
-                    <a href="mailto:info@tbnindonesia.org" target="_blank" rel="noopener noreferrer">
+                    <a href="mailto:info@tbnindonesia.org" target="_blank" rel="noopener noreferrer" title="Email">
                       <MdEmail />
                     </a>
-                    <a href="https://www.linkedin.com/in/tbn-indonesia-210705251/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/tbn-indonesia-210705251/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
                       <FaLinkedin />
                     </a>
                   </div>

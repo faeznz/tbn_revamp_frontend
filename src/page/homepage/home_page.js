@@ -45,7 +45,7 @@ function HomePage() {
   };
 
   const getYoutubeEmbedUrl = (url) => {
-    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
     const match = url.match(regex);
     return match ? `https://www.youtube.com/embed/${match[1]}` : null;
   };
@@ -72,11 +72,10 @@ function HomePage() {
         <img src={landingPageImage} alt="Banner homepage" className="w-full aspect-9/16 md:aspect-16/9 lg:aspect-18/9 xl:aspect-21/9 object-cover bg-center bg-cover top-0 pt-16" />
         <div className="absolute aspect-9/16 md:aspect-21/9 xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 xl:pt-0 lg:pt-16 md:pt-24 pt-24 items-center">
           <div className="w-1 h-2/5 xl:bg-[#FFB400] sm:bg-transparent"></div>
-          <div className=" sm:w-full xl:p-8 flex flex-col justify-center xl:items-start items-center rounded-2xl">
-            <p className="text-white font-bold xl:text-5xl lg:text-4xl md:text-4xl text-lg xl:mb-12 sm:mb-4 xl:text-left text-center">
-              Transformational <br /> Business Network (TBN) Indonesia
-            </p>
-            <p className="text-[#C3D21F] font-bold xl:text-4xl lg:text-3xl md:text-2xl text-lg xl:text-left text-center">Fighting Poverty Through Enterprise</p>
+          <div className="xl:w-full xl:p-8 flex flex-col xl:items-start items-center rounded-2xl">
+            <p className="text-white font-bold xl:text-5xl lg:text-4xl md:text-4xl text-lg xl:mb-4 sm:mb-4 xl:text-left text-center">Transformational</p>
+            <p className="text-white font-bold xl:text-5xl lg:text-4xl md:text-4xl text-lg xl:mb-12 sm:mb-4 xl:text-left text-center">Business Network (TBN) Indonesia</p>
+            <p className="text-[#C3D21F] font-bold xl:text-4xl lg:text-3xl md:text-2xl xl:text-left text-center">Fighting Poverty Through Enterprise</p>
           </div>
         </div>
       </section>

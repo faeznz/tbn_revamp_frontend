@@ -112,7 +112,7 @@ function Navbar({ data }) {
     <div>
       <div className="flex fixed justify-between items-center bg-[#092040] w-full h-16 lg:px-16 px-6 z-10">
         <div>
-          <img src={logoTbn} className="lg:h-10 h-6" />
+          <img src={logoTbn} alt="logotbn" className="lg:h-10 h-6" />
         </div>
         <div className="hidden lg:flex flex-row gap-10 items-center text-white font-medium">
           <NavLink to="/">Home</NavLink>
@@ -120,7 +120,7 @@ function Navbar({ data }) {
             <p>About</p>
             {isAboutHovered && (
               <div className="flex flex-col gap-2 absolute w-40 bg-white text-black font-medium rounded-md shadow-md py-2 px-4 top-12 left-0 z-10">
-                <NavLink to="/about/visimisi">Visi dan Misi</NavLink>
+                <NavLink to="/about/visimisi">Vision Mission</NavLink>
                 <NavLink to="/about/history">History</NavLink>
                 <NavLink to="/about/partnership">Partnership</NavLink>
                 <NavLink to="/about/our-approach">Our Approach</NavLink>
@@ -140,7 +140,7 @@ function Navbar({ data }) {
                   Upcoming Event
                 </NavLink>
                 <NavLink to="/event/pengalaman-peserta" className="leading-4">
-                  Pengalaman Peserta
+                  Participant Experience
                 </NavLink>
                 <NavLink to="/event/history">History</NavLink>
               </div>
@@ -166,9 +166,14 @@ function Navbar({ data }) {
               </div>
             </div>
           ) : (
-            <button className="bg-white text-black font-medium px-6 py-2 rounded-2xl w-28">
-              <NavLink to="/login">Login</NavLink>
-            </button>
+            // <button className="bg-white text-black font-medium px-6 py-2 rounded-2xl w-28">
+            //   <NavLink to="/login" className="block w-full h-full">
+            //     Login
+            //   </NavLink>
+            // </button>
+            <NavLink to="/login" className="block w-28">
+              <button className="bg-white text-black font-medium px-6 py-2 rounded-2xl w-full h-full">Login</button>
+            </NavLink>
           )}
         </div>
         <div className="lg:hidden flex items-center" ref={burgerRef}>
@@ -220,7 +225,7 @@ function Navbar({ data }) {
             {isAboutHovered && (
               <div className="flex flex-col gap-2 w-full bg-white text-black font-medium rounded-md shadow-md p-4 my-2">
                 <NavLink to="/about/visimisi" onClick={() => setIsBurgerOpen(false)}>
-                  Visi dan Misi
+                  Vision Mission
                 </NavLink>
                 <NavLink to="/about/history" onClick={() => setIsBurgerOpen(false)}>
                   History
@@ -257,7 +262,7 @@ function Navbar({ data }) {
                   Upcoming Event
                 </NavLink>
                 <NavLink to="/event/pengalaman-peserta" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>
-                  Pengalaman Peserta
+                  Participant Experience
                 </NavLink>
                 <NavLink to="/event/history" onClick={() => setIsBurgerOpen(false)}>
                   History
@@ -293,7 +298,9 @@ function Navbar({ data }) {
             </div>
           ) : (
             <button className="bg-white text-black font-medium px-6 py-2 rounded-2xl w-full my-8">
-              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/login" className="block w-full h-full">
+                Login
+              </NavLink>
             </button>
           )}
         </div>

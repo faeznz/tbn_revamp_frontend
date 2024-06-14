@@ -53,7 +53,7 @@ const BlogDetailPage = () => {
     }
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/blogs/${post.id}/comments`, {
+      await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/blogs/${post.id}/comments`, {
         blog_id: post.id,
         user_id: userId,
         comment: newComment,
