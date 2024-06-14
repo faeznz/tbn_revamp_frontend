@@ -1,14 +1,17 @@
 import React from 'react';
-
+import { Helmet } from 'react-helmet';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
-import BannerPioneer from '../../assets/images/about/history/history_image.png';
-import BannerPartner from '../../assets/images/about/history/banner_partnership.png';
+import BannerPioneer from '../../assets/images/about/history/history_image.webp';
+import BannerPartner from '../../assets/images/about/history/banner_partnership.webp';
 
 const HistoryPage = () => {
   return (
     <div className="overflow-x-hidden">
+      <Helmet>
+        <title>TBN Indonesia - History</title>
+      </Helmet>
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>

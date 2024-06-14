@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
@@ -50,6 +51,9 @@ const HistoryEventDetailPage = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>TBN Indonesia - History Detail</title>
+      </Helmet>
       <NavbarComponent />
       <section>
         <div className="flex flex-col items-center w-full min-h-screen xl:pt-16 bg-[#F2EEEA] xl:pb-24">
@@ -130,19 +134,30 @@ const HistoryEventDetailPage = () => {
                   </tr>
                 </tbody>
               </table>
-              <div className="bg-[#092040] xl:h-16 md:h-12 h-10 w-full rounded-xl flex justify-center items-center">
+              <div>
                 {isRejected && (
                   <div className="bg-[#C0001C] xl:h-16 md:h-12 h-10 w-full rounded-xl flex justify-center items-center">
                     <p className="text-white xl:text-2xl md:text-lg text-sm font-bold">Your registration has been rejected</p>
                   </div>
                 )}
-                {isAccepted && !isPresence && <p className="text-white xl:text-2xl md:text-lg text-sm font-bold">Your registration is accepted</p>}
+                {isAccepted && !isPresence && (
+                  <div className="bg-[#2a8a42] xl:h-16 md:h-12 h-10 w-full rounded-xl flex justify-center items-center">
+                    <p className="text-white xl:text-2xl md:text-lg text-sm font-bold">Your registration is accepted</p>
+                  </div>
+                )}
                 {isPresence && (
-                  <button onClick={handleExperienceClick} className="bg-[#092040] text-white xl:text-2xl md:text-lg text-sm font-bold py-2 px-4 rounded-xl">
+                  <button
+                    onClick={handleExperienceClick}
+                    className="bg-gradient-to-r from-blue-500 to-blue-700 text-white xl:text-2xl md:text-lg text-sm font-bold xl:h-16 md:h-12 h-10 w-full rounded-xl shadow-lg hover:from-blue-600 hover:to-blue-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 ease-in-out transform hover:scale-105"
+                  >
                     Share your experience here!
                   </button>
                 )}
-                {isPending && <p className="text-white xl:text-2xl md:text-lg px-4 text-xs font-bold">Your registration is being processed</p>}
+                {isPending && (
+                  <div className="bg-[#092040] xl:h-16 md:h-12 h-10 w-full rounded-xl flex justify-center items-center">
+                    <p className="text-white xl:text-2xl md:text-lg px-4 text-xs font-bold">Your registration is being processed</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>

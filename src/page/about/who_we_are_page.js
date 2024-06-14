@@ -1,13 +1,17 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
-import AboutWhoWeAre from '../../assets/images/about/who-we-are/about-whoweare.png';
+import AboutWhoWeAre from '../../assets/images/about/who-we-are/about-whoweare.webp';
 
 const WhoWeArePage = () => {
   return (
     <div className="overflow-x-hidden">
+      <Helmet>
+        <title>TBN Indonesia - Who We Are</title>
+      </Helmet>
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>

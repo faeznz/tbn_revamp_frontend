@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 import CarouselComponent from '../../components/carousel';
 
-import bannerHomepage from '../../assets/images/home/banner-homepage.png';
-import missionBanner from '../../assets/images/home/mission_tbn.png';
-import tbnWorldwide from '../../assets/images/home/peta_tbn.png';
-import nullSafetyImageWhoWeAre from '../../assets/images/home/who_we_are.png';
+import bannerHomepage from '../../assets/images/home/banner-homepage.webp';
+import missionBanner from '../../assets/images/home/mission_tbn.webp';
+import tbnWorldwide from '../../assets/images/home/peta_tbn.webp';
+import nullSafetyImageWhoWeAre from '../../assets/images/home/who_we_are.webp';
 
 function HomePage() {
   const [homeContents, setHomeContents] = useState([]);
@@ -60,6 +61,9 @@ function HomePage() {
 
   return (
     <div className="overflow-x-hidden">
+      <Helmet>
+        <title>TBN Indonesia - Home</title>
+      </Helmet>
       <NavbarComponent />
       {/* Section 1 - Main */}
       <section className="relative w-full h-full">

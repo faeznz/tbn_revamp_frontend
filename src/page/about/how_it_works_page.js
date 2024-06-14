@@ -1,15 +1,18 @@
 import React from 'react';
-
+import { Helmet } from 'react-helmet';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
-import BannerBuildOutPriorities from '../../assets/images/about/how-it-works/allience_build_out-Priorities.png';
-import OurFocusSector from '../../assets/images/about/how-it-works/our-focus-sector.png';
-import AllianceServeInFour from '../../assets/images/about/how-it-works/alliance_serves_in_four_critical_ways.png';
+import BannerBuildOutPriorities from '../../assets/images/about/how-it-works/allience_build_out-Priorities.webp';
+import OurFocusSector from '../../assets/images/about/how-it-works/our-focus-sector.webp';
+import AllianceServeInFour from '../../assets/images/about/how-it-works/alliance_serves_in_four_critical_ways.webp';
 
 const HowItWorksPage = () => {
   return (
     <div className="overflow-x-hidden">
+      <Helmet>
+        <title>TBN Indonesia - How It Works</title>
+      </Helmet>
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>

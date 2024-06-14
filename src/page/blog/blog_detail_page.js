@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
@@ -78,6 +79,9 @@ const BlogDetailPage = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>TBN Indonesia - Blog Detail</title>
+      </Helmet>
       <NavbarComponent />
       <section>
         <div className="flex flex-col w-full py-24 items-center">

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { Helmet } from 'react-helmet';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
-import BannerVisiMisi from '../../assets/images/about/visi-misi/banner_visi_misi.png';
-import BannerValueDna from '../../assets/images/about/visi-misi/banner_value_dna.png';
-import BannerWeAre from '../../assets/images/about/visi-misi/banner_we_are.png';
+import BannerVisiMisi from '../../assets/images/about/visi-misi/banner_visi_misi.webp';
+import BannerValueDna from '../../assets/images/about/visi-misi/banner_value_dna.webp';
+import BannerWeAre from '../../assets/images/about/visi-misi/banner_we_are.webp';
 
 const VisiMisiPage = () => {
   const [posts, setPosts] = useState([]);
@@ -31,6 +31,9 @@ const VisiMisiPage = () => {
 
   return (
     <div className="overflow-x-hidden">
+      <Helmet>
+        <title>TBN Indonesia - Vision & Mission</title>
+      </Helmet>
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>

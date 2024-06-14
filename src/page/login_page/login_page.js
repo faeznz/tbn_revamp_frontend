@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/auth_context';
+import { Helmet } from 'react-helmet';
 
 import NavbarComponent from '../../components/navbar_component';
 
@@ -62,7 +63,6 @@ const LoginPage = () => {
 
       login({ nama });
       navigate('/');
-
     } catch (error) {
       setErrorMessage('Invalid email or password. Please try again.');
       setShowError(true);
@@ -128,6 +128,9 @@ const LoginPage = () => {
 
   return (
     <div className="bg-[#D2DCDD] h-screen">
+      <Helmet>
+        <title>TBN Indonesia - Login</title>
+      </Helmet>
       <NavbarComponent />
       {/* Section 1 -  Login*/}
       <div className="h-full w-full flex justify-center items-center pt-12">
@@ -153,8 +156,24 @@ const LoginPage = () => {
                   <p className="text-2xl mb-8 lg:mt-0 mt-8">Welcome Back!</p>
                 </div>
                 {/* Input Username and Password */}
-                <input type="text" className="lg:w-96 w-80 h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" placeholder="Enter Email Address.." value={email} onChange={handleEmailChange} onKeyPress={handleKeyPress} ref={inputRef}/>
-                <input type="password" className="lg:w-96 w-80 h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4" placeholder="Password" value={password} onChange={handlePasswordChange} onKeyPress={handleKeyPress} ref={inputRef}/>
+                <input
+                  type="text"
+                  className="lg:w-96 w-80 h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4"
+                  placeholder="Enter Email Address.."
+                  value={email}
+                  onChange={handleEmailChange}
+                  onKeyPress={handleKeyPress}
+                  ref={inputRef}
+                />
+                <input
+                  type="password"
+                  className="lg:w-96 w-80 h-14 mb-4 rounded-full bg-[#FBFBFB] border border-[#B6B6B6] text-black px-4"
+                  placeholder="Password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  onKeyPress={handleKeyPress}
+                  ref={inputRef}
+                />
                 {/* Remember Me */}
                 <div className="flex flex-row justify-start items-center ml-4 mb-4">
                   <input type="checkbox" className="w-4 h-4 mr-2 rounded-full" />

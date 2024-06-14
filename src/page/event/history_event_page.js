@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
@@ -64,6 +65,9 @@ const HistoryEventPage = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>TBN Indonesia - History</title>
+      </Helmet>
       <NavbarComponent />
       {/* Section 1 - Main */}
       <section className="flex flex-col items-center justify-center w-full min-h-screen pt-16 bg-[#F2EEEA] pb-24">

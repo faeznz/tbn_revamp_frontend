@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
@@ -8,7 +9,7 @@ import FooterComponent from '../../components/footer_component';
 import { MdStar } from 'react-icons/md';
 import { RiAccountCircleLine } from 'react-icons/ri';
 
-import BannerUpcoming from '../../assets/images/event/upcoming/upcoming_bannner.png';
+import BannerUpcoming from '../../assets/images/event/upcoming/upcoming_bannner.webp';
 
 const PengalamanPesertaDetail = () => {
   const { slug } = useParams();
@@ -48,6 +49,9 @@ const PengalamanPesertaDetail = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>TBN Indonesia - Experience Detail</title>
+      </Helmet>
       <NavbarComponent />
       {/* Header */}
       <section className="w-full h-full">

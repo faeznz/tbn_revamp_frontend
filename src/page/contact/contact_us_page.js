@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
+import { Helmet } from 'react-helmet';
 
-import ContentContactUs from '../../assets/images/contact-us/konten_contact_us.png';
+import ContentContactUs from '../../assets/images/contact-us/konten_contact_us.webp';
 
 const ContactUsPage = () => {
   const [name, setName] = useState('');
@@ -115,6 +116,9 @@ const ContactUsPage = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>TBN Indonesia - Contact Us</title>
+      </Helmet>
       <NavbarComponent />
       {/* <section>
         <div>

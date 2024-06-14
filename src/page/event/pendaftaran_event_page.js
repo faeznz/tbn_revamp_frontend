@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { Helmet } from 'react-helmet';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
@@ -195,6 +196,9 @@ const PendaftaranEventPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Helmet>
+        <title>TBN Indonesia - Event Register</title>
+      </Helmet>
       <NavbarComponent />
       {showError && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">

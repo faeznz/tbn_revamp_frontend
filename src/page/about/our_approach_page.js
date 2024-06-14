@@ -1,14 +1,17 @@
 import React from 'react';
-
+import { Helmet } from 'react-helmet';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
-import BannerOurApproach from '../../assets/images/about/our-approach/banner_our_approach.png';
+import BannerOurApproach from '../../assets/images/about/our-approach/banner_our_approach.webp';
 
 const OurApproachPage = () => {
   return (
     <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
       <div>
+        <Helmet>
+          <title>TBN Indonesia - Our Approach</title>
+        </Helmet>
         <NavbarComponent />
         {/* Section 1 - Header */}
         <section>

@@ -2,8 +2,8 @@ import React, { useState, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/auth_context';
-
 import NavbarComponent from '../../components/navbar_component';
+import { Helmet } from 'react-helmet';
 
 import { auth, googleAuthProvider } from '../../firebase/firebase_config';
 import { signInWithPopup } from 'firebase/auth';
@@ -209,6 +209,9 @@ const RegisterPage = () => {
 
   return (
     <div className="bg-[#D2DCDD] h-screen">
+      <Helmet>
+        <title>TBN Indonesia - Register</title>
+      </Helmet>
       <NavbarComponent />
       {showError && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">

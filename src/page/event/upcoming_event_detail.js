@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
 import { MdLocalOffer } from 'react-icons/md';
 
-import BannerUpcoming from '../../assets/images/event/upcoming/upcoming_bannner.png';
+import BannerUpcoming from '../../assets/images/event/upcoming/upcoming_bannner.webp';
 
 const UpcomingEventDetail = () => {
   const { slug } = useParams(); // Ambil ID dari parameter URL
@@ -69,6 +70,9 @@ const UpcomingEventDetail = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>TBN Indonesia - Event Detail</title>
+      </Helmet>
       <NavbarComponent />
       {/* Section 1 - Banner */}
       <section className="w-full h-full">

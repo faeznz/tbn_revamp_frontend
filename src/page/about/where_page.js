@@ -1,16 +1,19 @@
 import React from 'react';
-
+import { Helmet } from 'react-helmet';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
 import { FaWhatsapp } from 'react-icons/fa';
 import { TbWorld } from 'react-icons/tb';
 
-import LippoThamrin from '../../assets/images/about/where-we-are/lippo-thamrin.jpeg';
+import LippoThamrin from '../../assets/images/about/where-we-are/lippo-thamrin.webp';
 
 const WherePage = () => {
   return (
     <div className="overflow-x-hidden">
+      <Helmet>
+        <title>TBN Indonesia - Where We Are</title>
+      </Helmet>
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section>

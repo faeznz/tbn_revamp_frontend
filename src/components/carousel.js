@@ -3,11 +3,11 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import image1 from '../assets/images/carousel/Group 3081.png';
-import image2 from '../assets/images/carousel/Group 3082.png';
-import image3 from '../assets/images/carousel/Group 3083.png';
-import image4 from '../assets/images/carousel/Group 3084.png';
-import image5 from '../assets/images/carousel/Group 3085.png';
+import image1 from '../assets/images/carousel/Group-3081.webp';
+import image2 from '../assets/images/carousel/Group-3082.webp';
+import image3 from '../assets/images/carousel/Group-3083.webp';
+import image4 from '../assets/images/carousel/Group-3084.webp';
+import image5 from '../assets/images/carousel/Group-3085.webp';
 
 const images = [
   { src: image1, description: 'Together with TBN Indonesia, we are collaborating to create a healthier and greener planet through hydroponic vegetables and organic fruits.' },

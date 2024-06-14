@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { Helmet } from 'react-helmet';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
@@ -20,6 +20,9 @@ const PartnershipPage = () => {
 
   return (
     <div className="overflow-x-hidden">
+      <Helmet>
+        <title>TBN Indonesia - Partnership</title>
+      </Helmet>
       <NavbarComponent />
       {/* Section 1 - Header */}
       <section className="bg-[#EEEEEE]">

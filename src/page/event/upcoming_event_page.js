@@ -3,6 +3,7 @@ import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import Lottie from 'lottie-react';
+import { Helmet } from 'react-helmet';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
@@ -88,6 +89,9 @@ const EventsPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Helmet>
+        <title>TBN Indonesia - Event Upcoming</title>
+      </Helmet>
       <NavbarComponent />
       <div className="flex-grow">
         <section className="bg-white py-24">

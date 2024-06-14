@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import Lottie from 'lottie-react';
+import { Helmet } from 'react-helmet';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
@@ -43,6 +44,9 @@ const BlogListPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Helmet>
+        <title>TBN Indonesia - Blog List</title>
+      </Helmet>
       <NavbarComponent />
       <div className="flex-grow">
         <section>
