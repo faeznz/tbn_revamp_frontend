@@ -177,7 +177,7 @@ function Navbar({ data }) {
           )}
         </div>
         <div className="lg:hidden flex items-center" ref={burgerRef}>
-          <button onClick={handleBurgerClick} className="text-white focus:outline-none">
+          <button onClick={handleBurgerClick} className="text-white focus:outline-none" aria-label="Menu">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
@@ -190,7 +190,7 @@ function Navbar({ data }) {
         <div ref={burgerMenuRef} className="flex flex-col fixed items-start bg-[#092040] text-white rounded-b-3xl font-medium py-4 px-8 lg:hidden w-full z-10">
           <div className="flex justify-between items-center w-full mb-8 mt-4">
             <img src={logoTbn} alt="Logo TBN Alliance" className="h-6" />
-            <button onClick={handleBurgerClick} className="text-white focus:outline-none">
+            <button onClick={handleBurgerClick} className="text-white focus:outline-none" aria-label="Menu">
               <IoClose className="w-6 h-6" />
             </button>
           </div>

@@ -33,8 +33,8 @@ const PartnershipPage = () => {
 
       {/* Section 2 - Our Partner */}
       <section className={`flex flex-col justify-center items-center ${!partners || partners.length === 0 ? 'hidden' : ''}`}>
-        <div className="bg-[#EEEEEE] w-full flex flex-col justify-center items-center pt-24">
-          <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 items-center gap-4 px-12 pb-24">
+        <div className="bg-[#EEEEEE] w-full flex flex-col justify-center items-center pt-16">
+          <div className="w-full grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 items-center gap-4 xl:px-12 xl:pb-24 px-6 pb-6">
             {partners.map((partner) => (
               <div key={partner.id} className="h-32 bg-white rounded-xl flex justify-center items-center p-4">
                 <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${partner.image}`} alt={partner.name} className="h-full object-contain" />
@@ -43,6 +43,7 @@ const PartnershipPage = () => {
           </div>
         </div>
       </section>
+
       {/* Footer */}
       <div className="bg-[#F2EEEA]">
         <FooterComponent />

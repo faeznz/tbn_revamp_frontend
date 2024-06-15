@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
@@ -37,7 +39,15 @@ const PengalamanPesertaDetail = () => {
   }, [id, slug]);
 
   if (!event) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <NavbarComponent />
+        <div className="p-4">
+          <Skeleton height={1000} className="mt-16 justify-center" />
+        </div>
+        <FooterComponent />
+      </div>
+    );
   }
 
   const calculateAverageRating = (reviews) => {
@@ -56,21 +66,21 @@ const PengalamanPesertaDetail = () => {
       {/* Header */}
       <section className="w-full h-full">
         <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full xl:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12 flex flex-col items-center justify-center"></div>
-        <img src={BannerUpcoming} alt="bannerevent" className="w-full aspect-square md:aspect-video object-cover xl:aspect-21/9 bg-center bg-cover top-0 pt-12" />
+        <img src={BannerUpcoming} alt="bannerupcoming" className="w-full aspect-square md:aspect-video object-cover xl:aspect-21/9 bg-center bg-cover top-0 pt-12" />
         <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 pt-12 items-center">
-          <div className="p-8 mt-4 flex flex-col justify-center items-center rounded-2xl">
-            <p className="text-white text-center font-bold xl:text-5xl md:text-3xl text-md xl:mb-6 mb-2">{event.judul}</p>
-            <p className="text-white xl:font-semibold xl:text-2xl md:text-xl text-sm xl:mb-6">{new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-            <p className="text-white font-light xl:text-2xl md:text-xl text-xs text-center xl:mb-6 mb-2">{event.lokasi}</p>
-            <p className="text-white font-semibold xl:text-xl md:text-xl text-md ">REGISTRATION : {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
-            <div className="flex bg-white/50 h-0.5 w-full mt-8"></div>
-            <div className="text-white xl:h-12 md:h-10 h-8 mt-4 rounded-full p-2 flex items-center justify-center w-full gap-2">
+          <div className="p-4 mt-2 flex flex-col justify-center items-center rounded-2xl">
+            <p className="text-white text-center xl:font-bold lg:font-bold md:font-bold font-semibold xl:text-5xl lg:text-3xl md:text-xl text-lg xl:mb-6 lg:mb-6 mb-2">{event.judul}</p>
+            <p className="text-white xl:font-semibold xl:text-2xl lg:text-2xl md:text-lg text-sm xl:mb-6 lg:mb-6">{new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            <p className="text-white font-light xl:text-2xl lg:text-2xl md:text-lg text-xs text-center xl:mb-6 lg:mb-6 mb-2">{event.lokasi}</p>
+            <p className="text-white font-semibold xl:text-xl lg:text-xl md:text-lg text-sm ">REGISTRATION : {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+            <div className="flex bg-white/50 h-0.5 w-full xl:mt-8 lg:mt-8 md:mt-8 mt-5"></div>
+            <div className="text-white xl:h-12 lg:h-12 md:h-8 h-8 mt-0 rounded-full p-2 flex items-center justify-center w-full gap-2">
               <div className="rounded-full xl:p-2">
-                <p className="xl:text-2xl text-sm">SPEAKERS :</p>
+                <p className="xl:text-2xl lg:text-2xl md:text-lg text-sm">SPEAKERS :</p>
               </div>
             </div>
-            <div className=" text-white xl:text-2xl text-sm font-bold xl:h-12 md:h-10 h-8 rounded-full p-2 flex items-center justify-center w-full gap-2">{event.pembicara}</div>
-            <div className="flex bg-white/50 h-0.5 w-full mt-4"></div>
+            <div className=" text-white xl:text-2xl lg:text-2xl md:text-lg text-xs font-bold xl:h-12 md:h-10 h-8 rounded-full p-2 flex items-center text-center justify-center w-full gap-2">{event.pembicara}</div>
+            <div className="flex bg-white/50 h-0.5 w-full mt-1 xl:mb-10 lg:mb-10 md:mb-5 mb-4"></div>
           </div>
         </div>
       </section>

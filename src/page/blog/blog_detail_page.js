@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
-
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
@@ -74,7 +75,24 @@ const BlogDetailPage = () => {
   }
 
   if (!post) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <NavbarComponent />
+        <div className="p-12">
+          <Skeleton height={400} className="mt-16 px-24 justify-center" />
+          <Skeleton height={50} className="mt-4 justify-center" />
+          <Skeleton height={50} className="mt-4 justify-center" />
+          <Skeleton height={50} className="mt-4 justify-center" />
+          <Skeleton height={50} className="mt-4 justify-center" />
+          <Skeleton height={50} className="mt-4 justify-center" />
+          <Skeleton height={50} className="mt-4 justify-center" />
+          <Skeleton height={50} className="mt-4 justify-center" />
+          <Skeleton height={50} className="mt-4 justify-center" />
+          <Skeleton height={150} className="mt-4 justify-center" />
+        </div>
+        <FooterComponent />
+      </div>
+    );
   }
 
   return (
