@@ -32,7 +32,7 @@ const HistoryEventDetailPage = () => {
   }, [registrationId]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (!registration) {

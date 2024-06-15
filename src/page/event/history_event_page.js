@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
-
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
 
@@ -45,7 +46,15 @@ const HistoryEventPage = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <NavbarComponent />
+        <div className="p-4">
+          <Skeleton height={1000} className="mt-16 justify-center" />
+        </div>
+        <FooterComponent />
+      </div>
+    );
   }
 
   if (userRegistrations.length === 0) {
