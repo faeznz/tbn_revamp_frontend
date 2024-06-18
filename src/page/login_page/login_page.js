@@ -12,7 +12,7 @@ import { signInWithPopup } from 'firebase/auth';
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from 'react-icons/fa';
 
-import ImgLogin from '../../assets/images/login-register/img_login.png';
+import ImgLogin from '../../assets/images/login-register/img_login.webp';
 
 const LoginPage = () => {
   const { login } = useAuth();
