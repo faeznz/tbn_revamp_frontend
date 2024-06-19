@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import NavbarComponent from '../../components/navbar_component';
@@ -96,78 +96,80 @@ const BlogDetailPage = () => {
   }
 
   return (
-    <div>
-      <Helmet>
-        <title>TBN Indonesia - Blog Detail</title>
-      </Helmet>
-      <NavbarComponent />
-      <section>
-        <div className="flex flex-col w-full py-24 items-center">
-          <div className="flex w-4/5 mb-8">
-            <div className="flex items-center gap-x-4">
-              <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
-              <p className="font-semibold text-gray-900">{post.user.name}</p>
-              <p className="font-normal text-gray-900">{new Date(post.created_at).toLocaleDateString()}</p>
+    <HelmetProvider>
+      <div>
+        <Helmet>
+          <title>TBN Indonesia - Blog Detail</title>
+        </Helmet>
+        <NavbarComponent />
+        <section>
+          <div className="flex flex-col w-full py-24 items-center">
+            <div className="flex w-4/5 mb-8">
+              <div className="flex items-center gap-x-4">
+                <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
+                <p className="font-semibold text-gray-900">{post.user.name}</p>
+                <p className="font-normal text-gray-900">{new Date(post.created_at).toLocaleDateString()}</p>
+              </div>
+            </div>
+            <div className="flex w-full items-center justify-center">
+              <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${post.image_path}`} alt="blogimage" className="w-4/5 xl:w-3/5" />
+            </div>
+            <div className="w-4/5">
+              <p className="font-semibold text-gray-900 text-3xl mt-8">{post.title}</p>
+              <div className="font-light text-gray-900 text-xl mt-4 text-justify description" dangerouslySetInnerHTML={{ __html: post.desc }}></div>
             </div>
           </div>
-          <div className="flex w-full items-center justify-center">
-            <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${post.image_path}`} alt="blogimage" className="w-4/5 xl:w-3/5" />
-          </div>
+        </section>
+        <section className="flex justify-center items-center">
           <div className="w-4/5">
-            <p className="font-semibold text-gray-900 text-3xl mt-8">{post.title}</p>
-            <div className="font-light text-gray-900 text-xl mt-4 text-justify description" dangerouslySetInnerHTML={{ __html: post.desc }}></div>
-          </div>
-        </div>
-      </section>
-      <section className="flex justify-center items-center">
-        <div className="w-4/5">
-          <p className="xl:text-4xl text-lg font-bold">Komentar</p>
-          {comments.map((comment) => (
-            <div key={comment.id} className="flex flex-col items-start justify-start mb-6">
-              <div className="flex flex-row justify-center items-center xl:mt-12 mt-8">
-                <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
-                <div className="ml-4">
-                  <p className="font-bold">{comment.user ? comment.user.name : 'Unknown'}</p>
-                  <p className="font-light">{new Date(comment.created_at).toLocaleDateString()}</p>
-                  <div className="flex">
-                    {[...Array(5)].map((star, i) => {
-                      const ratingValue = i + 1;
-                      return <FaStar key={i} className="star" color={ratingValue <= comment.stars ? '#ffc107' : '#e4e5e9'} size={20} />;
-                    })}
+            <p className="xl:text-4xl text-lg font-bold">Komentar</p>
+            {comments.map((comment) => (
+              <div key={comment.id} className="flex flex-col items-start justify-start mb-6">
+                <div className="flex flex-row justify-center items-center xl:mt-12 mt-8">
+                  <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
+                  <div className="ml-4">
+                    <p className="font-bold">{comment.user ? comment.user.name : 'Unknown'}</p>
+                    <p className="font-light">{new Date(comment.created_at).toLocaleDateString()}</p>
+                    <div className="flex">
+                      {[...Array(5)].map((star, i) => {
+                        const ratingValue = i + 1;
+                        return <FaStar key={i} className="star" color={ratingValue <= comment.stars ? '#ffc107' : '#e4e5e9'} size={20} />;
+                      })}
+                    </div>
                   </div>
                 </div>
+                <p className="text-xl mt-4">{comment.comment}</p>
               </div>
-              <p className="text-xl mt-4">{comment.comment}</p>
+            ))}
+            <p className="xl:text-4xl text-lg font-bold xl:mt-24 mt-12">Tinggalkan Komentar</p>
+            <div className="flex flex-col">
+              <div className="flex mt-8 mb-6 justify-center">
+                {[...Array(5)].map((star, i) => {
+                  const ratingValue = i + 1;
+                  return (
+                    <label key={i} className="cursor-pointer">
+                      <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} className="hidden" />
+                      <FaStar className="star text-3xl" color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(0)} />
+                    </label>
+                  );
+                })}
+              </div>
+              <textarea
+                type="text"
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+                placeholder="Tuliskan komentar Anda di sini..."
+                className="w-full h-48 mb-6 rounded-xl bg-[#FBFBFB] border border-[#B6B6B6] text-black p-4"
+              />
+              <button onClick={handleCommentSubmit} className="self-center bg-[#092040] text-white px-8 py-4 rounded-2xl mb-24">
+                Kirim
+              </button>
             </div>
-          ))}
-          <p className="xl:text-4xl text-lg font-bold xl:mt-24 mt-12">Tinggalkan Komentar</p>
-          <div className="flex flex-col">
-            <div className="flex mt-8 mb-6 justify-center">
-              {[...Array(5)].map((star, i) => {
-                const ratingValue = i + 1;
-                return (
-                  <label key={i} className="cursor-pointer">
-                    <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} className="hidden" />
-                    <FaStar className="star text-3xl" color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(0)} />
-                  </label>
-                );
-              })}
-            </div>
-            <textarea
-              type="text"
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              placeholder="Tuliskan komentar Anda di sini..."
-              className="w-full h-48 mb-6 rounded-xl bg-[#FBFBFB] border border-[#B6B6B6] text-black p-4"
-            />
-            <button onClick={handleCommentSubmit} className="self-center bg-[#092040] text-white px-8 py-4 rounded-2xl mb-24">
-              Kirim
-            </button>
           </div>
-        </div>
-      </section>
-      <FooterComponent />
-    </div>
+        </section>
+        <FooterComponent />
+      </div>
+    </HelmetProvider>
   );
 };
 

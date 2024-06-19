@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import NavbarComponent from '../../components/navbar_component';
@@ -73,80 +73,82 @@ const HistoryEventPage = () => {
   }
 
   return (
-    <div>
-      <Helmet>
-        <title>TBN Indonesia - History</title>
-      </Helmet>
-      <NavbarComponent />
-      {/* Section 1 - Main */}
-      <section className="flex flex-col items-center justify-center w-full min-h-screen pt-16 bg-[#F2EEEA] pb-24">
-        <p className="my-12 text-2xl font-semibold">Riwayat Pendaftaran</p>
-        <div className="bg-white lg:w-fit w-5/6 lg:p-12 py-8 rounded-xl">
-          <table className="lg:block hidden">
-            <thead>
-              <tr>
-                <td className="px-12 text-center font-semibold pb-8">Status</td>
-                <td className="px-12 text-center font-semibold pb-8">Pendaftaran</td>
-                <td className="px-12 text-center font-semibold pb-8">Aksi</td>
-              </tr>
-            </thead>
-            <tbody>
-              {userRegistrations.map((registration) => (
-                <tr key={registration.id}>
-                  <td className="px-12 text-center pb-4">
-                    {/* Tampilkan status pendaftaran berdasarkan status yang diterima */}
-                    {registration.status === 'Pending' && <Review />}
-                    {registration.status === 'Accepted' && <Accepted />}
-                    {registration.status === 'Rejected' && <Rejected />}
-                  </td>
-                  <td className="px-12 pb-4">
-                    {/* Tampilkan informasi pendaftaran */}
-                    {registration.event.judul} <br />
-                    <span>{formatDateTime(registration.created_at)}</span>
-                  </td>
-                  <td className="px-12 text-center pb-4">
-                    <button className="w-32 h-10 bg-[#092040] text-white rounded-xl" onClick={() => handleView(registration.id)}>
-                      View
-                    </button>
-                  </td>
+    <HelmetProvider>
+      <div>
+        <Helmet>
+          <title>TBN Indonesia - History</title>
+        </Helmet>
+        <NavbarComponent />
+        {/* Section 1 - Main */}
+        <section className="flex flex-col items-center justify-center w-full min-h-screen pt-16 bg-[#F2EEEA] pb-24">
+          <p className="my-12 text-2xl font-semibold">Riwayat Pendaftaran</p>
+          <div className="bg-white lg:w-fit w-5/6 lg:p-12 py-8 rounded-xl">
+            <table className="lg:block hidden">
+              <thead>
+                <tr>
+                  <td className="px-12 text-center font-semibold pb-8">Status</td>
+                  <td className="px-12 text-center font-semibold pb-8">Pendaftaran</td>
+                  <td className="px-12 text-center font-semibold pb-8">Aksi</td>
                 </tr>
+              </thead>
+              <tbody>
+                {userRegistrations.map((registration) => (
+                  <tr key={registration.id}>
+                    <td className="px-12 text-center pb-4">
+                      {/* Tampilkan status pendaftaran berdasarkan status yang diterima */}
+                      {registration.status === 'Pending' && <Review />}
+                      {registration.status === 'Accepted' && <Accepted />}
+                      {registration.status === 'Rejected' && <Rejected />}
+                    </td>
+                    <td className="px-12 pb-4">
+                      {/* Tampilkan informasi pendaftaran */}
+                      {registration.event.judul} <br />
+                      <span>{formatDateTime(registration.created_at)}</span>
+                    </td>
+                    <td className="px-12 text-center pb-4">
+                      <button className="w-32 h-10 bg-[#092040] text-white rounded-xl" onClick={() => handleView(registration.id)}>
+                        View
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="lg:hidden">
+              {userRegistrations.map((registration) => (
+                <div key={registration.id} className="flex flex-col items-center justify-center">
+                  <div className="pb-4 flex flex-col justify-center items-center">
+                    {/* Tampilkan informasi pendaftaran */}
+                    <p className="text-center px-1 font-bold">
+                      {registration.event.judul} <br />
+                    </p>
+                    <p>{formatDateTime(registration.created_at)}</p>
+                  </div>
+                  <div className="flex flex-row w-full justify-around items-end">
+                    <div className="text-center pb-4">
+                      <p>Status :</p>
+                      {/* Tampilkan status pendaftaran berdasarkan status yang diterima */}
+                      {registration.status === 'Pending' && <Review />}
+                      {registration.status === 'Accepted' && <Accepted />}
+                      {registration.status === 'Rejected' && <Rejected />}
+                    </div>
+                    <div className="text-center pb-4">
+                      <button className="w-32 h-10 bg-[#092040] text-white rounded-xl" onClick={() => handleView(registration.id)}>
+                        View
+                      </button>
+                    </div>
+                  </div>
+                  <div className="w-5/6 h-0.5 bg-black/40 rounded-full"></div>
+                </div>
               ))}
-            </tbody>
-          </table>
-          <div className="lg:hidden">
-            {userRegistrations.map((registration) => (
-              <div key={registration.id} className="flex flex-col items-center justify-center">
-                <div className="pb-4 flex flex-col justify-center items-center">
-                  {/* Tampilkan informasi pendaftaran */}
-                  <p className="text-center px-1 font-bold">
-                    {registration.event.judul} <br />
-                  </p>
-                  <p>{formatDateTime(registration.created_at)}</p>
-                </div>
-                <div className="flex flex-row w-full justify-around items-end">
-                  <div className="text-center pb-4">
-                    <p>Status :</p>
-                    {/* Tampilkan status pendaftaran berdasarkan status yang diterima */}
-                    {registration.status === 'Pending' && <Review />}
-                    {registration.status === 'Accepted' && <Accepted />}
-                    {registration.status === 'Rejected' && <Rejected />}
-                  </div>
-                  <div className="text-center pb-4">
-                    <button className="w-32 h-10 bg-[#092040] text-white rounded-xl" onClick={() => handleView(registration.id)}>
-                      View
-                    </button>
-                  </div>
-                </div>
-                <div className="w-5/6 h-0.5 bg-black/40 rounded-full"></div>
-              </div>
-            ))}
+            </div>
           </div>
+        </section>
+        <div className="bg-[#F2EEEA]">
+          <FooterComponent />
         </div>
-      </section>
-      <div className="bg-[#F2EEEA]">
-        <FooterComponent />
       </div>
-    </div>
+    </HelmetProvider>
   );
 };
 

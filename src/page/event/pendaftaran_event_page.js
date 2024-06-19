@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
@@ -195,157 +195,159 @@ const PendaftaranEventPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Helmet>
-        <title>TBN Indonesia - Event Register</title>
-      </Helmet>
-      <NavbarComponent />
-      {showError && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
-          <div className="bg-white p-8 rounded-lg shadow-lg relative">
-            <button onClick={handleCloseError} className="absolute top-2 right-2 text-gray-600 hover:text-gray-900">
-              &times;
-            </button>
-            <p className="text-red-600 font-semibold">{errorMessage}</p>
-          </div>
-        </div>
-      )}
-      {showSuccess && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
-          <div className="bg-white p-8 rounded-lg shadow-lg relative">
-            <p className="text-green-600 font-semibold mb-4">{successMessage}</p>
-            <button className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900" onClick={handleCloseSuccess}>
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-      {showConfirmation && selectedEvent && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
-          <div className="bg-white p-8 rounded-lg shadow-lg relative mx-8">
-            <p className="text-black font-semibold mb-4">Apakah data yang Anda masukkan sudah benar?</p>
-            <table className="w-full mb-4">
-              <tbody>
-                <tr>
-                  <td className="pr-4 py-2 font-semibold">Nama:</td>
-                  <td>{name}</td>
-                </tr>
-                <tr>
-                  <td className="pr-4 py-2 font-semibold">Email:</td>
-                  <td>{email}</td>
-                </tr>
-                <tr>
-                  <td className="pr-4 py-2 font-semibold">No. Handphone:</td>
-                  <td>{phone}</td>
-                </tr>
-                <tr>
-                  <td className="pr-4 py-2 font-semibold">Afiliasi:</td>
-                  <td>{affiliation}</td>
-                </tr>
-                <tr>
-                  <td className="pr-4 py-2 font-semibold">Jenis Tiket:</td>
-                  <td>{ticketType}</td>
-                </tr>
-                <tr>
-                  <td className="pr-4 py-2 font-semibold">Catatan:</td>
-                  <td>{notes}</td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="flex justify-end">
-              <button className="mr-2 px-4 py-2 bg-gray-400 text-white rounded-md" onClick={handleCancel}>
-                Cancel
+    <HelmetProvider>
+      <div className="flex flex-col min-h-screen">
+        <Helmet>
+          <title>TBN Indonesia - Event Register</title>
+        </Helmet>
+        <NavbarComponent />
+        {showError && (
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
+            <div className="bg-white p-8 rounded-lg shadow-lg relative">
+              <button onClick={handleCloseError} className="absolute top-2 right-2 text-gray-600 hover:text-gray-900">
+                &times;
               </button>
-              <button className="px-4 py-2 bg-green-500 text-white rounded-md" onClick={handleConfirm}>
-                Confirm
+              <p className="text-red-600 font-semibold">{errorMessage}</p>
+            </div>
+          </div>
+        )}
+        {showSuccess && (
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
+            <div className="bg-white p-8 rounded-lg shadow-lg relative">
+              <p className="text-green-600 font-semibold mb-4">{successMessage}</p>
+              <button className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900" onClick={handleCloseSuccess}>
+                Close
               </button>
             </div>
           </div>
-        </div>
-      )}
-      <div className="flex flex-col items-center justify-center mt-16 my-8 px-4">
-        {loading ? (
-          <div className="max-w-lg w-full bg-white p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-4 text-center">
-              <Skeleton width={200} />
-            </h2>
-            <div className="mb-4">
-              <Skeleton height={40} />
-            </div>
-            <div className="mb-4">
-              <Skeleton height={40} />
-            </div>
-            <div className="mb-4">
-              <Skeleton height={40} />
-            </div>
-            <div className="mb-4">
-              <Skeleton height={40} />
-            </div>
-            <div className="mb-4">
-              <Skeleton height={40} />
-            </div>
-            <div className="mb-4">
-              <Skeleton height={40} />
-            </div>
-            <div className="flex justify-center">
-              <Skeleton width={100} height={40} />
-            </div>
-          </div>
-        ) : selectedEvent ? (
-          <div className="max-w-lg w-full bg-white p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-4 text-center">Pendaftaran Event: {selectedEvent.judul}</h2>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label htmlFor="name" className="block font-semibold mb-1">
-                  Nama
-                </label>
-                <input type="text" id="name" className={`w-full px-3 py-2 border rounded-md ${nameError ? 'border-red-500' : 'border-gray-300'}`} value={name} onChange={handleNameChange} />
-                {nameError && <p className="text-red-500 text-sm">{nameError}</p>}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="email" className="block font-semibold mb-1">
-                  Email
-                </label>
-                <input type="email" id="email" className={`w-full px-3 py-2 border rounded-md ${emailError ? 'border-red-500' : 'border-gray-300'}`} value={email} onChange={handleEmailChange} />
-                {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="phone" className="block font-semibold mb-1">
-                  No. Handphone
-                </label>
-                <input type="text" id="phone" className={`w-full px-3 py-2 border rounded-md ${phoneError ? 'border-red-500' : 'border-gray-300'}`} value={phone} onChange={handlePhoneChange} />
-                {phoneError && <p className="text-red-500 text-sm">{phoneError}</p>}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="affiliation" className="block font-semibold mb-1">
-                  Afiliasi
-                </label>
-                <input type="text" id="affiliation" className={`w-full px-3 py-2 border rounded-md ${affiliationError ? 'border-red-500' : 'border-gray-300'}`} value={affiliation} onChange={handleAffiliationChange} />
-                {affiliationError && <p className="text-red-500 text-sm">{affiliationError}</p>}
-              </div>
-              <div className="mb-4">
-                <label className="block font-semibold mb-1">Jenis Tiket</label>
-                <p className="w-full px-3 py-2 border border-gray-300 rounded-md">{ticketType}</p>
-              </div>
-              <div className="mb-4">
-                <label htmlFor="notes" className="block font-semibold mb-1">
-                  Catatan
-                </label>
-                <textarea id="notes" className="w-full px-3 py-2 border border-gray-300 rounded-md" value={notes} onChange={(e) => setNotes(e.target.value)} />
-              </div>
-              <div className="flex justify-center">
-                <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md">
-                  Daftar
+        )}
+        {showConfirmation && selectedEvent && (
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
+            <div className="bg-white p-8 rounded-lg shadow-lg relative mx-8">
+              <p className="text-black font-semibold mb-4">Apakah data yang Anda masukkan sudah benar?</p>
+              <table className="w-full mb-4">
+                <tbody>
+                  <tr>
+                    <td className="pr-4 py-2 font-semibold">Nama:</td>
+                    <td>{name}</td>
+                  </tr>
+                  <tr>
+                    <td className="pr-4 py-2 font-semibold">Email:</td>
+                    <td>{email}</td>
+                  </tr>
+                  <tr>
+                    <td className="pr-4 py-2 font-semibold">No. Handphone:</td>
+                    <td>{phone}</td>
+                  </tr>
+                  <tr>
+                    <td className="pr-4 py-2 font-semibold">Afiliasi:</td>
+                    <td>{affiliation}</td>
+                  </tr>
+                  <tr>
+                    <td className="pr-4 py-2 font-semibold">Jenis Tiket:</td>
+                    <td>{ticketType}</td>
+                  </tr>
+                  <tr>
+                    <td className="pr-4 py-2 font-semibold">Catatan:</td>
+                    <td>{notes}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="flex justify-end">
+                <button className="mr-2 px-4 py-2 bg-gray-400 text-white rounded-md" onClick={handleCancel}>
+                  Cancel
+                </button>
+                <button className="px-4 py-2 bg-green-500 text-white rounded-md" onClick={handleConfirm}>
+                  Confirm
                 </button>
               </div>
-            </form>
+            </div>
           </div>
-        ) : (
-          <p>Event tidak ditemukan</p>
         )}
+        <div className="flex flex-col items-center justify-center mt-16 my-8 px-4">
+          {loading ? (
+            <div className="max-w-lg w-full bg-white p-8 rounded-lg shadow-md">
+              <h2 className="text-2xl font-bold mb-4 text-center">
+                <Skeleton width={200} />
+              </h2>
+              <div className="mb-4">
+                <Skeleton height={40} />
+              </div>
+              <div className="mb-4">
+                <Skeleton height={40} />
+              </div>
+              <div className="mb-4">
+                <Skeleton height={40} />
+              </div>
+              <div className="mb-4">
+                <Skeleton height={40} />
+              </div>
+              <div className="mb-4">
+                <Skeleton height={40} />
+              </div>
+              <div className="mb-4">
+                <Skeleton height={40} />
+              </div>
+              <div className="flex justify-center">
+                <Skeleton width={100} height={40} />
+              </div>
+            </div>
+          ) : selectedEvent ? (
+            <div className="max-w-lg w-full bg-white p-8 rounded-lg shadow-md">
+              <h2 className="text-2xl font-bold mb-4 text-center">Pendaftaran Event: {selectedEvent.judul}</h2>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-4">
+                  <label htmlFor="name" className="block font-semibold mb-1">
+                    Nama
+                  </label>
+                  <input type="text" id="name" className={`w-full px-3 py-2 border rounded-md ${nameError ? 'border-red-500' : 'border-gray-300'}`} value={name} onChange={handleNameChange} />
+                  {nameError && <p className="text-red-500 text-sm">{nameError}</p>}
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="email" className="block font-semibold mb-1">
+                    Email
+                  </label>
+                  <input type="email" id="email" className={`w-full px-3 py-2 border rounded-md ${emailError ? 'border-red-500' : 'border-gray-300'}`} value={email} onChange={handleEmailChange} />
+                  {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="phone" className="block font-semibold mb-1">
+                    No. Handphone
+                  </label>
+                  <input type="text" id="phone" className={`w-full px-3 py-2 border rounded-md ${phoneError ? 'border-red-500' : 'border-gray-300'}`} value={phone} onChange={handlePhoneChange} />
+                  {phoneError && <p className="text-red-500 text-sm">{phoneError}</p>}
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="affiliation" className="block font-semibold mb-1">
+                    Afiliasi
+                  </label>
+                  <input type="text" id="affiliation" className={`w-full px-3 py-2 border rounded-md ${affiliationError ? 'border-red-500' : 'border-gray-300'}`} value={affiliation} onChange={handleAffiliationChange} />
+                  {affiliationError && <p className="text-red-500 text-sm">{affiliationError}</p>}
+                </div>
+                <div className="mb-4">
+                  <label className="block font-semibold mb-1">Jenis Tiket</label>
+                  <p className="w-full px-3 py-2 border border-gray-300 rounded-md">{ticketType}</p>
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="notes" className="block font-semibold mb-1">
+                    Catatan
+                  </label>
+                  <textarea id="notes" className="w-full px-3 py-2 border border-gray-300 rounded-md" value={notes} onChange={(e) => setNotes(e.target.value)} />
+                </div>
+                <div className="flex justify-center">
+                  <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md">
+                    Daftar
+                  </button>
+                </div>
+              </form>
+            </div>
+          ) : (
+            <p>Event tidak ditemukan</p>
+          )}
+        </div>
+        <FooterComponent />
       </div>
-      <FooterComponent />
-    </div>
+    </HelmetProvider>
   );
 };
 

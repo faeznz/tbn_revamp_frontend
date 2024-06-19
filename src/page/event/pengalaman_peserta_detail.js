@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
@@ -58,108 +58,110 @@ const PengalamanPesertaDetail = () => {
   };
 
   return (
-    <div>
-      <Helmet>
-        <title>TBN Indonesia - Experience Detail</title>
-      </Helmet>
-      <NavbarComponent />
-      {/* Header */}
-      <section className="w-full h-full">
-        <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full xl:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12 flex flex-col items-center justify-center"></div>
-        <img src={BannerUpcoming} alt="bannerupcoming" className="w-full aspect-square md:aspect-video object-cover xl:aspect-21/9 bg-center bg-cover top-0 pt-12" />
-        <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 pt-12 items-center">
-          <div className="p-4 mt-2 flex flex-col justify-center items-center rounded-2xl">
-            <p className="text-white text-center xl:font-bold lg:font-bold md:font-bold font-semibold xl:text-5xl lg:text-3xl md:text-xl text-lg xl:mb-6 lg:mb-6 mb-2">{event.judul}</p>
-            <p className="text-white xl:font-semibold xl:text-2xl lg:text-2xl md:text-lg text-sm xl:mb-6 lg:mb-6">{new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-            <p className="text-white font-light xl:text-2xl lg:text-2xl md:text-lg text-xs text-center xl:mb-6 lg:mb-6 mb-2">{event.lokasi}</p>
-            <p className="text-white font-semibold xl:text-xl lg:text-xl md:text-lg text-sm ">REGISTRATION : {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
-            <div className="flex bg-white/50 h-0.5 w-full xl:mt-8 lg:mt-8 md:mt-8 mt-5"></div>
-            <div className="text-white xl:h-12 lg:h-12 md:h-8 h-8 mt-0 rounded-full p-2 flex items-center justify-center w-full gap-2">
-              <div className="rounded-full xl:p-2">
-                <p className="xl:text-2xl lg:text-2xl md:text-lg text-sm">SPEAKERS :</p>
-              </div>
-            </div>
-            <div className=" text-white xl:text-2xl lg:text-2xl md:text-lg text-xs font-bold xl:h-12 md:h-10 h-8 rounded-full p-2 flex items-center text-center justify-center w-full gap-2">{event.pembicara}</div>
-            <div className="flex bg-white/50 h-0.5 w-full mt-1 xl:mb-10 lg:mb-10 md:mb-5 mb-4"></div>
-          </div>
-        </div>
-      </section>
-      {/* Body */}
-      <section className="flex flex-col mt-12 justify-center items-center">
-        <p className="text-sm font-medium">- Post Conference Highlights -</p>
-        <p className="xl:text-4xl text-2xl mb-12 font-medium text-center">{event.judul}</p>
-        <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt="poster" className="xl:w-1/3 w-4/5 bg-center bg-cover" />
-        <div className="xl:mx-24 mx-12 flex flex-col justify-center items-center my-24">
-          <p className="text-xl mb-12 font-light underline underline-offset-2">About the Conference</p>
-          <div className="flex flex-row xl:mx-12">
-            <p className="text-justify font-light description" dangerouslySetInnerHTML={{ __html: event.deskripsi }}></p>
-          </div>
-        </div>
-      </section>
-      {/* Ulasan Peserta */}
-      <section>
-        <div className="xl:px-24 px-12 bg-[#F2EEEA] py-16 xl:rounded-t-[100px] rounded-t-[50px]">
-          <p className="text-black xl:text-2xl text-xl font-semibold text-center justify-center mb-6">{event.judul}</p>
-          <div className="flex flex-row items-center mt-5 mb-5 w-full justify-center">
-            <div className="flex flex-row xl:mr-4 gap-1">
-              {[...Array(5)].map((_, index) => (
-                <MdStar key={index} className={`xl:text-xl ${index < calculateAverageRating(reviews) ? 'text-yellow-400' : 'text-gray-400'}`} />
-              ))}
-            </div>
-            <p>({reviews.length} Ulasan)</p>
-          </div>
-          {reviews.map((review) => (
-            <div key={review.id} className="xl:mx-24">
-              {/* Layout For Dekstop */}
-              <div className="hidden xl:flex flex-row items-center mt-12 w-full">
-                <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
-                <div className="ml-4 w-full">
-                  <div className="flex flex-row justify-between w-full">
-                    <div>
-                      <p className="text-xl font-bold">{review.registration.name}</p>
-                      <p className="text-md font-light">{new Date(review.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-                    </div>
-                    <div className="flex flex-row gap-1">
-                      {[...Array(5)].map((_, index) => (
-                        <MdStar key={index} className={`text-3xl ${index < review.rating ? 'text-yellow-400' : 'text-gray-400'}`} />
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-xl mb-2 mr-24 mt-4">{review.review}</p>
+    <HelmetProvider>
+      <div>
+        <Helmet>
+          <title>TBN Indonesia - Experience Detail</title>
+        </Helmet>
+        <NavbarComponent />
+        {/* Header */}
+        <section className="w-full h-full">
+          <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full xl:bg-[#131313]/40 bg-[#131313]/60 top-0 pt-12 flex flex-col items-center justify-center"></div>
+          <img src={BannerUpcoming} loading="lazy" alt="bannerupcoming" className="w-full aspect-square md:aspect-video object-cover xl:aspect-21/9 bg-center bg-cover top-0 pt-12" />
+          <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 pt-12 items-center">
+            <div className="p-4 mt-2 flex flex-col justify-center items-center rounded-2xl">
+              <p className="text-white text-center xl:font-bold lg:font-bold md:font-bold font-semibold xl:text-5xl lg:text-3xl md:text-xl text-lg xl:mb-6 lg:mb-6 mb-2">{event.judul}</p>
+              <p className="text-white xl:font-semibold xl:text-2xl lg:text-2xl md:text-lg text-sm xl:mb-6 lg:mb-6">{new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+              <p className="text-white font-light xl:text-2xl lg:text-2xl md:text-lg text-xs text-center xl:mb-6 lg:mb-6 mb-2">{event.lokasi}</p>
+              <p className="text-white font-semibold xl:text-xl lg:text-xl md:text-lg text-sm ">REGISTRATION : {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+              <div className="flex bg-white/50 h-0.5 w-full xl:mt-8 lg:mt-8 md:mt-8 mt-5"></div>
+              <div className="text-white xl:h-12 lg:h-12 md:h-8 h-8 mt-0 rounded-full p-2 flex items-center justify-center w-full gap-2">
+                <div className="rounded-full xl:p-2">
+                  <p className="xl:text-2xl lg:text-2xl md:text-lg text-sm">SPEAKERS :</p>
                 </div>
               </div>
-              {/* Layout For Mobile */}
-              <div className="xl:hidden flex flex-row items-center mt-12 w-full">
-                <div className="xl:ml-4 w-full">
-                  <div className="flex flex-row justify-between w-full">
-                    <div className="flex flex-col items-start justify-start">
-                      <div className="flex flex-row gap-2">
-                        <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
-                        <div>
-                          <p className="text-xl font-bold">{review.registration.name}</p>
-                          <p className="text-md font-light">{new Date(review.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-                        </div>
+              <div className=" text-white xl:text-2xl lg:text-2xl md:text-lg text-xs font-bold xl:h-12 md:h-10 h-8 rounded-full p-2 flex items-center text-center justify-center w-full gap-2">{event.pembicara}</div>
+              <div className="flex bg-white/50 h-0.5 w-full mt-1 xl:mb-10 lg:mb-10 md:mb-5 mb-4"></div>
+            </div>
+          </div>
+        </section>
+        {/* Body */}
+        <section className="flex flex-col mt-12 justify-center items-center">
+          <p className="text-sm font-medium">- Post Conference Highlights -</p>
+          <p className="xl:text-4xl text-2xl mb-12 font-medium text-center">{event.judul}</p>
+          <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt="poster" className="xl:w-1/3 w-4/5 bg-center bg-cover" />
+          <div className="xl:mx-24 mx-12 flex flex-col justify-center items-center my-24">
+            <p className="text-xl mb-12 font-light underline underline-offset-2">About the Conference</p>
+            <div className="flex flex-row xl:mx-12">
+              <p className="text-justify font-light description" dangerouslySetInnerHTML={{ __html: event.deskripsi }}></p>
+            </div>
+          </div>
+        </section>
+        {/* Ulasan Peserta */}
+        <section>
+          <div className="xl:px-24 px-12 bg-[#F2EEEA] py-16 xl:rounded-t-[100px] rounded-t-[50px]">
+            <p className="text-black xl:text-2xl text-xl font-semibold text-center justify-center mb-6">{event.judul}</p>
+            <div className="flex flex-row items-center mt-5 mb-5 w-full justify-center">
+              <div className="flex flex-row xl:mr-4 gap-1">
+                {[...Array(5)].map((_, index) => (
+                  <MdStar key={index} className={`xl:text-xl ${index < calculateAverageRating(reviews) ? 'text-yellow-400' : 'text-gray-400'}`} />
+                ))}
+              </div>
+              <p>({reviews.length} Ulasan)</p>
+            </div>
+            {reviews.map((review) => (
+              <div key={review.id} className="xl:mx-24">
+                {/* Layout For Dekstop */}
+                <div className="hidden xl:flex flex-row items-center mt-12 w-full">
+                  <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
+                  <div className="ml-4 w-full">
+                    <div className="flex flex-row justify-between w-full">
+                      <div>
+                        <p className="text-xl font-bold">{review.registration.name}</p>
+                        <p className="text-md font-light">{new Date(review.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                       </div>
-                      <div className="flex flex-row gap-1 mt-2">
+                      <div className="flex flex-row gap-1">
                         {[...Array(5)].map((_, index) => (
-                          <MdStar key={index} className={`text-2xl ${index < review.rating ? 'text-yellow-400' : 'text-gray-400'}`} />
+                          <MdStar key={index} className={`text-3xl ${index < review.rating ? 'text-yellow-400' : 'text-gray-400'}`} />
                         ))}
                       </div>
                     </div>
+                    <p className="text-xl mb-2 mr-24 mt-4">{review.review}</p>
                   </div>
-                  <p className="text-md mb-4 mt-4">{review.review}</p>
                 </div>
+                {/* Layout For Mobile */}
+                <div className="xl:hidden flex flex-row items-center mt-12 w-full">
+                  <div className="xl:ml-4 w-full">
+                    <div className="flex flex-row justify-between w-full">
+                      <div className="flex flex-col items-start justify-start">
+                        <div className="flex flex-row gap-2">
+                          <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
+                          <div>
+                            <p className="text-xl font-bold">{review.registration.name}</p>
+                            <p className="text-md font-light">{new Date(review.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                          </div>
+                        </div>
+                        <div className="flex flex-row gap-1 mt-2">
+                          {[...Array(5)].map((_, index) => (
+                            <MdStar key={index} className={`text-2xl ${index < review.rating ? 'text-yellow-400' : 'text-gray-400'}`} />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-md mb-4 mt-4">{review.review}</p>
+                  </div>
+                </div>
+                {review.image_path && <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${review.image_path}`} alt="review" className="w-72" />}
+                <hr className="my-8 border-t-2 border-gray-300" /> {/* Garis pemisah antar ulasan */}
               </div>
-              {review.image_path && <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${review.image_path}`} alt="review" className="w-72" />}
-              <hr className="my-8 border-t-2 border-gray-300" /> {/* Garis pemisah antar ulasan */}
-            </div>
-          ))}
+            ))}
+          </div>
+        </section>
+        <div className="bg-[#F2EEEA]">
+          <FooterComponent />
         </div>
-      </section>
-      <div className="bg-[#F2EEEA]">
-        <FooterComponent />
       </div>
-    </div>
+    </HelmetProvider>
   );
 };
 

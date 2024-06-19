@@ -3,7 +3,7 @@ import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import Lottie from 'lottie-react';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import NavbarComponent from '../../components/navbar_component';
 import FooterComponent from '../../components/footer_component';
@@ -94,43 +94,45 @@ const PengalamanPesertaPage = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Helmet>
-        <title>TBN Indonesia - Experience</title>
-      </Helmet>
-      <NavbarComponent />
-      <div className="flex-grow">
-        <section className="bg-white py-24">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Pengalaman Peserta</h2>
-            <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-              {events.map((event) => (
-                <article key={event.id} className="h-full flex flex-col justify-between bg-gray-100 rounded-lg overflow-hidden shadow-md">
-                  <div>
-                    <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full aspect-3/4 object-cover" />
-                    <p className="font-bold text-xl mb-2 text-gray-800 px-6 pt-4">{event.judul}</p>
-                  </div>
-                  <div className="w-full justify-center items-center">
-                    <div className="px-6 pb-4">
-                      <p className="text-gray-800 font-medium mb-2">Pembicara: {event.pembicara}</p>
-                      <p className="text-gray-800 font-medium mb-2">Registration: {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
-                      <p className="text-gray-800 font-medium">Tanggal: {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+    <HelmetProvider>
+      <div className="flex flex-col min-h-screen">
+        <Helmet>
+          <title>TBN Indonesia - Experience</title>
+        </Helmet>
+        <NavbarComponent />
+        <div className="flex-grow">
+          <section className="bg-white py-24">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Pengalaman Peserta</h2>
+              <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+                {events.map((event) => (
+                  <article key={event.id} className="h-full flex flex-col justify-between bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                    <div>
+                      <img src={`${process.env.REACT_APP_TBN_API_URL}/storage/${event.poster_path}`} alt={event.judul} onLoad={handleImageLoad} className="w-full aspect-3/4 object-cover" />
+                      <p className="font-bold text-xl mb-2 text-gray-800 px-6 pt-4">{event.judul}</p>
                     </div>
-                    <div className="px-6 py-8 text-center justify-center items-center">
-                      <a href={`/event/pengalaman-peserta/detail/${event.slug}`} className="bg-[#195A94] text-white px-8 py-2 rounded-xl">
-                        Look Review
-                      </a>
+                    <div className="w-full justify-center items-center">
+                      <div className="px-6 pb-4">
+                        <p className="text-gray-800 font-medium mb-2">Pembicara: {event.pembicara}</p>
+                        <p className="text-gray-800 font-medium mb-2">Registration: {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+                        <p className="text-gray-800 font-medium">Tanggal: {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                      </div>
+                      <div className="px-6 py-8 text-center justify-center items-center">
+                        <a href={`/event/pengalaman-peserta/detail/${event.slug}`} className="bg-[#195A94] text-white px-8 py-2 rounded-xl">
+                          Look Review
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
+        <FooterComponent />
       </div>
-      <FooterComponent />
-    </div>
+    </HelmetProvider>
   );
 };
 

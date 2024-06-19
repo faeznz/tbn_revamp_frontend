@@ -56,7 +56,7 @@ function CarouselComponent() {
         {images.map((image, index) => (
           <div key={index} className="px-2 md:px-4 lg:px-6">
             <div className="relative group">
-              <img src={image.src} alt={`Carousel ${index + 1}`} className="w-full object-contain rounded-lg" />
+              <img src={image.src} loading="lazy" alt={`Carousel ${index + 1}`} className="w-full object-contain rounded-lg" />
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-lg">
                 <p className="text-white xl:text-lg text-center p-4">{image.description}</p>
               </div>
