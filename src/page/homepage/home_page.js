@@ -155,8 +155,8 @@ function HomePage() {
                 </>
               ) : (
                 <div className="flex xl:flex-row flex-col w-full justify-center items-center xl:py-0 py-12 xl:h-screen">
-                  <img src={nullSafetyImageWhoWeAre} loading="lazy" alt="Who We Are" className="xl:h-3/5 aspect-video object-cover xl:rounded-[20px] rounded-[10px] order-1 xl:order-2 w-full" />
-                  <div className="xl:w-1/2 xl:ml-12 flex flex-col justify-center items-center xl:mt-0 mt-8 order-2 xl:order-1">
+                  <img src={nullSafetyImageWhoWeAre} loading="lazy" alt="Who We Are" className="xl:h-3/5 aspect-video object-cover xl:rounded-[20px] rounded-[10px] order-1 xl:order-2 xl:w-3/5 w-full" />
+                  <div className="xl:w-1/2 xl:mr-12 flex flex-col justify-center items-center xl:mt-0 mt-8 order-2 xl:order-1">
                     <p className="xl:text-4xl text-2xl mb-8 font-medium">WHO WE ARE</p>
                     <div className="text-justify xl:text-lg description">
                       TBN Indonesia is a network that connects entrepreneurs and investors, and offers advisory services such as research, capacity building, and educational content creation.
