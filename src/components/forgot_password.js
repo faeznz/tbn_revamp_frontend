@@ -4,14 +4,17 @@ import axios from 'axios';
 function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://your-backend-api/forgot-password', { email });
       setMessage(response.data.message);
+      setIsError(false);
     } catch (error) {
       setMessage('Error sending reset link. Please try again.');
+      setIsError(true);
     }
   };
 
@@ -23,7 +26,7 @@ function ForgotPassword() {
         <button type="submit" className="w-full px-4 py-2 text-white bg-[#4E73DF] rounded-full">
           Send Reset Link
         </button>
-        {message && <p className="mt-4 text-green-500">{message}</p>}
+        {message && <p className={`mt-4 ${isError ? 'text-red-500' : 'text-green-500'}`}>{message}</p>}
       </form>
     </div>
   );
