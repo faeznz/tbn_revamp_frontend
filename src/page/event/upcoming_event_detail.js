@@ -91,9 +91,9 @@ const UpcomingEventDetail = () => {
           <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 pt-12 items-center">
             <div className="p-4 mt-2 flex flex-col justify-center items-center rounded-2xl">
               <p className="text-white text-center xl:font-bold lg:font-bold md:font-bold font-semibold xl:text-5xl lg:text-3xl md:text-xl text-lg xl:mb-6 lg:mb-6 mb-2">{event.judul}</p>
-              <p className="text-white xl:font-semibold xl:text-2xl lg:text-2xl md:text-lg text-sm xl:mb-6 lg:mb-6">{eventDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+              <p className="text-white xl:font-semibold xl:text-2xl lg:text-2xl md:text-lg text-sm xl:mb-6 lg:mb-6">{eventDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
               <p className="text-white font-light xl:text-2xl lg:text-2xl md:text-lg text-xs text-center xl:mb-6 lg:mb-6 mb-2">{event.lokasi}</p>
-              <p className="text-white font-semibold xl:text-xl lg:text-xl md:text-lg text-sm ">REGISTRATION : {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+              <p className="text-white font-semibold xl:text-xl lg:text-xl md:text-lg text-sm ">REGISTRATION : {event.harga === '0' ? 'Free' : `Rp${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
               <div className="flex bg-white/50 h-0.5 w-full xl:mt-8 lg:mt-8 md:mt-8 mt-5"></div>
               <div className="text-white xl:h-12 lg:h-12 md:h-8 h-8 mt-0 rounded-full p-2 flex items-center justify-center w-full gap-2">
                 <div className="rounded-full xl:p-2">
@@ -168,9 +168,9 @@ const UpcomingEventDetail = () => {
                     </div>
                     <div className="max-w-xl">
                       <h3 className="mt-4 text-xl font-semibold text-gray-900">{event.judul}</h3>
-                      <p className="mt-2 text-sm text-gray-600">{new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                      <p className="mt-2 text-sm text-gray-600">{new Date(event.tanggal).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                       <p className="mt-2 text-sm text-gray-600">{event.lokasi}</p>
-                      <p className="mt-2 text-sm text-gray-600">Registration: {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+                      <p className="mt-2 text-sm text-gray-600">Registration: {event.harga === '0' ? 'Free' : `Rp${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
                       <Link to={`/event/upcoming/detail/${event.slug}`} className="mt-4 block text-blue-600 hover:underline">
                         See Details
                       </Link>

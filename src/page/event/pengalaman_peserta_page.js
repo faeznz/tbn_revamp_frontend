@@ -45,8 +45,8 @@ const PengalamanPesertaPage = () => {
         <div className="flex-grow">
           <section className="bg-white py-24">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Pengalaman Peserta</h2>
-              <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Participant Experience</h2>
+              <p className="text-center mt-5 mb-5 text-xl">See the experiences of participants who have attended the event</p>
               <div className="mx-auto mt-5 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                 {Array(3)
                   .fill()
@@ -80,8 +80,8 @@ const PengalamanPesertaPage = () => {
         <div className="flex flex-col">
           <section className="bg-white py-24 sm:py-32">
             <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center items-center">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Pengalaman Peserta</h2>
-              <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Participant Experience</h2>
+              <p className="text-center mt-5 mb-5 text-xl">See the experiences of participants who have attended the event</p>
               <article className="rounded-lg overflow-hidden text-center col-span-full mt-12">
                 <Lottie animationData={LottieDataNotFound} loop={true} />
               </article>
@@ -103,8 +103,8 @@ const PengalamanPesertaPage = () => {
         <div className="flex-grow">
           <section className="bg-white py-24">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Pengalaman Peserta</h2>
-              <p className="text-center mt-5 mb-5 text-xl">Lihat pengalaman peserta yang telah mengikuti acara</p>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Participant Experience</h2>
+              <p className="text-center mt-5 mb-5 text-xl">See the experiences of participants who have attended the event</p>
               <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
                 {events.map((event) => (
                   <article key={event.id} className="h-full flex flex-col justify-between bg-gray-100 rounded-lg overflow-hidden shadow-md">
@@ -114,9 +114,9 @@ const PengalamanPesertaPage = () => {
                     </div>
                     <div className="w-full justify-center items-center">
                       <div className="px-6 pb-4">
-                        <p className="text-gray-800 font-medium mb-2">Pembicara: {event.pembicara}</p>
-                        <p className="text-gray-800 font-medium mb-2">Registration: {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
-                        <p className="text-gray-800 font-medium">Tanggal: {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                        <p className="text-gray-800 font-medium mb-2">Speakers: {event.pembicara}</p>
+                        <p className="text-gray-800 font-medium mb-2">Registration: {event.harga === '0' ? 'Free' : `Rp${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+                        <p className="text-gray-800 font-medium">Date: {new Date(event.tanggal).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                       </div>
                       <div className="px-6 py-8 text-center justify-center items-center">
                         <a href={`/event/pengalaman-peserta/detail/${event.slug}`} className="bg-[#195A94] text-white px-8 py-2 rounded-xl">

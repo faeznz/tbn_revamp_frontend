@@ -69,7 +69,7 @@ const VisiMisiPage = () => {
 
         {/* Section 2 - Values and DNA */}
         <section className="flex flex-col items-center justify-center bg-[#F2EEEA] lg:rounded-t-[100px] rounded-t-[50px]">
-          <p className="lg:text-4xl text-2xl mb-8 font-medium lg:pt-24 pt-12">VALUES AND DNA</p>
+          <p className="lg:text-4xl text-2xl font-medium lg:pt-24 pt-12">VALUES AND DNA</p>
           <div className="flex flex-col justify-center items-center w-screen lg:py-24 py-8 lg:px-0 px-8">
             <img src={BannerValueDna} loading="lazy" alt="valueDna" />
           </div>

@@ -309,7 +309,7 @@ function Navbar({ data }) {
       {showSuccess && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg relative">
-            <p className="text-green-600 font-semibold mb-4">Anda berhasil melakukan log out.</p>
+            <p className="text-green-600 font-semibold mb-4">You have successfully logged out.</p>
             <button className="absolute bottom-2 right-4 text-gray-600 hover:text-gray-900" onClick={handleCloseSuccess}>
               Close
             </button>

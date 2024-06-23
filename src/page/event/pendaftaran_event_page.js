@@ -224,7 +224,7 @@ const PendaftaranEventPage = () => {
         {showConfirmation && selectedEvent && (
           <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
             <div className="bg-white p-8 rounded-lg shadow-lg relative mx-8">
-              <p className="text-black font-semibold mb-4">Apakah data yang Anda masukkan sudah benar?</p>
+              <p className="text-black font-semibold mb-4">Please confirm the accuracy of the data you have entered.</p>
               <table className="w-full mb-4">
                 <tbody>
                   <tr>
@@ -294,7 +294,7 @@ const PendaftaranEventPage = () => {
             </div>
           ) : selectedEvent ? (
             <div className="max-w-lg w-full bg-white p-8 rounded-lg shadow-md">
-              <h2 className="text-2xl font-bold mb-4 text-center">Pendaftaran Event: {selectedEvent.judul}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-center">Register For Event: {selectedEvent.judul}</h2>
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                   <label htmlFor="name" className="block font-semibold mb-1">
@@ -336,7 +336,7 @@ const PendaftaranEventPage = () => {
                 </div>
                 <div className="flex justify-center">
                   <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md">
-                    Daftar
+                    Register
                   </button>
                 </div>
               </form>

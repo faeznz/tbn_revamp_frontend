@@ -71,9 +71,9 @@ const PengalamanPesertaDetail = () => {
           <div className="absolute aspect-square md:aspect-video xl:aspect-21/9 w-full top-0 flex flex-row justify-center xl:p-24 pt-12 items-center">
             <div className="p-4 mt-2 flex flex-col justify-center items-center rounded-2xl">
               <p className="text-white text-center xl:font-bold lg:font-bold md:font-bold font-semibold xl:text-5xl lg:text-3xl md:text-xl text-lg xl:mb-6 lg:mb-6 mb-2">{event.judul}</p>
-              <p className="text-white xl:font-semibold xl:text-2xl lg:text-2xl md:text-lg text-sm xl:mb-6 lg:mb-6">{new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+              <p className="text-white xl:font-semibold xl:text-2xl lg:text-2xl md:text-lg text-sm xl:mb-6 lg:mb-6">{new Date(event.tanggal).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
               <p className="text-white font-light xl:text-2xl lg:text-2xl md:text-lg text-xs text-center xl:mb-6 lg:mb-6 mb-2">{event.lokasi}</p>
-              <p className="text-white font-semibold xl:text-xl lg:text-xl md:text-lg text-sm ">REGISTRATION : {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+              <p className="text-white font-semibold xl:text-xl lg:text-xl md:text-lg text-sm ">REGISTRATION : {event.harga === '0' ? 'Free' : `Rp${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
               <div className="flex bg-white/50 h-0.5 w-full xl:mt-8 lg:mt-8 md:mt-8 mt-5"></div>
               <div className="text-white xl:h-12 lg:h-12 md:h-8 h-8 mt-0 rounded-full p-2 flex items-center justify-center w-full gap-2">
                 <div className="rounded-full xl:p-2">
@@ -107,7 +107,7 @@ const PengalamanPesertaDetail = () => {
                   <MdStar key={index} className={`xl:text-xl ${index < calculateAverageRating(reviews) ? 'text-yellow-400' : 'text-gray-400'}`} />
                 ))}
               </div>
-              <p>({reviews.length} Ulasan)</p>
+              <p>({reviews.length} Reviews)</p>
             </div>
             {reviews.map((review) => (
               <div key={review.id} className="xl:mx-24">
@@ -118,7 +118,7 @@ const PengalamanPesertaDetail = () => {
                     <div className="flex flex-row justify-between w-full">
                       <div>
                         <p className="text-xl font-bold">{review.registration.name}</p>
-                        <p className="text-md font-light">{new Date(review.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                        <p className="text-md font-light">{new Date(review.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                       </div>
                       <div className="flex flex-row gap-1">
                         {[...Array(5)].map((_, index) => (
@@ -138,7 +138,7 @@ const PengalamanPesertaDetail = () => {
                           <RiAccountCircleLine className="text-4xl mr-1 text-[#092040]" />
                           <div>
                             <p className="text-xl font-bold">{review.registration.name}</p>
-                            <p className="text-md font-light">{new Date(review.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                            <p className="text-md font-light">{new Date(review.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                           </div>
                         </div>
                         <div className="flex flex-row gap-1 mt-2">

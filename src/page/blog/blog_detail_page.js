@@ -122,7 +122,7 @@ const BlogDetailPage = () => {
         </section>
         <section className="flex justify-center items-center">
           <div className="w-4/5">
-            <p className="xl:text-4xl text-lg font-bold">Komentar</p>
+            <p className="xl:text-4xl text-lg font-bold">Comments</p>
             {comments.map((comment) => (
               <div key={comment.id} className="flex flex-col items-start justify-start mb-6">
                 <div className="flex flex-row justify-center items-center xl:mt-12 mt-8">
@@ -141,7 +141,7 @@ const BlogDetailPage = () => {
                 <p className="text-xl mt-4">{comment.comment}</p>
               </div>
             ))}
-            <p className="xl:text-4xl text-lg font-bold xl:mt-24 mt-12">Tinggalkan Komentar</p>
+            <p className="xl:text-4xl text-lg font-bold xl:mt-24 mt-12">Leave a Comment</p>
             <div className="flex flex-col">
               <div className="flex mt-8 mb-6 justify-center">
                 {[...Array(5)].map((star, i) => {
@@ -154,15 +154,9 @@ const BlogDetailPage = () => {
                   );
                 })}
               </div>
-              <textarea
-                type="text"
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                placeholder="Tuliskan komentar Anda di sini..."
-                className="w-full h-48 mb-6 rounded-xl bg-[#FBFBFB] border border-[#B6B6B6] text-black p-4"
-              />
+              <textarea type="text" value={newComment} onChange={(e) => setNewComment(e.target.value)} placeholder="Write your comments here..." className="w-full h-48 mb-6 rounded-xl bg-[#FBFBFB] border border-[#B6B6B6] text-black p-4" />
               <button onClick={handleCommentSubmit} className="self-center bg-[#092040] text-white px-8 py-4 rounded-2xl mb-24">
-                Kirim
+                Submit
               </button>
             </div>
           </div>

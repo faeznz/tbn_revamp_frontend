@@ -107,9 +107,9 @@ const EventsPage = () => {
                     </div>
                     <div className="w-full justify-center items-center">
                       <div className="px-6 pb-4">
-                        <p className="text-gray-800 font-medium mb-2">Pembicara: {event.pembicara}</p>
-                        <p className="text-gray-800 font-medium mb-2">Registration: {event.harga === '0' ? 'Free' : `Rp ${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
-                        <p className="text-gray-800 font-medium">Tanggal: {new Date(event.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                        <p className="text-gray-800 font-medium mb-2">Speakers: {event.pembicara}</p>
+                        <p className="text-gray-800 font-medium mb-2">Registration: {event.harga === '0' ? 'Free' : `Rp${parseInt(event.harga).toLocaleString('id-ID')}`}</p>
+                        <p className="text-gray-800 font-medium">Date: {new Date(event.tanggal).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                       </div>
                       <div className="px-6 py-8 text-center justify-center items-center">
                         <a href={`/event/upcoming/detail/${event.slug}`} className="bg-[#195A94] text-white px-8 py-2 rounded-xl">

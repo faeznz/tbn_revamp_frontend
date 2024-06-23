@@ -42,7 +42,7 @@ const HistoryEventPage = () => {
 
   const formatDateTime = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-    return new Date(dateString).toLocaleDateString('id-ID', options);
+    return new Date(dateString).toLocaleDateString('en-GB', options);
   };
 
   if (loading) {
@@ -62,7 +62,7 @@ const HistoryEventPage = () => {
       <div>
         <NavbarComponent />
         <section className="flex flex-col items-center w-screen min-h-screen pt-16 bg-[#F2EEEA] pb-24">
-          <p className="my-12 text-2xl font-semibold">Riwayat Pendaftaran</p>
+          <p className="my-12 text-2xl font-semibold">Registration History</p>
           <article className="bg-gray-100 rounded-lg overflow-hidden shadow-md p-10 text-center col-span-full">
             <div className="font-semibold lg:text-xl text-gray-800">Anda tidak mendaftar acara apapun</div>
           </article>
@@ -81,14 +81,14 @@ const HistoryEventPage = () => {
         <NavbarComponent />
         {/* Section 1 - Main */}
         <section className="flex flex-col items-center justify-center w-full min-h-screen pt-16 bg-[#F2EEEA] pb-24">
-          <p className="my-12 text-2xl font-semibold">Riwayat Pendaftaran</p>
+          <p className="my-12 text-2xl font-semibold">Registration History</p>
           <div className="bg-white lg:w-fit w-5/6 lg:p-12 py-8 rounded-xl">
             <table className="lg:block hidden">
               <thead>
                 <tr>
                   <td className="px-12 text-center font-semibold pb-8">Status</td>
-                  <td className="px-12 text-center font-semibold pb-8">Pendaftaran</td>
-                  <td className="px-12 text-center font-semibold pb-8">Aksi</td>
+                  <td className="px-12 text-center font-semibold pb-8">Registration</td>
+                  <td className="px-12 text-center font-semibold pb-8">Action</td>
                 </tr>
               </thead>
               <tbody>

@@ -175,18 +175,20 @@ const LoginPage = () => {
                     onKeyPress={handleKeyPress}
                     ref={inputRef}
                   />
-                  {/* Remember Me */}
+                  {/* Remember Me
                   <div className="flex flex-row justify-start items-center ml-4 mb-4">
                     <input type="checkbox" className="w-4 h-4 mr-2 rounded-full" />
                     <p className="text-[#9A9CA9]">Remember Me</p>
-                  </div>
+                  </div> */}
                   {/* Login Button */}
                   <button id="myBtn" ref={buttonRef} className="bg-[#4E73DF] text-white font-medium rounded-full w-full h-12" onClick={handleSubmit}>
                     Login
                   </button>
                   {/* Forgot Password and Register Button */}
                   <div className="flex flex-col justify-center items-center mt-4 gap-2">
-                    <p className="text-[#4E73DF] text-sm">Forgot Password?</p>
+                    <NavLink to="/forgot-password" className="text-[#4E73DF] text-sm">
+                      Forgot Password?
+                    </NavLink>
                     <NavLink to="/register" className="text-[#4E73DF] text-sm">
                       Create an Account?
                     </NavLink>

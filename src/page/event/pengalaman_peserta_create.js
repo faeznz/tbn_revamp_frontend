@@ -105,7 +105,7 @@ const PengalamanPesertaCreate = () => {
               <img src="https://cdn1.iconfinder.com/data/icons/user-interface-outline-7/512/ui_ux_user_account_profile-512.png" alt="icon" className="h-12 w-12 rounded-full" />
               <p className="font-bold">{dataLogin.nama}</p>
             </div>
-            <p className="font-light text-center mt-4">Tuliskan pengalaman anda mengenai event ini.</p>
+            <p className="font-light text-center mt-4">Write about your experience at this event.</p>
             <div className="flex justify-center mt-8">
               <div className="flex flex-row mr-4 gap-1">
                 {[...Array(5)].map((_, index) => (
@@ -114,12 +114,12 @@ const PengalamanPesertaCreate = () => {
               </div>
             </div>
             <div className="flex flex-col xl:w-3/5 xl:mt-8">
-              <textarea value={review} onChange={(e) => setReview(e.target.value)} className="h-48 mx-8 my-12 rounded-xl bg-[#FBFBFB] border border-[#B6B6B6] text-black p-4" placeholder="Tulis ulasan Anda di sini" />
+              <textarea value={review} onChange={(e) => setReview(e.target.value)} className="h-48 mx-8 my-12 rounded-xl bg-[#FBFBFB] border border-[#B6B6B6] text-black p-4" placeholder="Write your review here" />
               <div className="flex w-full justify-center items-center">
                 <input type="file" accept=".jpg, .jpeg, .png" onChange={handleImageChange} />
               </div>
               <button type="submit" className="bg-[#092040] text-white px-8 xl:py-4 py-3 mt-4 rounded-2xl mb-24 mx-8">
-                Posting
+                Post
               </button>
             </div>
           </form>
@@ -129,9 +129,9 @@ const PengalamanPesertaCreate = () => {
         {showSuccessPopup && (
           <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
             <div className="bg-white p-8 rounded-xl flex flex-col justify-center items-center">
-              <p className="xl:text-2xl font-bold text-gray-800">Terimakasih telah membuat ulasan!</p>
+              <p className="xl:text-2xl font-bold text-gray-800">Thanks for the review!</p>
               <button onClick={handleClosePopup} className="bg-blue-500 text-white px-4 py-2 mt-4 rounded-xl">
-                Tutup
+                Close
               </button>
             </div>
           </div>
