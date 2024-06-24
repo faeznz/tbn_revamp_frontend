@@ -9,7 +9,7 @@ function ForgotPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://your-backend-api/forgot-password', { email });
+      const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/reset-password`, { email });
       setMessage(response.data.message);
       setIsError(false);
     } catch (error) {

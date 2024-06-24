@@ -7,7 +7,6 @@ import ScrollToTop from './components/ScrollToTop';
 import LoginPage from './page/login_page/login_page';
 import RegisterPage from './page/register_page/register_page';
 import ForgotPassword from './components/forgot_password';
-import ResetPassword from './components/reset_password';
 
 import Homepage from './page/homepage/home_page';
 import BlogListPage from './page/blog/blog_list_page';
@@ -68,7 +67,6 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
