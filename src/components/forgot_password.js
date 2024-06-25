@@ -5,9 +5,13 @@ function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setMessage('');
+    setIsError(false);
     try {
       const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/reset-password`, { email });
       setMessage(response.data.message);
@@ -15,6 +19,8 @@ function ForgotPassword() {
     } catch (error) {
       setMessage('Error sending reset link. Please try again.');
       setIsError(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -22,9 +28,9 @@ function ForgotPassword() {
     <div className="flex items-center justify-center bg-[#C3D21F] h-screen">
       <form onSubmit={handleSubmit} className="p-6 bg-white rounded-xl shadow-lg">
         <h2 className="mb-4 text-xl font-semibold">Forgot Password</h2>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" className="w-full px-4 py-2 mb-4 border rounded" required />
-        <button type="submit" className="w-full px-4 py-2 text-white bg-[#4E73DF] rounded-full">
-          Send Reset Link
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" className="w-full px-4 py-2 mb-4 border rounded" required disabled={isLoading} />
+        <button type="submit" className="w-full px-4 py-2 text-white bg-[#4E73DF] rounded-full" disabled={isLoading}>
+          {isLoading ? 'Sending...' : 'Send Reset Link'}
         </button>
         {message && <p className={`mt-4 ${isError ? 'text-red-500' : 'text-green-500'}`}>{message}</p>}
       </form>
