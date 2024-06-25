@@ -146,7 +146,7 @@ function Navbar({ data }) {
               </div>
             )}
           </div>
-          <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+          <a href="http://impactmate.tbnindonesia.org" target="_blank" rel="noopener noreferrer">
             IMM
           </a>
           <p>{data}</p>
@@ -270,7 +270,7 @@ function Navbar({ data }) {
               </div>
             )}
           </div>
-          <a href="https://example.com" className="mt-3" onClick={() => setIsBurgerOpen(false)} target="_blank" rel="noopener noreferrer">
+          <a href="http://impactmate.tbnindonesia.org" className="mt-3" onClick={() => setIsBurgerOpen(false)} target="_blank" rel="noopener noreferrer">
             IMM
           </a>
           <p>{data}</p>
