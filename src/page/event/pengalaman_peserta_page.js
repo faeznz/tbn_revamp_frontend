@@ -119,7 +119,7 @@ const PengalamanPesertaPage = () => {
                         <p className="text-gray-800 font-medium">Date: {new Date(event.tanggal).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                       </div>
                       <div className="px-6 py-8 text-center justify-center items-center">
-                        <a href={`/event/pengalaman-peserta/detail/${event.slug}`} className="bg-[#195A94] text-white px-8 py-2 rounded-xl">
+                        <a href={`/event/participant-experience/detail/${event.slug}`} className="bg-[#195A94] text-white px-8 py-2 rounded-xl">
                           Look Review
                         </a>
                       </div>

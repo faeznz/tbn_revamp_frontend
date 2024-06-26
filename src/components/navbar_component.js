@@ -120,7 +120,7 @@ function Navbar({ data }) {
             <p>About</p>
             {isAboutHovered && (
               <div className="flex flex-col gap-2 absolute w-40 bg-white text-black font-medium rounded-md shadow-md py-2 px-4 top-12 left-0 z-10">
-                <NavLink to="/about/visimisi">Vision Mission</NavLink>
+                <NavLink to="/about/vision-mission">Vision Mission</NavLink>
                 <NavLink to="/about/history">History</NavLink>
                 <NavLink to="/about/partnership">Partnership</NavLink>
                 <NavLink to="/about/our-approach">Our Approach</NavLink>
@@ -139,7 +139,7 @@ function Navbar({ data }) {
                 <NavLink to="/event/upcoming" className="leading-4">
                   Upcoming Event
                 </NavLink>
-                <NavLink to="/event/pengalaman-peserta" className="leading-4">
+                <NavLink to="/event/participant-experience" className="leading-4">
                   Participant Experience
                 </NavLink>
                 <NavLink to="/event/history">History</NavLink>
@@ -224,7 +224,7 @@ function Navbar({ data }) {
             <p className="mt-3">About</p>
             {isAboutHovered && (
               <div className="flex flex-col gap-2 w-full bg-white text-black font-medium rounded-md shadow-md p-4 my-2">
-                <NavLink to="/about/visimisi" onClick={() => setIsBurgerOpen(false)}>
+                <NavLink to="/about/vision-mission" onClick={() => setIsBurgerOpen(false)}>
                   Vision Mission
                 </NavLink>
                 <NavLink to="/about/history" onClick={() => setIsBurgerOpen(false)}>
@@ -261,7 +261,7 @@ function Navbar({ data }) {
                 <NavLink to="/event/upcoming" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>
                   Upcoming Event
                 </NavLink>
-                <NavLink to="/event/pengalaman-peserta" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>
+                <NavLink to="/event/participant-experience" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>
                   Participant Experience
                 </NavLink>
                 <NavLink to="/event/history" onClick={() => setIsBurgerOpen(false)}>

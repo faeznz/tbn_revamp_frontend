@@ -41,7 +41,7 @@ function App() {
           <Route path="/contact" element={<ContactUsPage />} />
 
           {/* Route About */}
-          <Route path="/about/visimisi" element={<VisiMisiPage />} />
+          <Route path="/about/vision-mission" element={<VisiMisiPage />} />
           <Route path="/about/history" element={<HistoryPage />} />
           <Route path="/about/how-it-works" element={<HowItWorksPage />} />
           <Route path="/about/our-approach" element={<OurApproachPage />} />
@@ -57,9 +57,9 @@ function App() {
           <Route path="event/register-event/:slug" element={<ProtectedRoute element={<PendaftaranEventPage />} />} />
           <Route path="/event/upcoming" element={<UpcomingEventPage />} />
           <Route path="/event/upcoming/detail/:slug" element={<UpcomingEventPageDetail />} />
-          <Route path="event/pengalaman-peserta" element={<PengalamanPesertaPage />} />
-          <Route path="/event/pengalaman-peserta/create/:id" element={<ProtectedRoute element={<PengalamanPesertaCreate />} />} />
-          <Route path="/event/pengalaman-peserta/detail/:slug" element={<PengalamanPesertaDetailPage />} />
+          <Route path="event/participant-experience" element={<PengalamanPesertaPage />} />
+          <Route path="/event/participant-experience/create/:id" element={<ProtectedRoute element={<PengalamanPesertaCreate />} />} />
+          <Route path="/event/participant-experience/detail/:slug" element={<PengalamanPesertaDetailPage />} />
           <Route path="event/history" element={<ProtectedRoute element={<HistoryEventPage />} />} />
           <Route path="event/history/detail/:registrationId" element={<ProtectedRoute element={<HistoryEventDetailPage />} />} />
 

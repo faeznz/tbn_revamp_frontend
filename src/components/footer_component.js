@@ -25,7 +25,7 @@ const footer_component = () => {
           {/* About */}
           <div className="lg:flex hidden flex-col text-white gap-4 ">
             <p className="font-bold tracking-[.25em] mb-2">About</p>
-            <NavLink to="/about/visimisi">Vision Mission</NavLink>
+            <NavLink to="/about/vision-mission">Vision Mission</NavLink>
             <NavLink to="/about/history">History</NavLink>
             <NavLink to="/about/partnership">Partnership</NavLink>
             <NavLink to="/about/our-approach">Our Approach</NavLink>

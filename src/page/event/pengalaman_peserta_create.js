@@ -78,7 +78,7 @@ const PengalamanPesertaCreate = () => {
 
   const handleClosePopup = () => {
     setShowSuccessPopup(false);
-    navigate('/event/pengalaman-peserta');
+    navigate('/event/participant-experience');
   };
 
   const handleCloseErrorPopup = () => {

@@ -46,7 +46,7 @@ const HistoryEventDetailPage = () => {
 
   const handleExperienceClick = () => {
     // Navigasi ke halaman pengalaman
-    navigate(`/event/pengalaman-peserta/create/${registrationId}`);
+    navigate(`/event/participant-experience/create/${registrationId}`);
   };
 
   return (
