@@ -97,7 +97,7 @@ const BlogDetailPage = () => {
 
   return (
     <HelmetProvider>
-      <div>
+      <div className="min-h-screen">
         <Helmet>
           <title>TBN Indonesia - Blog Detail</title>
         </Helmet>
