@@ -61,13 +61,15 @@ const HistoryEventPage = () => {
     return (
       <div>
         <NavbarComponent />
-        <section className="flex flex-col items-center w-screen min-h-screen pt-16 bg-[#F2EEEA] pb-24">
+        <section className="flex flex-col items-center w-full min-h-screen pt-16 bg-[#F2EEEA] pb-24">
           <p className="my-12 text-2xl font-semibold">Registration History</p>
           <article className="bg-gray-100 rounded-lg overflow-hidden shadow-md p-10 text-center col-span-full">
             <div className="font-semibold lg:text-xl text-gray-800">You not registered any event.</div>
           </article>
         </section>
-        <FooterComponent />
+        <div className="bg-[#F2EEEA]">
+          <FooterComponent />
+        </div>
       </div>
     );
   }
