@@ -141,7 +141,7 @@ const PendaftaranEventPage = () => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/registrations`, formData);
 
-      setSuccessMessage('Terima kasih telah melakukan pendaftaran.');
+      setSuccessMessage('Thank you for registered.');
       setShowSuccess(true);
       const redirectUrl =
         'https://wa.me/6282310001908?text=Halo%2C%0ASaya%20telah%20mendaftar%20sebagai%20peserta%20' +
@@ -228,7 +228,7 @@ const PendaftaranEventPage = () => {
               <table className="w-full mb-4">
                 <tbody>
                   <tr>
-                    <td className="pr-4 py-2 font-semibold">Nama:</td>
+                    <td className="pr-4 py-2 font-semibold">Name:</td>
                     <td>{name}</td>
                   </tr>
                   <tr>
@@ -240,15 +240,15 @@ const PendaftaranEventPage = () => {
                     <td>{phone}</td>
                   </tr>
                   <tr>
-                    <td className="pr-4 py-2 font-semibold">Afiliasi:</td>
+                    <td className="pr-4 py-2 font-semibold">Afiliation:</td>
                     <td>{affiliation}</td>
                   </tr>
                   <tr>
-                    <td className="pr-4 py-2 font-semibold">Jenis Tiket:</td>
+                    <td className="pr-4 py-2 font-semibold">Ticket Type:</td>
                     <td>{ticketType}</td>
                   </tr>
                   <tr>
-                    <td className="pr-4 py-2 font-semibold">Catatan:</td>
+                    <td className="pr-4 py-2 font-semibold">Notes:</td>
                     <td>{notes}</td>
                   </tr>
                 </tbody>
@@ -298,7 +298,7 @@ const PendaftaranEventPage = () => {
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                   <label htmlFor="name" className="block font-semibold mb-1">
-                    Nama
+                    Name
                   </label>
                   <input type="text" id="name" className={`w-full px-3 py-2 border rounded-md ${nameError ? 'border-red-500' : 'border-gray-300'}`} value={name} onChange={handleNameChange} />
                   {nameError && <p className="text-red-500 text-sm">{nameError}</p>}
@@ -319,18 +319,18 @@ const PendaftaranEventPage = () => {
                 </div>
                 <div className="mb-4">
                   <label htmlFor="affiliation" className="block font-semibold mb-1">
-                    Afiliasi
+                    Afiliation
                   </label>
                   <input type="text" id="affiliation" className={`w-full px-3 py-2 border rounded-md ${affiliationError ? 'border-red-500' : 'border-gray-300'}`} value={affiliation} onChange={handleAffiliationChange} />
                   {affiliationError && <p className="text-red-500 text-sm">{affiliationError}</p>}
                 </div>
                 <div className="mb-4">
-                  <label className="block font-semibold mb-1">Jenis Tiket</label>
+                  <label className="block font-semibold mb-1">Ticket Type</label>
                   <p className="w-full px-3 py-2 border border-gray-300 rounded-md">{ticketType}</p>
                 </div>
                 <div className="mb-4">
                   <label htmlFor="notes" className="block font-semibold mb-1">
-                    Catatan
+                    Notes
                   </label>
                   <textarea id="notes" className="w-full px-3 py-2 border border-gray-300 rounded-md" value={notes} onChange={(e) => setNotes(e.target.value)} />
                 </div>
@@ -342,7 +342,7 @@ const PendaftaranEventPage = () => {
               </form>
             </div>
           ) : (
-            <p>Event tidak ditemukan</p>
+            <p>Event not found</p>
           )}
         </div>
         <FooterComponent />
