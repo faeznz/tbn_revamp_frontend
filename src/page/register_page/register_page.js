@@ -130,7 +130,7 @@ const RegisterPage = () => {
       // Make a POST request to your backend server
       await axios.post(`${process.env.REACT_APP_TBN_API_URL}/api/register`, dataRegister);
 
-      setSuccessMessage('Pendaftaran berhasil. Silakan login.');
+      setSuccessMessage('Register Success. Please login.');
       setShowSuccess(true);
       setTimeout(() => {
         setShowSuccess(false);
@@ -138,7 +138,7 @@ const RegisterPage = () => {
       }, 8000);
     } catch (error) {
       // Handle error
-      setErrorMessage('Pendaftaran gagal. Coba ulangi lagi.');
+      setErrorMessage('Register Failed. Please Try Again.');
       setShowError(true);
 
       setTimeout(() => {
@@ -184,7 +184,7 @@ const RegisterPage = () => {
           console.error('Unexpected response format:', response);
         }
       } catch (error) {
-        setErrorMessage('Pendaftaran gagal. Coba ulangi lagi.');
+        setErrorMessage('Register Failed. Please Try Again.');
         setShowError(true);
 
         setTimeout(() => {

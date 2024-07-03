@@ -142,7 +142,9 @@ function Navbar({ data }) {
                 <NavLink to="/event/participant-experience" className="leading-4">
                   Participant Experience
                 </NavLink>
-                <NavLink to="/event/history">History</NavLink>
+                <NavLink to="/event/history" className="leading-4">
+                  Registration History
+                </NavLink>
               </div>
             )}
           </div>
@@ -264,8 +266,8 @@ function Navbar({ data }) {
                 <NavLink to="/event/participant-experience" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>
                   Participant Experience
                 </NavLink>
-                <NavLink to="/event/history" onClick={() => setIsBurgerOpen(false)}>
-                  History
+                <NavLink to="/event/history" className="lg:leading-4" onClick={() => setIsBurgerOpen(false)}>
+                  Registration History
                 </NavLink>
               </div>
             )}

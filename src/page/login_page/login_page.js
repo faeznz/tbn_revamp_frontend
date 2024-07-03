@@ -107,7 +107,7 @@ const LoginPage = () => {
           console.error('Unexpected response format:', response);
         }
       } catch (error) {
-        setErrorMessage('Pendaftaran gagal. Coba ulangi lagi.');
+        setErrorMessage('Register Failed. Please Try Again.');
         setShowError(true);
 
         setTimeout(() => {
