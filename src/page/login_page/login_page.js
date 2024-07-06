@@ -10,7 +10,6 @@ import { auth, googleAuthProvider } from '../../firebase/firebase_config';
 import { signInWithPopup } from 'firebase/auth';
 
 import { FcGoogle } from 'react-icons/fc';
-import { FaApple } from 'react-icons/fa';
 
 import ImgLogin from '../../assets/images/login-register/img_login.webp';
 
@@ -204,13 +203,6 @@ const LoginPage = () => {
                     <div className="flex flex-row items-center justify-center">
                       <FcGoogle className="text-2xl mr-2" />
                       <p>Login with Google</p>
-                    </div>
-                  </button>
-                  {/* Login with Apple Account */}
-                  <button className="border-[#4E73DF] border-2 text-[#4E73DF] font-medium rounded-full w-full h-12 mt-2 lg:mb-0 mb-12" onClick={handleLogInWithGoogle}>
-                    <div className="flex flex-row items-center justify-center">
-                      <FaApple className="text-2xl mr-2 text-black" />
-                      <p>Login with Apple</p>
                     </div>
                   </button>
                 </div>

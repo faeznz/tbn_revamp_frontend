@@ -9,7 +9,6 @@ import { auth, googleAuthProvider } from '../../firebase/firebase_config';
 import { signInWithPopup } from 'firebase/auth';
 
 import { FcGoogle } from 'react-icons/fc';
-import { FaApple } from 'react-icons/fa';
 
 import ImgLogin from '../../assets/images/login-register/img_login.webp';
 
@@ -47,7 +46,7 @@ const RegisterPage = () => {
 
   const validateName = (name) => {
     if (name.trim() === '') {
-      setNameError('Name wajib diisi');
+      setNameError('Name must be filled');
     } else {
       setNameError('');
     }
@@ -55,7 +54,7 @@ const RegisterPage = () => {
 
   const validateLastName = (lastName) => {
     if (lastName.trim() === '') {
-      setLastNameError('Last Name wajib diisi');
+      setLastNameError('Last Name must be filled');
     } else {
       setLastNameError('');
     }
@@ -64,9 +63,9 @@ const RegisterPage = () => {
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (email.trim() === '') {
-      setEmailError('Email wajib diisi');
+      setEmailError('Email must be filled');
     } else if (!emailRegex.test(email)) {
-      setEmailError('Format email salah');
+      setEmailError('Incorrect email format');
     } else {
       setEmailError('');
     }
@@ -74,9 +73,9 @@ const RegisterPage = () => {
 
   const validatePassword = (password) => {
     if (password.trim() === '') {
-      setPasswordError('Password wajib diisi');
+      setPasswordError('Password must be filled');
     } else if (password.length < 8) {
-      setPasswordError('Password minimal 8 karakter');
+      setPasswordError('Password at least 8 characters');
     } else {
       setPasswordError('');
     }
@@ -84,7 +83,7 @@ const RegisterPage = () => {
 
   const validateRepeatPassword = (repeatPassword) => {
     if (repeatPassword !== password) {
-      setRepeatPasswordError('Passwords tidak sama');
+      setRepeatPasswordError('Passwords not match');
     } else {
       setRepeatPasswordError('');
     }
@@ -138,7 +137,7 @@ const RegisterPage = () => {
       }, 8000);
     } catch (error) {
       // Handle error
-      setErrorMessage('Register Failed. Please Try Again.');
+      setErrorMessage('Your Email Has Been Registered.');
       setShowError(true);
 
       setTimeout(() => {
@@ -326,12 +325,6 @@ const RegisterPage = () => {
                     <div className="flex flex-row items-center justify-center">
                       <FcGoogle className="text-2xl mr-2" />
                       <p>Sign in with Google</p>
-                    </div>
-                  </button>
-                  <button className="border-[#4E73DF] border-2 text-[#4E73DF] font-medium rounded-full w-full h-12 mt-2 lg:mb-0 mb-12" onClick={handleSignInWithGoogle}>
-                    <div className="flex flex-row items-center justify-center">
-                      <FaApple className="text-2xl mr-2 text-black" />
-                      <p>Sign in with Apple</p>
                     </div>
                   </button>
                 </div>
